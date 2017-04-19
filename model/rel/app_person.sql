@@ -25,9 +25,9 @@ create table app_person (
 	children_total int4,
 	dependant_ge_21 int4,
 
-	address_reg uuid,
-	address_fact uuid,
-	address_work uuid,
+	address_reg uuid, foreign key (app, address_reg) references app_address on delete set null,
+	address_fact uuid, foreign key (app, address_fact) references app_address on delete set null,
+	address_work uuid, foreign key (app, address_work) references app_address on delete set null,
 	tenure code references tenure,
 	tenancy_room int4,
 

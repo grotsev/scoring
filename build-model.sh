@@ -42,15 +42,20 @@ cat \
 	model/dict/position_category.sql \
 	model/dict/kinship.sql \
 	model/dict/liability.sql \
+	model/dict/wall_material.sql \
+	model/dict/auto_brand.sql \
+	model/dict/auto_model.sql \
 	\
 	model/dict-conf/product_scheme.sql \
 	model/dict-conf/product_fee.sql \
 	\
 	model/rel/app.sql \
-	model/rel/app_person.sql \
 	model/rel/app_address.sql \
+	model/rel/app_entity.sql \
+	model/rel/app_person.sql \
 	model/rel/app_cashflow.sql \
 	model/rel/app_phone.sql \
 	model/rel/app_kin.sql \
+	model/rel/app_pledge.sql \
 	\
 	> build/model.sql

@@ -5,7 +5,10 @@ create table pledge_kind (
 insert into pledge_kind values
 	('FLAT'),
 	('HOUSE'),
+	('LAND'),
+	('COMMERCIAL'),
 	('AUTO'),
+	('MACHINE'),
 	('MONEY')
 ;
 
