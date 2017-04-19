@@ -1,9 +1,9 @@
 create table app_wish (
 	app uuid primary key references app,
 
-	product code references product,
-	currency code references currency,
-	client_category code references client_category,
+	product code, -- references product
+	currency code, -- references currency
+	client_category code, -- references client_category
 	term_range int4range,
 	amount_range int4range,
 	foreign key (product, currency, client_category, term_range, amount_range) references product_scheme,
