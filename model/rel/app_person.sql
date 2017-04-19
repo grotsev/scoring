@@ -8,3 +8,5 @@ create table app_person (
 	gender code not null references gender
 );
 
+comment on table app_person is 'Individual';
+

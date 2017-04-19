@@ -13,15 +13,13 @@ create table app_profile (
 	children_total int4,
 	dependant_ge_21 int4,
 
-	employer_title textfield,
-	last_service int4,
-	total_service int4,
-
 	address_reg uuid,
 	address_fact uuid,
 	address_work uuid,
 	residence_kind code references residence_kind,
 	tenancy_room int4,
+
+	email email,
 
 	photo uuid
 );

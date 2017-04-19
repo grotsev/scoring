@@ -9,5 +9,3 @@ create table app_offer (
 	accepted boolean not null
 );
 
-
-

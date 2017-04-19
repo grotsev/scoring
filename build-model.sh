@@ -9,6 +9,8 @@ cat \
 	model/sys/textfield.sql \
 	model/sys/textarea.sql \
 	model/sys/iin.sql \
+	model/sys/phone.sql \
+	model/sys/email.sql \
 	\
 	model/dict/lang.sql \
 	model/dict/currency.sql \
@@ -38,6 +40,9 @@ cat \
 	model/dict/education.sql \
 	model/dict/speciality.sql \
 	model/dict/credit_purpose.sql \
+	model/dict/phone_kind.sql \
+	model/dict/position_category.sql \
+	model/dict/relation_kind.sql \
 	\
 	model/dict-conf/product_scheme.sql \
 	model/dict-conf/product_fee.sql \
@@ -50,5 +55,12 @@ cat \
 	model/rel/app_address.sql \
 	model/rel/app_offer.sql \
 	model/rel/app_cashflow.sql \
+	model/rel/app_term.sql \
+	model/rel/app_phone.sql \
+	model/rel/app_coborrower.sql \
+	model/rel/app_pledgor.sql \
+	model/rel/app_employment.sql \
+	model/rel/app_relation.sql \
+	model/rel/app_relation_phone.sql \
 	\
 	> build/model.sql

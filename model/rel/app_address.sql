@@ -1,6 +1,6 @@
 create table app_address (
 	app uuid references app,
-	address uuid,
+	address uuid default uuid_generate_v4(),
 	primary key (app, address),
 
 	country code not null references country,
