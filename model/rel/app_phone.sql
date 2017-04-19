@@ -1,7 +1,9 @@
 create table app_phone (
-	app uuid references app,
+	app uuid,
+	person uuid, foreign key (app, person) references app_person,
 	phone phone,
-	primary key (app, phone),
-	phone_kind code references phone_kind
+	primary key (app, person, phone),
+
+	phone_kind code not null references phone_kind
 );
 

@@ -1,7 +1,7 @@
 create table product_fee (
-	product code, -- references product
-	currency code, -- references currency
-	client_category code, -- references client_category
+	product code,
+	currency code,
+	client_category code,
 	term_range int4range,
 	amount_range int4range,
 	foreign key (product, currency, client_category, term_range, amount_range) references product_scheme,

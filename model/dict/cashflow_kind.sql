@@ -1,6 +1,6 @@
 create table cashflow_kind (
 	cashflow_kind code primary key,
-	period numeric
+	period numeric not null
 );
 
 comment on column cashflow_kind.period is 'In monthes, positive income, negative expences';
