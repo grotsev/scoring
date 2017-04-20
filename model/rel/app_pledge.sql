@@ -24,8 +24,8 @@ create table app_pledge (
 	wall_material code references wall_material,
 	-- HOUSE, LAND
 	meterage_land int4,
-	-- COMMERCIAL
-	specification textfield,
+	-- COMMERCIAL, OTHER
+	specification textarea,
 	-- AUTO, MACHINE
 	auto_brand code references auto_brand,
 	auto_model code, foreign key (auto_brand, auto_model) references auto_model,

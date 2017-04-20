@@ -9,6 +9,7 @@ insert into pledge_kind values
 	('COMMERCIAL'),
 	('AUTO'),
 	('MACHINE'),
+	('OTHER'),
 	('MONEY')
 ;
 
