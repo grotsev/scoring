@@ -1,8 +1,8 @@
 -- Database Administator have to create roles and schema before application startup
 
-create role scoring       with noinherit login;
-create role scoring_audit with noinherit login bypassrls;
-create role scoring_auth  with noinherit login;
+create role scoring       with noinherit login password 'changeme';
+create role scoring_audit with noinherit login bypassrls password 'changeme';
+create role scoring_auth  with noinherit login password 'changeme';
 create role scoring_anon  with noinherit role scoring_auth;
 create role scoring_user  with noinherit role scoring_auth;
 
