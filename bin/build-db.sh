@@ -24,3 +24,8 @@ for f in app app_address app_entity app_person app_cashflow app_phone app_kin ap
 do
 	cat db/origin/routine/$f.sql >> $OUT
 done
+
+for f in grant
+do
+	cat db/origin/security/$f.sql >> $OUT
+done

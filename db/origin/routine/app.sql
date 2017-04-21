@@ -2,7 +2,7 @@ create table app (
 	app uuid default uuid_generate_v4() primary key,
 
 	created_at timestamp with time zone not null default now(),
-	created_by regrole not null default session_user::regrole, -- TODO does not work, trigger
+	created_by name not null default current_user, -- TODO current_setting('request.jwt.claim.login'), check does not work, trigger
 	
 	branch code not null,
 	outlet code not null,

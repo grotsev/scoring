@@ -1,16 +1,16 @@
 -- Database Administator have to create roles and schema before application startup
 
-create role scoring       with noinherit login password 'changeme';
-create role scoring_audit with noinherit login bypassrls password 'changeme';
-create role scoring_auth  with noinherit login password 'changeme';
-create role scoring_anon  with noinherit role scoring_auth;
-create role scoring_user  with noinherit role scoring_auth;
+create role scoring                with noinherit login password 'changeme';
+create role scoring_audit          with noinherit login bypassrls password 'changeme';
+create role scoring_authenticator  with noinherit login password 'changeme';
+create role scoring_anonymous      with noinherit role scoring_authenticator;
+create role scoring_user           with noinherit role scoring_authenticator;
 
-comment on role scoring       is 'Owner create and upgrage schema';
-comment on role scoring_audit is 'Read only but total access';
-comment on role scoring_auth  is 'PostgREST connects to become anonymous or one of the users';
-comment on role scoring_anon  is 'PostgREST use when no client authentication is provided';
-comment on role scoring_user  is 'Group of all routine users';
+comment on role scoring               is 'Owner create and upgrage schema';
+comment on role scoring_audit         is 'Read only but total access';
+comment on role scoring_authenticator is 'PostgREST connects to become anonymous or one of the users';
+comment on role scoring_anonymous     is 'PostgREST use when no client authentication is provided';
+comment on role scoring_user          is 'Group of all routine users';
 
 create role scoring_attraction              with role scoring_user;
 create role scoring_application             with role scoring_user;
