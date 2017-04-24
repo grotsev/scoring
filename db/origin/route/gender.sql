@@ -1,9 +1,9 @@
 create table gender (
-	gender code primary key
+  gender code primary key
 );
 
 insert into gender values
-	('MALE'),
-	('FEMALE')
+  ('MALE')
+, ('FEMALE')
 ;
 

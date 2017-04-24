@@ -1,15 +1,15 @@
 create table education (
-	education code primary key
+  education code primary key
 );
 
 insert into education values
-	('SECONDARY'),
-	('SPECIALIZEDSECONDARY'),
-	('HIGH'),
-	('BACHELOR'),
-	('MASTER'),
-	('CANDIDATE'),
-	('PHD'),
-	('DOCTOR')
+  ('SECONDARY')
+, ('SPECIALIZEDSECONDARY')
+, ('HIGH')
+, ('BACHELOR')
+, ('MASTER')
+, ('CANDIDATE')
+, ('PHD')
+, ('DOCTOR')
 ;
 

@@ -1,9 +1,9 @@
 create table idcard_kind (
-	idcard_kind code primary key
+  idcard_kind code primary key
 );
 
 insert into idcard_kind values
-	('ID_CARD'),
-	('PASSPORT')
+  ('ID_CARD')
+, ('PASSPORT')
 ;
 

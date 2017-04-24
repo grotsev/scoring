@@ -1,9 +1,9 @@
 create table residency (
-	residency code primary key
+  residency code primary key
 );
 
 insert into residency values
-	('RESIDENT'),
-	('NOT_RESIDENT')
+  ('RESIDENT')
+, ('NOT_RESIDENT')
 ;
 

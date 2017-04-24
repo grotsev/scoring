@@ -1,17 +1,17 @@
 create table product_fee (
-	product code,
-	currency code,
-	client_category code,
-	term_range int4range,
-	amount_range int4range,
-	foreign key (product, currency, client_category, term_range, amount_range) references product_scheme,
-	fee code references fee,
-	primary key (product, currency, client_category, term_range, amount_range, fee)
+  product code
+, currency code
+, client_category code
+, term_range int4range
+, amount_range int4range
+, foreign key (product, currency, client_category, term_range, amount_range) references product_scheme
+, fee code references fee
+, primary key (product, currency, client_category, term_range, amount_range, fee)
 );
 
 insert into product_fee
-	select p.product, p.currency, p.client_category, p.term_range, p.amount_range, f.fee
-	from product_scheme p
-		cross join fee f
+  select p.product, p.currency, p.client_category, p.term_range, p.amount_range, f.fee
+  from product_scheme p
+    cross join fee f
 ;
 

@@ -1,9 +1,9 @@
 create table speciality (
-	speciality code primary key
+  speciality code primary key
 );
 
 insert into speciality values
-	('MATHEMATICIAN'),
-	('PHYSICIST'),
-	('BIOLOGIST')
+  ('MATHEMATICIAN')
+, ('PHYSICIST')
+, ('BIOLOGIST')
 ;
