@@ -1,6 +1,6 @@
 create table app_entity (
   app uuid references app
-, entity uuid default uuid_generate_v4()
+, entity uuid_pk
 , primary key (app, entity)
 
 , liability code not null references liability

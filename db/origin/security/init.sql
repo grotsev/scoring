@@ -29,5 +29,5 @@ create role scoring_credit_administrator    with role scoring_user;
 
 create schema authorization scoring;
 
-create extension "uuid-ossp";
+create extension "uuid-ossp" schema scoring;
 

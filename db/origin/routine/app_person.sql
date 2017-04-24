@@ -1,8 +1,8 @@
 create table app_person (
   app uuid references app
-, person uuid default uuid_generate_v4()
+, person uuid_pk
 , primary key (app, person)
--- TODO individ uuid default uuid_generate_v4 to the best of our knowledge
+-- TODO individ uuid_pk to the best of our knowledge
 
 , liability code not null references liability
 

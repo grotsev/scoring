@@ -6,7 +6,7 @@ OUT=build/db.sql
 
 rm -f $OUT
 
-for f in code textfield textarea iin phone email
+for f in code uuid_pk textfield textarea iin phone email
 do
 	cat db/origin/define/$f.sql >> $OUT
 done

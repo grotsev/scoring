@@ -1,6 +1,6 @@
 create table app_pledge (
   app uuid references app
-, pledge uuid default uuid_generate_v4()
+, pledge uuid_pk
 , primary key (app, pledge)
 
 , pledge_kind code references pledge_kind
