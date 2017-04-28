@@ -1,8 +1,10 @@
-grant usage on schema scoring to scoring_audit;
+grant usage on schema scoring to scoring_audit, scoring_user;
 grant select on all tables in schema scoring to scoring_audit;
 grant select on all sequences in schema scoring to scoring_audit;
 
 -- TODO grant execute on function login to scoring_auth, scoring_anon;
+
+-- TODO split grant to files by role
 
 grant select
 on lang

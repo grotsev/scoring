@@ -1,3 +1,5 @@
+set client_min_messages to warning;
+
 drop schema if exists scoring cascade;
 
 drop role if exists scoring;
@@ -5,6 +7,7 @@ drop role if exists scoring_audit;
 drop role if exists scoring_authenticator;
 drop role if exists scoring_anonymous;
 drop role if exists scoring_user;
+drop role if exists scoring_superuser;
 
 drop role if exists scoring_attraction;
 drop role if exists scoring_application;

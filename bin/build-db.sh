@@ -6,6 +6,8 @@ OUT=build/db.sql
 
 rm -f $OUT
 
+echo -e 'begin;\n' >> $OUT
+
 for f in code uuid_pk textfield textarea iin phone email
 do
 	cat db/origin/define/$f.sql >> $OUT
@@ -29,3 +31,6 @@ for f in grant
 do
 	cat db/origin/security/$f.sql >> $OUT
 done
+
+echo -e 'commit;\n' >> $OUT
+
