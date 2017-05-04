@@ -1,0 +1,48 @@
+{
+  "private": true,
+  "name": "scoring",
+  "version": "1.0.0",
+  "description": "Client scoring",
+  "repository": "https://github.com/grotsev/scoring.git",
+  "author": "dgrotsev <dgrotsev@greet-go.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "babel-node ./server.js",
+    "build": "relay-compiler --src ./js/ --schema ./build/schema.graphql",
+    "update-schema": "postgraphql --connection postgres://scoring:changeme@172.17.0.2:5432/postgres --schema scoring --default-role scoring --export-schema-graphql build/schema.graphql",
+    "lint": "eslint ./js"
+  },
+  "dependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-relay": "^1.0.1-rc.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "chokidar": "^1.6.1",
+    "classnames": "^2.2.5",
+    "express": "^4.15.2",
+    "graphql": "^0.9.6",
+    "graphql-relay": "^0.5.1",
+    "prop-types": "^15.5.8",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-relay": "^1.0.0-rc.3",
+    "require-clean": "^0.1.3",
+    "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
+    "eslint-config-fbjs": "^1.1.1",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-flowtype": "^2.32.1",
+    "eslint-plugin-react": "^6.10.3",
+    "relay-compiler": "^1.0.0-rc.3"
+  }
+}

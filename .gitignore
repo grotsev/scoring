@@ -1,2 +1,6 @@
 /build/
 /README
+.DS_Store
+__generated__/
+*.log
+/node_modules/
