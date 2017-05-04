@@ -3,7 +3,7 @@
 begin;
 
 create role scoring                with noinherit login password 'changeme';
-create role scoring_audit          with noinherit login bypassrls password 'changeme';
+create role scoring_audit          with noinherit login password 'changeme' bypassrls;
 create role scoring_authenticator  with noinherit login password 'changeme';
 create role scoring_anonymous      with noinherit role scoring_authenticator;
 create role scoring_user           with noinherit role scoring_authenticator;

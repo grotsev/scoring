@@ -6,4 +6,7 @@ psql postgres://postgres:111@172.17.0.2:5432/postgres -bq --file db/origin/secur
 bin/build-db.sh
 psql postgres://scoring:changeme@172.17.0.2:5432/postgres -bq --file build/db.sql
 
+bin/build-test-db.sh
+psql postgres://scoring:changeme@172.17.0.2:5432/postgres -bq --file build/test-db.sql
+
 #bin/postgraphql-scoring.sh
