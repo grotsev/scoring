@@ -2,19 +2,21 @@
 
 begin;
 
-create role scoring                with noinherit login password 'changeme';
-create role scoring_audit          with noinherit login password 'changeme' bypassrls;
-create role scoring_authenticator  with noinherit login password 'changeme';
-create role scoring_anonymous      with noinherit role scoring_authenticator;
-create role scoring_user           with noinherit role scoring_authenticator;
-create role scoring_superuser      with noinherit role scoring_authenticator bypassrls;
+create role authenticator  with noinherit login password 'changeme';
+create role anonymous      with noinherit role authenticator;
 
-comment on role scoring               is 'Owner create and upgrage schema';
-comment on role scoring_audit         is 'Read only but total access';
-comment on role scoring_authenticator is 'PostgREST connects to become anonymous or one of the users';
-comment on role scoring_anonymous     is 'PostgREST use when no client authentication is provided';
-comment on role scoring_user          is 'Group of all routine users';
-comment on role scoring_superuser     is 'Can do any other routine user can';
+comment on role authenticator is 'Initial connection to become anonymous or an user';
+comment on role anonymous     is 'No authentication is provided';
+
+create role scoring           with noinherit login password 'changeme';
+create role scoring_audit     with noinherit login password 'changeme' bypassrls;
+create role scoring_user      with noinherit role authenticator;
+create role scoring_superuser with noinherit role authenticator bypassrls;
+
+comment on role scoring           is 'Owner create and upgrage schema';
+comment on role scoring_audit     is 'Read only but total access';
+comment on role scoring_user      is 'Group of all routine users';
+comment on role scoring_superuser is 'Can do any other routine user can';
 
 create role scoring_attraction              with role scoring_user in role scoring_superuser;
 create role scoring_application             with role scoring_user in role scoring_superuser;

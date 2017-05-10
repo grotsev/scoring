@@ -12,6 +12,8 @@ import {
   Store,
 } from 'relay-runtime';
 
+import Authentication from './component/Authentication';
+
 //import TodoApp from './components/TodoApp';
 
 const mountNode = document.getElementById('root');
@@ -20,11 +22,15 @@ function fetchQuery(
   operation,
   variables,
 ) {
+  var token = localStorage.getItem('jwt_token');
+  var headers = {
+    'Content-Type': 'application/json',
+  }
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+
   return fetch('/graphql', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers,
     body: JSON.stringify({
       query: operation.text,
       variables,
@@ -34,14 +40,14 @@ function fetchQuery(
   });
 }
 
-const modernEnvironment = new Environment({
+const environment = new Environment({
   network: Network.create(fetchQuery),
   store: new Store(new RecordSource()),
 });
-
+/*
 ReactDOM.render(
   <QueryRenderer
-    environment={modernEnvironment}
+    environment={environment}
     query={graphql`
       query appQuery {
         allCurrencies {
@@ -60,5 +66,10 @@ ReactDOM.render(
       }
     }}
   />,
+  mountNode
+);
+*/
+ReactDOM.render(
+  <Authentication environment={environment}/>,
   mountNode
 );
