@@ -1,6 +1,5 @@
 create type staff_session as (
-  token jwt_token
-, login login
+  login login
 , role name
 );
 

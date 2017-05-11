@@ -8,11 +8,7 @@ import {ConnectionHandler} from 'relay-runtime';
 const mutation = graphql`
   mutation AuthenticationMutation($input: AuthenticationInput!) {
     authentication(input: $input) {
-      staffSession {
-        token
-        login
-        role
-      }
+      jwtToken
     }
   }
 `;
@@ -30,7 +26,7 @@ function commit(
         input: {login, password}
       },
       onCompleted: (response) => {
-        var token = response.authentication.staffSession.token;
+        var token = response.authentication.jwtToken;
         console.info(token);
         localStorage.setItem('jwt_token', token)
       }
