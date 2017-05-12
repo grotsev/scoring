@@ -28,11 +28,14 @@ do
 done
 
 for f in staff staff_role \
-  authentication jwt_login jwt_role \
-  grant
+  authenticate authorize \
+  jwt_login jwt_staff jwt_role \
+  row_level_security
 do
 	cat db/origin/security/$f.sql >> $OUT
 done
+
+cat `find ./db/origin/security/grant/ -maxdepth 1 -type f` >> $OUT
 
 echo -e 'commit;\n' >> $OUT
 

@@ -1,0 +1,37 @@
+-- Database Administator have to create roles and schema before application startup
+
+begin;
+
+create role anonymous;
+create role authenticator with login password 'changeme' in role anonymous noinherit;
+create role scoring       with login password 'changeme';
+
+comment on role anonymous     is 'No authentication is provided';
+comment on role authenticator is 'Initial connection to become anonymous or an user';
+comment on role scoring       is 'Owner create and upgrage schema';
+
+create role scoring_user;
+create role scoring_attraction              with role authenticator in role scoring_user;
+create role scoring_application             with role authenticator in role scoring_user;
+create role scoring_verification            with role authenticator in role scoring_user;
+create role scoring_pledge_estimation       with role authenticator in role scoring_user;
+create role scoring_legal_review            with role authenticator in role scoring_user;
+create role scoring_security                with role authenticator in role scoring_user;
+create role scoring_risk_management         with role authenticator in role scoring_user;
+create role scoring_retail_committee        with role authenticator in role scoring_user;
+create role scoring_credit_committee        with role authenticator in role scoring_user;
+create role scoring_legal_review_additional with role authenticator in role scoring_user;
+create role scoring_middle_administrator    with role authenticator in role scoring_user;
+create role scoring_contract_signing        with role authenticator in role scoring_user;
+create role scoring_pledge_registration     with role authenticator in role scoring_user;
+create role scoring_credit_administrator    with role authenticator in role scoring_user;
+
+comment on role scoring_user  is 'Group of all routine users';
+
+create schema authorization scoring;
+
+create extension if not exists "uuid-ossp" schema scoring;
+create extension if not exists "pgcrypto"  schema scoring;
+
+commit;
+

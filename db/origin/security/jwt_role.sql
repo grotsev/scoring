@@ -1,6 +1,6 @@
-create function jwt_role() returns text as $$
+create function jwt_role() returns name as $$
 declare
-  result text;
+  result name;
 begin
   select current_setting('jwt.claims.role') into result;
   return result;

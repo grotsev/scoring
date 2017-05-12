@@ -6,8 +6,8 @@ import {
 import {ConnectionHandler} from 'relay-runtime';
 
 const mutation = graphql`
-  mutation AuthenticationMutation($input: AuthenticationInput!) {
-    authentication(input: $input) {
+  mutation AuthenticationMutation($input: AuthenticateInput!) {
+    authenticate(input: $input) {
       jwtToken
     }
   }
