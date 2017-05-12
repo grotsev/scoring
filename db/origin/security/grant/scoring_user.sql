@@ -1,5 +1,4 @@
-grant select
-on table
+grant select on table
   lang
 , currency
 , branch
@@ -36,13 +35,10 @@ on table
 , auto_model
 , product_scheme
 , product_fee
-
-, staff_role
 to scoring_user
 ;
 
-grant select, insert, update
-on table
+grant select, insert, update on table
   app
 , app_address
 , app_entity
