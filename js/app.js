@@ -127,7 +127,7 @@ function handleSubmit({login, password}) {
 }
 
 function handleSelect(role) {
-  console.log(login);
+  console.log(role);
 }
 
 ReactDOM.render(

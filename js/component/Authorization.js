@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Role from './Role';
+
 class Authorization extends React.Component {
   static propTypes = {
     roles: PropTypes.arrayOf(
@@ -10,17 +12,11 @@ class Authorization extends React.Component {
     onSelect: PropTypes.func.isRequired,
   };
 
-  _handleSelect = (event) => {
-    this.props.onSelect(this.state);
-  }
-
   render() {
     return (
       <ul>
         {this.props.roles.map((role) =>
-          <li key={role} onClick={this._handleSelect}>
-            {role}
-          </li>
+          <Role key={role} role={role} onSelect={this.props.onSelect} />
         )}
       </ul>
     );
