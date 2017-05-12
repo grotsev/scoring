@@ -1,13 +1,6 @@
 
-import AuthenticationMutation from '../mutation/AuthenticationMutation';
-
 import React from 'react';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
-
-const PropTypes = require('prop-types');
+import PropTypes from 'prop-types';
 
 class Authentication extends React.Component {
   static defaultProps = {
@@ -16,7 +9,7 @@ class Authentication extends React.Component {
 
   static propTypes = {
     login: PropTypes.string,
-    onAuthenticated: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
   };
 
   state = {
@@ -33,13 +26,7 @@ class Authentication extends React.Component {
 
   _handleSubmit = (event) => {
     event.preventDefault();
-    console.info(this.state);
-    AuthenticationMutation.commit(
-      this.props.environment,
-      this.state.login,
-      this.state.password
-    );
-    console.info(this.state);
+    this.props.onSubmit(this.state);
   }
 
   render() {

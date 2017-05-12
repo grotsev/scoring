@@ -7,6 +7,9 @@ drop role anonymous;
 
 drop role scoring;
 
+drop role scoring_user;
+drop role scoring_public;
+
 drop role scoring_attraction;
 drop role scoring_application;
 drop role scoring_verification;
@@ -21,5 +24,4 @@ drop role scoring_middle_administrator;
 drop role scoring_contract_signing;
 drop role scoring_pledge_registration;
 drop role scoring_credit_administrator;
-drop role scoring_user;
 

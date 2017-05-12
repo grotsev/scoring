@@ -8,7 +8,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "babel-node ./server.js",
-    "build": "sed -i 's/  jwtToken: JwtToken/  jwtToken: String/g' ./build/schema.graphql && relay-compiler --src ./js/ --schema ./build/schema.graphql",
+    "build": "sed -i 's/: JwtToken/: String/g' ./build/schema.graphql && relay-compiler --src ./js/ --schema ./build/schema.graphql",
     "update-schema": "postgraphql --connection postgres://scoring:changeme@172.17.0.2:5432/postgres --schema scoring --default-role scoring --export-schema-graphql build/schema.graphql",
     "lint": "eslint ./js"
   },

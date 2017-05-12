@@ -8,7 +8,7 @@ rm -f $OUT
 
 echo -e 'begin;\n' >> $OUT
 
-for f in code uuid_pk login jwt_token staff_session textfield textarea iin phone email
+for f in code uuid_pk login jwt_token textfield textarea iin phone email
 do
 	cat db/origin/define/$f.sql >> $OUT
 done
@@ -29,8 +29,7 @@ done
 
 for f in staff staff_role \
   authenticate authorize \
-  jwt_login jwt_staff jwt_role \
-  row_level_security
+  jwt_login jwt_staff jwt_role
 do
 	cat db/origin/security/$f.sql >> $OUT
 done
