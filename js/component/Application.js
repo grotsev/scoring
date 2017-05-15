@@ -21,6 +21,7 @@ class Application extends React.Component {
 
   state = {
     sendLoginPassword: null,
+    role: null,
   };
 
   _handleAuthenticate = (sendLoginPassword) => {
@@ -28,64 +29,54 @@ class Application extends React.Component {
   }
 
   _handleSelectRole = (role) => {
-    console.log(role);
-    //this.setState({sendLoginPassword: event});
+    this.setState({role});
   }
 
   emptyEnvironment = this.props.environmentFactory();
 
   render() {
-    return (
-      <div>
-        <Authentication onAuthenticate={this._handleAuthenticate} />
-        { this.state.sendLoginPassword &&
-          <QueryRenderer
-            environment={this.emptyEnvironment}
-            query={graphql`
-              query ApplicationQuery($login: Login!, $password: String!) {
-                authenticate(login:$login, password:$password)
-              }
-            `}
-            variables={this.state.sendLoginPassword}
-            render={({error, props}) => {
-              if (props) {
-                const token = props.authenticate;
-                if (token) {
-                  return <QueryRenderer
-                      environment={this.props.environmentFactory(token)}
-                      query={graphql`
-                        query Application_Roles_Query {
-                          allStaffRoles {
-                            edges {
-                              node {
-                                role
-                              }
-                            }
-                          }
-                        }
-                      `}
-                      render={({error, props}) => {
-                        if (props) {
-                          return <Authorization
-                            roles={props.allStaffRoles}
-                            onSelectRole={this._handleSelectRole}
-                          />
-                        } else {
-                          return <div>Loading</div>;
-                        }
-                      }}
-                    />
-                } else {
-                  return <div>Invalid Login and Password</div>
-                }
-              } else {
-                return <div>Loading</div>;
-              }
-            }}
-          />
-        }
-      </div>
-    );
+    if (!this.state.sendLoginPassword)
+      return <Authentication onAuthenticate={this._handleAuthenticate} />
+    else
+      if (!this.state.role) {
+        return <QueryRenderer
+          environment={this.emptyEnvironment}
+          query={graphql`
+            query ApplicationQuery($login: Login!, $password: String!) {
+              authenticate(login:$login, password:$password)
+            }
+          `}
+          variables={this.state.sendLoginPassword}
+          render={({error, props}) => {
+            if (props) {
+              if (props.authenticate)
+                return <QueryRenderer
+                    environment={this.props.environmentFactory(props.authenticate)}
+                    query={graphql`
+                      query Application_Roles_Query{
+                        allStaffRoles { edges{node{role}} }
+                      }
+                    `}
+                    render={({error, props}) => {
+                      if (props)
+                        return <Authorization roles={props.allStaffRoles} onSelectRole={this._handleSelectRole} />
+                      else
+                        return <div>Loading</div>;
+                    }}
+                  />
+              else
+                return <div>
+                  <Authentication onAuthenticate={this._handleAuthenticate} />
+                  Invalid Login and Password
+                </div>
+            } else {
+              return <div>Loading</div>;
+            }
+          }}
+        />
+      } else {
+        return <div>{this.state.role}</div>
+      }
   }
 
 }
