@@ -13,67 +13,8 @@ import {
 } from 'relay-runtime';
 
 import Authentication from './component/Authentication';
-import Authorization from './component/Authorization';
-
-//import TodoApp from './components/TodoApp';
 
 const mountNode = document.getElementById('root');
-
-function fetchQuery(
-  operation,
-  variables,
-) {
-  var token = localStorage.getItem('jwt_token');
-  var headers = {
-    'Content-Type': 'application/json',
-  }
-  if (token) headers['Authorization'] = 'Bearer ' + token;
-
-  return fetch('/graphql', {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({
-      query: operation.text,
-      variables,
-    }),
-  }).then(response => {
-    return response.json();
-  });
-}
-
-const environment = new Environment({
-  network: Network.create(fetchQuery),
-  store: new Store(new RecordSource()),
-});
-
-function environmentZ(token) {
-  return new Environment({
-    network: Network.create(
-        function fetchQuery(
-          operation,
-          variables,
-        ) {
-          var headers = {
-            'Content-Type': 'application/json',
-          }
-          if (token) headers['Authorization'] = 'Bearer ' + token;
-
-          return fetch('/graphql', {
-            method: 'POST',
-            headers,
-            body: JSON.stringify({
-              query: operation.text,
-              variables,
-            }),
-          }).then(response => {
-            return response.json();
-          });
-        }
-      ),
-    store: new Store(new RecordSource()),
-  });
-}
-
 
 /*
 
@@ -122,18 +63,35 @@ ReactDOM.render(
 );
 */
 
-function handleSubmit({login, password}) {
-  console.log(login);
-}
+const environmentFactory = (token) => {
+  return new Environment({
+    network: Network.create(
+        function fetchQuery(
+          operation,
+          variables,
+        ) {
+          var headers = {
+            'Content-Type': 'application/json',
+          }
+          if (token) headers['Authorization'] = 'Bearer ' + token;
 
-function handleSelect(role) {
-  console.log(role);
-}
+          return fetch('/graphql', {
+            method: 'POST',
+            headers,
+            body: JSON.stringify({
+              query: operation.text,
+              variables,
+            }),
+          }).then(response => {
+            return response.json();
+          });
+        }
+      ),
+    store: new Store(new RecordSource()),
+  });
+};
 
 ReactDOM.render(
-  <div>
-    <Authentication onSubmit={handleSubmit}/>
-    <Authorization roles={["a", "bc", "def"]} onSelect={handleSelect}/>
-  </div>,
+  <Authentication environmentFactory={environmentFactory}/>,
   mountNode
 );
