@@ -12,7 +12,7 @@ import {
   Store,
 } from 'relay-runtime';
 
-import Authentication from './component/Authentication';
+import Application from './component/Application';
 
 const mountNode = document.getElementById('root');
 
@@ -92,6 +92,6 @@ const environmentFactory = (token) => {
 };
 
 ReactDOM.render(
-  <Authentication environmentFactory={environmentFactory}/>,
+  <Application environmentFactory={environmentFactory}/>,
   mountNode
 );
