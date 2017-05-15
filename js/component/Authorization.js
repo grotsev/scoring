@@ -9,6 +9,9 @@ class Role extends React.Component {
   };
 
   _handleSelect = (event) => {
+    roles: PropTypes.arrayOf(
+      PropTypes.string.isRequired,
+    ).isRequired,
     this.props.onSelectRole(this.props.role);
   }
 
@@ -24,17 +27,14 @@ class Role extends React.Component {
 
 class Authorization extends React.Component {
   static propTypes = {
-    roles: PropTypes.arrayOf(
-      PropTypes.string.isRequired,
-    ).isRequired,
     onSelectRole: PropTypes.func.isRequired,
   };
 
   render() {
     return (
       <ul>
-        {this.props.roles.map((role) =>
-          <Role key={role} role={role} onSelectRole={this.props.onSelectRole} />
+        {this.props.roles.edges.map((edge) =>
+          <Role key={edge.node.role} role={edge.node.role} onSelectRole={this.props.onSelectRole} />
         )}
       </ul>
     );
