@@ -2,17 +2,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Authentication extends React.Component {
-  static defaultProps = {
-    login: '',
-  };
+import {
+  QueryRenderer,
+  graphql,
+} from 'react-relay';
 
+
+class AuthenticationForm extends React.Component {
   static propTypes = {
     onAuthenticate: PropTypes.func.isRequired,
   };
 
   state = {
-    login: this.props.login,
+    login: '',
     password: '',
   };
 
@@ -45,5 +47,61 @@ class Authentication extends React.Component {
   }
 
 }
+
+
+class Authentication extends React.Component {
+  static propTypes = {
+    environmentFactory: PropTypes.func.isRequired,
+  };
+
+  state = {
+    auth: null,
+  };
+
+  _handleAuthenticate = (auth) => {
+    this.setState({auth});
+  }
+
+  _handleLogout = () => {
+    this.setState({auth: null});
+  };
+
+  render() {
+    if (!this.state.auth) {
+      return <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
+    } else {
+      return <QueryRenderer
+        environment={this.props.environmentFactory()}
+        query={graphql`
+          query AuthenticationQuery($login: Login!, $password: String!) {
+            authenticate(login:$login, password:$password)
+          }
+        `}
+        variables={this.state.auth}
+        render={({error, props}) => {
+          if (props) {
+            if (props.authenticate) {
+              return React.cloneElement(this.props.children, {
+                environment: this.props.environmentFactory(props.authenticate),
+                environmentFactory: this.props.environmentFactory,
+                logout: this._handleLogout,
+              });
+            }
+            else {
+              return <div>
+                <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
+                Invalid Login and Password
+              </div>
+            }
+          } else {
+            return <div>Loading</div>;
+          }
+        }}
+      />
+    }
+  }
+
+}
+
 
 export default Authentication;

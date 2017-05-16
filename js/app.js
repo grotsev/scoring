@@ -12,56 +12,11 @@ import {
   Store,
 } from 'relay-runtime';
 
-import Application from './component/Application';
+import Authentication from './component/Authentication';
+import Authorization from './component/Authorization';
+import Logout from './component/Logout';
 
 const mountNode = document.getElementById('root');
-
-/*
-
-        <QueryRenderer
-          environment={this.props.emptyEnvironment}
-          query={graphql`
-            query AuthenticationQuery($login: Login!, $password: String!){
-              authenticate(login:$login, password:$password)
-            }
-          `}
-          variables={{
-            login:this.state.login,
-            password:this.state.password
-          }}
-          render={({error, props}) => {
-            if (props) {
-              return <div>{props.authenticate}</div>;
-            } else {
-              return <div>Loading</div>;
-            }
-          }}
-        />
-
-ReactDOM.render(
-  <QueryRenderer
-    environment={environment}
-    query={graphql`
-      query appQuery {
-        allCurrencies {
-          nodes {
-            currency
-          }
-        }
-      }
-    `}
-    variables={{}}
-    render={({error, props}) => {
-      if (props) {
-        return <div>Ok</div>;
-      } else {
-        return <div>Loading</div>;
-      }
-    }}
-  />,
-  mountNode
-);
-*/
 
 const environmentFactory = (token) => {
   return new Environment({
@@ -92,6 +47,11 @@ const environmentFactory = (token) => {
 };
 
 ReactDOM.render(
-  <Application environmentFactory={environmentFactory}/>,
+  <Authentication environmentFactory={environmentFactory}>
+    <Authorization>
+      <Logout />
+    </Authorization>
+  </Authentication>
+  ,
   mountNode
 );
