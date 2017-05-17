@@ -8,27 +8,12 @@ import {
 } from 'react-relay';
 
 
-class Role extends React.Component {
-  static propTypes = {
-    role: PropTypes.string.isRequired,
-    onSelectRole: PropTypes.func.isRequired,
-  };
-
-  _handleSelect = (event) => {
-    roles: PropTypes.arrayOf(
-      PropTypes.string.isRequired,
-    ).isRequired,
-    this.props.onSelectRole(this.props.role);
-  }
-
-  render() {
+function Role(props) {
     return (
-      <li onClick={this._handleSelect}>
-        {this.props.role}
+      <li onClick={(event) => {props.onSelectRole(props.role)}}>
+        {props.role}
       </li>
     );
-  }
-
 }
 
 
