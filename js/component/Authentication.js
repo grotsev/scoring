@@ -52,6 +52,7 @@ class AuthenticationForm extends React.Component {
 class Authentication extends React.Component {
   static propTypes = {
     environmentFactory: PropTypes.func.isRequired,
+    children: PropTypes.element.isRequired,
   };
 
   state = {

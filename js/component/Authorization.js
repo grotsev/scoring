@@ -52,6 +52,7 @@ class AuthorizationSelect extends React.Component {
 
 class Authorization extends React.Component {
   static propTypes = {
+    children: PropTypes.element.isRequired,
     environment: PropTypes.object.isRequired,
     environmentFactory: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
