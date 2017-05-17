@@ -48,8 +48,8 @@ const environmentFactory = (token) => {
 
 ReactDOM.render(
   <Authentication environmentFactory={environmentFactory}>
-    <Authorization>
-      <Logout />
+    <Authorization environment={{}}  environmentFactory={()=>{}} logout={()=>{}}>
+      <Logout logout={()=>{}} />
     </Authorization>
   </Authentication>
   ,
