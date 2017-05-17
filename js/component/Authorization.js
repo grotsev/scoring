@@ -51,6 +51,33 @@ class Authorization extends React.Component {
     this.setState({role});
   };
 
+  withRole = (role) => {
+    return <QueryRenderer
+        environment={this.props.environment}
+        query={graphql`
+          query AuthorizationQuery($role: String!) {
+            authorize(role:$role)
+          }
+        `}
+        variables={{role}}
+        render={({error, props}) => {
+          if (props) {
+            if (props.authorize) {
+              return React.cloneElement(this.props.children, {
+                environment: this.props.environmentFactory(props.authorize),
+                logout: this.props.logout,
+                changeRole: this._handleChangeRole,
+              });
+            } else {
+              return <div>Error: No authorization for role {role}</div>
+            }
+          } else {
+            return <div>Loading</div>;
+          }
+        }}
+      />
+  }
+
   render() {
     if (!this.state.role) {
       return <QueryRenderer
@@ -68,13 +95,14 @@ class Authorization extends React.Component {
           `}
           render={({error, props}) => {
             if (props) {
-              switch (props.allStaffRoles.length) {
+              switch (props.allStaffRoles.edges.length) {
                 case 0:
                   return <div>
                     No roles
                     <Logout logout={this.props.logout}/>
                   </div>
                 case 1:
+                  return this.withRole(props.allStaffRoles.edges[0].node.role)
                 default:
                   return <AuthorizationSelect roles={props.allStaffRoles} onSelectRole={this._handleChangeRole} />
               }
@@ -84,30 +112,7 @@ class Authorization extends React.Component {
           }}
         />
     } else {
-      return <QueryRenderer
-          environment={this.props.environment}
-          query={graphql`
-            query AuthorizationQuery($role: String!) {
-              authorize(role:$role)
-            }
-          `}
-          variables={{role: this.state.role}}
-          render={({error, props}) => {
-            if (props) {
-              if (props.authorize) {
-                return React.cloneElement(this.props.children, {
-                  environment: this.props.environmentFactory(props.authorize),
-                  logout: this.props.logout,
-                  changeRole: this._handleChangeRole,
-                });
-              } else {
-                return <div>Error: No authorization for role {this.state.role}</div>
-              }
-            } else {
-              return <div>Loading</div>;
-            }
-          }}
-        />
+      return this.withRole(this.state.role);
     }
   }
 
