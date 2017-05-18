@@ -9,30 +9,32 @@ import {
 
 
 function Role(props) {
-    return (
-      <li onClick={(event) => {props.onSelectRole(props.role)}}>
-        {props.role}
-      </li>
-    );
+  return (
+    <li onClick={(event) => {props.onSelectRole(props.role)}}>
+      {props.role}
+    </li>
+  );
 }
 
 
-class AuthorizationSelect extends React.Component {
-  static propTypes = {
-    onSelectRole: PropTypes.func.isRequired,
-  };
-
-  render() {
-    return (
-      <ul>
-        {this.props.roles.edges.map((edge) =>
-          <Role key={edge.node.role} role={edge.node.role} onSelectRole={this.props.onSelectRole} />
-        )}
-      </ul>
-    );
-  }
-
+function RoleList(props) {
+  return (
+    <ul>
+      {props.roles.map((node) =>
+        <Role key={node.role} role={node.role} onSelectRole={props.onSelectRole} />
+      )}
+    </ul>
+  );
 }
+
+RoleList.propTypes = {
+  roles: PropTypes.arrayOf(
+    PropTypes.shape({
+      role: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  onSelectRole: PropTypes.func.isRequired,
+};
 
 
 class Authorization extends React.Component {
@@ -85,26 +87,24 @@ class Authorization extends React.Component {
           query={graphql`
             query AuthorizationStaffRolesQuery {
               allStaffRoles {
-                edges {
-                  node {
-                    role
-                  }
+                nodes {
+                  role
                 }
               }
             }
           `}
           render={({error, props}) => {
             if (props) {
-              switch (props.allStaffRoles.edges.length) {
+              switch (props.allStaffRoles.nodes.length) {
                 case 0:
                   return <div>
                     No roles
                     <Logout logout={this.props.logout}/>
                   </div>
                 case 1:
-                  return this.withRole(props.allStaffRoles.edges[0].node.role)
+                  return this.withRole(props.allStaffRoles.nodes[0].role)
                 default:
-                  return <AuthorizationSelect roles={props.allStaffRoles} onSelectRole={this._handleChangeRole} />
+                  return <RoleList roles={props.allStaffRoles.nodes} onSelectRole={this._handleChangeRole} />
               }
             } else {
               return <div>Loading</div>;
