@@ -16,6 +16,7 @@ create role scoring_public with role anonymous, scoring_user;
 comment on role scoring_user   is 'Routine business user';
 comment on role scoring_public is 'Anybody concern scoring system';
 
+create role scoring_administrator           with role authenticator in role scoring_user;
 create role scoring_attraction              with role authenticator in role scoring_user;
 create role scoring_application             with role authenticator in role scoring_user;
 create role scoring_verification            with role authenticator in role scoring_user;
