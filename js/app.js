@@ -22,6 +22,7 @@ import Authentication from './component/Authentication';
 import Authorization from './component/Authorization';
 import Logout from './component/Logout';
 import Navigation from './component/Navigation';
+import CountryDict from './component/CountryDict';
 
 const mountNode = document.getElementById('root');
 
@@ -54,20 +55,17 @@ const environmentFactory = (token) => {
 };
 
 ReactDOM.render(
-  /*<Authentication environmentFactory={environmentFactory}>
-    <Authorization environmentFactory={()=>{}} environment={{}} logout={()=>{}}>
-      <Logout logout={()=>{}} />
-    </Authorization>
-  </Authentication>*/
   <Router>
-    <div>
-      <Navigation/>
-      <main>
-        <Route path="/dictionary/country" render={() =>
-          <div>Ok</div>
-        } />
-      </main>
-    </div>
+    <Authentication environmentFactory={environmentFactory}>
+      <Authorization environmentFactory={()=>{}} environment={{}} logout={()=>{}}>
+          <div>
+            <Navigation/>
+            <main>
+              <Route path="/dictionary/country" render={() => <CountryDict/>} />
+            </main>
+          </div>
+      </Authorization>
+    </Authentication>
   </Router>
   ,
   mountNode

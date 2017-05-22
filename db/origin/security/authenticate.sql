@@ -10,7 +10,12 @@ begin
   where a.login = $1;
 
   if staff.password_hash = crypt(password, staff.password_hash) then
-    return (login, staff.staff, 'anonymous')::jwt_token;
+    return (
+        login
+      , staff.staff
+      , 'anonymous'
+      , extract(epoch from (now() + interval '1 week'))
+    )::jwt_token;
   else
     return null;
   end if;

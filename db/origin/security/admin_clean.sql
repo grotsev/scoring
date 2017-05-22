@@ -10,6 +10,7 @@ drop role scoring;
 drop role scoring_user;
 drop role scoring_public;
 
+drop role scoring_administrator;
 drop role scoring_attraction;
 drop role scoring_application;
 drop role scoring_verification;
