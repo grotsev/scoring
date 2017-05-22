@@ -55,18 +55,18 @@ const environmentFactory = (token) => {
 };
 
 ReactDOM.render(
-  <Router>
-    <Authentication environmentFactory={environmentFactory}>
-      <Authorization environmentFactory={()=>{}} environment={{}} logout={()=>{}}>
-          <div>
-            <Navigation/>
-            <main>
-              <Route path="/dictionary/country" render={() => <CountryDict/>} />
-            </main>
-          </div>
-      </Authorization>
-    </Authentication>
-  </Router>
+  <Authentication environmentFactory={environmentFactory}>
+    <Authorization environmentFactory={()=>{}} environment={{}} logout={()=>{}}>
+      <Router>
+        <div>
+          <Navigation/>
+          <main>
+            <Route path="/dictionary/country" render={() => <CountryDict/>} />
+          </main>
+        </div>
+      </Router>
+    </Authorization>
+  </Authentication>
   ,
   mountNode
 );
