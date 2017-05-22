@@ -5,6 +5,8 @@ import {
   graphql,
 } from 'react-relay';
 
+import environmentFactory from '../environmentFactory';
+
 
 function Role(props) {
   return (
@@ -39,7 +41,6 @@ class Authorization extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
     environment: PropTypes.object.isRequired,
-    environmentFactory: PropTypes.func.isRequired,
     logout: PropTypes.func.isRequired,
   };
 
@@ -64,7 +65,7 @@ class Authorization extends React.Component {
           if (props) {
             if (props.authorize) {
               return React.cloneElement(this.props.children, {
-                environment: this.props.environmentFactory(props.authorize),
+                environment: environmentFactory(props.authorize),
                 logout: this.props.logout,
                 changeRole: this._handleChangeRole,
               });

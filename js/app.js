@@ -21,7 +21,7 @@ import CountryDict from './component/CountryDict';
 
 ReactDOM.render(
   <Authentication>
-    <Authorization environmentFactory={()=>{}} environment={{}} logout={()=>{}}>
+    <Authorization environment={{}} logout={()=>{}}>
       <Router>
         <div>
           <Navigation/>
