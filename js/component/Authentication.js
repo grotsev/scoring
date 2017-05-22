@@ -5,6 +5,8 @@ import {
   graphql,
 } from 'react-relay';
 
+import environmentFactory from '../environmentFactory';
+
 
 class AuthenticationForm extends React.Component {
   static propTypes = {
@@ -50,7 +52,6 @@ class AuthenticationForm extends React.Component {
 class Authentication extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
-    environmentFactory: PropTypes.func.isRequired,
   };
 
   state = {
@@ -70,7 +71,7 @@ class Authentication extends React.Component {
       return <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
     } else {
       return <QueryRenderer
-        environment={this.props.environmentFactory()}
+        environment={environmentFactory()}
         query={graphql`
           query AuthenticationQuery($login: Login!, $password: String!) {
             authenticate(login:$login, password:$password)
@@ -81,8 +82,8 @@ class Authentication extends React.Component {
           if (props) {
             if (props.authenticate) {
               return React.cloneElement(this.props.children, {
-                environment: this.props.environmentFactory(props.authenticate),
-                environmentFactory: this.props.environmentFactory,
+                environment: environmentFactory(props.authenticate),
+                environmentFactory: environmentFactory,
                 logout: this._handleLogout,
               });
             }

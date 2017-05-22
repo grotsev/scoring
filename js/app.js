@@ -4,12 +4,6 @@ import {
   QueryRenderer,
   graphql,
 } from 'react-relay';
-import {
-  Environment,
-  Network,
-  RecordSource,
-  Store,
-} from 'relay-runtime';
 
 import {
   HashRouter as Router,
@@ -24,38 +18,9 @@ import Logout from './component/Logout';
 import Navigation from './component/Navigation';
 import CountryDict from './component/CountryDict';
 
-const mountNode = document.getElementById('root');
-
-const environmentFactory = (token) => {
-  return new Environment({
-    network: Network.create(
-        function fetchQuery(
-          operation,
-          variables,
-        ) {
-          var headers = {
-            'Content-Type': 'application/json',
-          }
-          if (token) headers['Authorization'] = 'Bearer ' + token;
-
-          return fetch('/graphql', {
-            method: 'POST',
-            headers,
-            body: JSON.stringify({
-              query: operation.text,
-              variables,
-            }),
-          }).then(response => {
-            return response.json();
-          });
-        }
-      ),
-    store: new Store(new RecordSource()),
-  });
-};
 
 ReactDOM.render(
-  <Authentication environmentFactory={environmentFactory}>
+  <Authentication>
     <Authorization environmentFactory={()=>{}} environment={{}} logout={()=>{}}>
       <Router>
         <div>
@@ -68,5 +33,5 @@ ReactDOM.render(
     </Authorization>
   </Authentication>
   ,
-  mountNode
+  document.getElementById('root')
 );
