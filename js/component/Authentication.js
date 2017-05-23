@@ -5,7 +5,7 @@ import {
   graphql,
 } from 'react-relay';
 
-import environmentFactory from '../environmentFactory';
+import {fetchQuery, environment as environmentFactory} from '../environmentFactory';
 
 
 class AuthenticationForm extends React.Component {
@@ -55,50 +55,67 @@ class Authentication extends React.Component {
   };
 
   state = {
-    auth: null,
+    token: localStorage.getItem('jwt_token'),
+    loginPassword: null,
+    error: null,
   };
 
-  _handleAuthenticate = (auth) => {
-    this.setState({auth});
+  _handleAuthenticate = (loginPassword) => {
+    fetchQuery()(
+      {text:'query ($login: Login!, $password: String!) {authenticate(login:$login, password:$password)}'},
+      loginPassword
+    ).then(res => {
+      if (res.errors) {
+        this.setState({error: 'Result error'});
+        console.log(res.errors);
+      } else {
+        const token = res.data.authenticate;
+        if (token) {
+          localStorage.setItem('jwt_token', token);
+          this.setState({token, loginPassword, error: null});
+        } else {
+          this.setState({error: 'Invalid login or password'});
+        }
+      }
+    }).catch(error => {
+      this.setState({error: 'Connection error'});
+      console.log(error);
+    });
   }
 
   _handleLogout = () => {
-    this.setState({auth: null});
+    this.setState({token: null, error: null});
   };
 
   render() {
-    if (!this.state.auth) {
-      return <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
-    } else {
-      return <QueryRenderer
-        environment={environmentFactory()}
-        query={graphql`
-          query AuthenticationQuery($login: Login!, $password: String!) {
-            authenticate(login:$login, password:$password)
-          }
-        `}
-        variables={this.state.auth}
-        render={({error, props}) => {
-          if (props) {
-            if (props.authenticate) {
-              return React.cloneElement(this.props.children, {
-                environment: environmentFactory(props.authenticate),
-                environmentFactory: environmentFactory,
-                logout: this._handleLogout,
-              });
-            }
-            else {
-              return <div>
-                <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
-                Invalid Login and Password
-              </div>
-            }
-          } else {
-            return <div>Loading</div>;
-          }
-        }}
-      />
-    }
+    const environment = environmentFactory(this.state.token);
+    return <QueryRenderer
+      environment={environment}
+      query={graphql`
+        query AuthenticationLoginQuery {
+          jwtLogin
+        }
+      `}
+      render={({error, props}) => {
+        if (this.state.error) {
+          return <div>
+            <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
+            <div>{this.state.error}</div>
+          </div>
+        }
+        if (!props) return <div>Loading</div>;
+        if (props.jwtLogin) {
+          return React.cloneElement(this.props.children, {
+            environment: environment,
+            logout: this._handleLogout,
+          });
+        }
+        return <div>
+          <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
+          {this.state.error && <div>{this.state.error}</div>}
+        </div>
+      }}
+    />
   }
 
 }
