@@ -49,6 +49,35 @@ class AuthenticationForm extends React.Component {
 }
 
 
+function Role(props) {
+  return (
+    <li onClick={(event) => {props.onSelectRole(props.role)}}>
+      {props.role}
+    </li>
+  );
+}
+
+
+function RoleList(props) {
+  return (
+    <ul>
+      {props.roles.map((node) =>
+        <Role key={node.role} role={node.role} onSelectRole={props.onSelectRole} />
+      )}
+    </ul>
+  );
+}
+
+RoleList.propTypes = {
+  roles: PropTypes.arrayOf(
+    PropTypes.shape({
+      role: PropTypes.string.isRequired,
+    }).isRequired
+  ).isRequired,
+  onSelectRole: PropTypes.func.isRequired,
+};
+
+
 class Authentication extends React.Component {
   static propTypes = {
     children: PropTypes.element.isRequired,
@@ -56,7 +85,6 @@ class Authentication extends React.Component {
 
   state = {
     token: localStorage.getItem('jwt_token'),
-    loginPassword: null,
     error: null,
   };
 
@@ -72,7 +100,7 @@ class Authentication extends React.Component {
         const token = res.data.authenticate;
         if (token) {
           localStorage.setItem('jwt_token', token);
-          this.setState({token, loginPassword, error: null});
+          this.setState({token, error: null});
         } else {
           this.setState({error: 'Invalid login or password'});
         }
@@ -83,19 +111,14 @@ class Authentication extends React.Component {
     });
   }
 
-  _handleLogout = () => {
-    this.setState({token: null, error: null});
+  changeToken = (token) => {
+    this.setState({token: token, error: null});
   };
 
   render() {
     const environment = environmentFactory(this.state.token);
-    return <QueryRenderer
-      environment={environment}
-      query={graphql`
-        query AuthenticationLoginQuery {
-          jwtLogin
-        }
-      `}
+    return <QueryRenderer environment={environment}
+      query={graphql`query AuthenticationLoginQuery { jwtLogin jwtRole allStaffRoles{nodes{role}} }`}
       render={({error, props}) => {
         if (this.state.error) {
           return <div>
@@ -105,10 +128,26 @@ class Authentication extends React.Component {
         }
         if (!props) return <div>Loading</div>;
         if (props.jwtLogin) {
-          return React.cloneElement(this.props.children, {
-            environment: environment,
-            logout: this._handleLogout,
-          });
+          
+          if (props.jwtRole) {
+            return React.cloneElement(this.props.children, {
+              environment: environment,
+              changeToken: this.changeToken,
+            });
+          }
+/*
+          switch (props.allStaffRoles.nodes.length) {
+            case 0:
+              return <div>
+                No roles
+                <Logout logout={this.props.logout}/>
+              </div>
+            case 1:
+              return this.withRole(props.allStaffRoles.nodes[0].role)
+            default:
+              return <RoleList roles={props.allStaffRoles.nodes} onSelectRole={this._handleChangeRole} />
+          }
+*/
         }
         return <div>
           <AuthenticationForm onAuthenticate={this._handleAuthenticate} />

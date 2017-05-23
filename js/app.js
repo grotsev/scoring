@@ -12,26 +12,23 @@ import {
   NavLink,
 } from 'react-router-dom';
 
-import Authentication from './component/Authentication';
-import Authorization from './component/Authorization';
+import Auth from './component/Auth';
 import Logout from './component/Logout';
 import Navigation from './component/Navigation';
 import CountryDict from './component/CountryDict';
 
 
 ReactDOM.render(
-  <Authentication>
-    <Authorization environment={{}} logout={()=>{}}>
-      <Router>
-        <div>
-          <Navigation/>
-          <main>
-            <Route path="/dictionary/country" render={() => <CountryDict/>} />
-          </main>
-        </div>
-      </Router>
-    </Authorization>
-  </Authentication>
+  <Auth>
+    <Router>
+      <div>
+        <Navigation/>
+        <main>
+          <Route path="/dictionary/country" render={() => <CountryDict/>} />
+        </main>
+      </div>
+    </Router>
+  </Auth>
   ,
   document.getElementById('root')
 );
