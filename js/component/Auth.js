@@ -7,6 +7,8 @@ import {
 
 import {fetchQuery, environment as environmentFactory} from '../environmentFactory';
 
+import Logout from './Logout';
+
 
 class AuthenticationForm extends React.Component {
   static propTypes = {
@@ -68,6 +70,7 @@ function RoleList(props) {
   );
 }
 
+
 RoleList.propTypes = {
   roles: PropTypes.arrayOf(
     PropTypes.shape({
@@ -85,76 +88,139 @@ class Authentication extends React.Component {
 
   state = {
     token: localStorage.getItem('jwt_token'),
-    error: null,
+    login: null,
+    role: null,
+    roles: null,
+    status: null,
   };
 
+  whoAmI() {
+    return fetchQuery(this.state.token)(
+      {text: 'query { jwtLogin jwtRole allStaffRoles{nodes{role}} }'},
+    ).then(res => {
+      if (res.errors) {
+        console.log(res.errors);
+        this.setState({status: 'Result Error'});
+        return;
+      }
+      if (res.data) {
+        this.setState({
+          login: res.data.jwtLogin,
+          role: res.data.allStaffRoles.nodes.length == 1 ? res.data.allStaffRoles.nodes[0] : res.data.jwtRole,
+          roles: res.data.allStaffRoles.nodes,
+        });
+      } else {
+        this.setState({status: 'No data'});
+      }
+    })
+  }
+
+  changeToken = (token) => {
+    if (token) localStorage.setItem('jwt_token', token)
+    this.setState(this.newTokenState(token));
+  };
+
+  logout = () => {
+    localStorage.removeItem('jwt_token');
+    this.setState({
+      token: null,
+      login: null,
+      role: null,
+      roles: null,
+      status: null,
+    });
+  }
+
   _handleAuthenticate = (loginPassword) => {
-    fetchQuery()(
+    fetchQuery(this.state.token)(
       {text:'query ($login: Login!, $password: String!) {authenticate(login:$login, password:$password)}'},
       loginPassword
     ).then(res => {
       if (res.errors) {
-        this.setState({error: 'Result error'});
         console.log(res.errors);
+        this.setState({status: 'Result Error'});
       } else {
         const token = res.data.authenticate;
         if (token) {
           localStorage.setItem('jwt_token', token);
-          this.setState({token, error: null});
+          this.setState({
+            token,
+            login: null,
+            role: null,
+            roles: null,
+            status: null,
+          });
+          return this.whoAmI();
         } else {
-          this.setState({error: 'Invalid login or password'});
+          this.setState({status: 'Invalid login or password'});
         }
       }
     }).catch(error => {
-      this.setState({error: 'Connection error'});
       console.log(error);
+      this.setState({status: 'Connection error'});
     });
   }
 
-  changeToken = (token) => {
-    this.setState({token: token, error: null});
+  _handleChangeRole = (role) => {
+    fetchQuery(this.state.token)(
+      {text:'query ($role: String!) { authorize(role:$role) }'},
+      {role:role}
+    ).then(res => {
+      if (res.errors) {
+        console.log(res.errors);
+        this.setState({status: 'Result Error'});
+      } else {
+        const token = res.data.authorize;
+        if (token) {
+          localStorage.setItem('jwt_token', token);
+          this.setState({
+            token,
+            status: null,
+          });
+          return this.whoAmI();
+        } else {
+          this.setState({status: 'Invalid role'});
+        }
+      }
+    }).catch(error => {
+      console.log(error);
+      this.setState({status: 'Connection error'});
+    });
   };
 
+  componentDidMount() {
+    if (this.state.token) this.whoAmI();
+  }
+
   render() {
-    const environment = environmentFactory(this.state.token);
-    return <QueryRenderer environment={environment}
-      query={graphql`query AuthenticationLoginQuery { jwtLogin jwtRole allStaffRoles{nodes{role}} }`}
-      render={({error, props}) => {
-        if (this.state.error) {
+    if (!this.state.login) {
+      return <div>
+        <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
+        {this.state.status && <div>{this.state.status}</div>}
+      </div>
+    }
+    if (this.state.role && this.state.role != 'anonymous') {
+      return <QueryRenderer environment={environmentFactory(this.state.token)}
+        query={graphql`query AuthQuery { jwtLogin jwtRole }`}
+        render={({error, props}) => {
           return <div>
-            <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
-            <div>{this.state.error}</div>
+            <Logout logout={this.logout} />
+            {this.props.children}
           </div>
-        }
-        if (!props) return <div>Loading</div>;
-        if (props.jwtLogin) {
-          
-          if (props.jwtRole) {
-            return React.cloneElement(this.props.children, {
-              environment: environment,
-              changeToken: this.changeToken,
-            });
-          }
-/*
-          switch (props.allStaffRoles.nodes.length) {
-            case 0:
-              return <div>
-                No roles
-                <Logout logout={this.props.logout}/>
-              </div>
-            case 1:
-              return this.withRole(props.allStaffRoles.nodes[0].role)
-            default:
-              return <RoleList roles={props.allStaffRoles.nodes} onSelectRole={this._handleChangeRole} />
-          }
-*/
-        }
+        }}
+      />
+    }
+    if (this.state.roles) {
+      if (this.state.roles.length > 0) {
         return <div>
-          <AuthenticationForm onAuthenticate={this._handleAuthenticate} />
-          {this.state.error && <div>{this.state.error}</div>}
+          <Logout logout={this.logout} />
+          <RoleList roles={this.state.roles} onSelectRole={this._handleChangeRole} />
         </div>
-      }}
-    />
+      } else {
+        return <div>No roles</div>
+      }
+    }
+    return <div>Loading</div>;
   }
 
 }

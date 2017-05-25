@@ -14,7 +14,7 @@ const fetchQuery = (token) => {
     var headers = {
       'Content-Type': 'application/json',
     }
-    if (token) headers['Authorization'] = 'Bearer ' + token;
+    if (token) headers['Authorization'] = `Bearer ${token}`;
 
     return fetch('/graphql', {
       method: 'POST',
