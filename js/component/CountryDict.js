@@ -11,25 +11,31 @@ import {
 
 function Country(props) {
   return (
-    <li onClick={(event) => {props.onSelect(props.role)}}>
-      {props.node.country}
-    </li>
+    <tr onClick={(event) => {props.onSelect(props.node.country)}}>
+      <td>{props.node.country}</td>
+    </tr>
   );
 }
 
 
-function CountryList(props) {
+function CountryTable(props) {
   return (
-    <ul>
-      {props.countries.map((node) =>
-        <Country key={node.country} node={node} onSelect={props.onSelect} />
-      )}
-    </ul>
+    <table>
+      <thead>
+        <tr>
+          <th>Country</th>
+        </tr>
+      </thead>
+      <tbody>
+        {props.countries.map((node) =>
+          <Country key={node.country} node={node} onSelect={props.onSelect} />
+        )}
+      </tbody>
+    </table>
   );
 }
 
-
-CountryList.propTypes = {
+CountryTable.propTypes = {
   countries: PropTypes.arrayOf(
     PropTypes.shape({
       country: PropTypes.string.isRequired,
@@ -41,8 +47,12 @@ CountryList.propTypes = {
 
 class CountryDict extends React.Component {
 
+  _handleSelect = (country) => {
+    alert(country);
+  }
+
   render() {
-    return <CountryList countries={this.props.query.allCountries.nodes} />
+    return <CountryTable countries={this.props.query.allCountries.nodes} onSelect={this._handleSelect} />
   }
 }
 
