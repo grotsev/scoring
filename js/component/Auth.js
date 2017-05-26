@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Form from 'react-bootstrap/lib/Form';
 import Button from 'react-bootstrap/lib/Button';
+import ListGroup from 'react-bootstrap/lib/ListGroup';
+import ListGroupItem from 'react-bootstrap/lib/ListGroupItem';
 
 import FieldGroup from './FieldGroup';
 import {fetchQuery} from '../environmentFactory';
@@ -46,22 +48,15 @@ class AuthenticationForm extends React.Component {
 }
 
 
-function Role(props) {
-  return (
-    <li onClick={(event) => {props.onSelectRole(props.role)}}>
-      {props.role}
-    </li>
-  );
-}
-
-
 function RoleList(props) {
   return (
-    <ul>
+    <ListGroup>
       {props.roles.map((node) =>
-        <Role key={node.role} role={node.role} onSelectRole={props.onSelectRole} />
+        <ListGroupItem key={node.role} onClick={(event) => {props.onSelectRole(node.role)}}>
+          {node.role}
+        </ListGroupItem>
       )}
-    </ul>
+    </ListGroup>
   );
 }
 

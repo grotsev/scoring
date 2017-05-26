@@ -1,17 +1,7 @@
-
 import React from 'react';
-import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/lib/Button';
 
 
-class Logout extends React.Component {
-  static propTypes = {
-    logout: PropTypes.func.isRequired,
-  };
-
-  render() {
-    return <input type="button" onClick={this.props.logout} value="Logout"/>;
-  }
+export default function Logout(props) {
+  return <Button onClick={props.logout}>Logout</Button>;
 }
-
-
-export default Logout;
