@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Form from 'react-bootstrap/lib/Form';
+import Button from 'react-bootstrap/lib/Button';
+
+import FieldGroup from './FieldGroup';
 import {fetchQuery} from '../environmentFactory';
 import Logout from './Logout';
 
@@ -29,17 +33,13 @@ class AuthenticationForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this._handleSubmit}>
-        <label>
-          Login:
-          <input type="text" name="login" value={this.state.login} onChange={this._handleChange} />
-        </label>
-        <label>
-          Password:
-          <input type="password" name="password" value={this.state.password} onChange={this._handleChange} />
-        </label>
-        <input type="submit" value="Log in" />
-      </form>
+      <Form inline onSubmit={this._handleSubmit}>
+        <FieldGroup id='login' type='text' label='Login' name='login' value={this.state.login} onChange={this._handleChange} />
+        {' '}
+        <FieldGroup id='password' type='password' label='Password' name='password' value={this.state.password} onChange={this._handleChange} />
+        {' '}
+        <Button type="submit">Log in</Button>
+      </Form>
     );
   }
 
