@@ -1,12 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  QueryRenderer,
-  graphql,
-} from 'react-relay';
 
-import {fetchQuery, environment as environmentFactory} from '../environmentFactory';
-
+import {fetchQuery} from '../environmentFactory';
 import Logout from './Logout';
 
 
@@ -81,11 +76,7 @@ RoleList.propTypes = {
 };
 
 
-class Authentication extends React.Component {
-  static propTypes = {
-    children: PropTypes.element.isRequired,
-  };
-
+class Auth extends React.Component {
   state = {
     token: localStorage.getItem('jwt_token'),
     login: null,
@@ -200,15 +191,10 @@ class Authentication extends React.Component {
       </div>
     }
     if (this.state.role && this.state.role != 'anonymous') {
-      return <QueryRenderer environment={environmentFactory(this.state.token)}
-        query={graphql`query AuthQuery { jwtLogin jwtRole }`}
-        render={({error, props}) => {
-          return <div>
-            <Logout logout={this.logout} />
-            {this.props.children}
-          </div>
-        }}
-      />
+      return this.props.render({
+        token: this.state.token,
+        logout: <Logout logout={this.logout} />
+      })
     }
     if (this.state.roles) {
       if (this.state.roles.length > 0) {
@@ -226,4 +212,4 @@ class Authentication extends React.Component {
 }
 
 
-export default Authentication;
+export default Auth;

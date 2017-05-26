@@ -12,6 +12,7 @@ import {
 function Country(props) {
   return (
     <li onClick={(event) => {props.onSelect(props.role)}}>
+      {props.node.country}
     </li>
   );
 }
@@ -21,7 +22,7 @@ function CountryList(props) {
   return (
     <ul>
       {props.countries.map((node) =>
-        <Country key={node.country} role={node.country} onSelect={props.onSelect} />
+        <Country key={node.country} node={node} onSelect={props.onSelect} />
       )}
     </ul>
   );
@@ -41,23 +42,19 @@ CountryList.propTypes = {
 class CountryDict extends React.Component {
 
   render() {
-    return (
-      //<CountryList countries={props.allCountries.nodes} />
-      <div>123</div>
-    )
+    return <CountryList countries={this.props.query.allCountries.nodes} />
   }
 }
 
 
-export default createFragmentContainer(
-  CountryDict,
-  graphql`
-  fragment CountryDict_list on Query {
-    allCountries {
-      nodes {
-        country
+export default createFragmentContainer(CountryDict, {
+  query: graphql`
+    fragment CountryDict_query on Query {
+      allCountries {
+        nodes {
+          country
+        }
       }
     }
-  }
   `,
-);
+});
