@@ -4,7 +4,7 @@ import {
   NavLink,
 } from 'react-router-dom';
 
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 function Navigation(props) {
@@ -26,7 +26,7 @@ function Navigation(props) {
             <LinkContainer to="/report/app-activity"><MenuItem>Application activities</MenuItem></LinkContainer>
           </NavDropdown>
           <LinkContainer to="/product-indicatory"><NavItem eventKey={2}>Product indicator</NavItem></LinkContainer>
-          <NavDropdown eventKey={3} title='Dictionary management' id='dictionary'>
+          <NavDropdown eventKey={3} title='Dictionaries' id='dictionary'>
             <LinkContainer to="/dictionary/country"><MenuItem>Страны</MenuItem></LinkContainer>
             <LinkContainer to="/dictionary/idcard-kind"><MenuItem>Документ уд. личн.</MenuItem></LinkContainer>
             <LinkContainer to="/dictionary/a"><MenuItem>Должность</MenuItem></LinkContainer>
@@ -50,7 +50,7 @@ function Navigation(props) {
           </NavDropdown>
         </Nav>
         <Nav pullRight>
-          <NavItem onClick={props.logout}>Logout</NavItem>
+          <NavItem onClick={props.logout}><Glyphicon glyph='log-out' /> Log out</NavItem>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

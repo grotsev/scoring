@@ -14,7 +14,6 @@ import {
 
 import {environment as environmentFactory} from './environmentFactory';
 import Auth from './component/Auth';
-import Logout from './component/Logout';
 import Navigation from './component/Navigation';
 import CountryDict from './component/CountryDict';
 
