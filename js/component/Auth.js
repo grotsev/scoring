@@ -188,7 +188,7 @@ class Auth extends React.Component {
     if (this.state.role && this.state.role != 'anonymous') {
       return this.props.render({
         token: this.state.token,
-        logout: <Logout logout={this.logout} />
+        logout: this.logout,
       })
     }
     if (this.state.roles) {

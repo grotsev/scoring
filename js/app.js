@@ -22,10 +22,9 @@ import CountryDict from './component/CountryDict';
 ReactDOM.render(
   <Auth render={({token, logout}) => {
     return <div>
-      {logout}
       <Router>
         <div>
-          <Navigation/>
+          <Navigation logout={logout}/>
           <main>
             <Route path="/dictionary/country" render={() => (
               <QueryRenderer environment={environmentFactory(token)}

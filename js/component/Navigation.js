@@ -12,7 +12,7 @@ function Navigation(props) {
     <Navbar>
       <Navbar.Header>
         <Navbar.Brand>
-          <a href='#'>greetgo! Scoring</a>
+          <a href='/'>greetgo! Scoring</a>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
@@ -29,28 +29,28 @@ function Navigation(props) {
           <NavDropdown eventKey={3} title='Dictionary management' id='dictionary'>
             <LinkContainer to="/dictionary/country"><MenuItem>Страны</MenuItem></LinkContainer>
             <LinkContainer to="/dictionary/idcard-kind"><MenuItem>Документ уд. личн.</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Должность</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Ежемесячные расходы, не связанные с получением кредита</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Иные платежи</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Кем выдано</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Курс валюты</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Отделение</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Отношение к адресу</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Отношение к клиенту</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Отрасль занятости</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Подписанты</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Семейное положение</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Собственный капитал</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Статус резидентства</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Тип документа</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Тип дохода</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Филиалы</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Характер занятости</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/"><MenuItem>Цель кредитования</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/a"><MenuItem>Должность</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/b"><MenuItem>Ежемесячные расходы, не связанные с получением кредита</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/c"><MenuItem>Иные платежи</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/d"><MenuItem>Кем выдано</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/e"><MenuItem>Курс валюты</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/f"><MenuItem>Отделение</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/g"><MenuItem>Отношение к адресу</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/h"><MenuItem>Отношение к клиенту</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/i"><MenuItem>Отрасль занятости</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/j"><MenuItem>Подписанты</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/k"><MenuItem>Семейное положение</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/l"><MenuItem>Собственный капитал</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/m"><MenuItem>Статус резидентства</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/n"><MenuItem>Тип документа</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/o"><MenuItem>Тип дохода</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/p"><MenuItem>Филиалы</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/q"><MenuItem>Характер занятости</MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/r"><MenuItem>Цель кредитования</MenuItem></LinkContainer>
           </NavDropdown>
         </Nav>
         <Nav pullRight>
-          Logout
+          <NavItem onClick={props.logout}>Logout</NavItem>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
