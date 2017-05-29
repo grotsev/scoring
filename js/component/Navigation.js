@@ -18,7 +18,7 @@ function Navigation(props) {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav>
-          <LinkContainer to="/application"><NavItem eventKey={2}>Applications</NavItem></LinkContainer>
+          <LinkContainer to="/app"><NavItem eventKey={2}>Applications</NavItem></LinkContainer>
           <NavDropdown eventKey={1} title='Reports' id='report'>
             <LinkContainer to="/report/detail"><MenuItem>Detail</MenuItem></LinkContainer>
             <LinkContainer to="/report/rejection"><MenuItem>Rejection</MenuItem></LinkContainer>

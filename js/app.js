@@ -15,6 +15,7 @@ import {
 import {environment as environmentFactory} from './environmentFactory';
 import Auth from './component/Auth';
 import Navigation from './component/Navigation';
+import App from './component/App';
 import CountryDict from './component/CountryDict';
 
 
@@ -26,9 +27,7 @@ ReactDOM.render(
           <Navigation logout={logout}/>
           <main>
             
-            <Route path="/application" render={() => (
-              <div>Ok</div>
-            )} />
+            <Route path="/app" render={() => <App />} />
 
             <Route path="/dictionary/country" render={() => (
               <QueryRenderer environment={environmentFactory(token)}
