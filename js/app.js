@@ -25,6 +25,11 @@ ReactDOM.render(
         <div>
           <Navigation logout={logout}/>
           <main>
+            
+            <Route path="/application" render={() => (
+              <div>Ok</div>
+            )} />
+
             <Route path="/dictionary/country" render={() => (
               <QueryRenderer environment={environmentFactory(token)}
                 query={graphql`
@@ -42,6 +47,7 @@ ReactDOM.render(
                 }}
               />
             )} />
+
           </main>
         </div>
       </Router>

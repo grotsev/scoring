@@ -44,29 +44,6 @@ class AuthenticationForm extends React.Component {
 }
 
 
-function RoleList(props) {
-  return (
-    <ListGroup>
-      {props.roles.map((node) =>
-        <ListGroupItem key={node.role} onClick={(event) => {props.onSelectRole(node.role)}}>
-          {node.role}
-        </ListGroupItem>
-      )}
-    </ListGroup>
-  );
-}
-
-
-RoleList.propTypes = {
-  roles: PropTypes.arrayOf(
-    PropTypes.shape({
-      role: PropTypes.string.isRequired,
-    }).isRequired
-  ).isRequired,
-  onSelectRole: PropTypes.func.isRequired,
-};
-
-
 class Auth extends React.Component {
   state = {
     token: localStorage.getItem('jwt_token'),
@@ -191,7 +168,13 @@ class Auth extends React.Component {
       if (this.state.roles.length > 0) {
         return <div>
           <Button onClick={this.logout}><Glyphicon glyph='log-out' /> Log out</Button>
-          <RoleList roles={this.state.roles} onSelectRole={this._handleChangeRole} />
+          <ListGroup>
+            {this.state.roles.map((node) =>
+              <ListGroupItem key={node.role} onClick={(event) => {this._handleChangeRole(node.role)}}>
+                {node.role}
+              </ListGroupItem>
+            )}
+          </ListGroup>
         </div>
       } else {
         return <div>No roles</div>
