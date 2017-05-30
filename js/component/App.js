@@ -1,9 +1,11 @@
 import React from 'react';
 import { Grid, Row, Col, Panel, Badge, Label, ListGroup, ListGroupItem,
   Form, FormGroup, FormControl, ControlLabel, PanelGroup,
-  Button, Glyphicon, OverlayTrigger, Tooltip,
+  ButtonToolbar, Button, Glyphicon, OverlayTrigger, Tooltip, InputGroup,
   Table
 } from 'react-bootstrap';
+import DateRangePicker from 'react-bootstrap-daterangepicker';
+import moment from 'moment';
 
 import FieldGroup from './FieldGroup';
 
@@ -27,19 +29,33 @@ function App(props) {
             </ListGroup>
           </Panel>
           
-          <PanelGroup accordion>
-            <Panel header='Filter' eventKey='1'>
+          <PanelGroup>
+            <Panel header='Filter'>
               <Form>
-                <FieldGroup id='iin' type='text' label='ИИН' name='iin' />
-                <FieldGroup id='surname' type='text' label='Фамилия' name='surname' />
-                <FieldGroup id='name' type='text' label='Имя' name='name' />
-                <FieldGroup id='patronymic' type='text' label='Отчество' name='patronymic' />
-                <FieldGroup id='app' type='text' label='№ заявки' name='app' />
-                <FieldGroup id='filial' type='text' label='Филиал' name='filial' />
-                <FieldGroup id='manager' type='text' label='ФИО менеджера' name='manager' />
-                <FieldGroup id='dateFrom' type='text' label='Дата заявки с' name='dateFrom' />
-                <FieldGroup id='dateTo' type='text' label='Дата заявки по' name='dateTo' />
-                <Button type="submit"><Glyphicon glyph='search' /> Найти</Button>
+                <FieldGroup clearable id='iin' type='text' placeholder='ИИН' name='iin' />
+                <FieldGroup clearable id='surname' type='text' placeholder='Фамилия' name='surname' />
+                <FieldGroup clearable id='name' type='text' placeholder='Имя' name='name' />
+                <FieldGroup clearable id='patronymic' type='text' placeholder='Отчество' name='patronymic' />
+                <FieldGroup clearable id='filial' type='text' placeholder='Филиал' name='filial' />
+                <DateRangePicker startDate={moment('2017-01-01')} endDate={moment('2017-02-03')}>
+                  <Button className="selected-date-range-btn" style={{width:'100%'}}>
+                    <div className="pull-left"><Glyphicon glyph="calendar" /></div>
+                    <div className="pull-right">
+                      <span>
+                        label
+                      </span>
+                      <span className="caret"></span>
+                    </div>
+                  </Button>
+                </DateRangePicker>
+                <FieldGroup clearable id='dateFrom' type='text' placeholder='Дата заявки с' name='dateFrom' />
+                <FieldGroup clearable id='dateTo' type='text' placeholder='Дата заявки по' name='dateTo' />
+                <FieldGroup clearable id='app' type='text' placeholder='№ заявки' name='app' />
+                <FieldGroup clearable id='manager' type='text' placeholder='ФИО менеджера' name='manager' />
+                <ButtonToolbar>
+                  <Button type='submit'><Glyphicon glyph='search' /> Найти</Button>
+                  <Button type='reset'><Glyphicon glyph='remove-sign' /> Очистить</Button>
+                </ButtonToolbar>
               </Form>
             </Panel>
           </PanelGroup>
@@ -50,7 +66,7 @@ function App(props) {
           <Table striped hover responsive>
             <thead>
               <tr>
-                <th>s</th>
+                <th></th>
                 <th>
                   <div className='text-nowrap'>ИИН</div>
                   <div className='text-nowrap'>ФИО клиента</div>
@@ -73,6 +89,189 @@ function App(props) {
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
+                <td>
+                  <div>850118400153</div>
+                  <div>Абисов</div>
+                  <div>Абис</div>
+                  <div>Абисович</div>
+                </td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>09-02-2017 09:45</div>
+                  <div>2</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
+                <td></td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>14-02-2017 10:41</div>
+                  <div>3</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
+                <td>
+                  <div>850118400153</div>
+                  <div>Абисов</div>
+                  <div>Абис</div>
+                  <div>Абисович</div>
+                </td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>09-02-2017 09:45</div>
+                  <div>2</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
+                <td></td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>08-02-2017 16:53</div>
+                  <div>1</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
+                <td></td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>14-02-2017 10:41</div>
+                  <div>3</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
+                <td>
+                  <div>850118400153</div>
+                  <div>Абисов</div>
+                  <div>Абис</div>
+                  <div>Абисович</div>
+                </td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>09-02-2017 09:45</div>
+                  <div>2</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
+                <td></td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>08-02-2017 16:53</div>
+                  <div>1</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
               <tr>
                 <td>
                   <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>

@@ -1,16 +1,17 @@
 import React from 'react';
 
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import {FormGroup, FormControl, ControlLabel, InputGroup, Button, Glyphicon} from 'react-bootstrap';
 
 
-export default function FieldGroup({ id, label, help, ...props }) {
+export default function FieldGroup({ id, label, help, clearable, ...props }) {
   return (
     <FormGroup controlId={id}>
-      <ControlLabel>{label}</ControlLabel>
+      {label && <ControlLabel>{label}</ControlLabel>}
       {' '}
-      <FormControl {...props} />
+      <InputGroup>
+        <FormControl {...props} />
+        {clearable && <InputGroup.Button><Button><Glyphicon glyph='remove-sign' /></Button></InputGroup.Button>}
+      </InputGroup>
       {help && <HelpBlock>{help}</HelpBlock>}
     </FormGroup>
   );
