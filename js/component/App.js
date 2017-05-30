@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col, Panel, Badge, Label, ListGroup, ListGroupItem,
   Form, FormGroup, FormControl, ControlLabel, PanelGroup,
-  Button, Glyphicon,
+  Button, Glyphicon, OverlayTrigger, Tooltip,
   Table
 } from 'react-bootstrap';
 
@@ -50,6 +50,7 @@ function App(props) {
           <Table striped hover responsive>
             <thead>
               <tr>
+                <th>s</th>
                 <th>
                   <div className='text-nowrap'>ИИН</div>
                   <div className='text-nowrap'>ФИО клиента</div>
@@ -73,6 +74,11 @@ function App(props) {
             </thead>
             <tbody>
               <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
                 <td></td>
                 <td>
                   <div className='text-nowrap'>Карагандинский филиал</div>
@@ -92,6 +98,11 @@ function App(props) {
                 <td></td>
               </tr>
               <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
                 <td>
                   <div>850118400153</div>
                   <div>Абисов</div>
@@ -116,6 +127,11 @@ function App(props) {
                 <td></td>
               </tr>
               <tr>
+                <td>
+                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
+                    <Button><Glyphicon glyph='pencil' /></Button>
+                  </OverlayTrigger>
+                </td>
                 <td></td>
                 <td>
                   <div className='text-nowrap'>Карагандинский филиал</div>
