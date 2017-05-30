@@ -1,7 +1,8 @@
 import React from 'react';
 import { Grid, Row, Col, Panel, Badge, Label, ListGroup, ListGroupItem,
   Form, FormGroup, FormControl, ControlLabel, PanelGroup,
-  Button, Glyphicon
+  Button, Glyphicon,
+  Table
 } from 'react-bootstrap';
 
 import FieldGroup from './FieldGroup';
@@ -44,6 +45,99 @@ function App(props) {
           </PanelGroup>
 
         </Col>
+
+        <Col sm={9}>
+          <Table striped hover responsive>
+            <thead>
+              <tr>
+                <th>
+                  <div className='text-nowrap'>ИИН</div>
+                  <div className='text-nowrap'>ФИО клиента</div>
+                </th>
+                <th>
+                  <div className='text-nowrap'>Филиал</div>
+                  <div className='text-nowrap'>Время создания</div>
+                  <div className='text-nowrap'>Номер заявки</div>
+                </th>
+                <th>
+                  <div className='text-nowrap'>Продукт</div>
+                  <div className='text-nowrap'>Создавший менеджер</div>
+                </th>
+                <th>Исполнитель</th>
+                <th>
+                  <div className='text-nowrap'>Этап</div>
+                  <div className='text-nowrap'>Текущий исполнитель</div>
+                </th>
+                <th>Комментарий</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>14-02-2017 10:41</div>
+                  <div>3</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <div>850118400153</div>
+                  <div>Абисов</div>
+                  <div>Абис</div>
+                  <div>Абисович</div>
+                </td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>09-02-2017 09:45</div>
+                  <div>2</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>08-02-2017 16:53</div>
+                  <div>1</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </Table>
+        </Col>
+
       </Row>
     </Grid>
   );
