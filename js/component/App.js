@@ -35,9 +35,9 @@ function App(props) {
                 <FieldGroup id='patronymic' type='text' label='Отчество' name='patronymic' />
                 <FieldGroup id='app' type='text' label='№ заявки' name='app' />
                 <FieldGroup id='filial' type='text' label='Филиал' name='filial' />
-                <FieldGroup id='manager' type='text' label='Менеджер' name='manager' />
-                <FieldGroup id='dateFrom' type='text' label='Дата с' name='dateFrom' />
-                <FieldGroup id='dateTo' type='text' label='Дата по' name='dateTo' />
+                <FieldGroup id='manager' type='text' label='ФИО менеджера' name='manager' />
+                <FieldGroup id='dateFrom' type='text' label='Дата заявки с' name='dateFrom' />
+                <FieldGroup id='dateTo' type='text' label='Дата заявки по' name='dateTo' />
                 <Button type="submit"><Glyphicon glyph='search' /> Найти</Button>
               </Form>
             </Panel>
