@@ -4,12 +4,14 @@ import { Grid, Row, Col, Panel, Badge, Label, ListGroup, ListGroupItem,
   Button, Glyphicon
 } from 'react-bootstrap';
 
+import FieldGroup from './FieldGroup';
+
 
 function App(props) {
   return (
     <Grid fluid>
       <Row>
-        <Col sm={4}>
+        <Col sm={3}>
           
           <Panel header='Stage'>
             <ListGroup fill>
@@ -26,52 +28,17 @@ function App(props) {
           
           <PanelGroup accordion>
             <Panel header='Filter' eventKey='1'>
-              <Form horizontal>
-                
-                <FormGroup controlId='iin'>
-                  <Col sm={4} componentClass={ControlLabel}>ИИН</Col>
-                  <Col sm={8}><FormControl type='text' /></Col>
-                </FormGroup>
-                <FormGroup controlId='iin'>
-                  <Col sm={4} componentClass={ControlLabel}>№ заявки</Col>
-                  <Col sm={8}><FormControl type='text' /></Col>
-                </FormGroup>
-
-                <FormGroup controlId='iin'>
-                  <Col sm={4} componentClass={ControlLabel}>Филиал</Col>
-                  <Col sm={8}><FormControl type='text' /></Col>
-                </FormGroup>
-                <FormGroup controlId='iin'>
-                  <Col sm={4} componentClass={ControlLabel}>Менеджер</Col>
-                  <Col sm={8}><FormControl type='text' /></Col>
-                </FormGroup>
-
-                <FormGroup controlId='iin'>
-                  <Col sm={4} componentClass={ControlLabel}>Дата с</Col>
-                  <Col sm={8}><FormControl type='text' /></Col>
-                </FormGroup>
-                <FormGroup controlId='iin'>
-                  <Col sm={4} componentClass={ControlLabel}>Дата по</Col>
-                  <Col sm={8}><FormControl type='text' /></Col>
-                </FormGroup>
-
-                <FormGroup controlId='iin'>
-                  <Col sm={4} componentClass={ControlLabel}>Фамилия</Col>
-                  <Col sm={8}><FormControl type='text' /></Col>
-                </FormGroup>
-                <FormGroup controlId='iin'>
-                  <Col sm={4} componentClass={ControlLabel}>Имя</Col>
-                  <Col sm={8}><FormControl type='text' /></Col>
-                </FormGroup>
-                <FormGroup controlId='iin'>
-                  <Col sm={4} componentClass={ControlLabel}>Отчество</Col>
-                  <Col sm={8}><FormControl type='text' /></Col>
-                </FormGroup>
-
-                <FormGroup controlId='iin'>
-                  <Col smOffset={4} sm={8}><Button type="submit"><Glyphicon glyph='search' /> Найти</Button></Col>
-                </FormGroup>
-                
+              <Form>
+                <FieldGroup id='iin' type='text' label='ИИН' name='iin' />
+                <FieldGroup id='surname' type='text' label='Фамилия' name='surname' />
+                <FieldGroup id='name' type='text' label='Имя' name='name' />
+                <FieldGroup id='patronymic' type='text' label='Отчество' name='patronymic' />
+                <FieldGroup id='app' type='text' label='№ заявки' name='app' />
+                <FieldGroup id='filial' type='text' label='Филиал' name='filial' />
+                <FieldGroup id='manager' type='text' label='Менеджер' name='manager' />
+                <FieldGroup id='dateFrom' type='text' label='Дата с' name='dateFrom' />
+                <FieldGroup id='dateTo' type='text' label='Дата по' name='dateTo' />
+                <Button type="submit"><Glyphicon glyph='search' /> Найти</Button>
               </Form>
             </Panel>
           </PanelGroup>
