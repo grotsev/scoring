@@ -37,19 +37,14 @@ function App(props) {
                 <FieldGroup clearable id='name' type='text' placeholder='Имя' name='name' />
                 <FieldGroup clearable id='patronymic' type='text' placeholder='Отчество' name='patronymic' />
                 <FieldGroup clearable id='filial' type='text' placeholder='Филиал' name='filial' />
-                <DateRangePicker startDate={moment('2017-01-01')} endDate={moment('2017-02-03')}>
-                  <Button className="selected-date-range-btn" style={{width:'100%'}}>
-                    <div className="pull-left"><Glyphicon glyph="calendar" /></div>
-                    <div className="pull-right">
-                      <span>
-                        label
-                      </span>
-                      <span className="caret"></span>
-                    </div>
-                  </Button>
-                </DateRangePicker>
-                <FieldGroup clearable id='dateFrom' type='text' placeholder='Дата заявки с' name='dateFrom' />
-                <FieldGroup clearable id='dateTo' type='text' placeholder='Дата заявки по' name='dateTo' />
+                <FormGroup controlId='dateFromTo'>
+                  <DateRangePicker startDate={moment('2017-01-01')} endDate={moment('2017-02-03')}>
+                    <InputGroup>
+                      <FormControl placeholder='Дата заявки с ... по ...'/>
+                      <InputGroup.Button><Button><Glyphicon glyph='remove-sign' /></Button></InputGroup.Button>
+                    </InputGroup>
+                  </DateRangePicker>
+                </FormGroup>
                 <FieldGroup clearable id='app' type='text' placeholder='№ заявки' name='app' />
                 <FieldGroup clearable id='manager' type='text' placeholder='ФИО менеджера' name='manager' />
                 <ButtonToolbar>
