@@ -12,7 +12,7 @@ function App(props) {
       <BS.Row>
         <BS.Col sm={3}>
           
-          <BS.Panel header='Stage'>
+          <BS.Panel>
             <BS.ListGroup fill>
               <BS.ListGroupItem>Все <BS.Badge pullRight>20</BS.Badge> <BS.Label bsStyle='info'>4 new</BS.Label></BS.ListGroupItem>
               <BS.ListGroupItem>Доработки <BS.Badge pullRight>3</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
@@ -22,11 +22,12 @@ function App(props) {
               <BS.ListGroupItem>Отказные ожидание <BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
               <BS.ListGroupItem>Не активные <BS.Badge pullRight>0</BS.Badge></BS.ListGroupItem>
               <BS.ListGroupItem>Завершённые <BS.Badge pullRight>12</BS.Badge></BS.ListGroupItem>
+              <BS.ListGroupItem><BS.Glyphicon glyph='star' /> Помеченные <BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
             </BS.ListGroup>
           </BS.Panel>
           
           <BS.PanelGroup>
-            <BS.Panel header='Filter'>
+            <BS.Panel>
               <BS.Form>
                 <FieldGroup clearable id='iin' type='text' placeholder='ИИН' name='iin' />
                 <FieldGroup clearable id='surname' type='text' placeholder='Фамилия' name='surname' />
@@ -44,7 +45,7 @@ function App(props) {
                 <FieldGroup clearable id='app' type='text' placeholder='№ заявки' name='app' />
                 <FieldGroup clearable id='manager' type='text' placeholder='ФИО менеджера' name='manager' />
                 <BS.ButtonToolbar>
-                  <BS.Button type='submit'><BS.Glyphicon glyph='search' /> Найти</BS.Button>
+                  <BS.Button type='submit' bsStyle='primary'><BS.Glyphicon glyph='search' /> Найти</BS.Button>
                   <BS.Button type='reset'><BS.Glyphicon glyph='remove-sign' /> Очистить</BS.Button>
                 </BS.ButtonToolbar>
               </BS.Form>
@@ -85,7 +86,9 @@ function App(props) {
                   <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
                     <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
                   </BS.OverlayTrigger>
-                   <BS.Label bsStyle='info'>new</BS.Label>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Unmark</BS.Tooltip>}>
+                    <BS.Button active><BS.Glyphicon glyph='star' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td>
                   <div>850118400153</div>
@@ -114,6 +117,97 @@ function App(props) {
                 <td>
                   <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
                     <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='star-empty' /></BS.Button>
+                  </BS.OverlayTrigger>
+                  <BS.Label bsStyle='info'>new</BS.Label>
+                </td>
+                <td></td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>14-02-2017 10:41</div>
+                  <div>3</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='star-empty' /></BS.Button>
+                  </BS.OverlayTrigger>
+                </td>
+                <td>
+                  <div>850118400153</div>
+                  <div>Абисов</div>
+                  <div>Абис</div>
+                  <div>Абисович</div>
+                </td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>09-02-2017 09:45</div>
+                  <div>2</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='star-empty' /></BS.Button>
+                  </BS.OverlayTrigger>
+                  <BS.Label bsStyle='info'>new</BS.Label>
+                </td>
+                <td></td>
+                <td>
+                  <div className='text-nowrap'>Карагандинский филиал</div>
+                  <div className='text-nowrap'>08-02-2017 16:53</div>
+                  <div>1</div>
+                </td>
+                <td>
+                  <div>Автокредитование</div>
+                  <div>Гай</div>
+                  <div>Юлий</div>
+                  <div>Цезарь</div>
+                </td>
+                <td></td>
+                <td>
+                  <div>Привлечение</div>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='star-empty' /></BS.Button>
                   </BS.OverlayTrigger>
                 </td>
                 <td></td>
@@ -139,6 +233,9 @@ function App(props) {
                   <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
                     <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
                   </BS.OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='star-empty' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td>
                   <div>850118400153</div>
@@ -167,6 +264,9 @@ function App(props) {
                 <td>
                   <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
                     <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='star-empty' /></BS.Button>
                   </BS.OverlayTrigger>
                 </td>
                 <td></td>
@@ -192,6 +292,9 @@ function App(props) {
                   <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
                     <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
                   </BS.OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='star-empty' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td></td>
                 <td>
@@ -215,6 +318,9 @@ function App(props) {
                 <td>
                   <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
                     <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='star-empty' /></BS.Button>
                   </BS.OverlayTrigger>
                 </td>
                 <td>
@@ -245,82 +351,8 @@ function App(props) {
                   <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
                     <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
                   </BS.OverlayTrigger>
-                </td>
-                <td></td>
-                <td>
-                  <div className='text-nowrap'>Карагандинский филиал</div>
-                  <div className='text-nowrap'>08-02-2017 16:53</div>
-                  <div>1</div>
-                </td>
-                <td>
-                  <div>Автокредитование</div>
-                  <div>Гай</div>
-                  <div>Юлий</div>
-                  <div>Цезарь</div>
-                </td>
-                <td></td>
-                <td>
-                  <div>Привлечение</div>
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>
-                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
-                  </BS.OverlayTrigger>
-                </td>
-                <td></td>
-                <td>
-                  <div className='text-nowrap'>Карагандинский филиал</div>
-                  <div className='text-nowrap'>14-02-2017 10:41</div>
-                  <div>3</div>
-                </td>
-                <td>
-                  <div>Автокредитование</div>
-                  <div>Гай</div>
-                  <div>Юлий</div>
-                  <div>Цезарь</div>
-                </td>
-                <td></td>
-                <td>
-                  <div>Привлечение</div>
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>
-                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
-                  </BS.OverlayTrigger>
-                </td>
-                <td>
-                  <div>850118400153</div>
-                  <div>Абисов</div>
-                  <div>Абис</div>
-                  <div>Абисович</div>
-                </td>
-                <td>
-                  <div className='text-nowrap'>Карагандинский филиал</div>
-                  <div className='text-nowrap'>09-02-2017 09:45</div>
-                  <div>2</div>
-                </td>
-                <td>
-                  <div>Автокредитование</div>
-                  <div>Гай</div>
-                  <div>Юлий</div>
-                  <div>Цезарь</div>
-                </td>
-                <td></td>
-                <td>
-                  <div>Привлечение</div>
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>
-                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='star-empty' /></BS.Button>
                   </BS.OverlayTrigger>
                 </td>
                 <td></td>
