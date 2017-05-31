@@ -14,15 +14,15 @@ function App(props) {
           
           <BS.Panel>
             <BS.ListGroup fill>
-              <BS.ListGroupItem>Все <BS.Badge pullRight>20</BS.Badge> <BS.Label bsStyle='info'>4 new</BS.Label></BS.ListGroupItem>
-              <BS.ListGroupItem>Доработки <BS.Badge pullRight>3</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
-              <BS.ListGroupItem>Привлечение <BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='info'>2 new</BS.Label></BS.ListGroupItem>
-              <BS.ListGroupItem>Заявка <BS.Badge pullRight>0</BS.Badge></BS.ListGroupItem>
-              <BS.ListGroupItem>Отказано системой <BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
-              <BS.ListGroupItem>Отказные ожидание <BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
-              <BS.ListGroupItem>Не активные <BS.Badge pullRight>0</BS.Badge></BS.ListGroupItem>
-              <BS.ListGroupItem>Завершённые <BS.Badge pullRight>12</BS.Badge></BS.ListGroupItem>
-              <BS.ListGroupItem><BS.Glyphicon glyph='star' /> Помеченные <BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
+              <BS.ListGroupItem>Все<BS.Badge pullRight>20</BS.Badge> <BS.Label bsStyle='info'>4 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Доработки<BS.Badge pullRight>3</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Привлечение<BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='info'>2 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Заявка</BS.ListGroupItem>
+              <BS.ListGroupItem>Отказано системой<BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
+              <BS.ListGroupItem>Отказные ожидание<BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Не активные</BS.ListGroupItem>
+              <BS.ListGroupItem>Завершённые<BS.Badge pullRight>12</BS.Badge></BS.ListGroupItem>
+              <BS.ListGroupItem><BS.Glyphicon glyph='star' /> Помеченные<BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
             </BS.ListGroup>
           </BS.Panel>
           
