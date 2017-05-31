@@ -7,9 +7,7 @@ import {
   createFragmentContainer,
   graphql,
 } from 'react-relay';
-import { ButtonToolbar, ButtonGroup, Button, Glyphicon, OverlayTrigger, Tooltip,
-  Form, FormGroup, InputGroup, FormControl
-} from 'react-bootstrap';
+import * as BS from 'react-bootstrap';
 
 
 function Country(props) {
@@ -24,27 +22,27 @@ function Country(props) {
 function CountryTable(props) {
   return (
     <div>
-      <ButtonToolbar>
-        <ButtonGroup>
-          <OverlayTrigger overlay={<Tooltip id='new'>New</Tooltip>}>
-            <Button><Glyphicon glyph='plus' /></Button>
-          </OverlayTrigger>
-        </ButtonGroup>
-        <ButtonGroup>
-          <Form inline>
-            <FormGroup>
-              <InputGroup>
-                <FormControl type='text' />
-                <InputGroup.Button>
-                  <OverlayTrigger overlay={<Tooltip id='filter'>Filter</Tooltip>}>
-                    <Button><Glyphicon glyph='filter' /></Button>
-                  </OverlayTrigger>
-                </InputGroup.Button>
-              </InputGroup>
-            </FormGroup>
-          </Form>
-        </ButtonGroup>
-      </ButtonToolbar>
+      <BS.ButtonToolbar>
+        <BS.ButtonGroup>
+          <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>New</BS.Tooltip>}>
+            <BS.Button><BS.Glyphicon glyph='plus' /></BS.Button>
+          </BS.OverlayTrigger>
+        </BS.ButtonGroup>
+        <BS.ButtonGroup>
+          <BS.Form inline>
+            <BS.FormGroup>
+              <BS.InputGroup>
+                <BS.FormControl type='text' />
+                <BS.InputGroup.Button>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='filter'>Filter</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='filter' /></BS.Button>
+                  </BS.OverlayTrigger>
+                </BS.InputGroup.Button>
+              </BS.InputGroup>
+            </BS.FormGroup>
+          </BS.Form>
+        </BS.ButtonGroup>
+      </BS.ButtonToolbar>
       <table>
         <thead>
           <tr>

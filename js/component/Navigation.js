@@ -4,57 +4,57 @@ import {
   NavLink,
 } from 'react-router-dom';
 
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Glyphicon } from 'react-bootstrap';
+import * as BS from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 function Navigation(props) {
   return (
-    <Navbar>
-      <Navbar.Header>
-        <Navbar.Brand>
+    <BS.Navbar>
+      <BS.Navbar.Header>
+        <BS.Navbar.Brand>
           <a href='/'>greetgo! Scoring</a>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
-        <Nav>
-          <LinkContainer to="/app"><NavItem eventKey={2}>Applications</NavItem></LinkContainer>
-          <NavDropdown eventKey={1} title='Reports' id='report'>
-            <LinkContainer to="/report/detail"><MenuItem>Detail</MenuItem></LinkContainer>
-            <LinkContainer to="/report/rejection"><MenuItem>Rejection</MenuItem></LinkContainer>
-            <LinkContainer to="/report/service-call"><MenuItem>Service calls</MenuItem></LinkContainer>
-            <LinkContainer to="/report/app-move"><MenuItem>Application movements</MenuItem></LinkContainer>
-            <LinkContainer to="/report/app-activity"><MenuItem>Application activities</MenuItem></LinkContainer>
-          </NavDropdown>
-          <LinkContainer to="/product-indicatory"><NavItem eventKey={2}>Product indicator</NavItem></LinkContainer>
-          <NavDropdown eventKey={3} title='Dictionaries' id='dictionary'>
-            <LinkContainer to="/dictionary/country"><MenuItem>Страны</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/idcard-kind"><MenuItem>Документ уд. личн.</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/a"><MenuItem>Должность</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/b"><MenuItem>Ежемесячные расходы, не связанные с получением кредита</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/c"><MenuItem>Иные платежи</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/d"><MenuItem>Кем выдано</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/e"><MenuItem>Курс валюты</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/f"><MenuItem>Отделение</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/g"><MenuItem>Отношение к адресу</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/h"><MenuItem>Отношение к клиенту</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/i"><MenuItem>Отрасль занятости</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/j"><MenuItem>Подписанты</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/k"><MenuItem>Семейное положение</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/l"><MenuItem>Собственный капитал</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/m"><MenuItem>Статус резидентства</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/n"><MenuItem>Тип документа</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/o"><MenuItem>Тип дохода</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/p"><MenuItem>Филиалы</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/q"><MenuItem>Характер занятости</MenuItem></LinkContainer>
-            <LinkContainer to="/dictionary/r"><MenuItem>Цель кредитования</MenuItem></LinkContainer>
-          </NavDropdown>
-        </Nav>
-        <Nav pullRight>
-          <NavItem onClick={props.logout}><Glyphicon glyph='log-out' /> Log out</NavItem>
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+        </BS.Navbar.Brand>
+        <BS.Navbar.Toggle />
+      </BS.Navbar.Header>
+      <BS.Navbar.Collapse>
+        <BS.Nav>
+          <LinkContainer to="/app"><BS.NavItem eventKey={2}>Applications</BS.NavItem></LinkContainer>
+          <BS.NavDropdown eventKey={1} title='Reports' id='report'>
+            <LinkContainer to="/report/detail"><BS.MenuItem>Detail</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/report/rejection"><BS.MenuItem>Rejection</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/report/service-call"><BS.MenuItem>Service calls</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/report/app-move"><BS.MenuItem>Application movements</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/report/app-activity"><BS.MenuItem>Application activities</BS.MenuItem></LinkContainer>
+          </BS.NavDropdown>
+          <LinkContainer to="/product-indicatory"><BS.NavItem eventKey={2}>Product indicator</BS.NavItem></LinkContainer>
+          <BS.NavDropdown eventKey={3} title='Dictionaries' id='dictionary'>
+            <LinkContainer to="/dictionary/country"><BS.MenuItem>Страны</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/idcard-kind"><BS.MenuItem>Документ уд. личн.</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/a"><BS.MenuItem>Должность</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/b"><BS.MenuItem>Ежемесячные расходы, не связанные с получением кредита</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/c"><BS.MenuItem>Иные платежи</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/d"><BS.MenuItem>Кем выдано</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/e"><BS.MenuItem>Курс валюты</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/f"><BS.MenuItem>Отделение</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/g"><BS.MenuItem>Отношение к адресу</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/h"><BS.MenuItem>Отношение к клиенту</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/i"><BS.MenuItem>Отрасль занятости</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/j"><BS.MenuItem>Подписанты</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/k"><BS.MenuItem>Семейное положение</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/l"><BS.MenuItem>Собственный капитал</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/m"><BS.MenuItem>Статус резидентства</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/n"><BS.MenuItem>Тип документа</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/o"><BS.MenuItem>Тип дохода</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/p"><BS.MenuItem>Филиалы</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/q"><BS.MenuItem>Характер занятости</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/dictionary/r"><BS.MenuItem>Цель кредитования</BS.MenuItem></LinkContainer>
+          </BS.NavDropdown>
+        </BS.Nav>
+        <BS.Nav pullRight>
+          <BS.NavItem onClick={props.logout}><BS.Glyphicon glyph='log-out' /> Log out</BS.NavItem>
+        </BS.Nav>
+      </BS.Navbar.Collapse>
+    </BS.Navbar>
   );
 }
 

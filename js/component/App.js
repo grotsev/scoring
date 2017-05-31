@@ -1,9 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, Panel, Badge, Label, ListGroup, ListGroupItem,
-  Form, FormGroup, FormControl, ControlLabel, PanelGroup,
-  ButtonToolbar, Button, Glyphicon, OverlayTrigger, Tooltip, InputGroup,
-  Table, Pagination
-} from 'react-bootstrap';
+import * as BS from 'react-bootstrap';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import moment from 'moment';
 
@@ -12,53 +8,53 @@ import FieldGroup from './FieldGroup';
 
 function App(props) {
   return (
-    <Grid fluid>
-      <Row>
-        <Col sm={3}>
+    <BS.Grid fluid>
+      <BS.Row>
+        <BS.Col sm={3}>
           
-          <Panel header='Stage'>
-            <ListGroup fill>
-              <ListGroupItem>Все <Badge pullRight>20</Badge> <Label bsStyle='danger'>4 new</Label></ListGroupItem>
-              <ListGroupItem>Доработки <Badge pullRight>3</Badge> <Label bsStyle='danger'>1 new</Label></ListGroupItem>
-              <ListGroupItem>Привлечение <Badge pullRight>2</Badge> <Label bsStyle='danger'>2 new</Label></ListGroupItem>
-              <ListGroupItem>Заявка <Badge pullRight>0</Badge></ListGroupItem>
-              <ListGroupItem>Отказано системой <Badge pullRight>1</Badge></ListGroupItem>
-              <ListGroupItem>Отказные ожидание <Badge pullRight>2</Badge> <Label bsStyle='danger'>1 new</Label></ListGroupItem>
-              <ListGroupItem>Не активные <Badge pullRight>0</Badge></ListGroupItem>
-              <ListGroupItem>Завершённые <Badge pullRight>12</Badge></ListGroupItem>
-            </ListGroup>
-          </Panel>
+          <BS.Panel header='Stage'>
+            <BS.ListGroup fill>
+              <BS.ListGroupItem>Все <BS.Badge pullRight>20</BS.Badge> <BS.Label bsStyle='danger'>4 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Доработки <BS.Badge pullRight>3</BS.Badge> <BS.Label bsStyle='danger'>1 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Привлечение <BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='danger'>2 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Заявка <BS.Badge pullRight>0</BS.Badge></BS.ListGroupItem>
+              <BS.ListGroupItem>Отказано системой <BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
+              <BS.ListGroupItem>Отказные ожидание <BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='danger'>1 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Не активные <BS.Badge pullRight>0</BS.Badge></BS.ListGroupItem>
+              <BS.ListGroupItem>Завершённые <BS.Badge pullRight>12</BS.Badge></BS.ListGroupItem>
+            </BS.ListGroup>
+          </BS.Panel>
           
-          <PanelGroup>
-            <Panel header='Filter'>
-              <Form>
+          <BS.PanelGroup>
+            <BS.Panel header='Filter'>
+              <BS.Form>
                 <FieldGroup clearable id='iin' type='text' placeholder='ИИН' name='iin' />
                 <FieldGroup clearable id='surname' type='text' placeholder='Фамилия' name='surname' />
                 <FieldGroup clearable id='name' type='text' placeholder='Имя' name='name' />
                 <FieldGroup clearable id='patronymic' type='text' placeholder='Отчество' name='patronymic' />
                 <FieldGroup clearable id='filial' type='text' placeholder='Филиал' name='filial' />
-                <FormGroup controlId='dateFromTo'>
+                <BS.FormGroup controlId='dateFromTo'>
                   <DateRangePicker startDate={moment('2017-01-01')} endDate={moment('2017-02-03')}>
-                    <InputGroup>
-                      <FormControl placeholder='Дата заявки с ... по ...'/>
-                      <InputGroup.Button><Button><Glyphicon glyph='remove-sign' /></Button></InputGroup.Button>
-                    </InputGroup>
+                    <BS.InputGroup>
+                      <BS.FormControl placeholder='Дата заявки с ... по ...'/>
+                      <BS.InputGroup.Button><BS.Button><BS.Glyphicon glyph='remove-sign' /></BS.Button></BS.InputGroup.Button>
+                    </BS.InputGroup>
                   </DateRangePicker>
-                </FormGroup>
+                </BS.FormGroup>
                 <FieldGroup clearable id='app' type='text' placeholder='№ заявки' name='app' />
                 <FieldGroup clearable id='manager' type='text' placeholder='ФИО менеджера' name='manager' />
-                <ButtonToolbar>
-                  <Button type='submit'><Glyphicon glyph='search' /> Найти</Button>
-                  <Button type='reset'><Glyphicon glyph='remove-sign' /> Очистить</Button>
-                </ButtonToolbar>
-              </Form>
-            </Panel>
-          </PanelGroup>
+                <BS.ButtonToolbar>
+                  <BS.Button type='submit'><BS.Glyphicon glyph='search' /> Найти</BS.Button>
+                  <BS.Button type='reset'><BS.Glyphicon glyph='remove-sign' /> Очистить</BS.Button>
+                </BS.ButtonToolbar>
+              </BS.Form>
+            </BS.Panel>
+          </BS.PanelGroup>
 
-        </Col>
+        </BS.Col>
 
-        <Col sm={9}>
-          <Table striped hover responsive>
+        <BS.Col sm={9}>
+          <BS.Table striped hover responsive>
             <thead>
               <tr>
                 <th></th>
@@ -86,10 +82,10 @@ function App(props) {
             <tbody>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
-                   <Label bsStyle='danger'>new</Label>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
+                   <BS.Label bsStyle='danger'>new</BS.Label>
                 </td>
                 <td>
                   <div>850118400153</div>
@@ -116,9 +112,9 @@ function App(props) {
               </tr>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td></td>
                 <td>
@@ -140,9 +136,9 @@ function App(props) {
               </tr>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td>
                   <div>850118400153</div>
@@ -169,9 +165,9 @@ function App(props) {
               </tr>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td></td>
                 <td>
@@ -193,9 +189,9 @@ function App(props) {
               </tr>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td></td>
                 <td>
@@ -217,9 +213,9 @@ function App(props) {
               </tr>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td>
                   <div>850118400153</div>
@@ -246,9 +242,9 @@ function App(props) {
               </tr>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td></td>
                 <td>
@@ -270,9 +266,9 @@ function App(props) {
               </tr>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td></td>
                 <td>
@@ -294,9 +290,9 @@ function App(props) {
               </tr>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td>
                   <div>850118400153</div>
@@ -323,9 +319,9 @@ function App(props) {
               </tr>
               <tr>
                 <td>
-                  <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
-                    <Button><Glyphicon glyph='pencil' /></Button>
-                  </OverlayTrigger>
+                  <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
+                    <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
+                  </BS.OverlayTrigger>
                 </td>
                 <td></td>
                 <td>
@@ -346,13 +342,13 @@ function App(props) {
                 <td></td>
               </tr>
             </tbody>
-          </Table>
+          </BS.Table>
 
-          <Pagination prev next ellipsis boundaryLinks items={20} maxButtons={5} activePage={20} />
-        </Col>
+          <BS.Pagination prev next ellipsis boundaryLinks items={20} maxButtons={5} activePage={20} />
+        </BS.Col>
 
-      </Row>
-    </Grid>
+      </BS.Row>
+    </BS.Grid>
   );
 }
 

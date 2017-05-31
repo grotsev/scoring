@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Form, ListGroup, ListGroupItem, Button, Glyphicon } from 'react-bootstrap';
+import * as BS from 'react-bootstrap';
 
 import FieldGroup from './FieldGroup';
 import {fetchQuery} from '../environmentFactory';
@@ -31,13 +31,13 @@ class AuthenticationForm extends React.Component {
 
   render() {
     return (
-      <Form inline onSubmit={this._handleSubmit}>
+      <BS.Form inline onSubmit={this._handleSubmit}>
         <FieldGroup id='login' type='text' label='Login' name='login' value={this.state.login} onChange={this._handleChange} />
         {' '}
         <FieldGroup id='password' type='password' label='Password' name='password' value={this.state.password} onChange={this._handleChange} />
         {' '}
-        <Button type="submit"><Glyphicon glyph='log-in' /> Log in</Button>
-      </Form>
+        <BS.Button type="submit"><BS.Glyphicon glyph='log-in' /> Log in</BS.Button>
+      </BS.Form>
     );
   }
 
@@ -167,14 +167,14 @@ class Auth extends React.Component {
     if (this.state.roles) {
       if (this.state.roles.length > 0) {
         return <div>
-          <Button onClick={this.logout}><Glyphicon glyph='log-out' /> Log out</Button>
-          <ListGroup>
+          <BS.Button onClick={this.logout}><BS.Glyphicon glyph='log-out' /> Log out</BS.Button>
+          <BS.ListGroup>
             {this.state.roles.map((node) =>
-              <ListGroupItem key={node.role} onClick={(event) => {this._handleChangeRole(node.role)}}>
+              <BS.ListGroupItem key={node.role} onClick={(event) => {this._handleChangeRole(node.role)}}>
                 {node.role}
-              </ListGroupItem>
+              </BS.ListGroupItem>
             )}
-          </ListGroup>
+          </BS.ListGroup>
         </div>
       } else {
         return <div>No roles</div>
