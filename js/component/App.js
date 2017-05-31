@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, Panel, Badge, Label, ListGroup, ListGroupItem,
   Form, FormGroup, FormControl, ControlLabel, PanelGroup,
   ButtonToolbar, Button, Glyphicon, OverlayTrigger, Tooltip, InputGroup,
-  Table
+  Table, Pagination
 } from 'react-bootstrap';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import moment from 'moment';
@@ -89,6 +89,7 @@ function App(props) {
                   <OverlayTrigger overlay={<Tooltip id='new'>Edit</Tooltip>}>
                     <Button><Glyphicon glyph='pencil' /></Button>
                   </OverlayTrigger>
+                   <Label bsStyle='danger'>new</Label>
                 </td>
                 <td>
                   <div>850118400153</div>
@@ -346,6 +347,8 @@ function App(props) {
               </tr>
             </tbody>
           </Table>
+
+          <Pagination prev next ellipsis boundaryLinks items={20} maxButtons={5} activePage={20} />
         </Col>
 
       </Row>
