@@ -14,12 +14,12 @@ function App(props) {
           
           <BS.Panel header='Stage'>
             <BS.ListGroup fill>
-              <BS.ListGroupItem>Все <BS.Badge pullRight>20</BS.Badge> <BS.Label bsStyle='danger'>4 new</BS.Label></BS.ListGroupItem>
-              <BS.ListGroupItem>Доработки <BS.Badge pullRight>3</BS.Badge> <BS.Label bsStyle='danger'>1 new</BS.Label></BS.ListGroupItem>
-              <BS.ListGroupItem>Привлечение <BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='danger'>2 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Все <BS.Badge pullRight>20</BS.Badge> <BS.Label bsStyle='info'>4 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Доработки <BS.Badge pullRight>3</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Привлечение <BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='info'>2 new</BS.Label></BS.ListGroupItem>
               <BS.ListGroupItem>Заявка <BS.Badge pullRight>0</BS.Badge></BS.ListGroupItem>
               <BS.ListGroupItem>Отказано системой <BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
-              <BS.ListGroupItem>Отказные ожидание <BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='danger'>1 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Отказные ожидание <BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
               <BS.ListGroupItem>Не активные <BS.Badge pullRight>0</BS.Badge></BS.ListGroupItem>
               <BS.ListGroupItem>Завершённые <BS.Badge pullRight>12</BS.Badge></BS.ListGroupItem>
             </BS.ListGroup>
@@ -85,7 +85,7 @@ function App(props) {
                   <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
                     <BS.Button><BS.Glyphicon glyph='pencil' /></BS.Button>
                   </BS.OverlayTrigger>
-                   <BS.Label bsStyle='danger'>new</BS.Label>
+                   <BS.Label bsStyle='info'>new</BS.Label>
                 </td>
                 <td>
                   <div>850118400153</div>

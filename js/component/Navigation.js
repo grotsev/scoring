@@ -50,9 +50,9 @@ function Navigation(props) {
             <LinkContainer to="/dictionary/r"><BS.MenuItem>Цель кредитования</BS.MenuItem></LinkContainer>
           </BS.NavDropdown>
         </BS.Nav>
-        <BS.Nav pullRight>
-          <BS.NavItem onClick={props.logout}><BS.Glyphicon glyph='log-out' /> Log out</BS.NavItem>
-        </BS.Nav>
+        <BS.Navbar.Form pullRight>
+          <BS.Button onClick={props.logout}><BS.Glyphicon glyph='log-out' /> Log out</BS.Button>
+        </BS.Navbar.Form>
       </BS.Navbar.Collapse>
     </BS.Navbar>
   );
