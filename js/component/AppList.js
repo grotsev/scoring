@@ -14,13 +14,17 @@ export default function AppList(props) {
         <BS.Col sm={3}>
           
           <BS.Panel>
+            <BS.Button bsStyle='primary' block fill>Create</BS.Button>
+          </BS.Panel>
+
+          <BS.Panel>
             <BS.ListGroup fill>
-              <BS.ListGroupItem>Все<BS.Badge pullRight>20</BS.Badge> <BS.Label bsStyle='info'>4 new</BS.Label></BS.ListGroupItem>
-              <BS.ListGroupItem>Доработки<BS.Badge pullRight>3</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
-              <BS.ListGroupItem>Привлечение<BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='info'>2 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Все<BS.Badge pullRight>20</BS.Badge> <BS.Label bsStyle='danger'>4 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Доработки<BS.Badge pullRight>3</BS.Badge> <BS.Label bsStyle='danger'>1 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Привлечение<BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='danger'>2 new</BS.Label></BS.ListGroupItem>
               <BS.ListGroupItem>Заявка</BS.ListGroupItem>
               <BS.ListGroupItem>Отказано системой<BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
-              <BS.ListGroupItem>Отказные ожидание<BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='info'>1 new</BS.Label></BS.ListGroupItem>
+              <BS.ListGroupItem>Отказные ожидание<BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='danger'>1 new</BS.Label></BS.ListGroupItem>
               <BS.ListGroupItem>Не активные</BS.ListGroupItem>
               <BS.ListGroupItem>Завершённые<BS.Badge pullRight>12</BS.Badge></BS.ListGroupItem>
               <BS.ListGroupItem><BS.Glyphicon glyph='star' /> Помеченные<BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
@@ -131,7 +135,7 @@ export default function AppList(props) {
                     </BS.OverlayTrigger>
                   </div>
                   <div>
-                    <BS.Label bsStyle='info'>new</BS.Label>
+                    <BS.Label bsStyle='danger'>new</BS.Label>
                   </div>
                 </td>
                 <td></td>
@@ -201,7 +205,7 @@ export default function AppList(props) {
                     </BS.OverlayTrigger>
                   </div>
                   <div>
-                    <BS.Label bsStyle='info'>new</BS.Label>
+                    <BS.Label bsStyle='danger'>new</BS.Label>
                   </div>
                 </td>
                 <td></td>
