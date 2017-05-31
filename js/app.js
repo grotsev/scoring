@@ -15,6 +15,7 @@ import {
 import {environment as environmentFactory} from './environmentFactory';
 import Auth from './component/Auth';
 import Navigation from './component/Navigation';
+import AppList from './component/AppList';
 import App from './component/App';
 import CountryDict from './component/CountryDict';
 
@@ -27,9 +28,10 @@ ReactDOM.render(
           <Navigation logout={logout}/>
           <main>
             
-            <Route path="/app" render={() => <App />} />
+            <Route exact path='/app' render={() => <AppList />} />
+            <Route path='/app/:app' component={App} />
 
-            <Route path="/dictionary/country" render={() => (
+            <Route path='/dictionary/country' render={() => (
               <QueryRenderer environment={environmentFactory(token)}
                 query={graphql`
                   query appQuery {
