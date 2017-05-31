@@ -14,7 +14,7 @@ export default function AppList(props) {
         <BS.Col sm={3}>
           
           <BS.Panel>
-            <BS.Button bsStyle='primary' block fill>Create</BS.Button>
+            <BS.Button bsStyle='primary' block fill><BS.Glyphicon glyph='plus-sign' /> Create</BS.Button>
           </BS.Panel>
 
           <BS.Panel>
