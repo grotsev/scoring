@@ -3285,6 +3285,10 @@ react-static-container@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-static-container/-/react-static-container-1.0.1.tgz#694c0dd68a896b879519afb548399cc1989c9ab0"
 
+react-treeview@^0.4.6:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/react-treeview/-/react-treeview-0.4.6.tgz#c4e5d209ab6dc736c4e8c51410d37821c41ce061"
+
 react@^15.5.4:
   version "15.5.4"
   resolved "https://registry.yarnpkg.com/react/-/react-15.5.4.tgz#fa83eb01506ab237cdc1c8c3b1cea8de012bf047"
