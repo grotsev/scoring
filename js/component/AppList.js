@@ -14,7 +14,7 @@ export default function AppList(props) {
         <BS.Col sm={3}>
           
           <BS.Panel>
-            <BS.Button bsStyle='primary' block fill><BS.Glyphicon glyph='plus-sign' /> Create</BS.Button>
+            <BS.Button bsStyle='primary' block fill><span className='fa fa-plus' /> Create</BS.Button>
           </BS.Panel>
 
           <BS.Panel>
@@ -27,7 +27,7 @@ export default function AppList(props) {
               <BS.ListGroupItem>Отказные ожидание<BS.Badge pullRight>2</BS.Badge> <BS.Label bsStyle='danger'>1 new</BS.Label></BS.ListGroupItem>
               <BS.ListGroupItem>Не активные</BS.ListGroupItem>
               <BS.ListGroupItem>Завершённые<BS.Badge pullRight>12</BS.Badge></BS.ListGroupItem>
-              <BS.ListGroupItem><BS.Glyphicon glyph='star' /> Помеченные<BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
+              <BS.ListGroupItem><span className='fa fa-bookmark' /> Помеченные<BS.Badge pullRight>1</BS.Badge></BS.ListGroupItem>
             </BS.ListGroup>
           </BS.Panel>
           
@@ -43,15 +43,15 @@ export default function AppList(props) {
                   <DateRangePicker startDate={moment('2017-01-01')} endDate={moment('2017-02-03')}>
                     <BS.InputGroup>
                       <BS.FormControl placeholder='Дата заявки с ... по ...'/>
-                      <BS.InputGroup.Button><BS.Button><BS.Glyphicon glyph='remove-sign' /></BS.Button></BS.InputGroup.Button>
+                      <BS.InputGroup.Button><BS.Button><span className='fa fa-times-circle' /></BS.Button></BS.InputGroup.Button>
                     </BS.InputGroup>
                   </DateRangePicker>
                 </BS.FormGroup>
                 <FieldGroup clearable id='app' type='text' placeholder='№ заявки' name='app' />
                 <FieldGroup clearable id='manager' type='text' placeholder='ФИО менеджера' name='manager' />
                 <BS.ButtonToolbar>
-                  <BS.Button type='submit' bsStyle='primary'><BS.Glyphicon glyph='search' /> Найти</BS.Button>
-                  <BS.Button type='reset'><BS.Glyphicon glyph='remove-sign' /> Очистить</BS.Button>
+                  <BS.Button type='submit' bsStyle='primary'><span className='fa fa-search' /> Найти</BS.Button>
+                  <BS.Button type='reset'><span className='fa fa-times-circle' /> Очистить</BS.Button>
                 </BS.ButtonToolbar>
               </BS.Form>
             </BS.Panel>
@@ -90,12 +90,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Unmark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star' />
+                      <span className='fa fa-bookmark' />
                     </BS.OverlayTrigger>
                   </div>
                 </td>
@@ -126,12 +126,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star-empty' />
+                      <span className='fa fa-bookmark-o' />
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -160,12 +160,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star-empty' />
+                      <span className='fa fa-bookmark-o' />
                     </BS.OverlayTrigger>
                   </div>
                 </td>
@@ -196,12 +196,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star-empty' />
+                      <span className='fa fa-bookmark-o' />
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -230,12 +230,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star-empty' />
+                      <span className='fa fa-bookmark-o' />
                     </BS.OverlayTrigger>
                   </div>
                 </td>
@@ -261,12 +261,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star-empty' />
+                      <span className='fa fa-bookmark-o' />
                     </BS.OverlayTrigger>
                   </div>
                 </td>
@@ -297,12 +297,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star-empty' />
+                      <span className='fa fa-bookmark-o' />
                     </BS.OverlayTrigger>
                   </div>
                 </td>
@@ -328,12 +328,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star-empty' />
+                      <span className='fa fa-bookmark-o' />
                     </BS.OverlayTrigger>
                   </div>
                 </td>
@@ -359,12 +359,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star-empty' />
+                      <span className='fa fa-bookmark-o' />
                     </BS.OverlayTrigger>
                   </div>
                 </td>
@@ -395,12 +395,12 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><BS.Glyphicon glyph='pencil' /></RT.Link>
+                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Mark</BS.Tooltip>}>
-                      <BS.Glyphicon glyph='star-empty' />
+                      <span className='fa fa-bookmark-o' />
                     </BS.OverlayTrigger>
                   </div>
                 </td>

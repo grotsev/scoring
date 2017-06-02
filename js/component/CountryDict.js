@@ -25,7 +25,7 @@ function CountryTable(props) {
       <BS.ButtonToolbar>
         <BS.ButtonGroup>
           <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>New</BS.Tooltip>}>
-            <BS.Button><BS.Glyphicon glyph='plus' /></BS.Button>
+            <BS.Button><span className='fa fa-plus' /></BS.Button>
           </BS.OverlayTrigger>
         </BS.ButtonGroup>
         <BS.ButtonGroup>
@@ -35,7 +35,7 @@ function CountryTable(props) {
                 <BS.FormControl type='text' />
                 <BS.InputGroup.Button>
                   <BS.OverlayTrigger overlay={<BS.Tooltip id='filter'>Filter</BS.Tooltip>}>
-                    <BS.Button><BS.Glyphicon glyph='filter' /></BS.Button>
+                    <BS.Button><span className='fa fa-filter' /></BS.Button>
                   </BS.OverlayTrigger>
                 </BS.InputGroup.Button>
               </BS.InputGroup>

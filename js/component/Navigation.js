@@ -51,7 +51,7 @@ function Navigation(props) {
           </BS.NavDropdown>
         </BS.Nav>
         <BS.Navbar.Form pullRight>
-          <BS.Button onClick={props.logout}><BS.Glyphicon glyph='log-out' /> Log out</BS.Button>
+          <BS.Button onClick={props.logout}><span className='fa fa-sign-out' /> Log out</BS.Button>
         </BS.Navbar.Form>
       </BS.Navbar.Collapse>
     </BS.Navbar>

@@ -9,7 +9,7 @@ export default function FieldGroup({ id, label, help, clearable, ...props }) {
       {' '}
       <BS.InputGroup>
         <BS.FormControl {...props} />
-        {clearable && <BS.InputGroup.Button><BS.Button><BS.Glyphicon glyph='remove-sign' /></BS.Button></BS.InputGroup.Button>}
+        {clearable && <BS.InputGroup.Button><BS.Button><span className='fa fa-times-circle' /></BS.Button></BS.InputGroup.Button>}
       </BS.InputGroup>
       {help && <HelpBlock>{help}</HelpBlock>}
     </BS.FormGroup>

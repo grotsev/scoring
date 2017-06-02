@@ -36,7 +36,7 @@ class AuthenticationForm extends React.Component {
         {' '}
         <FieldGroup id='password' type='password' label='Password' name='password' value={this.state.password} onChange={this._handleChange} />
         {' '}
-        <BS.Button type="submit"><BS.Glyphicon glyph='log-in' /> Log in</BS.Button>
+        <BS.Button type="submit"><span className='fa fa-sign-in' /> Log in</BS.Button>
       </BS.Form>
     );
   }
@@ -167,7 +167,7 @@ class Auth extends React.Component {
     if (this.state.roles) {
       if (this.state.roles.length > 0) {
         return <div>
-          <BS.Button onClick={this.logout}><BS.Glyphicon glyph='log-out' /> Log out</BS.Button>
+          <BS.Button onClick={this.logout}><span className='fa fa-sign-out' /> Log out</BS.Button>
           <BS.ListGroup>
             {this.state.roles.map((node) =>
               <BS.ListGroupItem key={node.role} onClick={(event) => {this._handleChangeRole(node.role)}}>
