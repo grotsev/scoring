@@ -9,12 +9,76 @@ export default function App(props) {
       <BS.Row>
 
         <BS.Col sm={6}>
-            
-            <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Этап</span>}>
-              <div>Заявка</div>
-              <div>Служба безопасности</div>
-            </TreeView>
+          <BS.PanelGroup defaultActiveKey='14' accordion>
+            <BS.Panel eventKey='1' header='Привлечение' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+              <BS.ListGroup>
+                <BS.ListGroupItem>Фамилия: Пушкин</BS.ListGroupItem>
+                <BS.ListGroupItem>Имя: Александр</BS.ListGroupItem>
+                <BS.ListGroupItem>Отчество: Сергеевич</BS.ListGroupItem>
+              </BS.ListGroup>
+            </BS.Panel>
+            <BS.Panel eventKey='2' header='Заявка' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='3' header='Верификация' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='4' header='Заявка' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='5' header='Оценка залогового имущества' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='6' header='Юридическая проверка' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='7' header='Служба безопасности' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='8' header='Управление кредитными рисками' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='9' header='КК по розничному бизнесу' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='10' header='Кредитный комитет филиала' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='11' header='Дополнительная юридическая экспертиза' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='12' header='Подписание договора' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='13' header='Регистрация залога' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
+            </BS.Panel>
+            <BS.Panel eventKey='14' bsStyle='primary' header='Заявка'>
+              <BS.ListGroup>
+                <BS.ListGroupItem header='ИИН'>123456789012</BS.ListGroupItem>
+                <BS.ListGroupItem header='Сервис налогового комитета'>
+                  <BS.ListGroup>
+                    <BS.ListGroupItem header='Фамилия'>Пушкин</BS.ListGroupItem>
+                    <BS.ListGroupItem header='Имя'>Александр</BS.ListGroupItem>
+                    <BS.ListGroupItem header='Отчество'>Сергеевич</BS.ListGroupItem>
+                  </BS.ListGroup>
+                </BS.ListGroupItem>
+                <BS.ListGroupItem header='Фамилия'>Пушкин</BS.ListGroupItem>
+                <BS.ListGroupItem header='Имя'>Александр</BS.ListGroupItem>
+                <BS.ListGroupItem header='Отчество'>Сергеевич</BS.ListGroupItem>
+                <BS.ListGroupItem header='Продукт'>Кредит</BS.ListGroupItem>
+                <BS.ListGroupItem header='Валюта'>KZT</BS.ListGroupItem>
+                <BS.ListGroupItem header='Запрашиваемая сумма'>100&nbsp;000</BS.ListGroupItem>
+                <BS.ListGroupItem>Доходы
+                  <BS.ListGroup>
+                    <BS.ListGroupItem>Оклад за последний месяц: 500</BS.ListGroupItem>
+                    <BS.ListGroupItem>Средняя сумма ежемесячных доходов / по справке о з/п: 500</BS.ListGroupItem>
+                  </BS.ListGroup>
+                </BS.ListGroupItem>
+              </BS.ListGroup>
+              <BS.ButtonToolbar>
+                <BS.Button bsStyle='primary'>Далее</BS.Button>
+                <BS.Button disabled>Завершить работу</BS.Button>
+                <BS.Button>Отменить изменения</BS.Button>
+              </BS.ButtonToolbar>
+            </BS.Panel>
+            <BS.Panel eventKey='15' bsStyle='primary' header='Служба безопасности'>
+              <BS.ButtonToolbar>
+                <BS.Button bsStyle='primary'>Взять в работу</BS.Button>
+              </BS.ButtonToolbar>
+            </BS.Panel>
+          </BS.PanelGroup>
+        </BS.Col>
 
+        <BS.Col sm={6}>
             <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Информация по займу</span>}>
               <div>Продукт</div>
               <div>Запрашиваемая сумма</div>
@@ -147,10 +211,6 @@ export default function App(props) {
               <div>Ежемесячный платёж предложения</div>
               <div>Клиент согласен: <span className='fa fa-check text-success' /> да</div>
             </TreeView>
-        </BS.Col>
-
-        <BS.Col sm={6}>
-
         </BS.Col>
 
       </BS.Row>
