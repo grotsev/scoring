@@ -15,6 +15,15 @@ export default function Application(props) {
         </BS.Col>
 
         <BS.Col sm={9}>
+
+            <BS.Tabs defaultActiveKey={1} id='root'>
+              <BS.Tab eventKey={1} title='Займ'>Займ</BS.Tab>
+              <BS.Tab eventKey={2} title='Лица'>Лица</BS.Tab>
+              <BS.Tab eventKey={3} title='Адреса'>Адреса</BS.Tab>
+              <BS.Tab eventKey={4} title='Электронное досье'>Электронное досье</BS.Tab>
+              <BS.Tab eventKey={5} title='Предварительное предложение'>Предварительное предложение</BS.Tab>
+            </BS.Tabs>
+
             <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Займ</span>}>
               <div>Продукт</div>
               <div>Запрашиваемая сумма</div>
