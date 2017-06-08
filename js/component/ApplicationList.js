@@ -7,7 +7,7 @@ import * as RT from 'react-router-dom';
 import FieldGroup from './FieldGroup';
 
 
-export default function AppList(props) {
+export default function ApplicationList(props) {
   return (
     <BS.Grid fluid>
       <BS.Row>
@@ -47,7 +47,7 @@ export default function AppList(props) {
                     </BS.InputGroup>
                   </DateRangePicker>
                 </BS.FormGroup>
-                <FieldGroup clearable id='app' type='text' placeholder='№ заявки' name='app' />
+                <FieldGroup clearable id='application' type='text' placeholder='№ заявки' name='application' />
                 <FieldGroup clearable id='manager' type='text' placeholder='ФИО менеджера' name='manager' />
                 <BS.ButtonToolbar>
                   <BS.Button type='submit' bsStyle='primary'><span className='fa fa-search' /> Найти</BS.Button>
@@ -90,7 +90,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -126,7 +126,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -160,7 +160,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -196,7 +196,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -230,7 +230,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -261,7 +261,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -297,7 +297,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -328,7 +328,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -359,7 +359,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>
@@ -395,7 +395,7 @@ export default function AppList(props) {
                 <td>
                   <div>
                     <BS.OverlayTrigger overlay={<BS.Tooltip id='new'>Edit</BS.Tooltip>}>
-                      <RT.Link to='app/1'><span className='fa fa-pencil' /></RT.Link>
+                      <RT.Link to='application/1'><span className='fa fa-pencil' /></RT.Link>
                     </BS.OverlayTrigger>
                   </div>
                   <div>

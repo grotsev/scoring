@@ -18,13 +18,13 @@ function Navigation(props) {
       </BS.Navbar.Header>
       <BS.Navbar.Collapse>
         <BS.Nav>
-          <LinkContainer to="/app"><BS.NavItem eventKey={2}>Applications</BS.NavItem></LinkContainer>
+          <LinkContainer to="/application"><BS.NavItem eventKey={2}>Applications</BS.NavItem></LinkContainer>
           <BS.NavDropdown eventKey={1} title='Reports' id='report'>
             <LinkContainer to="/report/detail"><BS.MenuItem>Detail</BS.MenuItem></LinkContainer>
             <LinkContainer to="/report/rejection"><BS.MenuItem>Rejection</BS.MenuItem></LinkContainer>
             <LinkContainer to="/report/service-call"><BS.MenuItem>Service calls</BS.MenuItem></LinkContainer>
-            <LinkContainer to="/report/app-move"><BS.MenuItem>Application movements</BS.MenuItem></LinkContainer>
-            <LinkContainer to="/report/app-activity"><BS.MenuItem>Application activities</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/report/application-move"><BS.MenuItem>Application movements</BS.MenuItem></LinkContainer>
+            <LinkContainer to="/report/application-activity"><BS.MenuItem>Application activities</BS.MenuItem></LinkContainer>
           </BS.NavDropdown>
           <LinkContainer to="/product-indicatory"><BS.NavItem eventKey={2}>Product indicator</BS.NavItem></LinkContainer>
           <BS.NavDropdown eventKey={3} title='Dictionaries' id='dictionary'>

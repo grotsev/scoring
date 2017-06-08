@@ -4,7 +4,7 @@ import TreeView from 'react-treeview';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
-export default function App(props) {
+export default function Application(props) {
   return (
     <BS.Grid fluid>
       <BS.Row>

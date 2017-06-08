@@ -15,8 +15,8 @@ import {
 import {environment as environmentFactory} from './environmentFactory';
 import Auth from './component/Auth';
 import Navigation from './component/Navigation';
-import AppList from './component/AppList';
-import App from './component/App';
+import ApplicationList from './component/ApplicationList';
+import Application from './component/Application';
 import CountryDict from './component/CountryDict';
 
 
@@ -28,8 +28,8 @@ ReactDOM.render(
           <Navigation logout={logout}/>
           <main>
             
-            <Route exact path='/app' render={() => <AppList />} />
-            <Route path='/app/:app' component={App} />
+            <Route exact path='/application' render={() => <ApplicationList />} />
+            <Route path='/application/:application' component={Application} />
 
             <Route path='/dictionary/country' render={() => (
               <QueryRenderer environment={environmentFactory(token)}
