@@ -1,6 +1,10 @@
 import React from 'react';
 import * as BS from 'react-bootstrap';
 import TreeView from 'react-treeview';
+import { LinkContainer } from 'react-router-bootstrap';
+import {
+  Route,
+} from 'react-router-dom';
 
 import ApplicationStageList from './ApplicationStageList'
 
@@ -11,7 +15,39 @@ export default function Application(props) {
       <BS.Row>
 
         <BS.Col sm={3}>
-          <ApplicationStageList />
+          <BS.Nav bsStyle='pills' stacked>
+            <LinkContainer to="/application/1/stage/20170506102030"><BS.NavItem>Займ</BS.NavItem></LinkContainer>
+            <BS.NavDropdown title='Лица' id='person'>
+              <LinkContainer to="/application/1/stage/20170506102131"><BS.MenuItem>ZZZ</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102132"><BS.MenuItem>ZZZ</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102133"><BS.MenuItem>ZZZ</BS.MenuItem></LinkContainer>
+            </BS.NavDropdown>
+            <LinkContainer to="/application/1/stage/20170506102230"><BS.NavItem>Адреса</BS.NavItem></LinkContainer>
+            <LinkContainer to="/application/1/stage/20170506102330"><BS.NavItem>Электронное досье</BS.NavItem></LinkContainer>
+            <LinkContainer to="/application/1/stage/20170506102430"><BS.NavItem>Предварительное предложение</BS.NavItem></LinkContainer>
+            
+            <BS.NavDropdown title='История' id='history'>
+              <LinkContainer to="/application/1/stage/20170506102030"><BS.MenuItem>Привлечение</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102130"><BS.MenuItem>Заявка</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102230"><BS.MenuItem>Верификация</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102330"><BS.MenuItem>Заявка</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102430"><BS.MenuItem>Оценка залогового имущества</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102530"><BS.MenuItem>Юридическая проверка</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102630"><BS.MenuItem>Служба безопасности</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102730"><BS.MenuItem>Управление кредитными рисками</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102830"><BS.MenuItem>КК по розничному бизнесу</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102930"><BS.MenuItem>Кредитный комитет филиала</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506103030"><BS.MenuItem>Дополнительная юридическая экспертиза</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506103130"><BS.MenuItem>Подписание договора</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506103230"><BS.MenuItem>Регистрация залога</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506103330"><BS.MenuItem>Заявка</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506103430"><BS.MenuItem>Служба безопасности
+                <BS.ButtonToolbar>
+                  <BS.Button>Взять в работу</BS.Button>
+                </BS.ButtonToolbar>
+              </BS.MenuItem></LinkContainer>
+            </BS.NavDropdown>
+          </BS.Nav>
         </BS.Col>
 
         <BS.Col sm={9}>
