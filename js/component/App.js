@@ -8,51 +8,33 @@ export default function App(props) {
     <BS.Grid fluid>
       <BS.Row>
 
-        <BS.Col sm={6}>
-          <BS.PanelGroup defaultActiveKey='14' accordion>
-            <BS.Panel eventKey='1' header='Привлечение' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-              <BS.ListGroup>
-                <BS.ListGroupItem>Фамилия: Пушкин</BS.ListGroupItem>
-                <BS.ListGroupItem>Имя: Александр</BS.ListGroupItem>
-                <BS.ListGroupItem>Отчество: Сергеевич</BS.ListGroupItem>
-              </BS.ListGroup>
-            </BS.Panel>
-            <BS.Panel eventKey='2' header='Заявка' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='3' header='Верификация' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='4' header='Заявка' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='5' header='Оценка залогового имущества' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='6' header='Юридическая проверка' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='7' header='Служба безопасности' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='8' header='Управление кредитными рисками' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='9' header='КК по розничному бизнесу' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='10' header='Кредитный комитет филиала' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='11' header='Дополнительная юридическая экспертиза' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='12' header='Подписание договора' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='13' header='Регистрация залога' title='2017-02-02 13:42&ndash;14:18 Иванов Иван Иванович'>
-            </BS.Panel>
-            <BS.Panel eventKey='14' bsStyle='primary' header='Заявка'>
-            </BS.Panel>
-            <BS.Panel eventKey='15' bsStyle='primary' header='Служба безопасности' footer={
+        <BS.Col sm={3}>
+          <BS.Panel>
+            <BS.ListGroup fill>
+              <BS.ListGroupItem>Привлечение</BS.ListGroupItem>
+              <BS.ListGroupItem>Заявка</BS.ListGroupItem>
+              <BS.ListGroupItem>Верификация</BS.ListGroupItem>
+              <BS.ListGroupItem>Заявка</BS.ListGroupItem>
+              <BS.ListGroupItem>Оценка залогового имущества</BS.ListGroupItem>
+              <BS.ListGroupItem>Юридическая проверка</BS.ListGroupItem>
+              <BS.ListGroupItem>Служба безопасности</BS.ListGroupItem>
+              <BS.ListGroupItem>Управление кредитными рисками</BS.ListGroupItem>
+              <BS.ListGroupItem>КК по розничному бизнесу</BS.ListGroupItem>
+              <BS.ListGroupItem>Кредитный комитет филиала</BS.ListGroupItem>
+              <BS.ListGroupItem>Дополнительная юридическая экспертиза</BS.ListGroupItem>
+              <BS.ListGroupItem>Подписание договора</BS.ListGroupItem>
+              <BS.ListGroupItem>Регистрация залога</BS.ListGroupItem>
+              <BS.ListGroupItem active>Заявка</BS.ListGroupItem>
+              <BS.ListGroupItem>Служба безопасности
                 <BS.ButtonToolbar>
                   <BS.Button bsStyle='primary'>Взять в работу</BS.Button>
                 </BS.ButtonToolbar>
-              }>
-            </BS.Panel>
-          </BS.PanelGroup>
+              </BS.ListGroupItem>
+            </BS.ListGroup>
+          </BS.Panel>
         </BS.Col>
 
-        <BS.Col sm={6}>
+        <BS.Col sm={9}>
             <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Займ</span>}>
               <div>Продукт</div>
               <div>Запрашиваемая сумма</div>
