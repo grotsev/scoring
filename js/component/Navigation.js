@@ -9,7 +9,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 function Navigation(props) {
   return (
-    <BS.Navbar>
+    <BS.Navbar fluid>
       <BS.Navbar.Header>
         <BS.Navbar.Brand>
           <a href='/'>greetgo! Scoring</a>
@@ -51,6 +51,8 @@ function Navigation(props) {
           </BS.NavDropdown>
         </BS.Nav>
         <BS.Navbar.Form pullRight>
+          <span>Иванов Иван Иванович</span>{' '}
+          <span>Служба безопасности</span>{' '}
           <BS.Button onClick={props.logout}><span className='fa fa-sign-out' /> Log out</BS.Button>
         </BS.Navbar.Form>
       </BS.Navbar.Collapse>
