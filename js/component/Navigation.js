@@ -51,8 +51,8 @@ function Navigation(props) {
           </BS.NavDropdown>
         </BS.Nav>
         <BS.Navbar.Form pullRight>
-          <span>Иванов Иван Иванович</span>{' '}
           <span>Служба безопасности</span>{' '}
+          <span>Иванов Иван Иванович</span>{' '}
           <BS.Button onClick={props.logout}><span className='fa fa-sign-out' /> Log out</BS.Button>
         </BS.Navbar.Form>
       </BS.Navbar.Collapse>

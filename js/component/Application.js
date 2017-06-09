@@ -16,32 +16,37 @@ export default function Application(props) {
 
         <BS.Col sm={3}>
           <BS.Nav bsStyle='pills' stacked>
-            <LinkContainer to="/application/1/stage/20170506102030"><BS.NavItem>Займ</BS.NavItem></LinkContainer>
+            <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.NavItem>Контракт</BS.NavItem></LinkContainer>
+            <LinkContainer to="/application/1/stage/20170506102030/offer"><BS.NavItem>Предварительное предложение</BS.NavItem></LinkContainer>
             <BS.NavDropdown title='Лица' id='person'>
-              <LinkContainer to="/application/1/stage/20170506102131"><BS.MenuItem>ZZZ</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102132"><BS.MenuItem>ZZZ</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102133"><BS.MenuItem>ZZZ</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102030/person/12"><BS.MenuItem>Абисов Абис Абисович</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102030/person/13"><BS.MenuItem>Абисова Абисса Абисовна</BS.MenuItem></LinkContainer>
             </BS.NavDropdown>
-            <LinkContainer to="/application/1/stage/20170506102230"><BS.NavItem>Адреса</BS.NavItem></LinkContainer>
-            <LinkContainer to="/application/1/stage/20170506102330"><BS.NavItem>Электронное досье</BS.NavItem></LinkContainer>
-            <LinkContainer to="/application/1/stage/20170506102430"><BS.NavItem>Предварительное предложение</BS.NavItem></LinkContainer>
-            
+            <BS.NavDropdown title='Адреса' id='address'>
+              <LinkContainer to="/application/1/stage/20170506102030/address/2"><BS.MenuItem>пос. Жансугуров, ул. Абая, 25, кв.2</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102030/address/13"><BS.MenuItem>пос. Жансугуров, ул. Абая, 12, кв.13</BS.MenuItem></LinkContainer>
+            </BS.NavDropdown>
+            <BS.NavDropdown title='Сканы' id='scan'>
+              <LinkContainer to="/application/1/stage/20170506102030/scan/1"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Удостоверение личности / Абисов Абис Абисович</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102030/scan/2"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Удостоверение личности / Абисова Абисса Абисовна</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102030/scan/3"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Свидетельство о браке / Абисовы</BS.MenuItem></LinkContainer>
+            </BS.NavDropdown>
             <BS.NavDropdown title='История' id='history'>
-              <LinkContainer to="/application/1/stage/20170506102030"><BS.MenuItem>Привлечение</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102130"><BS.MenuItem>Заявка</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102230"><BS.MenuItem>Верификация</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102330"><BS.MenuItem>Заявка</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102430"><BS.MenuItem>Оценка залогового имущества</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102530"><BS.MenuItem>Юридическая проверка</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102630"><BS.MenuItem>Служба безопасности</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102730"><BS.MenuItem>Управление кредитными рисками</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102830"><BS.MenuItem>КК по розничному бизнесу</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102930"><BS.MenuItem>Кредитный комитет филиала</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506103030"><BS.MenuItem>Дополнительная юридическая экспертиза</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506103130"><BS.MenuItem>Подписание договора</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506103230"><BS.MenuItem>Регистрация залога</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506103330"><BS.MenuItem>Заявка</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506103430"><BS.MenuItem>Служба безопасности
+              <LinkContainer to="/application/1/stage/20170506100630/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Привлечение</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506100730/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Заявка</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506100830/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Верификация</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506100930/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Заявка</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101030/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Оценка залогового имущества</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101130/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Юридическая проверка</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101230/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Служба безопасности</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101330/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Управление кредитными рисками</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101430/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>КК по розничному бизнесу</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101430/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Кредитный комитет филиала</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101630/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Дополнительная юридическая экспертиза</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101730/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Подписание договора</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101830/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Регистрация залога</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506101930/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Заявка</BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.MenuItem>Служба безопасности
                 <BS.ButtonToolbar>
                   <BS.Button>Взять в работу</BS.Button>
                 </BS.ButtonToolbar>
@@ -52,15 +57,8 @@ export default function Application(props) {
 
         <BS.Col sm={9}>
 
-            <BS.Tabs defaultActiveKey={1} id='root'>
-              <BS.Tab eventKey={1} title='Займ'>Займ</BS.Tab>
-              <BS.Tab eventKey={2} title='Лица'>Лица</BS.Tab>
-              <BS.Tab eventKey={3} title='Адреса'>Адреса</BS.Tab>
-              <BS.Tab eventKey={4} title='Электронное досье'>Электронное досье</BS.Tab>
-              <BS.Tab eventKey={5} title='Предварительное предложение'>Предварительное предложение</BS.Tab>
-            </BS.Tabs>
-
-            <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Займ</span>}>
+          <Route exact path='/application/1/stage/20170506102030/contract' render={() => (
+            <div>
               <div>Продукт</div>
               <div>Запрашиваемая сумма</div>
               <div><span className='node'><span className='fa fa-fw fa-user' /> Заёмщик</span>
@@ -77,10 +75,25 @@ export default function Application(props) {
               <div><span className='node'><span className='fa fa-fw fa-user' /> Залогодатель</span></div>
               <div><span className='node'><span className='fa fa-fw fa-user' /> Гарант</span></div>
               <div><span className='node'><span className='fa fa-fw fa-user' /> Страховщик</span></div>
-            </TreeView>
+            </div>
+          )} />
 
-            <TreeView defaultCollapsed={false} nodeLabel={<span className='node'><span className='fa fa-fw fa-user' /> Лица</span>}>
-              <TreeView defaultCollapsed={false} nodeLabel={<span className='node'><span className='fa fa-fw fa-user' /> Абисов Абис Абисович</span>}>
+          <Route exact path='/application/1/stage/20170506102030/offer' render={() => (
+            <div>
+              <div>Запрашиваемая сумма</div>
+              <div>Сумма предложения</div>
+              <div>Ставка</div>
+              <div>Срок займа (месяцев)</div>
+              <div>Валюта кредита</div>
+              <div>Тип погашения</div>
+              <div>Ежемесячный платёж</div>
+              <div>Ежемесячный платёж предложения</div>
+              <div>Клиент согласен: <span className='fa fa-check text-success' /> да</div>
+            </div>
+          )} />
+
+          <Route exact path='/application/1/stage/20170506102030/person/12' render={() => (
+            <div>
                 <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Лицо</span>}>
                   <span title='Фамилия'>Абисов</span>{' '}
                   <span title='Имя'>Абис</span>{' '}
@@ -154,48 +167,55 @@ export default function Application(props) {
                   <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Друг</span>}>
                   </TreeView>
                 </TreeView>
-              </TreeView>
+            </div>
+          )} />
 
-            </TreeView>
+          <Route exact path='/application/1/stage/20170506102030/person/13' render={() => (
+            <div>
+            </div>
+          )} />
 
-            <TreeView defaultCollapsed={true} nodeLabel={<span className='node'><span className='fa fa-fw fa-home' />Адреса</span>}>
-              <TreeView defaultCollapsed={true} nodeLabel={<span className='node'><span className='fa fa-fw fa-home' /> пос. Жансугуров, ул. Абая, 25, кв.2</span>}>
-                <div>Казахстан</div>
-                <div>Алматинская область</div>
-                <div>Аксуйский район</div>
-                <div>пос. Жансугуров</div>
-                <div>Абая</div>
-                <div>25</div>
-                <div>кв. 2</div>
-                <div>622209</div>
-              </TreeView>
-              <TreeView defaultCollapsed={true} nodeLabel={<span className='node'><span className='fa fa-fw fa-home' /> пос. Жансугуров, ул. Абая, 12, кв.13</span>}>
-                <div>Казахстан</div>
-                <div>Алматинская область</div>
-                <div>Аксуйский район</div>
-                <div>пос. Жансугуров</div>
-                <div>Абая</div>
-                <div>12</div>
-                <div>кв. 13</div>
-                <div>622209</div>
-              </TreeView>
-            </TreeView>
+          <Route exact path='/application/1/stage/20170506102030/address/2' render={() => (
+            <div>
+              <div>Казахстан</div>
+              <div>Алматинская область</div>
+              <div>Аксуйский район</div>
+              <div>пос. Жансугуров</div>
+              <div>Абая</div>
+              <div>25</div>
+              <div>кв. 2</div>
+              <div>622209</div>
+            </div>
+          )} />
 
-            <TreeView defaultCollapsed={true} nodeLabel={<span className='node'><span className='fa fa-fw fa-file' />Электронное досье</span>}>
-              <div>4</div>
-              <div>5</div>
-            </TreeView>
-            <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Предварительное предложение</span>}>
-              <div>Запрашиваемая сумма</div>
-              <div>Сумма предложения</div>
-              <div>Ставка</div>
-              <div>Срок займа (месяцев)</div>
-              <div>Валюта кредита</div>
-              <div>Тип погашения</div>
-              <div>Ежемесячный платёж</div>
-              <div>Ежемесячный платёж предложения</div>
-              <div>Клиент согласен: <span className='fa fa-check text-success' /> да</div>
-            </TreeView>
+          <Route exact path='/application/1/stage/20170506102030/address/13' render={() => (
+            <div>
+              <div>Казахстан</div>
+              <div>Алматинская область</div>
+              <div>Аксуйский район</div>
+              <div>пос. Жансугуров</div>
+              <div>Абая</div>
+              <div>12</div>
+              <div>кв. 13</div>
+              <div>622209</div>
+            </div>
+          )} />
+
+          <Route exact path='/application/1/stage/20170506102030/scan/1' render={() => (
+            <div>
+            </div>
+          )} />
+
+          <Route exact path='/application/1/stage/20170506102030/scan/2' render={() => (
+            <div>
+            </div>
+          )} />
+
+          <Route exact path='/application/1/stage/20170506102030/scan/3' render={() => (
+            <div>
+            </div>
+          )} />
+
         </BS.Col>
 
       </BS.Row>
