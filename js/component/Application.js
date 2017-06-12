@@ -4,9 +4,14 @@ import TreeView from 'react-treeview';
 import { LinkContainer } from 'react-router-bootstrap';
 import {
   Route,
+  Link,
+  Redirect,
 } from 'react-router-dom';
+import moment from 'moment';
+import DateRangePicker from 'react-bootstrap-daterangepicker';
 
 import ApplicationStageList from './ApplicationStageList'
+import FieldGroup from './FieldGroup';
 
 
 export default function Application(props) {
@@ -15,10 +20,14 @@ export default function Application(props) {
       <BS.Row>
 
         <BS.Col sm={3}>
+          <BS.Panel>
+            <BS.Button bsStyle='primary' block fill><span className='fa fa-play' /> Взять в работу</BS.Button>
+          </BS.Panel>
+
           <BS.Nav bsStyle='pills' stacked>
             <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.NavItem>Контракт</BS.NavItem></LinkContainer>
             <LinkContainer to="/application/1/stage/20170506102030/offer"><BS.NavItem>Предварительное предложение</BS.NavItem></LinkContainer>
-            <BS.NavDropdown title='Лица' id='person'>
+            <BS.NavDropdown title='Физические лица' id='person'>
               <LinkContainer to="/application/1/stage/20170506102030/person/12"><BS.MenuItem>Абисов Абис Абисович</BS.MenuItem></LinkContainer>
               <LinkContainer to="/application/1/stage/20170506102030/person/13"><BS.MenuItem>Абисова Абисса Абисовна</BS.MenuItem></LinkContainer>
             </BS.NavDropdown>
@@ -58,24 +67,115 @@ export default function Application(props) {
         <BS.Col sm={9}>
 
           <Route exact path='/application/1/stage/20170506102030/contract' render={() => (
-            <div>
-              <div>Продукт</div>
-              <div>Запрашиваемая сумма</div>
-              <div><span className='node'><span className='fa fa-fw fa-user' /> Заёмщик</span>
-                <BS.FormControl componentClass='select'>
-                  <option>Нет</option>
-                  <option>Абисов Абис Абисович</option>
-                  <option>Абисова Абисса Абисовна</option>
-                  <option>{'{88141234-1234-5124-9700-000012233445}'}</option>
-                </BS.FormControl>
-                <BS.Button><span className='fa fa-fw fa-plus' /> Создать</BS.Button>
-              </div>
-              <div><span className='node'><span className='fa fa-fw fa-user' /> Созаёмщик</span></div>
-              <div><span className='node'><span className='fa fa-fw fa-user' /> Залогодатель</span></div>
-              <div><span className='node'><span className='fa fa-fw fa-user' /> Залогодатель</span></div>
-              <div><span className='node'><span className='fa fa-fw fa-user' /> Гарант</span></div>
-              <div><span className='node'><span className='fa fa-fw fa-user' /> Страховщик</span></div>
-            </div>
+            <BS.Form horizontal>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4} componentClass={BS.ControlLabel}>Продукт</BS.Col>
+                <BS.Col sm={8}>
+                  <BS.FormControl componentClass='select'>
+                    <option></option>
+                    <option>Кредит</option>
+                    <option>Депозит</option>
+                  </BS.FormControl>
+                </BS.Col>
+              </BS.FormGroup>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4} componentClass={BS.ControlLabel}>Сумма</BS.Col>
+                <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
+              </BS.FormGroup>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4} componentClass={BS.ControlLabel}>Валюта</BS.Col>
+                <BS.Col sm={8}>
+                  <BS.FormControl componentClass='select'>
+                    <option></option>
+                    <option>USD</option>
+                    <option>KZT</option>
+                  </BS.FormControl>
+                </BS.Col>
+              </BS.FormGroup>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4} componentClass={BS.ControlLabel}>Заёмщик</BS.Col>
+                <BS.Col sm={8}>
+                  <BS.Button><span className='fa fa-fw fa-plus' /> Добавить</BS.Button>
+                </BS.Col>
+              </BS.FormGroup>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4}></BS.Col>
+                <BS.Col sm={8}>
+                  <BS.InputGroup>
+                    <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
+                    <BS.FormControl componentClass='select'>
+                      <option></option>
+                      <option>Абисов Абис Абисович</option>
+                      <option>Абисова Абисса Абисовна</option>
+                      <option>[Новое физическое лицо]</option>
+                      <option>[Новое юридическое лицо]</option>
+                    </BS.FormControl>
+                    <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                  </BS.InputGroup>
+                </BS.Col>
+              </BS.FormGroup>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4} componentClass={BS.ControlLabel}>Залогодатель</BS.Col>
+                <BS.Col sm={8}>
+                  <BS.Button><span className='fa fa-fw fa-plus' /> Добавить</BS.Button>
+                </BS.Col>
+              </BS.FormGroup>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4} componentClass={BS.ControlLabel}>Гарант</BS.Col>
+                <BS.Col sm={8}>
+                  <BS.Button><span className='fa fa-fw fa-plus' /> Добавить</BS.Button>
+                </BS.Col>
+              </BS.FormGroup>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4} componentClass={BS.ControlLabel}>Страховщик</BS.Col>
+                <BS.Col sm={8}>
+                  <BS.Button><span className='fa fa-fw fa-plus' /> Добавить</BS.Button>
+                </BS.Col>
+              </BS.FormGroup>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4}></BS.Col>
+                <BS.Col sm={8}>
+                  <BS.InputGroup>
+                    <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
+                    <BS.FormControl componentClass='select'>
+                      <option></option>
+                      <option>Абисов Абис Абисович</option>
+                      <option>Абисова Абисса Абисовна</option>
+                      <option>[Новое физическое лицо]</option>
+                      <option>[Новое юридическое лицо]</option>
+                    </BS.FormControl>
+                    <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                  </BS.InputGroup>
+                </BS.Col>
+              </BS.FormGroup>
+
+              <BS.FormGroup controlId='product'>
+                <BS.Col sm={4}></BS.Col>
+                <BS.Col sm={8}>
+                  <BS.InputGroup>
+                    <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
+                    <BS.FormControl componentClass='select'>
+                      <option></option>
+                      <option>Абисов Абис Абисович</option>
+                      <option>Абисова Абисса Абисовна</option>
+                      <option>[Новое физическое лицо]</option>
+                      <option>[Новое юридическое лицо]</option>
+                    </BS.FormControl>
+                    <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                  </BS.InputGroup>
+                </BS.Col>
+              </BS.FormGroup>
+
+            </BS.Form>
           )} />
 
           <Route exact path='/application/1/stage/20170506102030/offer' render={() => (
@@ -92,60 +192,409 @@ export default function Application(props) {
             </div>
           )} />
 
-          <Route exact path='/application/1/stage/20170506102030/person/12' render={() => (
+          <Route path='/application/1/stage/20170506102030/person/12' render={() => (
             <div>
-                <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Лицо</span>}>
-                  <span title='Фамилия'>Абисов</span>{' '}
-                  <span title='Имя'>Абис</span>{' '}
-                  <span title='Отчество'>Абисович</span>{' '}
-                  <div title='ИИН'> 123456789012</div>
-                  <div title='Дата рождения'>1980.01.02</div>
-                  <div title='Семейное положение'>В браке</div>
-                  <BS.Image width='96' height='128' title='Фотография' src='images/' />
-                </TreeView>
-                <TreeView defaultCollapsed={false} nodeLabel={<span className='node'><span className='fa fa-fw fa-home' /> Адреса</span>}>
-                    <div>
-                      <span className='fa fa-fw fa-home' /> Адрес регистрации
+              <BS.Nav bsStyle='tabs' style={{marginBottom: 15}}>
+                <LinkContainer to="/application/1/stage/20170506102030/person/12/person"><BS.NavItem>Личные данные</BS.NavItem></LinkContainer>
+                <LinkContainer to="/application/1/stage/20170506102030/person/12/address"><BS.NavItem>Адреса</BS.NavItem></LinkContainer>
+                <LinkContainer to="/application/1/stage/20170506102030/person/12/phone"><BS.NavItem>Телефоны</BS.NavItem></LinkContainer>
+                <LinkContainer to="/application/1/stage/20170506102030/person/12/income"><BS.NavItem>Доходы</BS.NavItem></LinkContainer>
+                <LinkContainer to="/application/1/stage/20170506102030/person/12/expenses"><BS.NavItem>Расходы</BS.NavItem></LinkContainer>
+                <LinkContainer to="/application/1/stage/20170506102030/person/12/employment"><BS.NavItem>Занятость</BS.NavItem></LinkContainer>
+                <LinkContainer to="/application/1/stage/20170506102030/person/12/kin"><BS.NavItem>Контактные лица</BS.NavItem></LinkContainer>
+              </BS.Nav>
+
+              <Route exact path='/application/1/stage/20170506102030/person/12' render={() => (
+                <Redirect to='/application/1/stage/20170506102030/person/12/person' />
+              )}/>
+
+              <Route path='/application/1/stage/20170506102030/person/12/person' render={() => (
+                <BS.Form horizontal>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Фамилия</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' value='Абисов' /></BS.Col>
+                  </BS.FormGroup>
+                  
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Имя</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' value='Абис' /></BS.Col>
+                  </BS.FormGroup>
+                  
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Отчество</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' value='Абисович' /></BS.Col>
+                  </BS.FormGroup>
+                  
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>ИИН</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' value='123456789012' /></BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='dateFromTo'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Дата рождения</BS.Col>
+                    <BS.Col sm={8}>
+                      <DateRangePicker startDate={moment('2017-01-01')} endDate={moment('2017-02-03')}>
+                        <BS.InputGroup>
+                          <BS.FormControl />
+                        </BS.InputGroup>
+                      </DateRangePicker>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Семейное положение</BS.Col>
+                    <BS.Col sm={8}>
                       <BS.FormControl componentClass='select'>
-                        <option>Нет</option>
-                        <option>пос. Жансугуров, ул. Абая, 25, кв.2</option>
-                        <option>пос. Жансугуров, ул. Абая, 12, кв.13</option>
-                        <option>{'{88141234-1234-5124-9700-000012233445}'}</option>
+                        <option></option>
+                        <option>В браке</option>
+                        <option>Вне брака</option>
                       </BS.FormControl>
-                      <BS.Button><span className='fa fa-fw fa-plus' /> Создать</BS.Button>
-                    </div>
-                    <div><span className='fa fa-fw fa-home' /> Фактический адрес <a href='#'>пос. Жансугуров, ул. Абая, 25, кв.2</a></div>
-                    <div><span className='fa fa-fw fa-home' /> Рабочий адрес <a href='#'>пос. Жансугуров, ул. Абая, 12, кв.13</a></div>
-                </TreeView>
-                <TreeView defaultCollapsed={true} nodeLabel={<span className='node text-danger' title='не подтверждено'>Телефоны</span>}>
-                  <div className='text-muted' title='Контактный (не верифицировано)'><span className='fa fa-fw fa-phone' /> +7 701 672 22 22</div>
-                  <div className='text-success' title='Домашний (подтверждено)'><span className='fa fa-fw fa-home' /> +7 701 672 22 22</div>
-                  <div className='text-danger' title='Мобильный (не подтверждено)'><span className='fa fa-fw fa-mobile' /> +7 777 444 90 24</div>
-                  <div className='text-warning' title='Рабочий (сомнительно)'><span className='fa fa-fw fa-industry' /> +7 777 444 90 24</div>
-                </TreeView>
-                <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Доходы</span>}>
-                  <div>Оклад за последний месяц: 500</div>
-                  <div>Средняя сумма ежемесячных доходов / Средняя сумма по справке о з/п: 500</div>
-                  <div>Ежемесячный доход супруга/ги: 500</div>
-                  <div>Дополнительный подтверждённый доход: 500</div>
-                </TreeView>
-                <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Расходы</span>}>
-                  <div>По действующим кредитам</div>
-                  <div>Сумма КЛ на кредитных картах</div>
-                  <div>Расходы на образование (детский сад, школа, институт)</div>
-                  <div>Аренда жилья</div>
-                  <div>Расходы на коммунальные услуги</div>
-                  <div>Расходы на услуги мобильной связи, Интернет и т.п.</div>
-                  <div>Личные платежи</div>
-                  <div>Алименты</div>
-                  <div>Прочие расходы (лечение, помошь родственникам)</div>
-                  <div>Страхование</div>
-                  <div>Комиссии</div>
-                  <div>Годовой налог на транспорт</div>
-                  <div>Итого расходов в месяц</div>
-                </TreeView>
-                <TreeView defaultCollapsed={true} nodeLabel={<span className='node text-muted' title='не верифицировано'>Данные о занятости</span>}>
-                </TreeView>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Фотография</BS.Col>
+                    <BS.Col sm={8}>
+                      <BS.Image width='96' height='128' title='Фотография' src='images/' />
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                </BS.Form>
+              )} />
+
+              <Route path='/application/1/stage/20170506102030/person/12/address' render={() => (
+                <BS.Form horizontal>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Адрес регистрации</BS.Col>
+                    <BS.Col sm={8}>
+                      <BS.InputGroup>
+                        <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
+                        <BS.FormControl componentClass='select'>
+                          <option></option>
+                          <option>пос. Жансугуров, ул. Абая, 25, кв.2</option>
+                          <option>пос. Жансугуров, ул. Абая, 12, кв.13</option>
+                          <option>[Новый]</option>
+                        </BS.FormControl>
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Фактический адрес</BS.Col>
+                    <BS.Col sm={8}>
+                      <BS.InputGroup>
+                        <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
+                        <BS.FormControl componentClass='select'>
+                          <option></option>
+                          <option>пос. Жансугуров, ул. Абая, 25, кв.2</option>
+                          <option>пос. Жансугуров, ул. Абая, 12, кв.13</option>
+                          <option>[Новый]</option>
+                        </BS.FormControl>
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Рабочий адрес</BS.Col>
+                    <BS.Col sm={8}>
+                      <BS.InputGroup>
+                        <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
+                        <BS.FormControl componentClass='select'>
+                          <option></option>
+                          <option>пос. Жансугуров, ул. Абая, 25, кв.2</option>
+                          <option>пос. Жансугуров, ул. Абая, 12, кв.13</option>
+                          <option>[Новый]</option>
+                        </BS.FormControl>
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                </BS.Form>
+              )} />
+
+              <Route path='/application/1/stage/20170506102030/person/12/phone' render={() => (
+                <BS.Form>
+
+                  <BS.Row>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.FormControl componentClass='select' value='MOBILE'>
+                          <option></option>
+                          <option value='MOBILE'>Мобильный</option>
+                          <option value='CONTACT'>Контактный</option>
+                          <option value='WORK'>Рабочий</option>
+                          <option value='HOME'>Домашний</option>
+                        </BS.FormControl>
+                      </BS.FormGroup>
+                    </BS.Col>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.InputGroup>
+                          <BS.FormControl type='tel' value='+7 701 672 22 22' />
+                          <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                        </BS.InputGroup>
+                      </BS.FormGroup>
+                    </BS.Col>
+                  </BS.Row>
+
+                  <BS.Row>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.FormControl componentClass='select' value='MOBILE'>
+                          <option></option>
+                          <option value='MOBILE'>Мобильный</option>
+                          <option value='CONTACT'>Контактный</option>
+                          <option value='WORK'>Рабочий</option>
+                          <option value='HOME'>Домашний</option>
+                        </BS.FormControl>
+                      </BS.FormGroup>
+                    </BS.Col>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.InputGroup>
+                          <BS.FormControl type='tel' value='+7 701 672 22 22' />
+                          <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                        </BS.InputGroup>
+                      </BS.FormGroup>
+                    </BS.Col>
+                  </BS.Row>
+
+                  <BS.Row>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.FormControl componentClass='select' value='MOBILE'>
+                          <option></option>
+                          <option value='MOBILE'>Мобильный</option>
+                          <option value='CONTACT'>Контактный</option>
+                          <option value='WORK'>Рабочий</option>
+                          <option value='HOME'>Домашний</option>
+                        </BS.FormControl>
+                      </BS.FormGroup>
+                    </BS.Col>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.InputGroup>
+                          <BS.FormControl type='tel' value='+7 701 672 22 22' />
+                          <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                        </BS.InputGroup>
+                      </BS.FormGroup>
+                    </BS.Col>
+                  </BS.Row>
+
+                  <BS.Row>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.FormControl componentClass='select' value='MOBILE'>
+                          <option></option>
+                          <option value='MOBILE'>Мобильный</option>
+                          <option value='CONTACT'>Контактный</option>
+                          <option value='WORK'>Рабочий</option>
+                          <option value='HOME'>Домашний</option>
+                        </BS.FormControl>
+                      </BS.FormGroup>
+                    </BS.Col>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.InputGroup>
+                          <BS.FormControl type='tel' value='+7 701 672 22 22' />
+                          <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                        </BS.InputGroup>
+                      </BS.FormGroup>
+                    </BS.Col>
+                  </BS.Row>
+
+                </BS.Form>
+              )} />
+
+              <Route path='/application/1/stage/20170506102030/person/12/income' render={() => (
+                <BS.Form horizontal>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Оклад за последний месяц</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Средняя сумма ежемесячных доходов / Средняя сумма по справке о з/п</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Ежемесячный доход супруга/ги</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Дополнительный подтверждённый доход</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Итого в месяц</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.FormControl.Static>100500</BS.FormControl.Static>
+                    </BS.Col>
+                  </BS.FormGroup>
+                </BS.Form>
+              )} />
+
+              <Route path='/application/1/stage/20170506102030/person/12/expenses' render={() => (
+                <BS.Form horizontal>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>По действующим кредитам</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Сумма КЛ на кредитных картах</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Расходы на образование (детский сад, школа, институт)</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Аренда жилья</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Расходы на коммунальные услуги</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Расходы на услуги мобильной связи, Интернет и т.п.</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Личные платежи</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Алименты</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Прочие расходы (лечение, помошь родственникам)</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Страхование</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Комиссии</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Годовой налог на транспорт</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='500' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-times-circle' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={8} componentClass={BS.ControlLabel}>Итого в месяц</BS.Col>
+                    <BS.Col sm={4}>
+                      <BS.FormControl.Static>100500</BS.FormControl.Static>
+                    </BS.Col>
+                  </BS.FormGroup>
+                </BS.Form>
+              )} />
+
+              <Route path='/application/1/stage/20170506102030/person/12/kin' render={() => (
+                <BS.Form horizontal>
                 <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Контактные лица</span>}>
                   <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Супруг</span>}>
                     <span title='Фамилия'>Абисова</span>{' '}
@@ -167,6 +616,9 @@ export default function Application(props) {
                   <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Друг</span>}>
                   </TreeView>
                 </TreeView>
+                </BS.Form>
+              )} />
+
             </div>
           )} />
 
