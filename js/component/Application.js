@@ -180,6 +180,16 @@ export default function Application(props) {
               <Route path='/application/1/stage/20170506102030/person/12/person' render={() => (
                 <BS.Form horizontal>
 
+                  <BS.FormGroup controlId='product' validationState='error'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>ИИН</BS.Col>
+                    <BS.Col sm={8}>
+                      <BS.InputGroup>
+                        <BS.FormControl type='text' value='123456789012' />
+                        <BS.InputGroup.Addon><span className='fa fa-fw fa-search' /></BS.InputGroup.Addon>
+                      </BS.InputGroup>
+                    </BS.Col>
+                  </BS.FormGroup>
+
                   <BS.FormGroup controlId='product'>
                     <BS.Col sm={4} componentClass={BS.ControlLabel}>Фамилия</BS.Col>
                     <BS.Col sm={8}><BS.FormControl type='text' value='Абисов' /></BS.Col>
@@ -195,11 +205,6 @@ export default function Application(props) {
                     <BS.Col sm={8}><BS.FormControl type='text' value='Абисович' /></BS.Col>
                   </BS.FormGroup>
                   
-                  <BS.FormGroup controlId='product' validationState='error'>
-                    <BS.Col sm={4} componentClass={BS.ControlLabel}>ИИН</BS.Col>
-                    <BS.Col sm={8}><BS.FormControl type='text' value='123456789012' /></BS.Col>
-                  </BS.FormGroup>
-
                   <BS.FormGroup controlId='dateFromTo'>
                     <BS.Col sm={4} componentClass={BS.ControlLabel}>Дата рождения</BS.Col>
                     <BS.Col sm={8}>
