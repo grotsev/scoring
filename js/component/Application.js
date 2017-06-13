@@ -19,23 +19,18 @@ export default function Application(props) {
       <BS.Row>
 
         <BS.Col sm={3}>
-
-          <BS.Nav bsStyle='pills' stacked>
+          <BS.ButtonToolbar>
+            <BS.Button block><span className='fa fa-play' /> Взять в работу</BS.Button>
+          </BS.ButtonToolbar>
+          <BS.ButtonToolbar className='hidden'>
+            <BS.ButtonGroup>
+              <BS.Button title='Предыдущая проблема'><span className='fa fa-step-backward' /></BS.Button>
+              <BS.Button title='Следующая проблема'><span className='fa fa-step-forward' /></BS.Button>
+            </BS.ButtonGroup>
+          </BS.ButtonToolbar>
+          <BS.Nav bsStyle='pills' stacked style={{marginTop: 15}}>
             <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.NavItem>Контракт</BS.NavItem></LinkContainer>
             <LinkContainer to="/application/1/stage/20170506102030/offer"><BS.NavItem>Предварительное предложение</BS.NavItem></LinkContainer>
-            <BS.NavDropdown title='Физические лица' id='person'>
-              <LinkContainer to="/application/1/stage/20170506102030/person/12"><BS.MenuItem>Абисов Абис Абисович</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102030/person/13"><BS.MenuItem>Абисова Абисса Абисовна</BS.MenuItem></LinkContainer>
-            </BS.NavDropdown>
-            <BS.NavDropdown title='Адреса' id='address'>
-              <LinkContainer to="/application/1/stage/20170506102030/address/2"><BS.MenuItem>пос. Жансугуров, ул. Абая, 25, кв.2</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102030/address/13"><BS.MenuItem>пос. Жансугуров, ул. Абая, 12, кв.13</BS.MenuItem></LinkContainer>
-            </BS.NavDropdown>
-            <BS.NavDropdown title='Сканы' id='scan'>
-              <LinkContainer to="/application/1/stage/20170506102030/scan/1"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Удостоверение личности / Абисов Абис Абисович</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102030/scan/2"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Удостоверение личности / Абисова Абисса Абисовна</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102030/scan/3"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Свидетельство о браке / Абисовы</BS.MenuItem></LinkContainer>
-            </BS.NavDropdown>
             <BS.NavDropdown title='История' id='history'>
               <LinkContainer to="/application/1/stage/20170506100630/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Привлечение</BS.MenuItem></LinkContainer>
               <LinkContainer to="/application/1/stage/20170506100730/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Заявка</BS.MenuItem></LinkContainer>
@@ -54,15 +49,25 @@ export default function Application(props) {
               <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.MenuItem>Служба безопасности</BS.MenuItem></LinkContainer>
             </BS.NavDropdown>
           </BS.Nav>
-
-          <BS.ButtonToolbar>
-            <BS.Button bsStyle='primary'><span className='fa fa-play' /> Взять в работу</BS.Button>
-            <BS.ButtonGroup>
-              <BS.Button title='Предыдущая проблема'><span className='fa fa-step-backward' /></BS.Button>
-              <BS.Button title='Следующая проблема'><span className='fa fa-step-forward' /></BS.Button>
-            </BS.ButtonGroup>
-          </BS.ButtonToolbar>
-
+          <hr />
+          <h6>Физические лица</h6>
+          <BS.Nav bsStyle='pills' stacked>
+            <LinkContainer to="/application/1/stage/20170506102030/person/12"><BS.NavItem>Абисов Абис Абисович</BS.NavItem></LinkContainer>
+            <LinkContainer to="/application/1/stage/20170506102030/person/13"><BS.NavItem>Абисова Абисса Абисовна</BS.NavItem></LinkContainer>
+          </BS.Nav>
+          <hr />
+          <h6>Адреса</h6>
+          <BS.Nav bsStyle='pills' stacked>
+            <LinkContainer to="/application/1/stage/20170506102030/address/2"><BS.NavItem>пос. Жансугуров, ул. Абая, 25, кв.2</BS.NavItem></LinkContainer>
+            <LinkContainer to="/application/1/stage/20170506102030/address/13"><BS.NavItem>пос. Жансугуров, ул. Абая, 12, кв.13</BS.NavItem></LinkContainer>
+          </BS.Nav>
+          <hr />
+          <h6>Сканы</h6>
+          <BS.Nav bsStyle='pills' stacked>
+            <LinkContainer to="/application/1/stage/20170506102030/scan/1"><BS.NavItem title='Иванов Иван Иванович 20 июня 14:42'>Удостоверение личности / Абисов Абис Абисович</BS.NavItem></LinkContainer>
+            <LinkContainer to="/application/1/stage/20170506102030/scan/2"><BS.NavItem title='Иванов Иван Иванович 20 июня 14:42'>Удостоверение личности / Абисова Абисса Абисовна</BS.NavItem></LinkContainer>
+            <LinkContainer to="/application/1/stage/20170506102030/scan/3"><BS.NavItem title='Иванов Иван Иванович 20 июня 14:42'>Свидетельство о браке / Абисовы</BS.NavItem></LinkContainer>
+          </BS.Nav>
         </BS.Col>
 
         <BS.Col sm={9}>
