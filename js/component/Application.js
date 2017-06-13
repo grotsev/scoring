@@ -1,6 +1,5 @@
 import React from 'react';
 import * as BS from 'react-bootstrap';
-import TreeView from 'react-treeview';
 import { LinkContainer } from 'react-router-bootstrap';
 import {
   Route,
@@ -55,127 +54,91 @@ export default function Application(props) {
               <LinkContainer to="/application/1/stage/20170506101730/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Подписание договора</BS.MenuItem></LinkContainer>
               <LinkContainer to="/application/1/stage/20170506101830/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Регистрация залога</BS.MenuItem></LinkContainer>
               <LinkContainer to="/application/1/stage/20170506101930/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Заявка</BS.MenuItem></LinkContainer>
-              <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.MenuItem>Служба безопасности
-                <BS.ButtonToolbar>
-                  <BS.Button>Взять в работу</BS.Button>
-                </BS.ButtonToolbar>
-              </BS.MenuItem></LinkContainer>
+              <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.MenuItem>Служба безопасности</BS.MenuItem></LinkContainer>
             </BS.NavDropdown>
           </BS.Nav>
         </BS.Col>
 
         <BS.Col sm={9}>
 
-          <Route exact path='/application/1/stage/20170506102030/contract' render={() => (
-            <BS.Form horizontal>
+          <Route path='/application/1/stage/20170506102030/contract' render={() => (
+            <div>
+              <BS.Nav bsStyle='tabs' style={{marginBottom: 15}}>
+                <LinkContainer to="/application/1/stage/20170506102030/contract/condition"><BS.NavItem>Условия</BS.NavItem></LinkContainer>
+                <LinkContainer to="/application/1/stage/20170506102030/contract/person"><BS.NavItem>Ответственные лица</BS.NavItem></LinkContainer>
+              </BS.Nav>
 
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4} componentClass={BS.ControlLabel}>Продукт</BS.Col>
-                <BS.Col sm={8}>
-                  <BS.FormControl componentClass='select'>
-                    <option></option>
-                    <option>Кредит</option>
-                    <option>Депозит</option>
-                  </BS.FormControl>
-                </BS.Col>
-              </BS.FormGroup>
+              <Route exact path='/application/1/stage/20170506102030/contract' render={() => (
+                <Redirect to='/application/1/stage/20170506102030/contract/condition' />
+              )}/>
 
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4} componentClass={BS.ControlLabel}>Сумма</BS.Col>
-                <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
-              </BS.FormGroup>
+              <Route path='/application/1/stage/20170506102030/contract/condition' render={() => (
+                <BS.Form horizontal>
 
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4} componentClass={BS.ControlLabel}>Валюта</BS.Col>
-                <BS.Col sm={8}>
-                  <BS.FormControl componentClass='select'>
-                    <option></option>
-                    <option>USD</option>
-                    <option>KZT</option>
-                  </BS.FormControl>
-                </BS.Col>
-              </BS.FormGroup>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Продукт</BS.Col>
+                    <BS.Col sm={8}>
+                      <BS.FormControl componentClass='select'>
+                        <option></option>
+                        <option>Кредит</option>
+                        <option>Депозит</option>
+                      </BS.FormControl>
+                    </BS.Col>
+                  </BS.FormGroup>
 
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4} componentClass={BS.ControlLabel}>Заёмщик</BS.Col>
-                <BS.Col sm={8}>
-                  <BS.Button><span className='fa fa-fw fa-plus' /> Добавить</BS.Button>
-                </BS.Col>
-              </BS.FormGroup>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Сумма</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
+                  </BS.FormGroup>
 
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4}></BS.Col>
-                <BS.Col sm={8}>
-                  <BS.InputGroup>
-                    <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
-                    <BS.FormControl componentClass='select'>
-                      <option></option>
-                      <option>Абисов Абис Абисович</option>
-                      <option>Абисова Абисса Абисовна</option>
-                      <option>[Новое физическое лицо]</option>
-                      <option>[Новое юридическое лицо]</option>
-                    </BS.FormControl>
-                    <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
-                  </BS.InputGroup>
-                </BS.Col>
-              </BS.FormGroup>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Валюта</BS.Col>
+                    <BS.Col sm={8}>
+                      <BS.FormControl componentClass='select'>
+                        <option></option>
+                        <option>USD</option>
+                        <option>KZT</option>
+                      </BS.FormControl>
+                    </BS.Col>
+                  </BS.FormGroup>
+                </BS.Form>
+              )} />
 
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4} componentClass={BS.ControlLabel}>Залогодатель</BS.Col>
-                <BS.Col sm={8}>
-                  <BS.Button><span className='fa fa-fw fa-plus' /> Добавить</BS.Button>
-                </BS.Col>
-              </BS.FormGroup>
+              <Route path='/application/1/stage/20170506102030/contract/person' render={() => (
+                <BS.Form>
 
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4} componentClass={BS.ControlLabel}>Гарант</BS.Col>
-                <BS.Col sm={8}>
-                  <BS.Button><span className='fa fa-fw fa-plus' /> Добавить</BS.Button>
-                </BS.Col>
-              </BS.FormGroup>
+                  <BS.FormGroup controlId='product'>
+                    <BS.InputGroup>
+                      <BS.DropdownButton componentClass={BS.InputGroup.Button} title='Заёмщик' id='zzz'>
+                        <BS.MenuItem key='1'>Заёмщик</BS.MenuItem>
+                        <BS.MenuItem key='2'>Залогодатель</BS.MenuItem>
+                        <BS.MenuItem key='3'>Гарант</BS.MenuItem>
+                        <BS.MenuItem key='4'>Страховщик</BS.MenuItem>
+                      </BS.DropdownButton>
+                      <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
+                      <BS.FormControl componentClass='select'>
+                        <option></option>
+                        <option>Абисов Абис Абисович</option>
+                        <option>Абисова Абисса Абисовна</option>
+                        <option>[Новое физическое лицо]</option>
+                        <option>[Новое юридическое лицо]</option>
+                      </BS.FormControl>
+                      <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                    </BS.InputGroup>
+                  </BS.FormGroup>
 
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4} componentClass={BS.ControlLabel}>Страховщик</BS.Col>
-                <BS.Col sm={8}>
-                  <BS.Button><span className='fa fa-fw fa-plus' /> Добавить</BS.Button>
-                </BS.Col>
-              </BS.FormGroup>
+                  <BS.ButtonToolbar>
+                    <BS.DropdownButton title={<span><span className='fa fa-fw fa-plus' /> Добавить</span>} id='zzz'>
+                      <BS.MenuItem key='1'>Заёмщик</BS.MenuItem>
+                      <BS.MenuItem key='2'>Залогодатель</BS.MenuItem>
+                      <BS.MenuItem key='3'>Гарант</BS.MenuItem>
+                      <BS.MenuItem key='4'>Страховщик</BS.MenuItem>
+                    </BS.DropdownButton>
+                  </BS.ButtonToolbar>
 
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4}></BS.Col>
-                <BS.Col sm={8}>
-                  <BS.InputGroup>
-                    <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
-                    <BS.FormControl componentClass='select'>
-                      <option></option>
-                      <option>Абисов Абис Абисович</option>
-                      <option>Абисова Абисса Абисовна</option>
-                      <option>[Новое физическое лицо]</option>
-                      <option>[Новое юридическое лицо]</option>
-                    </BS.FormControl>
-                    <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
-                  </BS.InputGroup>
-                </BS.Col>
-              </BS.FormGroup>
-
-              <BS.FormGroup controlId='product'>
-                <BS.Col sm={4}></BS.Col>
-                <BS.Col sm={8}>
-                  <BS.InputGroup>
-                    <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
-                    <BS.FormControl componentClass='select'>
-                      <option></option>
-                      <option>Абисов Абис Абисович</option>
-                      <option>Абисова Абисса Абисовна</option>
-                      <option>[Новое физическое лицо]</option>
-                      <option>[Новое юридическое лицо]</option>
-                    </BS.FormControl>
-                    <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
-                  </BS.InputGroup>
-                </BS.Col>
-              </BS.FormGroup>
-
-            </BS.Form>
+                </BS.Form>
+              )} />
+            </div>
           )} />
 
           <Route exact path='/application/1/stage/20170506102030/offer' render={() => (
@@ -319,94 +282,41 @@ export default function Application(props) {
 
               <Route path='/application/1/stage/20170506102030/person/12/phone' render={() => (
                 <BS.Form>
+                
+                  <BS.FormGroup controlId='product'>
+                    <BS.InputGroup>
+                      <BS.DropdownButton componentClass={BS.InputGroup.Button} title='Мобильный' id='zzz'>
+                        <BS.MenuItem key='1'>Мобильный</BS.MenuItem>
+                        <BS.MenuItem key='2'>Контактный</BS.MenuItem>
+                        <BS.MenuItem key='3'>Рабочий</BS.MenuItem>
+                        <BS.MenuItem key='4'>Домашний</BS.MenuItem>
+                      </BS.DropdownButton>
+                      <BS.FormControl type='tel' value='+7 701 672 22 22' />
+                      <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                    </BS.InputGroup>
+                  </BS.FormGroup>
 
-                  <BS.Row>
-                    <BS.Col sm={6}>
-                      <BS.FormGroup controlId='product'>
-                        <BS.FormControl componentClass='select' value='MOBILE'>
-                          <option></option>
-                          <option value='MOBILE'>Мобильный</option>
-                          <option value='CONTACT'>Контактный</option>
-                          <option value='WORK'>Рабочий</option>
-                          <option value='HOME'>Домашний</option>
-                        </BS.FormControl>
-                      </BS.FormGroup>
-                    </BS.Col>
-                    <BS.Col sm={6}>
-                      <BS.FormGroup controlId='product'>
-                        <BS.InputGroup>
-                          <BS.FormControl type='tel' value='+7 701 672 22 22' />
-                          <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
-                        </BS.InputGroup>
-                      </BS.FormGroup>
-                    </BS.Col>
-                  </BS.Row>
+                  <BS.FormGroup controlId='product'>
+                    <BS.InputGroup>
+                      <BS.DropdownButton componentClass={BS.InputGroup.Button} title='Контактный' id='zzz'>
+                        <BS.MenuItem key='1'>Мобильный</BS.MenuItem>
+                        <BS.MenuItem key='2'>Контактный</BS.MenuItem>
+                        <BS.MenuItem key='3'>Рабочий</BS.MenuItem>
+                        <BS.MenuItem key='4'>Домашний</BS.MenuItem>
+                      </BS.DropdownButton>
+                      <BS.FormControl type='tel' value='+7 701 672 22 20' />
+                      <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                    </BS.InputGroup>
+                  </BS.FormGroup>
 
-                  <BS.Row>
-                    <BS.Col sm={6}>
-                      <BS.FormGroup controlId='product'>
-                        <BS.FormControl componentClass='select' value='MOBILE'>
-                          <option></option>
-                          <option value='MOBILE'>Мобильный</option>
-                          <option value='CONTACT'>Контактный</option>
-                          <option value='WORK'>Рабочий</option>
-                          <option value='HOME'>Домашний</option>
-                        </BS.FormControl>
-                      </BS.FormGroup>
-                    </BS.Col>
-                    <BS.Col sm={6}>
-                      <BS.FormGroup controlId='product'>
-                        <BS.InputGroup>
-                          <BS.FormControl type='tel' value='+7 701 672 22 22' />
-                          <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
-                        </BS.InputGroup>
-                      </BS.FormGroup>
-                    </BS.Col>
-                  </BS.Row>
-
-                  <BS.Row>
-                    <BS.Col sm={6}>
-                      <BS.FormGroup controlId='product'>
-                        <BS.FormControl componentClass='select' value='MOBILE'>
-                          <option></option>
-                          <option value='MOBILE'>Мобильный</option>
-                          <option value='CONTACT'>Контактный</option>
-                          <option value='WORK'>Рабочий</option>
-                          <option value='HOME'>Домашний</option>
-                        </BS.FormControl>
-                      </BS.FormGroup>
-                    </BS.Col>
-                    <BS.Col sm={6}>
-                      <BS.FormGroup controlId='product'>
-                        <BS.InputGroup>
-                          <BS.FormControl type='tel' value='+7 701 672 22 22' />
-                          <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
-                        </BS.InputGroup>
-                      </BS.FormGroup>
-                    </BS.Col>
-                  </BS.Row>
-
-                  <BS.Row>
-                    <BS.Col sm={6}>
-                      <BS.FormGroup controlId='product'>
-                        <BS.FormControl componentClass='select' value='MOBILE'>
-                          <option></option>
-                          <option value='MOBILE'>Мобильный</option>
-                          <option value='CONTACT'>Контактный</option>
-                          <option value='WORK'>Рабочий</option>
-                          <option value='HOME'>Домашний</option>
-                        </BS.FormControl>
-                      </BS.FormGroup>
-                    </BS.Col>
-                    <BS.Col sm={6}>
-                      <BS.FormGroup controlId='product'>
-                        <BS.InputGroup>
-                          <BS.FormControl type='tel' value='+7 701 672 22 22' />
-                          <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
-                        </BS.InputGroup>
-                      </BS.FormGroup>
-                    </BS.Col>
-                  </BS.Row>
+                  <BS.ButtonToolbar>
+                    <BS.DropdownButton title={<span><span className='fa fa-fw fa-plus' /> Добавить</span>} id='zzz'>
+                      <BS.MenuItem key='1'>Мобильный</BS.MenuItem>
+                      <BS.MenuItem key='2'>Контактный</BS.MenuItem>
+                      <BS.MenuItem key='3'>Рабочий</BS.MenuItem>
+                      <BS.MenuItem key='4'>Домашний</BS.MenuItem>
+                    </BS.DropdownButton>
+                  </BS.ButtonToolbar>
 
                 </BS.Form>
               )} />
@@ -594,28 +504,38 @@ export default function Application(props) {
               )} />
 
               <Route path='/application/1/stage/20170506102030/person/12/kin' render={() => (
-                <BS.Form horizontal>
-                <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Контактные лица</span>}>
-                  <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Супруг</span>}>
-                    <span title='Фамилия'>Абисова</span>{' '}
-                    <span title='Имя'>Абисса</span>{' '}
-                    <span title='Отчество'>Абисовна</span>{' '}
-                    <div title='Контактный'><span className='fa fa-fw fa-phone' /> +7 701 672 22 22</div>
-                    <div title='Домашний'><span className='fa fa-fw fa-home' /> +7 701 672 22 22</div>
-                    <div title='Мобильный'><span className='fa fa-fw fa-mobile' /> +7 777 444 90 24</div>
-                    <div title='Рабочий'><span className='fa fa-fw fa-industry' /> +7 777 444 90 24</div>
-                  </TreeView>
-                  <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Родитель</span>}>
-                  </TreeView>
-                  <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Ребёнок</span>}>
-                  </TreeView>
-                  <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Ребёнок</span>}>
-                  </TreeView>
-                  <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Коллега</span>}>
-                  </TreeView>
-                  <TreeView defaultCollapsed={true} nodeLabel={<span className='node'>Друг</span>}>
-                  </TreeView>
-                </TreeView>
+                <BS.Form>
+
+                  <BS.FormGroup controlId='product'>
+                    <BS.InputGroup>
+                      <BS.DropdownButton componentClass={BS.InputGroup.Button} title='Супруг' id='zzz'>
+                        <BS.MenuItem key='1'>Супруг</BS.MenuItem>
+                        <BS.MenuItem key='2'>Родитель</BS.MenuItem>
+                        <BS.MenuItem key='3'>Ребёнок</BS.MenuItem>
+                        <BS.MenuItem key='4'>Коллега</BS.MenuItem>
+                        <BS.MenuItem key='5'>Друг</BS.MenuItem>
+                      </BS.DropdownButton>
+                      <BS.InputGroup.Addon><Link to="/application/1/stage/20170506102030/person/12"><span className='fa fa-fw fa-pencil' /></Link></BS.InputGroup.Addon>
+                      <BS.FormControl componentClass='select'>
+                        <option></option>
+                        <option>Абисов Абис Абисович</option>
+                        <option>Абисова Абисса Абисовна</option>
+                        <option>[Новое физическое лицо]</option>
+                      </BS.FormControl>
+                      <BS.InputGroup.Addon><span className='fa fa-fw fa-minus' /></BS.InputGroup.Addon>
+                    </BS.InputGroup>
+                  </BS.FormGroup>
+
+                  <BS.ButtonToolbar>
+                    <BS.DropdownButton title={<span><span className='fa fa-fw fa-plus' /> Добавить</span>} id='zzz'>
+                      <BS.MenuItem key='1'>Супруг</BS.MenuItem>
+                      <BS.MenuItem key='2'>Родитель</BS.MenuItem>
+                      <BS.MenuItem key='3'>Ребёнок</BS.MenuItem>
+                      <BS.MenuItem key='4'>Коллега</BS.MenuItem>
+                      <BS.MenuItem key='5'>Друг</BS.MenuItem>
+                    </BS.DropdownButton>
+                  </BS.ButtonToolbar>
+
                 </BS.Form>
               )} />
 
