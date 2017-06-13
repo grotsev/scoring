@@ -19,9 +19,6 @@ export default function Application(props) {
       <BS.Row>
 
         <BS.Col sm={3}>
-          <BS.Panel>
-            <BS.Button bsStyle='primary' block fill><span className='fa fa-play' /> Взять в работу</BS.Button>
-          </BS.Panel>
 
           <BS.Nav bsStyle='pills' stacked>
             <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.NavItem>Контракт</BS.NavItem></LinkContainer>
@@ -57,6 +54,15 @@ export default function Application(props) {
               <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.MenuItem>Служба безопасности</BS.MenuItem></LinkContainer>
             </BS.NavDropdown>
           </BS.Nav>
+
+          <BS.ButtonToolbar>
+            <BS.Button bsStyle='primary'><span className='fa fa-play' /> Взять в работу</BS.Button>
+            <BS.ButtonGroup>
+              <BS.Button title='Предыдущая проблема'><span className='fa fa-step-backward' /></BS.Button>
+              <BS.Button title='Следующая проблема'><span className='fa fa-step-forward' /></BS.Button>
+            </BS.ButtonGroup>
+          </BS.ButtonToolbar>
+
         </BS.Col>
 
         <BS.Col sm={9}>
@@ -189,7 +195,7 @@ export default function Application(props) {
                     <BS.Col sm={8}><BS.FormControl type='text' value='Абисович' /></BS.Col>
                   </BS.FormGroup>
                   
-                  <BS.FormGroup controlId='product'>
+                  <BS.FormGroup controlId='product' validationState='error'>
                     <BS.Col sm={4} componentClass={BS.ControlLabel}>ИИН</BS.Col>
                     <BS.Col sm={8}><BS.FormControl type='text' value='123456789012' /></BS.Col>
                   </BS.FormGroup>
