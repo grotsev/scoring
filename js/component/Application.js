@@ -35,6 +35,7 @@ export default function Application(props) {
 
         <BS.Col sm={3}>
           <BS.Nav bsStyle='pills' stacked>
+            <LinkContainer to="/application/1/stage/20170506102030/application"><BS.NavItem>Заявка</BS.NavItem></LinkContainer>
             <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.NavItem>Контракт</BS.NavItem></LinkContainer>
             <LinkContainer to="/application/1/stage/20170506102030/offer"><BS.NavItem>Предварительное предложение</BS.NavItem></LinkContainer>
             <BS.NavDropdown title='История' id='history'>
@@ -78,6 +79,51 @@ export default function Application(props) {
 
         <BS.Col sm={9}>
 
+          <Route path='/application/1/stage/20170506102030/application' render={() => (
+            <BS.Form horizontal>
+              
+              <BS.Row>
+                <BS.Col sm={6}>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>№</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
+                  </BS.FormGroup>
+                </BS.Col>
+                <BS.Col sm={6}>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Дата создания</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
+                  </BS.FormGroup>
+                </BS.Col>
+              </BS.Row>
+
+              <BS.Row>
+                <BS.Col sm={6}>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Кредитный эксперт</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
+                  </BS.FormGroup>
+                </BS.Col>
+              </BS.Row>
+
+              <BS.Row>
+                <BS.Col sm={6}>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Филиал</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
+                  </BS.FormGroup>
+                </BS.Col>
+                <BS.Col sm={6}>
+                  <BS.FormGroup controlId='product'>
+                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Отделение</BS.Col>
+                    <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
+                  </BS.FormGroup>
+                </BS.Col>
+              </BS.Row>
+
+            </BS.Form>
+          )} />
+
           <Route path='/application/1/stage/20170506102030/contract' render={() => (
             <div>
               <BS.Nav bsStyle='tabs' style={{marginBottom: 15}}>
@@ -91,33 +137,43 @@ export default function Application(props) {
 
               <Route path='/application/1/stage/20170506102030/contract/condition' render={() => (
                 <BS.Form horizontal>
-
-                  <BS.FormGroup controlId='product'>
-                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Продукт</BS.Col>
-                    <BS.Col sm={8}>
-                      <BS.FormControl componentClass='select'>
-                        <option></option>
-                        <option>Кредит</option>
-                        <option>Депозит</option>
-                      </BS.FormControl>
+                  
+                  <BS.Row>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.Col sm={4} componentClass={BS.ControlLabel}>Продукт</BS.Col>
+                        <BS.Col sm={8}>
+                          <BS.FormControl componentClass='select'>
+                            <option></option>
+                            <option>Кредит</option>
+                            <option>Депозит</option>
+                          </BS.FormControl>
+                        </BS.Col>
+                      </BS.FormGroup>
                     </BS.Col>
-                  </BS.FormGroup>
+                  </BS.Row>
 
-                  <BS.FormGroup controlId='product'>
-                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Сумма</BS.Col>
-                    <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
-                  </BS.FormGroup>
-
-                  <BS.FormGroup controlId='product'>
-                    <BS.Col sm={4} componentClass={BS.ControlLabel}>Валюта</BS.Col>
-                    <BS.Col sm={8}>
-                      <BS.FormControl componentClass='select'>
-                        <option></option>
-                        <option>USD</option>
-                        <option>KZT</option>
-                      </BS.FormControl>
+                  <BS.Row>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.Col sm={4} componentClass={BS.ControlLabel}>Сумма</BS.Col>
+                        <BS.Col sm={8}><BS.FormControl type='text' /></BS.Col>
+                      </BS.FormGroup>
                     </BS.Col>
-                  </BS.FormGroup>
+                    <BS.Col sm={6}>
+                      <BS.FormGroup controlId='product'>
+                        <BS.Col sm={4} componentClass={BS.ControlLabel}>Валюта</BS.Col>
+                        <BS.Col sm={8}>
+                          <BS.FormControl componentClass='select'>
+                            <option></option>
+                            <option>USD</option>
+                            <option>KZT</option>
+                          </BS.FormControl>
+                        </BS.Col>
+                      </BS.FormGroup>
+                    </BS.Col>
+                  </BS.Row>
+
                 </BS.Form>
               )} />
 
