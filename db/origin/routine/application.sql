@@ -2,7 +2,7 @@ create table application (
   application uuid_pk primary key
 
 , created_at timestamp with time zone not null default now()
-, created_by name not null default current_user -- TODO current_setting('request.jwt.claim.login'); check does not work; trigger
+, created_by uuid not null references staff -- TODO current_setting('request.jwt.claim.login'); check does not work; trigger
 
 , branch code not null
 , outlet code not null

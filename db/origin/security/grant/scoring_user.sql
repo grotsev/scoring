@@ -40,7 +40,6 @@ to scoring_user
 
 grant select, insert, update on table
   application
-, offer
 , address
 , legal_entity
 , individual
