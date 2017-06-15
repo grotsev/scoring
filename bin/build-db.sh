@@ -24,7 +24,8 @@ done
 
 for f in application contract address pledge offer \
   legal_entity legal_entity_responsibility \
-  individual individual_cashflow individual_phone individual_kin individual_responsibility
+  individual individual_cashflow individual_phone individual_kin individual_responsibility \
+  application_handler
 do
 	cat db/origin/routine/$f.sql >> $OUT
 done
