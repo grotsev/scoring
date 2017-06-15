@@ -19,10 +19,10 @@ for f in lang currency branch outlet income_evidence repayment_kind client_categ
   credit_purpose phone_kind position_category kinship liability \
   wall_material auto_brand auto_model product_scheme product_fee
 do
-	cat db/origin/route/$f.sql >> $OUT
+	cat db/origin/mounting/$f.sql >> $OUT
 done
 
-for f in app app_address app_entity app_person app_cashflow app_phone app_kin app_pledge
+for f in application address legal_entity individual individual_cashflow individual_phone individual_kin pledge offer
 do
 	cat db/origin/routine/$f.sql >> $OUT
 done

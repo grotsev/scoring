@@ -1,7 +1,7 @@
-create table app_pledge (
-  app uuid references app
+create table pledge (
+  application uuid references application
 , pledge uuid_pk
-, primary key (app, pledge)
+, primary key (application, pledge)
 
 , pledge_kind code references pledge_kind
 
@@ -11,7 +11,7 @@ create table app_pledge (
 , condition textfield
 , note textarea
 -- FLAT, HOUSE, LAND, COMMERCIAL
-, address uuid, foreign key (app, address) references app_address
+, address uuid, foreign key (application, address) references address
 , cadastral_number textfield
 , purpose textfield
 , lease_term int4
@@ -34,8 +34,8 @@ create table app_pledge (
 , auto_volume numeric
 );
 
-comment on column app_pledge.lease_term is 'In month';
-comment on column app_pledge.meterage_total is 'In square meter';
-comment on column app_pledge.meterage_living is 'In square meter';
-comment on column app_pledge.meterage_land is 'In square meter';
+comment on column pledge.lease_term is 'In month';
+comment on column pledge.meterage_total is 'In square meter';
+comment on column pledge.meterage_living is 'In square meter';
+comment on column pledge.meterage_land is 'In square meter';
 

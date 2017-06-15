@@ -39,14 +39,15 @@ to scoring_user
 ;
 
 grant select, insert, update on table
-  app
-, app_address
-, app_entity
-, app_person
-, app_cashflow
-, app_phone
-, app_kin
-, app_pledge
+  application
+, offer
+, address
+, legal_entity
+, individual
+, individual_cashflow
+, individual_phone
+, individual_kin
+, pledge
 to scoring_user
 ;
 

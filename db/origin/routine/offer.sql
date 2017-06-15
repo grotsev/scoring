@@ -1,5 +1,5 @@
-create table app_offer (
-  app uuid primary key references app
+create table offer (
+  application uuid primary key references application
 , amount numeric not null
 , interest numeric not null
 , term int4 not null check (term between 0 and 1200)

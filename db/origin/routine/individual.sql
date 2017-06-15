@@ -1,8 +1,7 @@
-create table app_person (
-  app uuid references app
-, person uuid_pk
-, primary key (app, person)
--- TODO individ uuid_pk to the best of our knowledge
+create table individual (
+  application uuid references application
+, individual uuid_pk
+, primary key (application, individual)
 
 , liability code not null references liability
 
@@ -25,9 +24,9 @@ create table app_person (
 , children_total int4
 , dependant_ge_21 int4
 
-, address_reg uuid, foreign key (app, address_reg) references app_address on delete set null
-, address_fact uuid, foreign key (app, address_fact) references app_address on delete set null
-, address_work uuid, foreign key (app, address_work) references app_address on delete set null
+, address_reg uuid, foreign key (application, address_reg) references address on delete set null
+, address_fact uuid, foreign key (application, address_fact) references address on delete set null
+, address_work uuid, foreign key (application, address_work) references address on delete set null
 , tenure code references tenure
 , tenancy_room int4
 
@@ -54,12 +53,12 @@ create table app_person (
 , employment2_field textfield
 );
 
-comment on table app_person is 'Individual';
-comment on column app_person.idcard_no is 'Number';
-comment on column app_person.employment_self is 'Is businessman';
-comment on column app_person.employment_last_service is 'In month';
-comment on column app_person.employment_total_service is 'In month';
-comment on column app_person.employment_field is 'Company service domain';
-comment on column app_person.employment2_field is 'Company service domain';
-comment on column app_person.photo is 'Reference to external system';
+comment on table individual is 'Individual';
+comment on column individual.idcard_no is 'Number';
+comment on column individual.employment_self is 'Is businessman';
+comment on column individual.employment_last_service is 'In month';
+comment on column individual.employment_total_service is 'In month';
+comment on column individual.employment_field is 'Company service domain';
+comment on column individual.employment2_field is 'Company service domain';
+comment on column individual.photo is 'Reference to external system';
 

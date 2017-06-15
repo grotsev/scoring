@@ -1,7 +1,7 @@
-create table app_address (
-  app uuid references app
+create table address (
+  application uuid references application
 , address uuid_pk
-, primary key (app, address)
+, primary key (application, address)
 
 , country code not null
 , province code not null
@@ -15,5 +15,5 @@ create table app_address (
 , postcode textfield
 );
 
-comment on column app_address.street is 'Street or city district';
+comment on column address.street is 'Street or city district';
 

@@ -1,5 +1,5 @@
-create table app (
-  app uuid_pk primary key
+create table application (
+  application uuid_pk primary key
 
 , created_at timestamp with time zone not null default now()
 , created_by name not null default current_user -- TODO current_setting('request.jwt.claim.login'); check does not work; trigger
@@ -37,6 +37,6 @@ create table app (
 , credit_purpose code references credit_purpose
 );
 
-comment on table app is 'Client application to get product';
-comment on column app.term is 'In month';
+comment on table application is 'Client application to get product';
+comment on column application.term is 'In month';
 
