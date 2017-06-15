@@ -15,24 +15,23 @@ import FieldGroup from './FieldGroup';
 export default function Application(props) {
   return (
     <BS.Grid fluid>
-      <BS.Row style={{marginBottom: 15}}>
+      <BS.Row>
+
         <BS.Col sm={3}>
           <BS.ButtonToolbar>
-            <BS.Button block><span className='fa fa-play' /> Взять в работу</BS.Button>
+            <BS.Button title='Заявка будет доступна только вам пока вы не приостановите или не завершите с ней работу'><span className='fa fa-play' /> Взять в обработку</BS.Button>
           </BS.ButtonToolbar>
-        </BS.Col>
           <BS.ButtonToolbar>
+            <BS.Button title='Заявка останется на том же этапе и ваши изменения станут доступны другим сотрудникам'><span className='fa fa-pause' /> Приостановить</BS.Button>
             <BS.ButtonGroup>
               <BS.Button title='Предыдущая проблема'><span className='fa fa-step-backward' /></BS.Button>
               <BS.Button title='Следующая проблема'><span className='fa fa-step-forward' /></BS.Button>
             </BS.ButtonGroup>
           </BS.ButtonToolbar>
-        <BS.Col sm={9}>
-        </BS.Col>
-      </BS.Row>
-      <BS.Row>
-
-        <BS.Col sm={3}>
+          <BS.ButtonToolbar>
+            <BS.Button title='Заявка перейдёт на следующий этап'><span className='fa fa-pause' /> Приостановить</BS.Button>
+            <BS.Button title='Предыдущая проблема'><span className='fa fa-stop' /> Завершить</BS.Button>
+          </BS.ButtonToolbar>
           <BS.Nav bsStyle='pills' stacked>
             <LinkContainer to="/application/1/stage/20170506102030/application"><BS.NavItem>Заявка</BS.NavItem></LinkContainer>
             <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.NavItem>Контракт</BS.NavItem></LinkContainer>
