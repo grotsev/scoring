@@ -3,7 +3,7 @@ create table legal_entity (
 , entity uuid_pk
 , primary key (application, entity)
 
-, liability code not null references liability
+, responsibility code not null references responsibility
 
 , title textfield
 );

@@ -29,7 +29,7 @@ grant select, insert, update on table
 , phone_kind
 , position_category
 , kinship
-, liability
+, responsibility
 , wall_material
 , auto_brand
 , auto_model
