@@ -21,7 +21,6 @@ create table contract (
 , init_payment_percent numeric
 , pay_date int4 check (pay_date between 1 and 31)
 , monthly_payment numeric
-, offer_accepted boolean
 
 , credit_kind code references credit_kind
 , credit_purpose code references credit_purpose
