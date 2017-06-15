@@ -3,8 +3,6 @@ create table individual (
 , individual uuid_pk
 , primary key (application, individual)
 
-, responsibility code not null references responsibility
-
 , iin iin
 , surname textfield
 , name textfield

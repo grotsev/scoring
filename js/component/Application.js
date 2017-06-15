@@ -36,7 +36,6 @@ export default function Application(props) {
           <BS.Nav bsStyle='pills' stacked>
             <LinkContainer to="/application/1/stage/20170506102030/application"><BS.NavItem>Заявка</BS.NavItem></LinkContainer>
             <LinkContainer to="/application/1/stage/20170506102030/contract"><BS.NavItem>Контракт</BS.NavItem></LinkContainer>
-            <LinkContainer to="/application/1/stage/20170506102030/offer"><BS.NavItem>Предварительное предложение</BS.NavItem></LinkContainer>
             <BS.NavDropdown title='История' id='history'>
               <LinkContainer to="/application/1/stage/20170506100630/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Привлечение</BS.MenuItem></LinkContainer>
               <LinkContainer to="/application/1/stage/20170506100730/contract"><BS.MenuItem title='Иванов Иван Иванович 20 июня 14:42'>Заявка</BS.MenuItem></LinkContainer>
@@ -128,6 +127,7 @@ export default function Application(props) {
               <BS.Nav bsStyle='tabs' style={{marginBottom: 15}}>
                 <LinkContainer to="/application/1/stage/20170506102030/contract/condition"><BS.NavItem>Условия</BS.NavItem></LinkContainer>
                 <LinkContainer to="/application/1/stage/20170506102030/contract/person"><BS.NavItem>Ответственные лица</BS.NavItem></LinkContainer>
+                <LinkContainer to="/application/1/stage/20170506102030/contract/offer"><BS.NavItem>Автоматическое предложение</BS.NavItem></LinkContainer>
               </BS.Nav>
 
               <Route exact path='/application/1/stage/20170506102030/contract' render={() => (
@@ -210,20 +210,21 @@ export default function Application(props) {
 
                 </BS.Form>
               )} />
-            </div>
-          )} />
 
-          <Route exact path='/application/1/stage/20170506102030/offer' render={() => (
-            <div>
-              <div>Запрашиваемая сумма</div>
-              <div>Сумма предложения</div>
-              <div>Ставка</div>
-              <div>Срок займа (месяцев)</div>
-              <div>Валюта кредита</div>
-              <div>Тип погашения</div>
-              <div>Ежемесячный платёж</div>
-              <div>Ежемесячный платёж предложения</div>
-              <div>Клиент согласен: <span className='fa fa-check text-success' /> да</div>
+              <Route path='/application/1/stage/20170506102030/contract/offer' render={() => (
+                <div>
+                  <div>Запрашиваемая сумма</div>
+                  <div>Сумма предложения</div>
+                  <div>Ставка</div>
+                  <div>Срок займа (месяцев)</div>
+                  <div>Валюта кредита</div>
+                  <div>Тип погашения</div>
+                  <div>Ежемесячный платёж</div>
+                  <div>Ежемесячный платёж предложения</div>
+                  <div>Клиент согласен: <span className='fa fa-check text-success' /> да</div>
+                </div>
+              )} />
+              
             </div>
           )} />
 
