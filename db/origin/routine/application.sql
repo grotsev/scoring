@@ -8,8 +8,6 @@ create table application (
 , outlet code not null
 , foreign key (branch, outlet) references outlet
 -- TODO trigger fill from session_user current outlet
-
-, stage code not null default 'ATTRACTION' references stage
 );
 
 comment on table application is 'Client application to get product';
