@@ -22,7 +22,8 @@ do
 	cat db/origin/mounting/$f.sql >> $OUT
 done
 
-for f in application address legal_entity individual individual_cashflow individual_phone individual_kin pledge offer
+for f in application contract address pledge offer \
+  legal_entity individual individual_cashflow individual_phone individual_kin
 do
 	cat db/origin/routine/$f.sql >> $OUT
 done
