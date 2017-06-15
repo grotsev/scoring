@@ -29,10 +29,9 @@ do
 	cat db/origin/mounting/$f.sql >> $OUT
 done
 
-for f in application contract address pledge \
+for f in application contract address pledge staging \
   legal_entity legal_entity_responsibility \
-  individual individual_cashflow individual_phone individual_kin individual_responsibility \
-  application_handler
+  individual individual_cashflow individual_phone individual_kin individual_responsibility
 do
 	cat db/origin/routine/$f.sql >> $OUT
 done
