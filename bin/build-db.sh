@@ -3,8 +3,10 @@
 mkdir -p build/
 
 OUT=build/db.sql
+OUT_TEST=build/db-test.sql
 
 rm -f $OUT
+rm -f $OUT_TEST
 
 echo -e 'begin;\n' >> $OUT
 
@@ -16,12 +18,12 @@ for f in \
   pledge contract person \
 
 do
-  cat db/origin/model/$f.sql >> $OUT
-  cat db/origin/function/$f.sql >> $OUT
-  cat db/origin/data/$f.sql >> $OUT
+  cat db/origin/$f/model.sql >> $OUT
+  cat db/origin/$f/function.sql >> $OUT
+  cat db/origin/$f/grant.sql >> $OUT
+  cat db/origin/$f/data.sql >> $OUT
+  cat db/origin/$f/test.sql >> $OUT_TEST
 done
-
-cat `find ./db/origin/security/grant/ -maxdepth 1 -type f` >> $OUT
 
 echo -e 'commit;\n' >> $OUT
 

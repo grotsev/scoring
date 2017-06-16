@@ -17,3 +17,24 @@ insert into staff values
 , ('11110000-0000-0000-0000-000011110015'::uuid, 'credit_administrator'    , crypt('credit_administrator'    , gen_salt('bf')))
 ;
 
+insert into staff_outlet values
+  ('11110000-0000-0000-0000-000011110000', 'ALMATY', 'CITY_CENTER')
+, ('11110000-0000-0000-0000-000011110001', 'ALMATY', 'CITY_CENTER')
+;
+
+insert into staff_role
+  select a.staff
+       , 'scoring_' || o.login as role
+  from staff a
+    cross join staff o
+  where a.login = 'all'
+    and o.login != 'all'
+;
+
+insert into staff_role
+  select staff
+       , 'scoring_' || login as role
+  from staff
+  where login != 'all'
+;
+
