@@ -1,3 +1,18 @@
+create domain email as text
+  check (char_length(value) <= 100)
+  check (value ~ '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9.-]+$')
+;
+
+create domain iin as text
+  check (value ~ '^\d{12}$')
+;
+
+create domain phone as text
+  check (value ~ '^+7\d{10}$')
+;
+
+
+
 create table cashflow_kind
 ( cashflow_kind code primary key
 , period numeric not null
