@@ -1,25 +1,25 @@
-create table country (
-  country code primary key
+create table country
+( country code primary key
 );
 
 comment on table country is 'ISO 3166-1';
 
-create table province (
-  country code references country
+create table province
+( country code references country
 , province code
 , primary key (country, province)
 );
 
-create table district (
-  country code
+create table district
+( country code
 , province code
 , foreign key (country, province) references province
 , district code
 , primary key (country, province, district)
 );
 
-create table location (
-  country code
+create table location
+( country code
 , province code
 , district code
 , foreign key (country, province, district) references district
@@ -29,8 +29,8 @@ create table location (
 
 
 
-create table address (
-  application uuid references application
+create table address
+( application uuid references application
 , address uuid_pk
 , primary key (application, address)
 

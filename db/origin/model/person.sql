@@ -1,66 +1,66 @@
-create table cashflow_kind (
-  cashflow_kind code primary key
+create table cashflow_kind
+( cashflow_kind code primary key
 , period numeric not null
 );
 
 comment on column cashflow_kind.period is 'In monthes, positive income, negative expences';
 
-create table education (
-  education code primary key
+create table education
+( education code primary key
 );
 
-create table gender (
-  gender code primary key
+create table gender
+( gender code primary key
 );
 
-create table idcard_authority (
-  idcard_authority code primary key
+create table idcard_authority
+( idcard_authority code primary key
 );
 
-create table idcard_kind (
-  idcard_kind code primary key
+create table idcard_kind
+( idcard_kind code primary key
 );
 
-create table kinship (
-  kinship code primary key
+create table kinship
+( kinship code primary key
 );
 
 comment on table kinship is 'Relationship to individual';
 
-create table marital_status (
-  marital_status code primary key
+create table marital_status
+( marital_status code primary key
 );
 
-create table phone_kind (
-  phone_kind code primary key
+create table phone_kind
+( phone_kind code primary key
 );
 
-create table position_category (
-  position_category code primary key
+create table position_category
+( position_category code primary key
 );
 
-create table residency (
-  residency code primary key
+create table residency
+( residency code primary key
 );
 
-create table responsibility (
-  responsibility code primary key
+create table responsibility
+( responsibility code primary key
 );
 
 comment on table responsibility is 'Responsibility according to contract';
 
-create table speciality (
-  speciality code primary key
+create table speciality
+( speciality code primary key
 );
 
-create table tenure (
-  tenure code primary key
+create table tenure
+( tenure code primary key
 );
 
 
 
-create table individual (
-  application uuid references application
+create table individual
+( application uuid references application
 , individual uuid_pk
 , primary key (application, individual)
 
@@ -121,8 +121,8 @@ comment on column individual.employment_field is 'Company service domain';
 comment on column individual.employment2_field is 'Company service domain';
 comment on column individual.photo is 'Reference to external system';
 
-create table individual_cashflow (
-  application uuid
+create table individual_cashflow
+( application uuid
 , individual uuid, foreign key (application, individual) references individual
 , cashflow_kind code references cashflow_kind
 , primary key (application, individual, cashflow_kind)
@@ -130,8 +130,8 @@ create table individual_cashflow (
 , amount numeric not null
 );
 
-create table individual_kin (
-  application uuid
+create table individual_kin
+( application uuid
 , individual uuid, foreign key (application, individual) references individual
 , kin uuid, foreign key (application, kin) references individual
 , primary key (application, individual, kin)
@@ -139,8 +139,8 @@ create table individual_kin (
 , kinship code not null references kinship
 );
 
-create table individual_phone (
-  application uuid
+create table individual_phone
+( application uuid
 , individual uuid, foreign key (application, individual) references individual
 , phone phone
 , primary key (application, individual, phone)
@@ -148,16 +148,16 @@ create table individual_phone (
 , phone_kind code not null references phone_kind
 );
 
-create table individual_responsibility (
-  application uuid references contract
+create table individual_responsibility
+( application uuid references contract
 , individual uuid, foreign key (application, individual) references individual
 , primary key (application, individual)
 
 , responsibility code not null references responsibility
 );
 
-create table legal_entity (
-  application uuid references application
+create table legal_entity
+( application uuid references application
 , entity uuid_pk
 , primary key (application, entity)
 
@@ -166,8 +166,8 @@ create table legal_entity (
 
 comment on table legal_entity is 'Legal entity';
 
-create table legal_entity_responsibility (
-  application uuid references contract
+create table legal_entity_responsibility
+( application uuid references contract
 , legal_entity uuid, foreign key (application, legal_entity) references legal_entity
 , primary key (application, legal_entity)
 

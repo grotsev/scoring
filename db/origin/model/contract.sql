@@ -1,23 +1,23 @@
-create table credit_kind (
-  credit_kind code primary key
+create table credit_kind
+( credit_kind code primary key
 );
 
-create table credit_purpose (
-  credit_purpose code primary key
+create table credit_purpose
+( credit_purpose code primary key
 );
 
-create table income_evidence (
-  income_evidence code primary key
+create table income_evidence
+( income_evidence code primary key
 );
 
-create table repayment_kind (
-  repayment_kind code primary key
+create table repayment_kind
+( repayment_kind code primary key
 );
 
 
 
-create table contract (
-  application uuid primary key references application
+create table contract
+( application uuid primary key references application
 
 , product code not null references product
 , currency code not null references currency

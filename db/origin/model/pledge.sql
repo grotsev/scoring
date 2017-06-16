@@ -1,25 +1,25 @@
-create table auto_brand (
-  auto_brand code primary key
+create table auto_brand
+( auto_brand code primary key
 );
 
-create table auto_model (
-  auto_brand code references auto_brand
+create table auto_model
+( auto_brand code references auto_brand
 , auto_model code
 , primary key (auto_brand, auto_model)
 );
 
-create table pledge_kind (
-  pledge_kind code primary key
+create table pledge_kind
+( pledge_kind code primary key
 );
 
-create table wall_material (
-  wall_material code primary key
+create table wall_material
+( wall_material code primary key
 );
 
 
 
-create table pledge (
-  application uuid references application
+create table pledge
+( application uuid references application
 , pledge uuid_pk
 , primary key (application, pledge)
 
