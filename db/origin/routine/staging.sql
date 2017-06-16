@@ -5,7 +5,6 @@ create table staging_history (
 , sys_period  tstzrange not null
 );
 
-
 create table staging (
   primary key (application)
 , unique      (staff)
@@ -13,7 +12,6 @@ create table staging (
 , foreign key (staff) references staff
 , foreign key (stage) references stage
 ) inherits (staging_history);
-
 
 comment on table staging is 'Staff which has taken application for processing';
 

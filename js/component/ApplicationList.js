@@ -14,7 +14,7 @@ export default function ApplicationList(props) {
         <BS.Col sm={3}>
           
           <BS.Panel>
-            <BS.Button bsStyle='primary' block fill><span className='fa fa-plus' /> Добавить</BS.Button>
+            <BS.Button bsStyle='primary' block fill><span className='fa fa-plus' /> Создать заявку</BS.Button>
           </BS.Panel>
 
           <BS.Panel>
