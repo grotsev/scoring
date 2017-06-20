@@ -1,8 +1,9 @@
-create function application_create() returns void as $$
+create function application_create() returns uuid as $$
   insert into application (branch, outlet)
     select branch, outlet
     from staff_outlet
     where staff = jwt_staff()
+  returning application
 $$ language sql;
 
 create function application_take(application uuid, stage code) returns void as $$
