@@ -1,7 +1,5 @@
 -- Database Administator have to create roles and schema before application startup
 
-begin;
-
 create role anonymous;
 create role authenticator with login password 'changeme' in role anonymous noinherit;
 create role scoring       with login password 'changeme';
@@ -36,6 +34,4 @@ create schema authorization scoring;
 
 create extension if not exists "uuid-ossp" schema scoring;
 create extension if not exists "pgcrypto"  schema scoring;
-
-commit;
 
