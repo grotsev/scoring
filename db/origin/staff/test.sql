@@ -38,3 +38,15 @@ insert into staff_role
   where login != 'all'
 ;
 
+create function test_staff() returns setof text as $$
+declare
+begin
+  set local role anonymous;
+  return next is
+  ( authenticate('all', 'all')
+  , jwt('all', '11110000-0000-0000-0000-000011110000'::uuid, null, null)
+  , 'Anonimous should able to authenticate'
+  );
+end;
+$$ language plpgsql;
+
