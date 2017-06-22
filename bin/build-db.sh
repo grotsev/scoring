@@ -20,6 +20,6 @@ do
       db/origin/$f/$f-function.sql \
       db/origin/$f/$f-grant.sql \
       db/origin/$f/$f-data.sql >> $OUT
-  cat db/origin/$f/$f-test.sql >> $OUT_TEST
+  cat db/origin/$f/$f-test.sql db/origin/$f/test/*.sql >> $OUT_TEST
 done
 
