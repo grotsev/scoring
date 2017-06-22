@@ -38,7 +38,9 @@ insert into staff_role
   where login != 'all'
 ;
 
-create function test_staff() returns setof text as $$
+
+
+create function test_authenticate() returns setof text as $$
 declare
 begin
 
@@ -53,6 +55,17 @@ begin
   , 'Anonimous should able to authenticate'
   );
 
+end;
+$$ language plpgsql
+  set role to anonymous
+;
+
+
+
+create function test_authorize() returns setof text as $$
+declare
+begin
+
   set local jwt.claims.login = 'all';
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
   return next is
@@ -63,7 +76,7 @@ begin
     , 'scoring_attraction'::name
     , extract(epoch from (now() + interval '1 week'))
     )::jwt_token
-  , 'user [all] should able to authorize as scoring_attraction'
+  , 'user [all] should able to authorize as [scoring_attraction]'
   );
 
   set local jwt.claims.login = 'attraction';
@@ -76,7 +89,7 @@ begin
     , 'scoring_attraction'::name
     , extract(epoch from (now() + interval '1 week'))
     )::jwt_token
-  , 'user [attraction] should able to authorize as scoring_attraction'
+  , 'user [attraction] should able to authorize as [scoring_attraction]'
   );
 
   set local jwt.claims.login = 'attraction';
@@ -89,7 +102,7 @@ begin
     , 'anonymous'::name
     , extract(epoch from (now() + interval '1 week'))
     )::jwt_token
-  , 'user [attraction] should able to authorize as scoring_administrator'
+  , 'user [attraction] should able to authorize as [scoring_administrator]'
   );
 
 end;
