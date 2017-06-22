@@ -16,10 +16,10 @@ for f in \
   pledge contract person \
 
 do
-  cat db/origin/$f/model.sql \
-      db/origin/$f/function.sql \
-      db/origin/$f/grant.sql \
-      db/origin/$f/data.sql >> $OUT
-  cat db/origin/$f/test.sql >> $OUT_TEST
+  cat db/origin/$f/$f-model.sql \
+      db/origin/$f/$f-function.sql \
+      db/origin/$f/$f-grant.sql \
+      db/origin/$f/$f-data.sql >> $OUT
+  cat db/origin/$f/$f-test.sql >> $OUT_TEST
 done
 
