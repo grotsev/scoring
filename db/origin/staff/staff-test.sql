@@ -51,6 +51,19 @@ begin
     )::jwt_token
   , 'Anonimous should able to authenticate'
   );
+
+  set local jwt.claims.login = 'all';
+  set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
+  return next is
+  ( authorize('scoring_attraction')::jwt_token
+  , row
+    ( 'all'
+    , '11110000-0000-0000-0000-000011110000'::uuid
+    , 'scoring_attraction'::name
+    , extract(epoch from (now() + interval '1 week'))
+    )::jwt_token
+  , 'user [all] should able to authorize as scoring_attraction'
+  );
 end;
 $$ language plpgsql
   set role to anonymous

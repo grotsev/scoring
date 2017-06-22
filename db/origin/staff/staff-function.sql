@@ -25,6 +25,8 @@ $$ language plpgsql stable strict security definer;
 comment on function authenticate(login, text) is
   'Creates a JWT token that will securely identify a staff and give them ability to select role.';
 
+
+
 create function authorize(
   role name
 ) returns jwt_token as $$
@@ -47,6 +49,8 @@ $$ language plpgsql stable strict security definer;
 comment on function authorize(name) is
   'Creates a JWT token that will securely authorize role.';
 
+
+
 create function jwt_login() returns text as $$
 declare
   result text;
@@ -61,6 +65,8 @@ $$ language plpgsql stable;
 
 comment on function jwt_login() is 'Get current login by JWT';
 
+
+
 create function jwt_role() returns name as $$
 declare
   result name;
@@ -74,6 +80,8 @@ end;
 $$ language plpgsql stable;
 
 comment on function jwt_role() is 'Get current role by JWT';
+
+
 
 create function jwt_staff() returns uuid as $$
 declare
