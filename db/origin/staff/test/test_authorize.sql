@@ -1,5 +1,4 @@
 create function test_authorize() returns setof text as $$
-declare
 begin
 
   set local jwt.claims.login = 'all';

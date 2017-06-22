@@ -1,5 +1,4 @@
 create function test_authenticate() returns setof text as $$
-declare
 begin
 
   return next is
