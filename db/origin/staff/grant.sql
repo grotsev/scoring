@@ -11,6 +11,7 @@ create policy select_staff_role on staff_role for select
 grant select on table
   branch
 , outlet
+, staff_outlet
 to scoring_user;
 
 grant select, insert, update on table
