@@ -37,7 +37,7 @@ begin
     , 'anonymous'::name
     , extract(epoch from (now() + interval '1 week'))
     )::jwt_token
-  , 'user [attraction] should able to authorize as [scoring_administrator]'
+  , 'user [attraction] should not able to authorize as [scoring_administrator]'
   );
 
 end;
