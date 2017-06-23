@@ -1,4 +1,4 @@
-create or replace function test_jwt() returns setof text as $$
+create or replace function test_jwt() returns setof text as $function$
 begin
 
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
@@ -9,7 +9,7 @@ begin
   );
 
 end;
-$$ language plpgsql
+$function$ language plpgsql
   set role = anonymous
 ;
 

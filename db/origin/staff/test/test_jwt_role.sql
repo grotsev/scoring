@@ -1,4 +1,4 @@
-create or replace function test_jwt_role() returns setof text as $$
+create or replace function test_jwt_role() returns setof text as $function$
 begin
 
   set local jwt.claims.role = 'scoring_attraction';
@@ -9,7 +9,7 @@ begin
   );
 
 end;
-$$ language plpgsql
+$function$ language plpgsql
   set role = anonymous
 ;
 

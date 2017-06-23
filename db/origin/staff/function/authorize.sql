@@ -1,6 +1,6 @@
 create function authorize(
   role name
-) returns jwt_token as $$
+) returns jwt_token as $function$
 declare
   role name;
 begin
@@ -15,7 +15,7 @@ begin
     , extract(epoch from (now() + interval '1 week'))
   )::jwt_token;
 end;
-$$ language plpgsql stable strict security definer;
+$function$ language plpgsql stable strict security definer;
 
 comment on function authorize(name) is
   'Creates a JWT token that will securely authorize role.';

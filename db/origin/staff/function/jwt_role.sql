@@ -1,4 +1,4 @@
-create function jwt_role() returns name as $$
+create function jwt_role() returns name as $function$
 declare
   result name;
 begin
@@ -8,7 +8,7 @@ exception
   when undefined_object then
     return null;
 end;
-$$ language plpgsql stable;
+$function$ language plpgsql stable;
 
 comment on function jwt_role() is 'Get current role by JWT';
 

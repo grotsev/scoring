@@ -1,4 +1,4 @@
-create function jwt_login() returns text as $$
+create function jwt_login() returns text as $function$
 declare
   result text;
 begin
@@ -8,7 +8,7 @@ exception
   when undefined_object then
     return null;
 end;
-$$ language plpgsql stable;
+$function$ language plpgsql stable;
 
 comment on function jwt_login() is 'Get current login by JWT';
 

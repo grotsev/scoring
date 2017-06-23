@@ -1,4 +1,4 @@
-create or replace function test_jwt_login() returns setof text as $$
+create or replace function test_jwt_login() returns setof text as $function$
 begin
   
   set local jwt.claims.login = 'all';
@@ -9,7 +9,7 @@ begin
   );
 
 end;
-$$ language plpgsql
+$function$ language plpgsql
   set role = anonymous
 ;
 

@@ -1,4 +1,4 @@
-create function test_authenticate() returns setof text as $$
+create function test_authenticate() returns setof text as $function$
 begin
 
   return next is
@@ -13,7 +13,7 @@ begin
   );
 
 end;
-$$ language plpgsql
+$function$ language plpgsql
   set role to anonymous
 ;
 

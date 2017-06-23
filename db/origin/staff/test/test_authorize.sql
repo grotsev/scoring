@@ -1,4 +1,4 @@
-create function test_authorize() returns setof text as $$
+create function test_authorize() returns setof text as $function$
 begin
 
   set local jwt.claims.login = 'all';
@@ -41,7 +41,7 @@ begin
   );
 
 end;
-$$ language plpgsql
+$function$ language plpgsql
   set role to anonymous
 ;
 

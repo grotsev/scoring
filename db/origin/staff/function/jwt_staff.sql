@@ -1,4 +1,4 @@
-create function jwt_staff() returns uuid as $$
+create function jwt_staff() returns uuid as $function$
 declare
   result uuid;
 begin
@@ -8,7 +8,7 @@ exception
   when undefined_object then
     return null;
 end;
-$$ language plpgsql stable;
+$function$ language plpgsql stable;
 
 comment on function jwt_login() is 'Get current staff by JWT';
 
