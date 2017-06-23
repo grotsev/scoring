@@ -6,6 +6,8 @@ begin
   
   select application_create() into a;
   return next isnt(a , null, '');
+
+  --select application_stage
 end;
 $$ language plpgsql
   set role = scoring_attraction
