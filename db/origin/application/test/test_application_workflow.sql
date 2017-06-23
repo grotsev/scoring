@@ -6,7 +6,7 @@ declare
 begin
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
   
-  set local role to scoring_attraction;
+  set local role = scoring_attraction;
   select application_create() into the_application;
   return next isnt(the_application , null, 'application_create should create new application');
 
@@ -18,8 +18,8 @@ begin
   ;
   return next results_eq
     ( cursor
-    , array['attraction']
-    , 'New application should be in [attraction] stage'
+    , $$values ('ATTRACTION'::code)$$
+    , 'New application should be in [ATTRACTION] stage'
     );
   close cursor;
 
