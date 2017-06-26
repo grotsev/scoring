@@ -12,11 +12,12 @@ begin
   insert into application_stage (application, stage)
   values (the_application, 'ATTRACTION');
 
+  insert into contract(application) values (the_application);
+
   return the_application;
   
 end;
 $function$
 language plpgsql
-security definer
 ;
 

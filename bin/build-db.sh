@@ -5,16 +5,12 @@ mkdir -p build/
 OUT=build/db.sql
 OUT_TEST=build/db-test.sql
 
+source ./bin/modules.sh
+
 rm -f $OUT
 rm -f $OUT_TEST
 
-for f in \
-  system \
-  staff \
-  product application \
-  address \
-  pledge contract person \
-
+for f in $MODULES
 do
   cat db/origin/$f/$f-model.sql \
       db/origin/$f/function/*.sql \

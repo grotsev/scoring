@@ -19,14 +19,14 @@ create table repayment_kind
 create table contract
 ( application uuid primary key references application
 
-, product code not null references product
-, currency code not null references currency
-, client_category code not null references currency
-, term_range int4range not null
-, amount_range int4range not null
+, product code references product
+, currency code references currency
+, client_category code references client_category
+, term_range int4range
+, amount_range int4range
 , foreign key (product, currency, client_category, term_range, amount_range) references product_scheme
-, term int4 not null check (term between 0 and 1200)
-, amount numeric not null
+, term int4 check (term between 0 and 1200)
+, amount numeric
 
 , repayment_kind code references repayment_kind
 , income_evidence code references income_evidence
