@@ -32,6 +32,14 @@ create role scoring_credit_administrator    with role authenticator in role scor
 
 create schema authorization scoring;
 
-create extension if not exists "uuid-ossp" schema scoring;
-create extension if not exists "pgcrypto"  schema scoring;
+-- temporary superuser scoring to create extensions owned by scoring
+alter role scoring with superuser;
+set local role scoring;
+
+create extension if not exists "uuid-ossp";
+create extension if not exists "pgcrypto";
+create extension if not exists "temporal_tables";
+
+reset role;
+alter role scoring with nosuperuser;
 

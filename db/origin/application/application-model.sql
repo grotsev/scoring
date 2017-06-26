@@ -43,3 +43,7 @@ create table staging
 
 comment on table staging is 'Staff which has taken application for processing';
 
+create trigger staging_versioning
+  before insert or update or delete on staging
+  for each row execute procedure versioning('sys_period', 'staging_history', true)
+;
