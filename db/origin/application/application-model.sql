@@ -28,9 +28,9 @@ comment on table application_stage is 'Possible next application stages';
 
 create table staging_history
 ( application uuid      not null
+, sys_period  tstzrange not null
 , staff       uuid      not null
 , stage       code      not null
-, sys_period  tstzrange not null
 );
 
 create table staging
@@ -47,3 +47,4 @@ create trigger staging_versioning
   before insert or update or delete on staging
   for each row execute procedure versioning('sys_period', 'staging_history', true)
 ;
+
