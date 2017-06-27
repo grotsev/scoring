@@ -1,11 +1,13 @@
 create or replace function test_application_workflow() returns setof text as $function$
 declare
+  the_staff uuid;
   the_application uuid;
   the_borrower uuid;
   the_stage code;
   cursor refcursor;
 begin
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
+  select jwt_staff() into the_staff;
   
   set local role = scoring_attraction;
 
@@ -16,8 +18,9 @@ begin
 
   open cursor for
     select stage
-    from application_stage
+    from staging
     where application = the_application
+      and staff = the_staff
   ;
   return next results_eq
     ( cursor
