@@ -7,7 +7,7 @@ begin
     ( 'all'
     , '11110000-0000-0000-0000-000011110000'::uuid
     , 'anonymous'
-    , extract(epoch from (now() + interval '1 week'))
+    , extract(epoch from (now() + interval '10 week'))
     )::jwt_token
   , 'Anonimous should able to authenticate'
   );
