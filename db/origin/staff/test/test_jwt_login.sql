@@ -1,6 +1,7 @@
-create or replace function test_jwt_login() returns setof text as $function$
+create function test_jwt_login() returns setof text as $function$
 begin
   
+  set local role to anonymous;
   set local jwt.claims.login = 'all';
   return next is
   ( jwt_login()
@@ -10,6 +11,6 @@ begin
 
 end;
 $function$ language plpgsql
-  set role = anonymous
+  set role from current
 ;
 

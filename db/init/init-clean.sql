@@ -6,6 +6,7 @@ drop schema scoring cascade;
 drop role authenticator;
 drop role anonymous;
 
+drop owned by scoring cascade;
 drop role scoring;
 
 drop role scoring_user;

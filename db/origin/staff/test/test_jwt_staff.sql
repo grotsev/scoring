@@ -1,6 +1,7 @@
-create or replace function test_jwt() returns setof text as $function$
+create function test_jwt_staff() returns setof text as $function$
 begin
 
+  set local role to anonymous;
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
   return next is
   ( jwt_staff()
@@ -10,6 +11,6 @@ begin
 
 end;
 $function$ language plpgsql
-  set role = anonymous
+  set role from current
 ;
 

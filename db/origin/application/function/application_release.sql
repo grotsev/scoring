@@ -1,9 +1,10 @@
-create function application_release(the_application uuid, stage code) returns void as $function$
+create function application_release(the_application uuid) returns void as $function$
 declare
 begin
   
   insert into contract
-  ( select * from only contract_draft
+  ( -- contract has changed in some column
+    select * from only contract_draft
     where application = the_application
     except
     select * from contract

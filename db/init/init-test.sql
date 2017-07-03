@@ -6,7 +6,3 @@ create extension if not exists "pgtap" schema scoring_test;
 
 alter database postgres set search_path to scoring_test, scoring;
 
-grant authenticator to scoring;
-
-grant all on schema scoring_test to public;
-

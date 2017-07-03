@@ -1,6 +1,9 @@
 grant execute on function
   authenticate(login, text)
 , authorize(name)
+, jwt_staff()
+, jwt_login()
+, jwt_role()
 to public;
 
 grant select on table staff_role to scoring_public;

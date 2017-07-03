@@ -1,6 +1,7 @@
 create function test_authorize() returns setof text as $function$
 begin
 
+  set local role to anonymous;
   set local jwt.claims.login = 'all';
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
   return next is
@@ -42,6 +43,6 @@ begin
 
 end;
 $function$ language plpgsql
-  set role to anonymous
+  set role from current
 ;
 

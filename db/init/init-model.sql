@@ -2,7 +2,7 @@
 
 create role anonymous;
 create role authenticator with login password 'changeme' in role anonymous noinherit;
-create role scoring       with login password 'changeme';
+create role scoring       with login password 'changeme' noinherit;
 
 comment on role anonymous     is 'No authentication is provided';
 comment on role authenticator is 'Initial connection to become anonymous or an user';
@@ -42,4 +42,6 @@ create extension if not exists "temporal_tables";
 
 reset role;
 alter role scoring with nosuperuser;
+
+alter default privileges for role scoring revoke execute on functions from public;
 

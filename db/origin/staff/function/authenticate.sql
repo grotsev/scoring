@@ -25,3 +25,4 @@ $function$ language plpgsql stable strict security definer;
 comment on function authenticate(login, text) is
   'Creates a JWT token that will securely identify a staff and give them ability to select role.';
 
+

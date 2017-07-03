@@ -1,6 +1,8 @@
 create function test_authenticate() returns setof text as $function$
 begin
 
+  set role to anonymous;
+
   return next is
   ( authenticate('all', 'all')::jwt_token
   , row
@@ -14,6 +16,6 @@ begin
 
 end;
 $function$ language plpgsql
-  set role to anonymous
+  set role from current
 ;
 

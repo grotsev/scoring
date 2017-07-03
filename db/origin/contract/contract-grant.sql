@@ -7,6 +7,8 @@ to scoring_user;
 
 grant select, insert, update on table
   contract
+, contract_draft
+, contract_history
 to scoring_user;
 
 grant select, insert, update on table
