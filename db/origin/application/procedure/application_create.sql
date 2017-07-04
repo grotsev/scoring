@@ -9,9 +9,9 @@ begin
     where staff = jwt_staff()
   returning application into the_application;
 
-  perform application_take(the_application, 'ATTRACTION');
-
   insert into contract(application) values (the_application);
+
+  perform application_take(the_application, 'ATTRACTION');
 
   return the_application;
   
