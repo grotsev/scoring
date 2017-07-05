@@ -2,6 +2,7 @@ grant select on table
   stage
 , application
 , staging
+, individual_responsibility
 to scoring_user;
 
 grant insert on table
