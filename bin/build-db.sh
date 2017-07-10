@@ -24,5 +24,7 @@ done
 cat db/origin/function/*.sql \
     db/origin/grant/*.sql \
       >> $OUT 2> /dev/null
-cat db/origin/test/*.sql \
+cat db/origin/test-input/*.sql \
+    db/origin/test-check/*.sql \
+    db/origin/test/*.sql \
       >> $OUT_TEST 2> /dev/null
