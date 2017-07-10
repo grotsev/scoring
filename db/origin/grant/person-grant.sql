@@ -40,3 +40,7 @@ grant select, insert, update, delete on table
 , tenure
 to scoring_administrator;
 
+grant select, insert, update, delete on table
+  individual_responsibility
+to scoring_user;
+

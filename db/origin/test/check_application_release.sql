@@ -39,7 +39,7 @@ begin
     , 'contract_draft should be cleared by application_release'
     );
 
-  return next diag(array(select row(c.*) from contract_draft c));
+  --return next diag(array(select row(c.*) from contract_draft c)); TODO remove
   
 end;
 $function$;

@@ -13,8 +13,13 @@ as $function$
     where application = $1
   );
 
+  -- new empty contract
+  insert into contract_draft (application, sys_period)
+    values ($1, tstzrange(now(), null))
+    on conflict do nothing;
+
 $function$;
 
 comment on function application_take(uuid, code) is
-  'Pin application to current_staff and copy draft from last state';
+  'Pin application to current_staff and create or copy draft from last state';
 

@@ -4,6 +4,7 @@ create function application_create(
 as $function$
 declare
   the_application uuid;
+  the_borrower uuid;
 begin
 
   insert into application (branch, outlet)
@@ -12,7 +13,13 @@ begin
     where staff = current_staff()
   returning application into the_application;
 
-  insert into contract(application) values (the_application);
+  insert into contract (application) values (the_application);
+
+  insert into individual (application) values (the_application)
+  returning individual into the_borrower;
+
+  insert into individual_responsibility (application, individual, responsibility)
+    values (the_application, the_borrower, 'BORROWER');
 
   perform application_take(the_application, 'ATTRACTION');
 
@@ -22,5 +29,5 @@ end;
 $function$;
 
 comment on function application_create() is
-  'Create new application with default dependent objects and current_staff automatically takes it';
+  'Create new application and current_staff automatically takes it';
 
