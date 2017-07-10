@@ -1,12 +1,12 @@
-create function test_jwt_role() returns setof text as $function$
+create function test_current_authority() returns setof text as $function$
 begin
 
   set local role to anonymous;
   set local jwt.claims.role = 'scoring_attraction';
   return next is
-  ( jwt_role()
+  ( current_authority()
   , 'scoring_attraction'::name
-  , 'jwt_role() should be jwt.claims.role'
+  , 'current_authority() should be jwt.claims.role'
   );
 
 end;

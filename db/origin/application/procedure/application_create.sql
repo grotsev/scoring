@@ -6,7 +6,7 @@ begin
   insert into application (branch, outlet)
     select branch, outlet
     from staff_outlet
-    where staff = jwt_staff()
+    where staff = current_staff()
   returning application into the_application;
 
   insert into contract(application) values (the_application);

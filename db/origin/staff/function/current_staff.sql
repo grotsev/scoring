@@ -1,4 +1,4 @@
-create function jwt_staff() returns uuid as $function$
+create function current_staff() returns uuid as $function$
 declare
   result uuid;
 begin
@@ -10,5 +10,5 @@ exception
 end;
 $function$ language plpgsql stable;
 
-comment on function jwt_login() is 'Get current staff by JWT';
+comment on function current_staff() is 'Get current staff by JWT';
 

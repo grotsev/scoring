@@ -1,4 +1,4 @@
-create function jwt_login() returns text as $function$
+create function current_login() returns text as $function$
 declare
   result text;
 begin
@@ -10,5 +10,5 @@ exception
 end;
 $function$ language plpgsql stable;
 
-comment on function jwt_login() is 'Get current login by JWT';
+comment on function current_login() is 'Get current login by JWT';
 

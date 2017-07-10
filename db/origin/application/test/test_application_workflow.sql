@@ -1,7 +1,7 @@
 create function test_application_workflow(
 ) returns setof text
   language plpgsql
-  set role authenticator
+  set role from current
 as $function$
 declare
   the_staff uuid;
@@ -10,7 +10,7 @@ declare
   the_stage code;
 begin
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
-  select jwt_staff() into the_staff;
+  select current_staff() into the_staff;
   set local role = scoring_attraction;
 
   the_application := application_create();

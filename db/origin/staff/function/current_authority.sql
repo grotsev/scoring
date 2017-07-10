@@ -1,4 +1,4 @@
-create function jwt_role() returns name as $function$
+create function current_authority() returns name as $function$
 declare
   result name;
 begin
@@ -10,5 +10,5 @@ exception
 end;
 $function$ language plpgsql stable;
 
-comment on function jwt_role() is 'Get current role by JWT';
+comment on function current_authority() is 'Get current role by JWT';
 

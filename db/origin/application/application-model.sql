@@ -8,7 +8,7 @@ create table application
 ( application uuid_pk primary key
 
 , created_at timestamp with time zone not null default now()
-, created_by uuid not null references staff default jwt_staff()
+, created_by uuid not null references staff default current_staff()
 
 , branch code not null
 , outlet code not null
