@@ -24,7 +24,7 @@ begin
       , 'A1'
       , 500000
       )$$
-    , 'contract should be filled from contract_draft'
+    , 'application_release fill contract from contract_draft'
     );
   close cursor;
 
