@@ -17,6 +17,10 @@ begin
     product = excluded.product
   ;
 
+  delete from contract_draft
+  where application = the_application
+  ;
+
 end;
 $function$;
 

@@ -11,6 +11,10 @@ grant select, insert, update on table
 , contract_history
 to scoring_user;
 
+grant delete on table
+  contract_draft
+to scoring_user;
+
 grant select, insert, update on table
   credit_kind
 , credit_purpose
