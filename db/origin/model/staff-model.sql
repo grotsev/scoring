@@ -6,7 +6,12 @@ create type jwt_token as (
 );
 
 
-create function current_authority() returns name as $function$
+
+create function current_authority(
+) returns name
+  language plpgsql
+  stable
+as $function$
 declare
   result name;
 begin
@@ -16,12 +21,17 @@ exception
   when undefined_object then
     return null;
 end;
-$function$ language plpgsql stable;
+$function$;
 
 comment on function current_authority() is 'Get current role by JWT';
 
 
-create function current_login() returns text as $function$
+
+create function current_login(
+) returns text
+  language plpgsql
+  stable
+as $function$
 declare
   result text;
 begin
@@ -31,12 +41,17 @@ exception
   when undefined_object then
     return null;
 end;
-$function$ language plpgsql stable;
+$function$;
 
 comment on function current_login() is 'Get current login by JWT';
 
 
-create function current_staff() returns uuid as $function$
+
+create function current_staff(
+) returns uuid
+  language plpgsql
+  stable
+as $function$
 declare
   result uuid;
 begin
@@ -46,9 +61,10 @@ exception
   when undefined_object then
     return null;
 end;
-$function$ language plpgsql stable;
+$function$;
 
 comment on function current_staff() is 'Get current staff by JWT';
+
 
 
 create table branch

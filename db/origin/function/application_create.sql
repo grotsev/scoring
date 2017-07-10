@@ -1,4 +1,7 @@
-create function application_create() returns uuid as $function$
+create function application_create(
+) returns uuid
+  language plpgsql
+as $function$
 declare
   the_application uuid;
 begin
@@ -16,7 +19,8 @@ begin
   return the_application;
   
 end;
-$function$
-language plpgsql
-;
+$function$;
+
+comment on function application_create() is
+  'Create new application with default dependent objects and current_staff automatically takes it';
 

@@ -4,6 +4,7 @@ create function input_contract_draft(
   language plpgsql
 as $function$
 begin
+
   update contract_draft set
       product = 'NEEDFUL_CREDIT_MORTGAGE'
     , currency = 'KZT'
@@ -11,5 +12,7 @@ begin
     , amount = 500000
   where application = the_application
   ;
+  
 end;
 $function$;
+

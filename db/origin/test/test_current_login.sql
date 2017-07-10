@@ -1,4 +1,8 @@
-create function test_current_login() returns setof text as $function$
+create function test_current_login(
+) returns setof text
+  language plpgsql
+  set role from current
+as $function$
 begin
   
   set local role to anonymous;
@@ -10,7 +14,5 @@ begin
   );
 
 end;
-$function$ language plpgsql
-  set role from current
-;
+$function$;
 

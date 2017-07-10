@@ -9,6 +9,7 @@ declare
   the_borrower uuid;
   the_stage code;
 begin
+
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
   select current_staff() into the_staff;
   set local role = scoring_attraction;
@@ -20,6 +21,7 @@ begin
   return query select input_individual_draft_borrower(the_application);
   perform application_release(the_application);
   return query select check_application_release(the_application);
+  
 end;
 $function$;
 

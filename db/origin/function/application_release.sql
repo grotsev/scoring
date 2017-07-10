@@ -1,4 +1,8 @@
-create function application_release(the_application uuid) returns void as $function$
+create function application_release(
+  the_application uuid
+) returns void
+  language plpgsql
+as $function$
 declare
 begin
   
@@ -14,5 +18,8 @@ begin
   ;
 
 end;
-$function$ language plpgsql;
+$function$;
+
+comment on function application_release(uuid) is
+  'Unpin application taken by current_staff, move draft dependent objects into last state and perform stage business logic';
 

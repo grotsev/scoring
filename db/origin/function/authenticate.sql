@@ -1,10 +1,16 @@
 create function authenticate(
   login login,
   password text
-) returns jwt_token as $function$
+) returns jwt_token
+  language plpgsql
+  stable
+  strict
+  security definer
+as $function$
 declare
   staff staff;
 begin
+  
   select a.* into staff
   from staff a
   where a.login = $1;
@@ -19,10 +25,10 @@ begin
   else
     return null;
   end if;
+
 end;
-$function$ language plpgsql stable strict security definer;
+$function$;
 
 comment on function authenticate(login, text) is
-  'Creates a JWT token that will securely identify a staff and give them ability to select role.';
-
+  'Creates a JWT token that will securely identify a staff and give them ability to select authority';
 

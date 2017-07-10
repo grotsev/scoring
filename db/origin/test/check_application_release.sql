@@ -7,6 +7,7 @@ as $function$
 declare
   cursor refcursor;
 begin
+
   open cursor for
     select product
          , currency
@@ -39,6 +40,7 @@ begin
     );
 
   return next diag(array(select row(c.*) from contract_draft c));
+  
 end;
 $function$;
 

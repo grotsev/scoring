@@ -6,6 +6,7 @@ as $function$
 declare
   contract_draft_count integer;
 begin
+
   update individual set
       iin = '800102012345'
     , surname = 'Ivanov'
@@ -21,5 +22,7 @@ begin
   ;
   get diagnostics contract_draft_count = row_count;
   return next is(contract_draft_count, 1, 'application has one borrower');
+  
 end;
 $function$;
+

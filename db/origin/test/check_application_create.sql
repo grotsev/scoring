@@ -8,6 +8,7 @@ as $function$
 declare
   cursor refcursor;
 begin
+  
   return next isnt(
     the_application,
     null,
@@ -37,6 +38,7 @@ begin
     'select * from contract_draft w',
     'create_application()/contract_take() creates contract_draft'
   );
+
 end;
 $function$;
 
