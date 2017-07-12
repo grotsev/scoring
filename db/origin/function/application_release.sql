@@ -6,6 +6,8 @@ as $function$
 declare
 begin
   
+  perform application_automate(the_application);
+
   insert into contract
   ( -- contract has changed in some column
     select * from only contract_draft

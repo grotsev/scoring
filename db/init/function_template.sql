@@ -8,11 +8,16 @@ as $function$
 declare
   cursor refcursor;
 begin
+
   return next is(
     'Actual',
     'Expected',
     'Description'
   );
+
 end;
 $function$;
+
+comment on function function_name(uuid) is
+  '';
 
