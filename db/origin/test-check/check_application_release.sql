@@ -4,40 +4,42 @@ create function check_application_release(
   language plpgsql
   set role scoring
 as $function$
-declare
-  cursor refcursor;
 begin
 
-  open cursor for
-    select product
-         , currency
-         , client_category
-         , amount
-    from contract
-    where application = the_application
-  ;
-  return next results_eq
-    ( cursor
-    , $$values
-      ( 'NEEDFUL_CREDIT_MORTGAGE'::code
-      , 'KZT'
-      , 'A1'
-      , 500000
-      )$$
-    , 'application_release fill contract from contract_draft'
-    );
-  close cursor;
+  return next row_eq(
+    $$select * from contract where application='$$||the_application||$$'$$,
+    row(
+      the_application,
+      tstzrange(now(), null),
 
-  open cursor for
-    select *
-    from contract_draft
-    where application = the_application
-  ;
-  return next results_eq
-    ( cursor
-    , '{}'::text[]
-    , 'contract_draft should be cleared by application_release'
-    );
+      'NEEDFUL_CREDIT_MORTGAGE'::code,
+      'KZT',
+      'A1',
+      '[12, 120]'::int4range,
+      '[10000, 100000)'::int4range,
+      null,
+      500000,
+
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+      )::contract,
+    'application_release fill contract from contract_draft'
+  );
+
+  return next is_empty(
+    $$select * from contract_draft where application = '$$||the_application||$$'$$,
+    'contract_draft should be cleared by application_release'
+  );
 
   --return next diag(array(select row(c.*) from contract_draft c)); TODO remove
   

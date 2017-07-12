@@ -35,8 +35,8 @@ begin
   close cursor;
   
   return next isnt_empty(
-    'select * from contract_draft w',
-    'create_application()/contract_take() creates contract_draft'
+    $$select * from contract_draft where application='$$||the_application||$$'$$,
+    'contract_take() in create_application() creates contract_draft'
   );
 
 end;

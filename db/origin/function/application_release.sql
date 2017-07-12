@@ -14,7 +14,25 @@ begin
     select * from contract
     where application = the_application
   ) on conflict (application) do update set
-    product = excluded.product
+    product = excluded.product,
+    currency = excluded.currency,
+    client_category = excluded.client_category,
+    term_range = excluded.term_range,
+    amount_range = excluded.amount_range,
+    term = excluded.term,
+    amount = excluded.amount,
+    repayment_kind = excluded.repayment_kind,
+    income_evidence = excluded.income_evidence,
+    deposit_value = excluded.deposit_value,
+    property_value = excluded.property_value,
+    pledge_value = excluded.pledge_value,
+    pledge_currency = excluded.pledge_currency,
+    init_payment = excluded.init_payment,
+    init_payment_percent = excluded.init_payment_percent,
+    pay_date = excluded.pay_date,
+    monthly_payment = excluded.monthly_payment,
+    credit_kind = excluded.credit_kind,
+    credit_purpose = excluded.credit_purpose
   ;
 
   delete from contract_draft
