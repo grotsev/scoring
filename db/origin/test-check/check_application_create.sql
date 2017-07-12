@@ -17,13 +17,13 @@ begin
 
   return next throws_ok(
     $$select application_take('$$||the_application||$$', 'ATTRACTION')$$,
-    'duplicate key value violates unique constraint "staging_pkey"',
+    'duplicate key value violates unique constraint "take_pkey"',
     'Application is taken just once'
   );
   
   open cursor for
     select stage
-    from staging
+    from take
     where application = the_application
       and staff = the_staff
   ;

@@ -5,7 +5,7 @@ create function application_take(
   language sql
 as $function$
   
-  insert into staging (application, staff, stage, sys_period)
+  insert into take (application, staff, stage, sys_period)
     values ($1, current_staff(), $2, tstzrange(now(), null) );
 
   insert into contract_draft (

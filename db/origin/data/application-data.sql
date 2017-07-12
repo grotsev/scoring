@@ -1,5 +1,7 @@
 insert into stage values
   ('ATTRACTION')
+, ('BLACK_LIST')
+, ('TERRORIST_LIST')
 , ('APPLICATION')
 , ('VERIFICATION')
 , ('PLEDGE_ESTIMATION')

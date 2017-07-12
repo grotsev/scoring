@@ -18,33 +18,33 @@ create table application
 
 comment on table application is 'Client application to get product';
 
-create table application_stage
+create table possible_stage
 ( application uuid references application
 , stage code not null references stage
 , primary key (application, stage)
 );
 
-comment on table application_stage is 'Possible next application stages';
+comment on table possible_stage is 'Possible next application stages';
 
-create table staging_history
+create table take_history
 ( application uuid      not null
 , sys_period  tstzrange not null
 , staff       uuid      not null
 , stage       code      not null
 );
 
-create table staging
+create table take
 ( primary key (application)
 , unique      (staff)
 , foreign key (application) references application
 , foreign key (staff) references staff
 , foreign key (stage) references stage
-) inherits (staging_history);
+) inherits (take_history);
 
-comment on table staging is 'Staff which has taken application for processing';
+comment on table take is 'Staff which has taken application for processing';
 
-create trigger staging_versioning
-  before insert or update or delete on staging
-  for each row execute procedure versioning('sys_period', 'staging_history', true)
+create trigger take_versioning
+  before insert or update or delete on take
+  for each row execute procedure versioning('sys_period', 'take_history', true)
 ;
 

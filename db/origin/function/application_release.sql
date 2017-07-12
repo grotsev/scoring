@@ -6,8 +6,6 @@ as $function$
 declare
 begin
   
-  perform application_automate(the_application);
-
   insert into contract
   ( -- contract has changed in some column
     select * from only contract_draft
@@ -38,8 +36,12 @@ begin
   ;
 
   delete from contract_draft
-  where application = the_application
-  ;
+  where application = the_application;
+
+  perform next_possible_stage(the_application);
+
+  delete from take
+  where application = the_application;
 
 end;
 $function$;
