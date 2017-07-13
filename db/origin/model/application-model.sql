@@ -47,7 +47,7 @@ create table available_stage
 );
 
 comment on table available_stage is
-  'Available next application stages is possible stages except blocked';
+  'Available next application stages materializes possible stages except blocked';
 
 create table take_history
 ( application uuid      not null

@@ -38,7 +38,7 @@ begin
   delete from contract_draft
   where application = the_application;
 
-  perform next_possible_stage(the_application);
+  perform route(the_application); -- TODO update possible_stage and available_stage
 
   delete from take
   where application = the_application;

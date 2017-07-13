@@ -17,6 +17,5 @@ grant execute on function
   application_create()
 , application_take(uuid, code)
 , application_release(uuid)
-, next_possible_stage(uuid)
 to scoring_attraction;
 
