@@ -18,3 +18,8 @@ insert into stage values
 , ('CREDIT_ADMINISTRATOR')
 ;
 
+insert into stage_blocker(blocker, blocked) values
+  ('BLACK_LIST', 'APPLICATION')
+, ('TERRORIST_LIST', 'APPLICATION')
+;
+

@@ -2,6 +2,18 @@ create table stage
 ( stage code primary key
 );
 
+comment on table stage is
+  'Stage is tightly related to agent which take application to process';
+
+create table stage_blocker
+( blocker code references stage
+, blocked code references stage
+, primary key (blocker, blocked)
+);
+
+comment on table stage_blocker is
+  'Dependency to forbid to take a stage when there is another';
+
 
 
 create table application
@@ -16,7 +28,8 @@ create table application
 -- TODO trigger fill from session_user current outlet
 );
 
-comment on table application is 'Client application to get product';
+comment on table application is
+  'Client application to get product';
 
 create table possible_stage
 ( application uuid references application
@@ -24,7 +37,17 @@ create table possible_stage
 , primary key (application, stage)
 );
 
-comment on table possible_stage is 'Possible next application stages';
+comment on table possible_stage is
+  'Possible next application stages';
+
+create table available_stage
+( application uuid references application
+, stage code not null references stage
+, primary key (application, stage)
+);
+
+comment on table available_stage is
+  'Available next application stages is possible stages except blocked';
 
 create table take_history
 ( application uuid      not null

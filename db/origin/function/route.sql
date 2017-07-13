@@ -13,7 +13,7 @@ begin
     when 'ATTRACTION' then
       return next 'BLACK_LIST';
       return next 'TERRORIST_LIST';
-    when  'BLACK_LIST', 'TERRORIST_LIST' then
+    when 'BLACK_LIST', 'TERRORIST_LIST' then
       return next 'APPLICATION';
     when 'APPLICATION' then
       return next 'VERIFICATION';
@@ -29,7 +29,7 @@ begin
         when amount > 1000000 then
           return next 'RISK_MANAGEMENT';
         else
-          return next 'CONTRACT_SIGNING'
+          return next 'CONTRACT_SIGNING';
       end case;
     when 'RISK_MANAGEMENT' then
       return next 'RETAIL_COMMITTEE';
