@@ -22,6 +22,7 @@ done
 
 # unordered
 cat db/origin/function/*.sql \
+    db/origin/user-function/*.sql \
     db/origin/grant/*.sql \
       >> $OUT 2> /dev/null
 cat db/origin/test-input/*.sql \

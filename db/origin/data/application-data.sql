@@ -4,6 +4,7 @@ insert into stage values
 , ('TERRORIST_LIST')
 , ('APPLICATION')
 , ('VERIFICATION')
+, ('PKB')
 , ('PLEDGE_ESTIMATION')
 , ('LEGAL_REVIEW')
 , ('SECURITY')

@@ -32,6 +32,12 @@ begin
 
   -- APPLICATION 2 round
 
+  -- VERIFICATION 2 round
+
+  -- PKB
+
+  -- TODO check_score
+
   -- PLEDGE_ESTIMATION
 
   -- LEGAL_REVIEW

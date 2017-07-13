@@ -5,5 +5,5 @@ MODULES='
   staff
   product application
   address
-  pledge contract person
+  pledge contract person pkb
 '
