@@ -6,9 +6,10 @@ create function score(
 as $function$
 declare
   credit_count_factor real;
+  current_credit_amount_factor real;
 begin
 
-  credit_count_factor := case coalesce(pkb.current_credit_count, 0)
+  credit_count_factor = case coalesce(pkb.current_credit_count, 0)
     when 0 then 1
     when 1 then 0.8
     when 2 then 0.6
@@ -16,7 +17,15 @@ begin
     else 0.2
   end;
 
-  return credit_count_factor;
+  current_credit_amount_factor = case
+    when pkb.current_credit_amount is null then 1
+    when pkb.current_credit_amount <= 100000 then 1
+    when pkb.current_credit_amount <= 500000 then 0.8
+    when pkb.current_credit_amount <= 1000000 then 0.6
+    else 0.2
+  end;
+
+  return credit_count_factor * current_credit_amount_factor;
 
 end;
 $function$;
