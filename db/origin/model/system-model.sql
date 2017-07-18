@@ -39,3 +39,16 @@ create table title
 , primary key (lang, dict, code)
 );
 
+create function modified(
+) returns trigger
+  language plpgsql
+as $function$
+begin
+  if new <> old then
+    return new;
+  else
+    return null;
+  end if;
+end;
+$function$;
+

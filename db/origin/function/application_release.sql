@@ -38,6 +38,8 @@ begin
   delete from contract_draft
   where application = the_application;
 
+  -- TODO trace dump
+
   -- update possible_stage and available_stage
 
   insert into possible_stage (application, stage) (

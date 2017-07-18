@@ -68,7 +68,12 @@ create table contract
 comment on table contract is 'Application contract terms and conditions';
 comment on column contract.term is 'In month';
 
-create trigger contract_versioning
+create trigger "contract_010"
+  before update on contract
+  for each row execute procedure modified()
+;
+
+create trigger "contract_020"
   before insert or update or delete on contract
   for each row execute procedure versioning('sys_period', 'contract_history', true)
 ;
