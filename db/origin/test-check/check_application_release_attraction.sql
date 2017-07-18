@@ -1,4 +1,4 @@
-create function check_application_release(
+create function check_application_release_attraction(
   the_application uuid
 ) returns setof text
   language plpgsql
@@ -39,6 +39,18 @@ begin
   return next is_empty(
     $$select * from contract_draft where application = '$$||the_application||$$'$$,
     'contract_draft should be cleared by application_release'
+  );
+
+  return next set_eq(
+    $$select stage from possible_stage where application ='$$||the_application||$$'$$,
+    array['BLACK_LIST', 'TERRORIST_LIST'],
+    'possible_stage after [ATTRACTION] are [BLACK_LIST] and [TERRORIST_LIST]'
+  );
+
+  return next set_eq(
+    $$select stage from available_stage where application ='$$||the_application||$$'$$,
+    array['BLACK_LIST', 'TERRORIST_LIST'],
+    'available_stage after [ATTRACTION] are [BLACK_LIST] and [TERRORIST_LIST]'
   );
 
   --return next diag(array(select row(c.*) from contract_draft c)); TODO remove

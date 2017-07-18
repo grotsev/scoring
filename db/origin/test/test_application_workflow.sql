@@ -22,8 +22,12 @@ begin
   return query select input_contract_draft(the_application);
   return query select input_individual_draft_borrower(the_application);
   perform application_release(the_application);
-  return query select check_application_release(the_application);
+  return query select check_application_release_attraction(the_application);
 
+  -- BLACK_LIST
+
+  -- TERRORIST_LIST
+  
   -- APPLICATION
 
   -- TODO check history

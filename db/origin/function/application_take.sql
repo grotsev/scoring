@@ -5,6 +5,8 @@ create function application_take(
   language sql
 as $function$
   
+  -- TODO check available_stage
+    
   insert into take (application, staff, stage, sys_period)
     values ($1, current_staff(), $2, tstzrange(now(), null) );
 
