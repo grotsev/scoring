@@ -10,7 +10,6 @@ to scoring_attraction;
 
 grant select, insert, update, delete on table
   take
-, possible_stage
 to scoring_attraction;
 
 grant execute on function

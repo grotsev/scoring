@@ -5,8 +5,7 @@ grant execute on function
 to scoring_user;
 
 grant select, insert, update, delete on table
-  possible_stage
-, available_stage
+  application_stage
 , stage_blocker
 to scoring_user;
 

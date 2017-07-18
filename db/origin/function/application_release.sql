@@ -40,23 +40,19 @@ begin
 
   -- TODO trace dump
 
-  -- update possible_stage and available_stage
+  -- update application_stage
 
-  insert into possible_stage (application, stage) (
+  insert into application_stage (application, stage) (
     select the_application, stage
     from route(the_application) stage
   ) on conflict do nothing;
 
-  delete from available_stage
-  where application = the_application;
-
-  insert into available_stage (
-    select application, stage from possible_stage
-    except
-    select application, blocked
-    from possible_stage p
-      inner join stage_blocker b on p.stage = b.blocker
-  );
+  update application_stage a set
+    blocked = exists (
+      select 1
+      from stage_blocker b
+      where a.stage = b.blocked
+    );
 
   -- unpin application from staff
 

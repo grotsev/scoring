@@ -42,15 +42,9 @@ begin
   );
 
   return next set_eq(
-    $$select stage from possible_stage where application ='$$||the_application||$$'$$,
-    array['BLACK_LIST', 'TERRORIST_LIST'],
-    'possible_stage after [ATTRACTION] are [BLACK_LIST] and [TERRORIST_LIST]'
-  );
-
-  return next set_eq(
-    $$select stage from available_stage where application ='$$||the_application||$$'$$,
-    array['BLACK_LIST', 'TERRORIST_LIST'],
-    'available_stage after [ATTRACTION] are [BLACK_LIST] and [TERRORIST_LIST]'
+    $$select stage, blocked from application_stage where application ='$$||the_application||$$'$$,
+    $$values ('BLACK_LIST', false), ('TERRORIST_LIST', false)$$,
+    'application_stage after [ATTRACTION] are not blocked to [BLACK_LIST] and [TERRORIST_LIST]'
   );
 
   --return next diag(array(select row(c.*) from contract_draft c)); TODO remove

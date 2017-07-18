@@ -31,23 +31,16 @@ create table application
 comment on table application is
   'Client application to get product';
 
-create table possible_stage
+create table application_stage
 ( application uuid references application
 , stage code not null references stage
+, blocked boolean not null default true
 , primary key (application, stage)
 );
 
-comment on table possible_stage is
-  'Possible next application stages';
+comment on table application_stage is
+  'Next possible application stages blocked or available to staffs';
 
-create table available_stage
-( application uuid references application
-, stage code not null references stage
-, primary key (application, stage)
-);
-
-comment on table available_stage is
-  'Available next application stages materializes possible stages except blocked';
 
 create table take_history
 ( application uuid      not null
