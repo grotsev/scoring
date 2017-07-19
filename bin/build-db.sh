@@ -13,19 +13,17 @@ rm -f $OUT_TEST
 # modules are ordered by dependency
 for f in $MODULES
 do
-  cat db/origin/model/$f-model.sql \
-      db/origin/data/$f-data.sql \
-        >> $OUT 2> /dev/null
-  cat db/origin/test-data/$f-test-data.sql \
-        >> $OUT_TEST 2> /dev/null
+  cat db/model/model-$f.sql >> $OUT
+  cat db/data/data-$f.sql   >> $OUT      2> /dev/null
+  cat db/mock/mock-$f.sql   >> $OUT_TEST 2> /dev/null
 done
 
 # unordered
-cat db/origin/function/*.sql \
-    db/origin/user-function/*.sql \
-    db/origin/grant/*.sql \
-      >> $OUT 2> /dev/null
-cat db/origin/test-input/*.sql \
-    db/origin/test-check/*.sql \
-    db/origin/test/*.sql \
-      >> $OUT_TEST 2> /dev/null
+cat db/function/*.sql \
+    db/formula/*.sql \
+    db/grant/*.sql \
+      >> $OUT
+cat db/input/*.sql \
+    db/check/*.sql \
+    db/test/*.sql \
+      >> $OUT_TEST
