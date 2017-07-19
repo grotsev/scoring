@@ -10,7 +10,6 @@ drop owned by scoring cascade;
 drop role scoring;
 
 drop role scoring_user;
-drop role scoring_public;
 
 drop role scoring_administrator;
 drop role scoring_attraction;

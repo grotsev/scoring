@@ -9,12 +9,11 @@ comment on role authenticator is 'Initial connection to become anonymous or an u
 comment on role scoring       is 'Owner create and upgrage schema';
 
 create role scoring_user;
-create role scoring_public with role anonymous, scoring_user;
 
 comment on role scoring_user   is 'Routine business user';
-comment on role scoring_public is 'Anybody concern scoring system';
 
-create role scoring_administrator           with role authenticator in role scoring_user;
+create role scoring_administrator           with role authenticator;
+
 create role scoring_attraction              with role authenticator in role scoring_user;
 create role scoring_application             with role authenticator in role scoring_user;
 create role scoring_verification            with role authenticator in role scoring_user;
@@ -44,4 +43,6 @@ reset role;
 alter role scoring with nosuperuser;
 
 alter default privileges for role scoring revoke execute on functions from public;
+
+grant usage on schema scoring to public;
 
