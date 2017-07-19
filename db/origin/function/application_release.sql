@@ -4,6 +4,7 @@ create function application_release(
   language plpgsql
 as $function$
 declare
+  the_stage code;
 begin
   
   insert into contract
@@ -42,17 +43,30 @@ begin
 
   -- update application_stage
 
-  insert into application_stage (application, stage) (
-    select the_application, stage
-    from route(the_application) stage
+  select stage
+  from take
+  where application = the_application
+    and staff = current_staff()
+  into the_stage;
+
+  delete from application_stage
+  where application = the_application
+    and stage = the_stage;
+
+  insert into application_stage (application, stage, blocked) (
+    select the_application, stage, true
+    from route(the_application, the_stage) stage
   ) on conflict do nothing;
 
-  update application_stage a set
-    blocked = exists (
-      select 1
-      from stage_blocker b
-      where a.stage = b.blocked
-    );
+  if true = all (
+    select blocked
+    from application_stage
+    where application = the_application
+  ) then
+    update application_stage a set
+      blocked = false
+    where application = the_application;
+  end if;
 
   -- unpin application from staff
 

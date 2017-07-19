@@ -5,15 +5,6 @@ create table stage
 comment on table stage is
   'Stage is tightly related to agent which take application to process';
 
-create table stage_blocker
-( blocker code references stage
-, blocked code references stage
-, primary key (blocker, blocked)
-);
-
-comment on table stage_blocker is
-  'Dependency to forbid to take a stage when there is another';
-
 
 
 create table application

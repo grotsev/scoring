@@ -1,20 +1,14 @@
 create function route(
   the_application uuid
+, the_stage code
 ) returns setof code
   language plpgsql
   stable -- WARN
 as $function$
 declare
-  the_stage code;
   the_product code;
-  amount numeric;
 begin
   
-  select stage
-  from take
-  where application = the_application
-  into the_stage;
-
   select product from contract where application = the_application into the_product;
 
   case the_product
@@ -27,6 +21,6 @@ begin
 end;
 $function$;
 
-comment on function route(uuid) is
+comment on function route(uuid, code) is
   'Calculate next possible application stages mostly based on product';
 
