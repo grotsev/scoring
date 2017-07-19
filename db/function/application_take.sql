@@ -11,7 +11,7 @@ as $function$
     values ($1, current_staff(), $2, tstzrange(now(), null) );
 
   insert into contract_draft (
-    select * from contract
+    select * from contract_actual
     where application = $1
   );
 

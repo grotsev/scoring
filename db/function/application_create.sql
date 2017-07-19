@@ -13,7 +13,7 @@ begin
     where staff = current_staff()
   returning application into the_application;
 
-  insert into contract (application) values (the_application);
+  insert into contract_actual (application) values (the_application);
 
   insert into individual (application) values (the_application)
   returning individual into the_borrower;

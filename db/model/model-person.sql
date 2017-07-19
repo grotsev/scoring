@@ -221,7 +221,7 @@ create table individual_responsibility
 , responsibility code not null
 
 , primary key (application, individual)
-, foreign key (application)             references contract
+, foreign key (application)             references contract_actual
 , foreign key (application, individual) references individual
 , foreign key (responsibility)          references responsibility
 );
@@ -245,7 +245,7 @@ create table legal_entity_responsibility
 , responsibility code not null
 
 , primary key (application, legal_entity)
-, foreign key (application)               references contract
+, foreign key (application)               references contract_actual
 , foreign key (application, legal_entity) references legal_entity
 , foreign key (responsibility)            references responsibility
 );

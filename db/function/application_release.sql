@@ -7,12 +7,12 @@ declare
   the_stage code;
 begin
   
-  insert into contract
-  ( -- contract has changed in some column
+  insert into contract_actual
+  ( -- contract_draft has changed in some column
     select * from only contract_draft
     where application = the_application
     except
-    select * from contract
+    select * from contract_actual
     where application = the_application
   ) on conflict (application) do update set
     product = excluded.product,

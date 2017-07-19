@@ -19,7 +19,7 @@ grant select, insert, update on table
   -- pledge
 , pledge
   -- contract
-, contract
+, contract_actual
 , contract_draft
 , contract_history
   -- person

@@ -59,7 +59,7 @@ create table contract_history
 (
 ) inherits (contract_template);
 
-create table contract
+create table contract_actual
 ( primary key (application)
 , foreign key (application)                                                  references application
 , foreign key (product)                                                      references product
@@ -73,16 +73,16 @@ create table contract
 , foreign key (credit_purpose)                                               references credit_purpose
 ) inherits (contract_history);
 
-comment on table contract is 'Application contract terms and conditions';
-comment on column contract.term is 'In month';
+comment on table contract_actual is 'Application contract_actual terms and conditions';
+comment on column contract_actual.term is 'In month';
 
 create trigger "010_contract"
-  before update on contract
+  before update on contract_actual
   for each row execute procedure modified()
 ;
 
 create trigger "020_contract"
-  before insert or update or delete on contract
+  before insert or update or delete on contract_actual
   for each row execute procedure versioning('sys_period', 'contract_history', true)
 ;
 

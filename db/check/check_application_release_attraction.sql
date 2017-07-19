@@ -7,7 +7,7 @@ as $function$
 begin
 
   return next row_eq(
-    $$select * from contract where application='$$||the_application||$$'$$,
+    $$select * from contract_actual where application='$$||the_application||$$'$$,
     row(
       the_application,
       tstzrange(now(), null),
@@ -32,8 +32,8 @@ begin
       null,
       null,
       null
-      )::contract,
-    'application_release fill contract from contract_draft'
+      )::contract_actual,
+    'application_release fill contract_actual from contract_draft'
   );
 
   return next is_empty(
