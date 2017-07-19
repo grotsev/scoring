@@ -1,5 +1,7 @@
 create table stage
-( stage code primary key
+( stage code not null
+
+, primary key (stage)
 );
 
 comment on table stage is
@@ -8,25 +10,31 @@ comment on table stage is
 
 
 create table application
-( application uuid_pk primary key
+( application uuid_pk not null
 
-, created_at timestamp with time zone not null default now()
-, created_by uuid not null references staff default current_staff()
+, created_at timestamptz not null default now() -- TODO move to trigger for security
+, created_by        uuid not null default current_staff() -- TODO move to trigger for security
 
 , branch code not null
 , outlet code not null
-, foreign key (branch, outlet) references outlet
 -- TODO trigger fill from session_user current outlet
+
+, primary key (application)
+, foreign key (created_by)     references staff
+, foreign key (branch, outlet) references outlet
 );
 
 comment on table application is
-  'Client application to get product';
+  'Client application to get a product';
 
 create table application_stage
-( application uuid references application
-, stage code not null references stage
-, blocked boolean not null default true
+( application uuid not null
+, stage       code not null
+, blocked  boolean not null
+
 , primary key (application, stage)
+, foreign key (application) references application
+, foreign key (stage)       references stage
 );
 
 comment on table application_stage is
@@ -34,18 +42,18 @@ comment on table application_stage is
 
 
 create table take_history
-( application uuid      not null
-, sys_period  tstzrange not null
-, staff       uuid      not null
-, stage       code      not null
+( application     uuid not null
+, sys_period tstzrange not null
+, staff           uuid not null
+, stage           code not null
 );
 
 create table take
 ( primary key (application)
 , unique      (staff)
 , foreign key (application) references application
-, foreign key (staff) references staff
-, foreign key (stage) references stage
+, foreign key (staff)       references staff
+, foreign key (stage)       references stage
 ) inherits (take_history);
 
 comment on table take is 'Staff which has taken application for processing';

@@ -1,7 +1,7 @@
 create type jwt_token as (
   login login
-, staff uuid
-, role name
+, staff  uuid
+, role   name
 , exp integer
 );
 
@@ -68,15 +68,19 @@ comment on function current_staff() is 'Get current staff by JWT';
 
 
 create table branch
-( branch code primary key
+( branch code not null
+
+, primary key (branch)
 );
 
 comment on table branch is 'Regional division';
 
 create table outlet
-( branch code references branch
-, outlet code
+( branch code not null
+, outlet code not null
+
 , primary key (branch, outlet)
+, foreign key (branch) references branch
 );
 
 comment on table outlet is 'Retail trade point division';
@@ -84,20 +88,30 @@ comment on table outlet is 'Retail trade point division';
 
 
 create table staff
-( staff uuid_pk primary key
-, login login not null unique
-, password_hash varchar(100) not null
+( staff uuid_pk not null
+
+, login        login not null
+, password_hash text not null
+
+, primary key (staff)
+, unique (login)
 );
 
 create table staff_outlet
-( staff uuid primary key references staff
+( staff uuid not null
 , branch code
-, outlet code, foreign key (branch, outlet) references outlet
+, outlet code
+
+, primary key (staff)
+, foreign key (staff)          references staff
+, foreign key (branch, outlet) references outlet
 );
 
 create table staff_role
-( staff uuid references staff
-, role name
+( staff uuid not null
+, role  name not null
+
 , primary key (staff, role)
+, foreign key (staff) references staff
 );
 
