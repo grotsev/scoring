@@ -2,6 +2,7 @@ grant select on table
   -- system
   lang
   -- staff
+, staff
 , branch
 , outlet
 , staff_outlet
@@ -54,6 +55,7 @@ grant select, insert, update, delete on table
   -- system
   lang
   -- staff
+, staff
 , branch
 , outlet
 , staff_outlet

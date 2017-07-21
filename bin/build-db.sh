@@ -23,7 +23,8 @@ cat db/function/*.sql \
     db/formula/*.sql \
     db/grant/*.sql \
       >> $OUT
-cat db-test/input/*.sql \
+cat db-test/function/*.sql \
+    db-test/input/*.sql \
     db-test/check/*.sql \
     db-test/test/*.sql \
       >> $OUT_TEST

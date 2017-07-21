@@ -12,9 +12,7 @@ begin
   
   -- ATTRACTION
   
-  set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
-  select current_staff() into the_staff;
-  set local role = scoring_attraction;
+  select become(auth('attraction', 'scoring_attraction')) into the_staff;
 
   the_application := application_create();
   return query select check_application_create(the_application, the_staff);

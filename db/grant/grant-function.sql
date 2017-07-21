@@ -3,7 +3,7 @@ grant execute on function
 , authorize(name)
 , current_staff()
 , current_login()
-, current_authority()
+, current_rol()
 to authenticator, anonymous, scoring_user, scoring_administrator;
 
 grant execute on function

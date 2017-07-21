@@ -23,9 +23,9 @@ begin
   );
 
   return next is
-  ( current_authority()
+  ( current_rol()
   , 'scoring_attraction'::name
-  , 'current_authority() = jwt.claims.role'
+  , 'current_rol() = jwt.claims.role'
   );
 
 end;

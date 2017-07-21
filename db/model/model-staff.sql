@@ -7,7 +7,8 @@ create type jwt_token as (
 
 
 
-create function current_authority(
+-- WARN current_role is reserved word
+create function current_rol(
 ) returns name
   language plpgsql
   stable
@@ -23,7 +24,7 @@ exception
 end;
 $function$;
 
-comment on function current_authority() is 'Get current role by JWT';
+comment on function current_rol() is 'Get current role by JWT';
 
 
 

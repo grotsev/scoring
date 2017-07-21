@@ -7,16 +7,18 @@ create function authorize(
   security definer
 as $function$
 declare
-  role name;
+  the_role name;
 begin
-  select a.role into role
+  select a.role
   from staff_role a
-  where a.staff = current_staff() and a.role = $1;
+  where a.staff = current_staff()
+    and a.role = $1
+  into the_role;
 
   return (
       current_login()
     , current_staff()
-    , coalesce(role, 'anonymous')
+    , coalesce(the_role, 'anonymous')
     , extract(epoch from (now() + interval '1 week'))
   )::jwt_token;
 end;

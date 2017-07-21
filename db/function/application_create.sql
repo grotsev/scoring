@@ -13,6 +13,10 @@ begin
     where staff = current_staff()
   returning application into the_application;
 
+  if not found then
+    raise 'staff % (%) not found', current_login(), current_staff();
+  end if;
+
   insert into contract_actual (application) values (the_application);
 
   insert into individual (application) values (the_application)
