@@ -76,6 +76,7 @@ create table contract_actual
 comment on table contract_actual is 'Application contract_actual terms and conditions';
 comment on column contract_actual.term is 'In month';
 
+
 create trigger "010_contract"
   before update on contract_actual
   for each row execute procedure modified()

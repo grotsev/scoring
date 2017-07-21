@@ -17,7 +17,6 @@ create table application
 
 , branch code not null
 , outlet code not null
--- TODO trigger fill from session_user current outlet
 
 , primary key (application)
 , foreign key (created_by)     references staff
@@ -61,5 +60,25 @@ comment on table take is 'Staff which has taken application for processing';
 create trigger take_versioning
   before insert or update or delete on take
   for each row execute procedure versioning('sys_period', 'take_history', true)
+;
+
+
+
+create function assign_outlet(
+) returns trigger
+  language plpgsql
+as $function$
+begin
+  select branch, outlet
+  from staff_outlet
+  where staff = current_staff()
+  into new.branch, new.outlet;
+  return new;
+end;
+$function$;
+
+create trigger "010_application"
+  before insert or update on application
+  for each row execute procedure assign_outlet()
 ;
 
