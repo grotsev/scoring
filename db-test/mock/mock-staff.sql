@@ -15,6 +15,9 @@ insert into staff values
 , ('11110000-0000-0000-0000-000011110013'::uuid, 'contract_signing'        , crypt('contract_signing'        , gen_salt('bf')))
 , ('11110000-0000-0000-0000-000011110014'::uuid, 'pledge_registration'     , crypt('pledge_registration'     , gen_salt('bf')))
 , ('11110000-0000-0000-0000-000011110015'::uuid, 'credit_administrator'    , crypt('credit_administrator'    , gen_salt('bf')))
+, ('11110000-0000-0000-0000-000011110016'::uuid, 'black_list'              , crypt('black_list'              , gen_salt('bf')))
+, ('11110000-0000-0000-0000-000011110017'::uuid, 'terrorist_list'          , crypt('terrorist_list'          , gen_salt('bf')))
+, ('11110000-0000-0000-0000-000011110018'::uuid, 'pkb'                     , crypt('pkb'                     , gen_salt('bf')))
 ;
 
 insert into staff_outlet values

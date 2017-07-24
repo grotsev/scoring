@@ -1,12 +1,12 @@
 create function score(
   pkb pkb
-) returns real
+) returns numeric(3, 2)
   language plpgsql
   immutable -- WARN
 as $function$
 declare
-  credit_count_factor real;
-  current_credit_amount_factor real;
+  credit_count_factor numeric(3, 2);
+  current_credit_amount_factor numeric(3, 2);
 begin
 
   credit_count_factor = case coalesce(pkb.current_credit_count, 0)

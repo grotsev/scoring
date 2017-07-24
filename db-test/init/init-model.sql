@@ -28,6 +28,9 @@ create role scoring_middle_administrator    with role authenticator in role scor
 create role scoring_contract_signing        with role authenticator in role scoring_user;
 create role scoring_pledge_registration     with role authenticator in role scoring_user;
 create role scoring_credit_administrator    with role authenticator in role scoring_user;
+create role scoring_black_list              with role authenticator in role scoring_user;
+create role scoring_terrorist_list          with role authenticator in role scoring_user;
+create role scoring_pkb                     with role authenticator in role scoring_user;
 
 create schema authorization scoring;
 

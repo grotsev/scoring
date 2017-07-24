@@ -8,10 +8,10 @@ declare
 begin
 
   update individual set
-      iin = '800102012345'
-    , surname = 'Ivanov'
-    , name = 'Ivan'
-    , patronymic = 'Ivanovich'
+    iin = '800102012345',
+    surname = 'Ivanov',
+    name = 'Ivan',
+    patronymic = 'Ivanovich'
   where application = the_application
     and individual = (
       select individual

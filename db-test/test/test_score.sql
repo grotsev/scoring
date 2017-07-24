@@ -26,10 +26,10 @@ begin
     null::numeric
   )::pkb;
 
-  return next is
-  ( score(empty_pkb)
-  , 1::real
-  , 'score(empty_pkb) = 1'
+  return next is(
+    score(empty_pkb),
+    1::numeric(3, 2),
+    'score(empty_pkb) = 1'
   );
 
   poor_pkb = row(
@@ -45,13 +45,13 @@ begin
     null::boolean,
     null::boolean,
     null::integer,
-    1000000::numeric
+    500000::numeric
   )::pkb;
 
-  return next is
-  ( score(poor_pkb)
-  , 0.36::real
-  , 'score(poor_pkb) = 1'
+  return next is(
+    score(poor_pkb),
+    0.48::numeric(3, 2),
+    'score(poor_pkb) = 0.48'
   );
 
 end;
