@@ -25,6 +25,7 @@ cat db/function/*.sql \
       >> $OUT
 cat db-test/function/*.sql \
     db-test/input/*.sql \
+    db-test/output/*.sql \
     db-test/check/*.sql \
     db-test/test/*.sql \
       >> $OUT_TEST

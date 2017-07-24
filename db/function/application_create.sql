@@ -25,13 +25,11 @@ begin
   insert into individual_responsibility (application, individual, responsibility)
     values (the_application, the_borrower, 'BORROWER');
 
-  perform application_take(the_application, 'ATTRACTION');
-
   return the_application;
   
 end;
 $function$;
 
 comment on function application_create() is
-  'Create new application and current_staff automatically takes it';
+  'Create new application';
 

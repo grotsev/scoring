@@ -1,5 +1,5 @@
-create function input_individual_draft_borrower(
-  the_application uuid--,
+create function input_attraction(
+  the_application uuid
 ) returns setof text
   language plpgsql
 as $function$
@@ -7,6 +7,16 @@ declare
   contract_draft_count integer;
 begin
 
+  update contract_draft set
+    product = 'NEEDFUL_CREDIT_MORTGAGE',
+    currency = 'KZT',
+    client_category ='A1',
+    term_range = '[12, 120]',
+    amount_range = '[10000, 100000)',
+    amount = 500000
+  where application = the_application
+  ;
+  
   update individual set
     iin = '800102012345',
     surname = 'Ivanov',
