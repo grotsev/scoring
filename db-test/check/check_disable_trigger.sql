@@ -9,7 +9,7 @@ begin
 
   return next is_empty(
     $$
-      select *
+      select application
       from only contract_history
       where application = '11120000-0000-0000-0000-000011110000'
     $$,
@@ -18,7 +18,7 @@ begin
 
   return next isnt_empty(
     $$
-      select *
+      select application
       from only contract_history
       where application = '11120000-0000-0000-0000-000011110001'
     $$,
