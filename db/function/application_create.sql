@@ -17,6 +17,9 @@ begin
     raise 'staff % (%) not found', current_login(), current_staff();
   end if;
 
+  insert into application_stage(application, stage, blocked)
+    values (the_application, 'ATTRACTION', false);
+
   insert into contract_actual (application) values (the_application);
 
   insert into individual (application) values (the_application)
@@ -26,7 +29,7 @@ begin
     values (the_application, the_borrower, 'BORROWER');
 
   return the_application;
-  
+
 end;
 $function$;
 

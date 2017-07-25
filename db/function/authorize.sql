@@ -1,18 +1,16 @@
 create function authorize(
-  role name
+  the_role name
 ) returns jwt_token
   language plpgsql
   stable
   strict
   security definer
 as $function$
-declare
-  the_role name;
 begin
   select a.role
   from staff_role a
   where a.staff = current_staff()
-    and a.role = $1
+    and a.role = the_role
   into the_role;
 
   return (

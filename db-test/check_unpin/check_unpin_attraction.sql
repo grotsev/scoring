@@ -38,7 +38,7 @@ begin
 
   return next is_empty(
     $$select * from contract_draft where application = '$$||the_application||$$'$$,
-    'contract_draft should be cleared by unpin()'
+    'contract_draft is cleared by unpin()'
   );
 
   return next set_eq(

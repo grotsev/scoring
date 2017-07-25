@@ -16,7 +16,7 @@ begin
       'scoring_attraction'::name,
       extract(epoch from (now() + interval '1 week'))
     )::jwt_token,
-    'user [all] should able to authorize as [scoring_attraction]'
+    'user [all] is able to authorize as [scoring_attraction]'
   );
 
   set local jwt.claims.login = 'attraction';
@@ -29,7 +29,7 @@ begin
       'scoring_attraction'::name,
       extract(epoch from (now() + interval '1 week'))
     )::jwt_token,
-    'user [attraction] should able to authorize as [scoring_attraction]'
+    'user [attraction] is able to authorize as [scoring_attraction]'
   );
 
   set local jwt.claims.login = 'attraction';
@@ -42,7 +42,7 @@ begin
       'anonymous'::name,
       extract(epoch from (now() + interval '1 week'))
     )::jwt_token,
-    'user [attraction] should not able to authorize as [scoring_administrator]'
+    'user [attraction] is not able to authorize as [scoring_administrator]'
   );
 
 end;

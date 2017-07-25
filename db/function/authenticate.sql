@@ -1,6 +1,6 @@
 create function authenticate(
-  login login,
-  password text
+  the_login login,
+  the_password text
 ) returns jwt_token
   language plpgsql
   stable
@@ -13,11 +13,11 @@ begin
   
   select a.* into staff
   from staff a
-  where a.login = $1;
+  where a.login = the_login;
 
-  if staff.password_hash = crypt(password, staff.password_hash) then
+  if staff.password_hash = crypt(the_password, staff.password_hash) then
     return (
-        login
+        the_login
       , staff.staff
       , 'anonymous'
       , extract(epoch from (now() + interval '1 week'))

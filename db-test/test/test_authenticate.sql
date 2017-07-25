@@ -15,7 +15,7 @@ begin
       'anonymous',
       extract(epoch from (now() + interval '1 week'))
     )::jwt_token,
-    'Anonimous should able to authenticate'
+    'anonymous is able to authenticate'
   );
 
 end;

@@ -33,8 +33,7 @@ begin
     pay_date = excluded.pay_date,
     monthly_payment = excluded.monthly_payment,
     credit_kind = excluded.credit_kind,
-    credit_purpose = excluded.credit_purpose
-  ;
+    credit_purpose = excluded.credit_purpose;
 
   delete from contract_draft
   where application = the_application;
