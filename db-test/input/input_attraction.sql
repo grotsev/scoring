@@ -14,8 +14,7 @@ begin
     term_range = '[12, 120]',
     amount_range = '[10000, 100000)',
     amount = 500000
-  where application = the_application
-  ;
+  where application = the_application;
   
   update individual set
     iin = '800102012345',
@@ -28,8 +27,7 @@ begin
       from individual_responsibility
       where application = the_application
         and responsibility = 'BORROWER'
-    )
-  ;
+    );
   get diagnostics contract_draft_count = row_count;
   return next is(contract_draft_count, 1, 'application has one borrower');
   
