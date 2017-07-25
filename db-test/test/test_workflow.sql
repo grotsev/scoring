@@ -22,7 +22,7 @@ begin
   
   foreach the_stage, stage_round in array array[
     ('ATTRACTION'              ::code, null),
-    ('BLACK_LIST'              ::code, null)/*,
+    ('BLACK_LIST'              ::code, null),
     ('TERRORIST_LIST'          ::code, null),
     ('APPLICATION'             ::code, null),
     ('VERIFICATION'            ::code, null),
@@ -40,11 +40,11 @@ begin
     ('MIDDLE_ADMINISTRATOR'    ::code, null),
     ('CONTRACT_SIGNING'        ::code, null),
     ('PLEDGE_REGISTRATION'     ::code, null),
-    ('CREDIT_ADMINISTRATOR'    ::code, null)*/
+    ('CREDIT_ADMINISTRATOR'    ::code, null)
   ] loop
     --begin
       stage_name = lower(the_stage);
-      stage_function = stage_name||coalesce(stage_round::text, '');
+      stage_function = stage_name||coalesce('_'||stage_round, '');
       select become(auth(stage_name, 'scoring_'||stage_name)) into the_staff;
       perform pin(the_application, the_stage);
 
