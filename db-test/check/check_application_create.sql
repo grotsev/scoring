@@ -31,11 +31,6 @@ begin
   close cursor;
   */
   
-  return next isnt_empty(
-    $$select * from contract_draft where application='$$||the_application||$$'$$,
-    'pin() in create_application() creates contract_draft' -- TODO move
-  );
-
 end;
 $function$;
 

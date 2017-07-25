@@ -47,8 +47,6 @@ begin
     'application_stage after [ATTRACTION] are not blocked to [BLACK_LIST] and [TERRORIST_LIST]'
   );
 
-  --return next diag(array(select row(c.*) from contract_draft c)); TODO remove
-  
 end;
 $function$;
 
