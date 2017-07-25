@@ -1,4 +1,4 @@
-create function check_release_attraction(
+create function check_unpin_attraction(
   the_application uuid
 ) returns setof text
   language plpgsql
@@ -33,12 +33,12 @@ begin
       null,
       null
       )::contract_actual,
-    'application_release fill contract_actual from contract_draft'
+    'unpin() fill contract_actual from contract_draft'
   );
 
   return next is_empty(
     $$select * from contract_draft where application = '$$||the_application||$$'$$,
-    'contract_draft should be cleared by application_release'
+    'contract_draft should be cleared by unpin()'
   );
 
   return next set_eq(

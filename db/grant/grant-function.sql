@@ -11,8 +11,8 @@ grant execute on function
   -- staff
   -- product
   -- application
-  application_take(uuid, code)
-, application_release(uuid)
+  pin(uuid, code)
+, unpin(uuid)
 , route(uuid, code)
 , route_default(uuid, code)
   -- address

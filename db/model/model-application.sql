@@ -5,7 +5,7 @@ create table stage
 );
 
 comment on table stage is
-  'Stage is tightly related to agent which take application to process';
+  'Stage is tightly related to agent which pin application to process';
 
 
 
@@ -40,26 +40,26 @@ comment on table application_stage is
   'Next possible application stages blocked or available to staffs';
 
 
-create table take_history
+create table pin_history
 ( application     uuid not null
 , sys_period tstzrange not null
 , staff           uuid not null
 , stage           code not null
 );
 
-create table take
+create table pin
 ( primary key (application)
 , unique      (staff)
 , foreign key (application) references application
 , foreign key (staff)       references staff
 , foreign key (stage)       references stage
-) inherits (take_history);
+) inherits (pin_history);
 
-comment on table take is 'Staff which has taken application for processing';
+comment on table pin is 'Staff which has pinned application for processing';
 
-create trigger take_versioning
-  before insert or update or delete on take
-  for each row execute procedure versioning('sys_period', 'take_history', true)
+create trigger pin_versioning
+  before insert or update or delete on pin
+  for each row execute procedure versioning('sys_period', 'pin_history', true)
 ;
 
 

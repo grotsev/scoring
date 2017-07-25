@@ -12,7 +12,7 @@ grant select, insert, update on table
   -- product
   -- application
   individual_responsibility
-, take -- TODO rls
+, pin -- TODO rls
 , application_stage
   -- address
 , address
@@ -34,7 +34,7 @@ to scoring_user;
 
 grant delete on table
   individual_responsibility
-, take
+, pin
 , application_stage
 , contract_draft
 to scoring_user;

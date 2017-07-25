@@ -18,7 +18,7 @@ begin
   /* TODO move to check stage
   open cursor for
     select stage
-    from take
+    from pin
     where application = the_application
       and staff = the_staff
   ;
@@ -33,7 +33,7 @@ begin
   
   return next isnt_empty(
     $$select * from contract_draft where application='$$||the_application||$$'$$,
-    'contract_take() in create_application() creates contract_draft'
+    'pin() in create_application() creates contract_draft' -- TODO move
   );
 
 end;

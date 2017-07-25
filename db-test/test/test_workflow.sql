@@ -45,21 +45,21 @@ begin
     begin
       stage_name := lower(the_stage);
       select become(auth(stage_name, 'scoring_'||stage_name)) into the_staff;
-      perform application_take(the_application, the_stage);
+      perform pin(the_application, the_stage);
 
       return next throws_ok(
-        $$select application_take('$$||the_application||$$', 'ATTRACTION')$$,
-        'duplicate key value violates unique constraint "take_pkey"',
-        'Application is taken just once'
+        $$select pin('$$||the_application||$$', 'ATTRACTION')$$,
+        'duplicate key value violates unique constraint "pin_pkey"',
+        'Application is pinned just once'
       );
 
       stage_function = stage_name||coalesce(stage_round::text, '');
 
-      return next diag('         check_take_', stage_function);
-      return query execute 'select check_take_'||stage_function||'($1)' using the_application;
-      perform application_release(the_application);
-      return next diag('         check_release_', stage_function);
-      return query execute 'select check_release_'||stage_function||'($1)' using the_application;
+      return next diag('         check_pin_', stage_function);
+      return query execute 'select check_pin_'||stage_function||'($1)' using the_application;
+      perform unpin(the_application);
+      return next diag('         check_unpin_', stage_function);
+      return query execute 'select check_unpin_'||stage_function||'($1)' using the_application;
     exception
       when others then
         GET STACKED DIAGNOSTICS the_error = message_text; -- pg_exception_detail

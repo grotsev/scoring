@@ -1,4 +1,4 @@
-create function application_release(
+create function unpin(
   the_application uuid
 ) returns void
   language plpgsql
@@ -44,7 +44,7 @@ begin
   -- update application_stage
 
   select stage
-  from take
+  from pin
   where application = the_application
     and staff = current_staff()
   into the_stage;
@@ -70,12 +70,12 @@ begin
 
   -- unpin application from staff
 
-  delete from take
+  delete from pin
   where application = the_application;
 
 end;
 $function$;
 
-comment on function application_release(uuid) is
-  'Unpin application taken by current_staff, move draft dependent objects into last state and perform stage business logic';
+comment on function unpin(uuid) is
+  'Unpin application pinned by current_staff, move draft dependent objects into last state and perform stage business logic';
 
