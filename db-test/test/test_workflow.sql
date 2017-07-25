@@ -17,8 +17,8 @@ begin
 
   select become(auth('attraction', 'scoring_attraction')) into the_staff;
   the_application := application_create();
-  return next diag('         output_application_create');
-  return query select output_application_create(the_application, the_staff);
+  return next diag('         check_application_create');
+  return query select check_application_create(the_application, the_staff);
   
   foreach the_stage, stage_round in array array[
     ('ATTRACTION'              ::code, null)/*,
@@ -55,11 +55,11 @@ begin
 
       stage_function = stage_name||coalesce(stage_round::text, '');
 
-      return next diag('         input_', stage_function);
-      return query execute 'select input_'||stage_function||'($1)' using the_application;
+      return next diag('         check_take_', stage_function);
+      return query execute 'select check_take_'||stage_function||'($1)' using the_application;
       perform application_release(the_application);
-      return next diag('         output_', stage_function);
-      return query execute 'select output_'||stage_function||'($1)' using the_application;
+      return next diag('         check_release_', stage_function);
+      return query execute 'select check_release_'||stage_function||'($1)' using the_application;
     exception
       when others then
         GET STACKED DIAGNOSTICS the_error = message_text; -- pg_exception_detail

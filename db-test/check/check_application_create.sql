@@ -1,4 +1,4 @@
-create function output_application_create(
+create function check_application_create(
   the_application uuid,
   the_staff uuid
 ) returns setof text

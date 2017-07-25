@@ -1,4 +1,4 @@
-create function output_attraction(
+create function check_release_attraction(
   the_application uuid
 ) returns setof text
   language plpgsql

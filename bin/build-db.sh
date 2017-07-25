@@ -24,8 +24,8 @@ cat db/function/*.sql \
     db/grant/*.sql \
       >> $OUT
 cat db-test/function/*.sql \
-    db-test/input/*.sql \
-    db-test/output/*.sql \
     db-test/check/*.sql \
+    db-test/check_take/*.sql \
+    db-test/check_release/*.sql \
     db-test/test/*.sql \
       >> $OUT_TEST

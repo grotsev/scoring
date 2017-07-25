@@ -1,4 +1,4 @@
-create function input_attraction(
+create function check_take_attraction(
   the_application uuid
 ) returns setof text
   language plpgsql
