@@ -30,7 +30,7 @@ begin
   );
 
   return next throws_ok(
-    $$select pin('$$||the_application||$$', 'ATTRACTION')$$,
+    $$select pin('$$||the_application||$$', '$$||the_stage||$$')$$,
     'duplicate key value violates unique constraint "pin_pkey"',
     'Application is pinned just once'
   );

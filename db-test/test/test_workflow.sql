@@ -21,8 +21,8 @@ begin
   return query select check_application_create(the_application, the_staff);
   
   foreach the_stage, stage_round in array array[
-    ('ATTRACTION'              ::code, null)/*,
-    ('BLACK_LIST'              ::code, null),
+    ('ATTRACTION'              ::code, null),
+    ('BLACK_LIST'              ::code, null)/*,
     ('TERRORIST_LIST'          ::code, null),
     ('APPLICATION'             ::code, null),
     ('VERIFICATION'            ::code, null),
