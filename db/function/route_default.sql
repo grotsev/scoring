@@ -24,7 +24,7 @@ begin
     when 'LEGAL_REVIEW' then
       return next 'SECURITY';
     when 'SECURITY' then
-      select amount from contract_actual where application = the_application into amount;
+      select x.amount from contract_actual x where application = the_application into amount;
       case
         when amount > 1000000 then
           return next 'RISK_MANAGEMENT';

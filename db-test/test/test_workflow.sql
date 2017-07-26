@@ -26,12 +26,12 @@ begin
     ('TERRORIST_LIST'          ::code, null),
     ('APPLICATION'             ::code, null),
     ('VERIFICATION'            ::code, null),
-    ('APPLICATION'             ::code, 2),
-    ('VERIFICATION'            ::code, 2),
-    ('PKB'                     ::code, null),
-    ('PLEDGE_ESTIMATION'       ::code, null),
+    --('APPLICATION'             ::code, 2),
+    --('VERIFICATION'            ::code, 2),
+    --('PKB'                     ::code, null),
+    ('PLEDGE_ESTIMATION'       ::code, null)/*,
     ('LEGAL_REVIEW'            ::code, null),
-    ('APPLICATION'             ::code, 3),
+    --('APPLICATION'             ::code, 3),
     ('SECURITY'                ::code, null),
     ('RISK_MANAGEMENT'         ::code, null),
     ('RETAIL_COMMITTEE'        ::code, null),
@@ -40,7 +40,7 @@ begin
     ('MIDDLE_ADMINISTRATOR'    ::code, null),
     ('CONTRACT_SIGNING'        ::code, null),
     ('PLEDGE_REGISTRATION'     ::code, null),
-    ('CREDIT_ADMINISTRATOR'    ::code, null)
+    ('CREDIT_ADMINISTRATOR'    ::code, null)*/
   ] loop
     --begin
       stage_name = lower(the_stage);
