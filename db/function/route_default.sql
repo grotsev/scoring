@@ -1,6 +1,6 @@
 create function route_default(
-  the_application uuid
-, the_stage code
+  the_application uuid,
+  the_stage code
 ) returns setof code
   language plpgsql
   stable -- WARN

@@ -11,10 +11,10 @@ grant execute on function
   -- staff
   -- product
   -- application
-  pin(uuid, code)
-, unpin(uuid)
-, route(uuid, code)
-, route_default(uuid, code)
+  pin(uuid,code)
+, unpin(uuid,code,boolean)
+, route(uuid,code)
+, route_default(uuid,code)
   -- address
   -- pledge
   -- contract

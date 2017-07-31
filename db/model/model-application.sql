@@ -62,7 +62,6 @@ create trigger pin_versioning
   for each row execute procedure versioning('sys_period', 'pin_history', true)
 ;
 
--- TODO reset
 create table rework
 ( application uuid not null
 , back        code not null
