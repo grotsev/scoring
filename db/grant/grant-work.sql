@@ -4,7 +4,7 @@ to scoring_user;
 
 grant insert on table
   application
-to scoring_attraction;
+to scoring_attract;
 
 grant select, insert, update on table
   -- system

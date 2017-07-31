@@ -18,7 +18,7 @@ begin
   end if;
 
   insert into application_stage(application, stage, blocked)
-    values (the_application, 'ATTRACTION', false);
+    values (the_application, 'ATTRACT', false);
 
   insert into contract_actual (application) values (the_application);
 

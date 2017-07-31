@@ -8,7 +8,7 @@ declare
   poor_pkb pkb;
 begin
 
-  set local role scoring_attraction;
+  set local role scoring_attract;
 
   empty_pkb = row(
     null::uuid,

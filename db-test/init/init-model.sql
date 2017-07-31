@@ -12,25 +12,24 @@ create role scoring_user;
 
 comment on role scoring_user   is 'Routine business user';
 
-create role scoring_administrator           with role authenticator;
+create role scoring_admin         with role authenticator;
 
-create role scoring_attraction              with role authenticator in role scoring_user;
-create role scoring_application             with role authenticator in role scoring_user;
-create role scoring_verification            with role authenticator in role scoring_user;
-create role scoring_pledge_estimation       with role authenticator in role scoring_user;
-create role scoring_legal_review            with role authenticator in role scoring_user;
-create role scoring_security                with role authenticator in role scoring_user;
-create role scoring_risk_management         with role authenticator in role scoring_user;
-create role scoring_retail_committee        with role authenticator in role scoring_user;
-create role scoring_credit_committee        with role authenticator in role scoring_user;
-create role scoring_legal_review_additional with role authenticator in role scoring_user;
-create role scoring_middle_administrator    with role authenticator in role scoring_user;
-create role scoring_contract_signing        with role authenticator in role scoring_user;
-create role scoring_pledge_registration     with role authenticator in role scoring_user;
-create role scoring_credit_administrator    with role authenticator in role scoring_user;
-create role scoring_black_list              with role authenticator in role scoring_user;
-create role scoring_terrorist_list          with role authenticator in role scoring_user;
-create role scoring_pkb                     with role authenticator in role scoring_user;
+create role scoring_attract     with role authenticator in role scoring_user;
+create role scoring_declare     with role authenticator in role scoring_user;
+create role scoring_verify      with role authenticator in role scoring_user;
+create role scoring_pledgerate  with role authenticator in role scoring_user;
+create role scoring_lawyer      with role authenticator in role scoring_user;
+create role scoring_security    with role authenticator in role scoring_user;
+create role scoring_risk        with role authenticator in role scoring_user;
+create role scoring_retailcom   with role authenticator in role scoring_user;
+create role scoring_creditcom   with role authenticator in role scoring_user;
+create role scoring_middle      with role authenticator in role scoring_user;
+create role scoring_signing     with role authenticator in role scoring_user;
+create role scoring_pledgereg   with role authenticator in role scoring_user;
+create role scoring_creditadmin with role authenticator in role scoring_user;
+create role scoring_blacklist   with role authenticator in role scoring_user;
+create role scoring_terrolist   with role authenticator in role scoring_user;
+create role scoring_pkb         with role authenticator in role scoring_user;
 
 create schema authorization scoring;
 

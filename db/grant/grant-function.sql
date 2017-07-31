@@ -4,7 +4,7 @@ grant execute on function
 , current_staff()
 , current_login()
 , current_rol()
-to authenticator, anonymous, scoring_user, scoring_administrator;
+to authenticator, anonymous, scoring_user, scoring_admin;
 
 grant execute on function
   -- system
@@ -26,4 +26,4 @@ to scoring_user;
 
 grant execute on function
   application_create()
-to scoring_attraction;
+to scoring_attract;

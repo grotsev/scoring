@@ -8,7 +8,7 @@ begin
   set local role anonymous;
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
   set local jwt.claims.login = 'all';
-  set local jwt.claims.role = 'scoring_attraction';
+  set local jwt.claims.role = 'scoring_attract';
 
   return next is(
     current_staff(),
@@ -24,7 +24,7 @@ begin
 
   return next is(
     current_rol(),
-    'scoring_attraction'::name,
+    'scoring_attract'::name,
     'current_rol() = jwt.claims.role'
   );
 

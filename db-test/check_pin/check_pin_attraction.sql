@@ -1,4 +1,4 @@
-create function check_pin_attraction(
+create function check_pin_attract(
   the_application uuid
 ) returns setof text
   language plpgsql

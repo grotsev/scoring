@@ -9,40 +9,40 @@ begin
   set local jwt.claims.login = 'all';
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
   return next is(
-    authorize('scoring_attraction')::jwt_token,
+    authorize('scoring_attract')::jwt_token,
     row(
       'all',
       '11110000-0000-0000-0000-000011110000'::uuid,
-      'scoring_attraction'::name,
+      'scoring_attract'::name,
       extract(epoch from (now() + interval '1 week'))
     )::jwt_token,
-    'user [all] is able to authorize as [scoring_attraction]'
+    'user [all] is able to authorize as [scoring_attract]'
   );
 
-  set local jwt.claims.login = 'attraction';
+  set local jwt.claims.login = 'attract';
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110002';
   return next is(
-    authorize('scoring_attraction')::jwt_token,
+    authorize('scoring_attract')::jwt_token,
     row(
-      'attraction',
+      'attract',
       '11110000-0000-0000-0000-000011110002'::uuid,
-      'scoring_attraction'::name,
+      'scoring_attract'::name,
       extract(epoch from (now() + interval '1 week'))
     )::jwt_token,
-    'user [attraction] is able to authorize as [scoring_attraction]'
+    'user [attract] is able to authorize as [scoring_attract]'
   );
 
-  set local jwt.claims.login = 'attraction';
+  set local jwt.claims.login = 'attract';
   set local jwt.claims.staff = '11110000-0000-0000-0000-000011110002';
   return next is(
     authorize('scoring_administrator')::jwt_token,
     row(
-      'attraction',
+      'attract',
       '11110000-0000-0000-0000-000011110002'::uuid,
       'anonymous'::name,
       extract(epoch from (now() + interval '1 week'))
     )::jwt_token,
-    'user [attraction] is not able to authorize as [scoring_administrator]'
+    'user [attract] is not able to authorize as [scoring_admin]'
   );
 
 end;

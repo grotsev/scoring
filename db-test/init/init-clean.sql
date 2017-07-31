@@ -11,22 +11,21 @@ drop role if exists scoring;
 
 drop role if exists scoring_user;
 
-drop role if exists scoring_administrator;
-drop role if exists scoring_attraction;
-drop role if exists scoring_application;
-drop role if exists scoring_verification;
-drop role if exists scoring_pledge_estimation;
-drop role if exists scoring_legal_review;
+drop role if exists scoring_admin;
+drop role if exists scoring_attract;
+drop role if exists scoring_declare;
+drop role if exists scoring_verify;
+drop role if exists scoring_pledgerate;
+drop role if exists scoring_lawyer;
 drop role if exists scoring_security;
-drop role if exists scoring_risk_management;
-drop role if exists scoring_retail_committee;
-drop role if exists scoring_credit_committee;
-drop role if exists scoring_legal_review_additional;
-drop role if exists scoring_middle_administrator;
-drop role if exists scoring_contract_signing;
-drop role if exists scoring_pledge_registration;
-drop role if exists scoring_credit_administrator;
-drop role if exists scoring_black_list;
-drop role if exists scoring_terrorist_list;
+drop role if exists scoring_risk;
+drop role if exists scoring_retailcom;
+drop role if exists scoring_creditcom;
+drop role if exists scoring_middle;
+drop role if exists scoring_signing;
+drop role if exists scoring_pledgereg;
+drop role if exists scoring_creditadmin;
+drop role if exists scoring_blacklist;
+drop role if exists scoring_terrolist;
 drop role if exists scoring_pkb;
 
