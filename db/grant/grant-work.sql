@@ -39,3 +39,7 @@ grant delete on table
 , contract_draft
 to scoring_user;
 
+grant select, insert, update, delete on table
+  rework
+to scoring_user;
+

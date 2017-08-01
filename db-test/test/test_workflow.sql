@@ -6,11 +6,13 @@ as $function$
 declare
   the_staff uuid;
   the_application uuid;
-  
+
   the_stage code;
   stage_round integer;
   stage_name text;
   stage_function text;
+  back_stage code;
+  reset boolean;
 
   the_error text;
 begin
@@ -19,33 +21,35 @@ begin
   the_application = application_create();
   return next diag('         check_application_create');
   return query select check_application_create(the_application, the_staff);
-  
-  foreach the_stage, stage_round in array array[
-    ('ATTRACT'    ::code, null),
-    ('BLACKLIST'  ::code, null),
-    ('TERROLIST'  ::code, null),
-    ('DECLARE'    ::code, null),
-    ('VERIFY'     ::code, null),
-    ('PLEDGERATE' ::code, null)/*,
-    ('DECLARE'    ::code, 2),
-    ('VERIFY'     ::code, 2),
-    ('PLEDGERATE' ::code, 2),
-    ('PKB'        ::code, null),
-    ('LAWYER'     ::code, null),
-    ('DECLARE'    ::code, 3),
-    ('LAWYER'     ::code, 2),
-    ('SECURITY'   ::code, null),
-    ('RISK'       ::code, null),
-    ('RETAILCOM'  ::code, null),
-    ('CREDITCOM'  ::code, null),
-    ('MIDDLE'     ::code, null),
-    ('SIGNING'    ::code, null),
-    ('PLEDGEREG'  ::code, null),
-    ('CREDITADMIN'::code, null)*/
+
+  foreach the_stage, stage_round, back_stage, reset in array array[
+    ('ATTRACT'    ::code, null, null            , false),
+    ('BLACKLIST'  ::code, null, null            , false),
+    ('TERROLIST'  ::code, null, null            , false),
+    ('DECLARE'    ::code, null, null            , false),
+    ('VERIFY'     ::code, null, null            , false),
+    ('PLEDGERATE' ::code, null, null            , false),
+    ('LAWYER'     ::code, null, 'DECLARE'       , true),
+    ('DECLARE'    ::code, 2   , null            , false),
+    ('VERIFY'     ::code, 2   , null            , false),
+    ('PLEDGERATE' ::code, 2   , 'DECLARE'       , false),
+    --('PKB'        ::code, null, null            , false),
+    ('LAWYER'     ::code, 2   , null            , false),
+    ('DECLARE'    ::code, 3   , null            , false),
+    ('PLEDGERATE' ::code, 3   , null       , false),
+    --('SECURITY'   ::code, null, null            , false), -- TODO amount >= 1000000
+    ('RISK'       ::code, null, null            , false),
+    ('RETAILCOM'  ::code, null, null            , false),
+    --('CREDITCOM'  ::code, null, null            , false), -- amount >= 1000000
+    ('MIDDLE'     ::code, null, null            , false),
+    ('SIGNING'    ::code, null, null            , false),
+    ('PLEDGEREG'  ::code, null, null            , false),
+    ('CREDITADMIN'::code, null, null            , false)
   ] loop
-    --begin
+    begin
       stage_name = lower(the_stage);
       stage_function = stage_name||coalesce('_'||stage_round, '');
+      return next diag('  ', stage_function);
       select become(auth(stage_name, 'scoring_'||stage_name)) into the_staff;
       perform pin(the_application, the_stage);
 
@@ -55,15 +59,16 @@ begin
       return next diag('         check_pin_', stage_function);
       return query execute 'select check_pin_'||stage_function||'($1)' using the_application;
 
-      perform unpin(the_application);
+      perform unpin(the_application, back_stage, reset);
 
       return next diag('         check_unpin_', stage_function);
       return query execute 'select check_unpin_'||stage_function||'($1)' using the_application;
-    /*exception
+    exception
       when others then
-        GET STACKED DIAGNOSTICS the_error = message_text; -- pg_exception_detail
-        raise '% %', the_stage, the_error;
-    end;*/
+        GET STACKED DIAGNOSTICS the_error = message_text;
+        return next fail(the_error);
+        exit;
+    end;
   end loop;
 
 end;

@@ -19,28 +19,37 @@ begin
       return next 'VERIFY';
     when 'VERIFY' then
       return next 'PLEDGERATE';
-    when 'PLEDGERATE' then
       return next 'LAWYER';
-    when 'LAWYER' then
-      return next 'SECURITY';
-    when 'SECURITY' then
       select x.amount from contract_actual x where application = the_application into amount;
-      case
-        when amount > 1000000 then
-          return next 'RISK';
-        else
-          return next 'SIGNING';
-      end case;
-    when 'RISK' then
-      return next 'RETAILCOM';
-    when 'RETAILCOM' then
-      return next 'CREDITCOM';
-    when 'CREDITCOM' then
+      if amount >= 1000000 then
+        return next 'SECURITY';
+      end if;
+      return next 'RISK';
+    when 'PLEDGERATE' then
       return next 'MIDDLE';
+    when 'LAWYER' then
+      return next 'MIDDLE';
+    when 'SECURITY' then
+      return next 'MIDDLE';
+    when 'RISK' then
+      select x.amount from contract_actual x where application = the_application into amount;
+      if amount >= 1000000 then
+        return next 'CREDITCOM';
+      else
+        return next 'RETAILCOM';
+      end if;
+    when 'RETAILCOM' then
+      null;
+    when 'CREDITCOM' then
+      null;
     when 'MIDDLE' then
       return next 'SIGNING';
     when 'SIGNING' then
-      return next 'PLEDGEREG';
+      if true then -- TODO change to has pledge
+        return next 'PLEDGEREG';
+      else
+        return next 'CREDITADMIN';
+      end if;
     when 'PLEDGEREG' then
       return next 'CREDITADMIN';
     when 'CREDITADMIN' then
