@@ -58,3 +58,65 @@ begin
 end;
 $function$;
 
+
+create function actual(
+  the_template name
+) returns setof text
+  language plpgsql
+as $function$
+begin
+
+  return next 'create function actual_'||the_template||'(';
+  return next '  the_application uuid';
+  return next ') returns void';
+  return next '  language plpgsql';
+  return next ' as $function1$';
+  return next 'begin';
+  return next '';
+  return next '  insert into '||the_template||'_actual (';
+  return next '    select * from only '||the_template||'_draft';
+  return next '    where application = the_application';
+  return next '  ) on conflict (application) do update set';
+
+  return query
+    select '    '||
+      rpad(column_name, max(length(column_name)) over ())
+      ||' = excluded.'
+      ||column_name
+      ||case when ordinal_position=max(ordinal_position) over () then ';' else ',' end
+    from information_schema.columns
+    where table_schema = 'scoring'
+      and table_name   = the_template||'_template'
+    order by ordinal_position;
+
+  return next '';
+  return next 'end;';
+  return next '$function1$;';
+
+end;
+$function$;
+
+comment on function actual(name) is
+  'Generate code of function to move application data from draft to actual table';
+
+
+create function create_function_actual(
+  the_template name
+) returns setof text
+  language plpgsql
+as $function$
+declare
+  source text;
+begin
+
+  select array_to_string(array_agg(x), E'\n'::text) from actual('contract') x
+  into source;
+
+  execute source;
+
+end;
+$function$;
+
+comment on function create_function_actual(name) is
+  'Generate code of function to move application data from draft to actual table';
+
