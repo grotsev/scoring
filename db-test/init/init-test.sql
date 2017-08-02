@@ -1,4 +1,5 @@
 set client_min_messages to warning;
+set plpgsql.extra_warnings to 'all';
 
 create schema scoring_test authorization scoring;
 

@@ -89,7 +89,7 @@ create trigger "020_contract"
 
 do $block$
 begin
-  execute (select string_agg(l, E'\n') from actual('contract') l);
+  execute (select actualize('contract'));
 end;
 $block$;
 
