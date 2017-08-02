@@ -89,6 +89,8 @@ begin
       and table_name   = the_template||'_template'
     order by ordinal_position;
 
+  -- TODO delete removed rows
+
   return next '';
   return next 'end;';
   return next '$function1$;';
@@ -97,26 +99,5 @@ end;
 $function$;
 
 comment on function actual(name) is
-  'Generate code of function to move application data from draft to actual table';
-
-
-create function create_function_actual(
-  the_template name
-) returns setof text
-  language plpgsql
-as $function$
-declare
-  source text;
-begin
-
-  select array_to_string(array_agg(x), E'\n'::text) from actual('contract') x
-  into source;
-
-  execute source;
-
-end;
-$function$;
-
-comment on function create_function_actual(name) is
   'Generate code of function to move application data from draft to actual table';
 

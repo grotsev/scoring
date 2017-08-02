@@ -87,5 +87,9 @@ create trigger "020_contract"
   for each row execute procedure versioning('sys_period', 'contract_history', true)
 ;
 
-select create_function_actual('contract');
+do $block$
+begin
+  execute (select string_agg(l, E'\n') from actual('contract') l);
+end;
+$block$;
 
