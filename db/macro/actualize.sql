@@ -18,7 +18,7 @@ begin
   insert into %1$s_actual (
     select * from only %1$s_draft
     where application = the_application
-  ) on conflict (application) do update set
+  ) on conflict on constraint %1$s_actual_pkey do update set
 %2$s
 
 end;
