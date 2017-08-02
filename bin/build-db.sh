@@ -10,6 +10,9 @@ source ./bin/modules.sh
 rm -f $OUT
 rm -f $OUT_TEST
 
+cat db/macro/*.sql \
+      >> $OUT
+
 # modules are ordered by dependency
 for f in $MODULES
 do
