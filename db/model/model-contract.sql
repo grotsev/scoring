@@ -51,11 +51,10 @@ create table contract_template
 , credit_purpose code
 );
 
-create table contract_attract
-( primary key (application)
-) inherits (contract_template);
+comment on table contract_template is 'Application contract terms and conditions';
+comment on column contract_template.term is 'In month';
 
-create table contract_draft
+create table contract_attract
 ( primary key (application)
 ) inherits (contract_template);
 
@@ -63,7 +62,7 @@ create table contract_history
 (
 ) inherits (contract_template);
 
-create table contract_actual
+create table contract
 ( primary key (application)
 , foreign key (application)                                                  references application
 , foreign key (product)                                                      references product
@@ -77,23 +76,14 @@ create table contract_actual
 , foreign key (credit_purpose)                                               references credit_purpose
 ) inherits (contract_history);
 
-comment on table contract_actual is 'Application contract_actual terms and conditions';
-comment on column contract_actual.term is 'In month';
-
 
 create trigger "010_contract"
-  before update on contract_actual
+  before update on contract
   for each row execute procedure modified()
 ;
 
 create trigger "020_contract"
-  before insert or update or delete on contract_actual
+  before insert or update or delete on contract
   for each row execute procedure versioning('sys_period', 'contract_history', true)
 ;
-
-do $block$
-begin
-  execute (select actualize('contract'));
-end;
-$block$;
 

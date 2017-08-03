@@ -21,10 +21,10 @@ begin
 
   if the_stage = 'DECLARE' then
 
-    insert into contract_draft (
+    insert into contract (
       select * from contract_attract
       where application = the_application
-    ) on conflict on constraint contract_draft_pkey do nothing;
+    ) on conflict on constraint contract_pkey do nothing;
 
   end if;
 

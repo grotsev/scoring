@@ -32,13 +32,8 @@ begin
       null,
       null,
       null
-      )::contract_actual,
+      )::contract,
     'pin() fill contract_attract'
-  );
-
-  return next is_empty(
-    $$select * from contract_draft where application = '$$||the_application||$$'$$,
-    'contract_draft is cleared by unpin()'
   );
 
   return next set_eq(

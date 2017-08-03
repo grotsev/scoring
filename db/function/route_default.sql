@@ -20,7 +20,7 @@ begin
     when 'VERIFY' then
       return next 'PLEDGERATE';
       return next 'LAWYER';
-      select x.amount from contract_actual x where application = the_application into amount;
+      select x.amount from contract x where application = the_application into amount;
       if amount >= 1000000 then
         return next 'SECURITY';
       end if;
@@ -32,7 +32,7 @@ begin
     when 'SECURITY' then
       return next 'MIDDLE';
     when 'RISK' then
-      select x.amount from contract_actual x where application = the_application into amount;
+      select x.amount from contract x where application = the_application into amount;
       if amount >= 1000000 then
         return next 'CREDITCOM';
       else

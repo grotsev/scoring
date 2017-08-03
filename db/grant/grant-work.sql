@@ -19,8 +19,7 @@ grant select, insert, update on table
   -- pledge
 , pledge
   -- contract
-, contract_actual
-, contract_draft
+, contract
 , contract_attract
 , contract_history
   -- person
@@ -37,7 +36,7 @@ grant delete on table
   individual_responsibility
 , pin
 , application_stage
-, contract_draft
+, contract
 , contract_attract
 to scoring_user;
 
