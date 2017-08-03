@@ -11,6 +11,9 @@ insert into cashflow_kind values
 , ('COMMUNICATIONS', -1)
 , ('PERSONAL', -1)
 , ('ALIMONY', -1)
+, ('OTHER_EXPENSES', -1)
+, ('INSURANCE', -1)
+, ('COMMISSION', -1)
 , ('TRANSPORT_TAX', -12)
 ;
 

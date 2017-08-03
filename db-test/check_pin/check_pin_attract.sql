@@ -46,6 +46,26 @@ begin
   where application = the_application
     and individual = the_borrower;
 
+  insert into individual_cashflow (application, individual, cashflow_kind, amount) values
+      (the_application, the_borrower, 'SALARY_LAST_MONTH'     , 500000),
+      (the_application, the_borrower, 'SALARY_AVG'            , 500000),
+      (the_application, the_borrower, 'SALARY_SPOUSE'         , 200000),
+      (the_application, the_borrower, 'OTHER_CONFIRMED_INCOME', 100000),
+
+      (the_application, the_borrower, 'CREDIT_PAY', 0),
+      (the_application, the_borrower, 'CREDIT_CARD_LIMIT', 0),
+      (the_application, the_borrower, 'EDUCATION', 100000),
+      (the_application, the_borrower, 'TENANCY', 0),
+      (the_application, the_borrower, 'UTILITIES', 50000),
+      (the_application, the_borrower, 'COMMUNICATIONS', 10000),
+      (the_application, the_borrower, 'PERSONAL', 150000),
+      (the_application, the_borrower, 'ALIMONY', 0),
+      (the_application, the_borrower, 'OTHER_EXPENSES', 0),
+      (the_application, the_borrower, 'INSURANCE', 15000),
+      (the_application, the_borrower, 'COMMISSION', 15000),
+
+      (the_application, the_borrower, 'TRANSPORT_TAX', 12000);
+
 end;
 $function$;
 
