@@ -39,8 +39,8 @@ begin
     ('PLEDGERATE' ::code, 3   , null       , false),
     --('SECURITY'   ::code, null, null            , false), -- TODO amount >= 1000000
     ('RISK'       ::code, null, null            , false),
-    ('RETAILCOM'  ::code, null, null            , false),
-    --('CREDITCOM'  ::code, null, null            , false), -- amount >= 1000000
+    --('RETAILCOM'  ::code, null, null            , false), -- amount >= 1000000
+    ('CREDITCOM'  ::code, null, null            , false),
     ('MIDDLE'     ::code, null, null            , false),
     ('SIGNING'    ::code, null, null            , false),
     ('PLEDGEREG'  ::code, null, null            , false),

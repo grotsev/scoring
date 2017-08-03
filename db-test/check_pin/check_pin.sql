@@ -35,11 +35,6 @@ begin
     'Application is pinned just once'
   );
 
-  return next isnt_empty(
-    $$select * from contract_draft where application='$$||the_application||$$'$$,
-    'pin() in create_application() creates contract_draft'
-  );
-
 end;
 $function$;
 

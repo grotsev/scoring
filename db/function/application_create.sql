@@ -20,7 +20,7 @@ begin
   insert into application_stage(application, stage, blocked)
     values (the_application, 'ATTRACT', false);
 
-  insert into contract_actual (application) values (the_application);
+  insert into contract_attract (application) values (the_application);
 
   insert into individual (application) values (the_application)
   returning individual into the_borrower;

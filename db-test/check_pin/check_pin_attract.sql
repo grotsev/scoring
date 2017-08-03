@@ -7,20 +7,21 @@ declare
   contract_draft_count integer;
 begin
 
-  update contract_draft set
+  update contract_attract set
     product = 'NEEDFUL_CREDIT_MORTGAGE',
     currency = 'KZT',
     client_category ='A1',
     term_range = '[12, 120]',
-    amount_range = '[10000, 100000)',
-    amount = 500000
+    amount_range = '[10000,)',
+    term = 16,
+    amount = 2000000
   where application = the_application;
-  
+
   update individual set
-    iin = '800102012345',
-    surname = 'Ivanov',
-    name = 'Ivan',
-    patronymic = 'Ivanovich'
+    iin = '850118400153',
+    surname = 'Иванов',
+    name = 'Иван',
+    patronymic = 'Иванович'
   where application = the_application
     and individual = (
       select individual
@@ -30,7 +31,7 @@ begin
     );
   get diagnostics contract_draft_count = row_count;
   return next is(contract_draft_count, 1, 'application has one borrower');
-  
+
 end;
 $function$;
 

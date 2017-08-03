@@ -21,6 +21,7 @@ grant select, insert, update on table
   -- contract
 , contract_actual
 , contract_draft
+, contract_attract
 , contract_history
   -- person
 , legal_entity
@@ -37,6 +38,7 @@ grant delete on table
 , pin
 , application_stage
 , contract_draft
+, contract_attract
 to scoring_user;
 
 grant select, insert, update, delete on table

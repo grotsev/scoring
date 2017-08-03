@@ -19,15 +19,14 @@ begin
   insert into pin (application, staff, stage, sys_period)
     values (the_application, current_staff(), the_stage, tstzrange(now(), null) );
 
-  insert into contract_draft (
-    select * from contract_actual
-    where application = the_application
-  );
+  if the_stage = 'DECLARE' then
 
-  -- new empty contract
-  insert into contract_draft (application, sys_period)
-    values (the_application, tstzrange(now(), null))
-    on conflict do nothing;
+    insert into contract_draft (
+      select * from contract_attract
+      where application = the_application
+    ) on conflict on constraint contract_draft_pkey do nothing;
+
+  end if;
 
 end;
 $function$;

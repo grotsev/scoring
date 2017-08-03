@@ -26,14 +26,14 @@ create table repayment_kind
 
 create table contract_template
 ( application     uuid not null
-, sys_period tstzrange not null
+, sys_period tstzrange not null default tstzrange(now(), null)
 
 , product           code
 , currency          code
 , client_category   code
 , term_range   int4range
 , amount_range int4range
-, term              int4 check (term between 0 and 1200)
+, term              int4 check (term between 0 and 1200 and term <@ term_range)
 , amount         numeric
 
 , repayment_kind          code
@@ -51,8 +51,12 @@ create table contract_template
 , credit_purpose code
 );
 
+create table contract_attract
+( primary key (application)
+) inherits (contract_template);
+
 create table contract_draft
-(
+( primary key (application)
 ) inherits (contract_template);
 
 create table contract_history

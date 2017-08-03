@@ -7,7 +7,7 @@ as $function$
 begin
 
   return next row_eq(
-    $$select * from contract_actual where application='$$||the_application||$$'$$,
+    $$select * from contract_attract where application='$$||the_application||$$'$$,
     row(
       the_application,
       tstzrange(now(), null),
@@ -15,10 +15,10 @@ begin
       'NEEDFUL_CREDIT_MORTGAGE'::code,
       'KZT',
       'A1',
-      '[12, 120]'::int4range,
-      '[10000, 100000)'::int4range,
-      null,
-      500000,
+      '[12,120]'::int4range,
+      '[10000,)'::int4range,
+      16,
+      2000000,
 
       null,
       null,
@@ -33,7 +33,7 @@ begin
       null,
       null
       )::contract_actual,
-    'unpin() fill contract_actual from contract_draft'
+    'pin() fill contract_attract'
   );
 
   return next is_empty(
