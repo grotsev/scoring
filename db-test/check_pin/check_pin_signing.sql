@@ -3,8 +3,6 @@ create function check_pin_signing(
 ) returns setof text
   language plpgsql
 as $function$
-declare
-  contract_draft_count integer;
 begin
 
 end;

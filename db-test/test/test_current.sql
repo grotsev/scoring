@@ -15,7 +15,7 @@ begin
     '11110000-0000-0000-0000-000011110000'::uuid,
     'current_staff() = jwt.claims.staff'
   );
-  
+
   return next is(
     current_login(),
     'all',

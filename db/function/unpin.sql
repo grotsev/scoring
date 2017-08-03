@@ -10,7 +10,7 @@ declare
 begin
 
   insert into contract_actual
-  ( -- contract_draft has changed in some column
+  ( -- TODO remake contract_draft has changed in some column
     select * from only contract_draft
     where application = the_application
     except

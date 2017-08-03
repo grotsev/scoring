@@ -8,7 +8,7 @@ as $function$
 declare
   the_product code;
 begin
-  
+
   select product from contract_actual where application = the_application into the_product;
 
   case the_product

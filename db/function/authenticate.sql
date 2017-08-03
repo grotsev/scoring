@@ -10,7 +10,7 @@ as $function$
 declare
   staff staff;
 begin
-  
+
   select a.* into staff
   from staff a
   where a.login = the_login;

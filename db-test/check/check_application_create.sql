@@ -6,7 +6,7 @@ create function check_application_create(
   set role scoring
 as $function$
 begin
-  
+
   return next isnt(
     the_application,
     null,

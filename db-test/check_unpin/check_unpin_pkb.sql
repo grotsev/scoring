@@ -3,8 +3,6 @@ create function check_unpin_pkb(
 ) returns setof text
   language plpgsql
 as $function$
-declare
-  contract_draft_count integer;
 begin
 
 end;
