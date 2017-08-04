@@ -25,10 +25,10 @@ create table product_scheme
 , term_range   int4range not null
 , amount_range int4range not null
 
-, interest numeric not null
-, k1       numeric not null
-, k2       numeric not null
-, ltv      numeric not null
+, interest  numeric not null
+, k1       monetary not null
+, k2       monetary not null
+, ltv      monetary not null
 , pledge   boolean not null
 , active   boolean not null default true
 
@@ -38,6 +38,7 @@ create table product_scheme
 , foreign key (client_category) references client_category
 );
 
+comment on column product_scheme.interest is 'Percent per month';
 comment on column product_scheme.term_range is 'In month';
 
 create table fee_kind
@@ -50,7 +51,7 @@ create table fee
 ( fee code not null
 
 , fee_kind  code not null
-, amount numeric not null
+, amount monetary not null
 
 , primary key (fee)
 , foreign key (fee_kind) references fee_kind

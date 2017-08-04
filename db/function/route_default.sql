@@ -6,7 +6,7 @@ create function route_default(
   stable -- WARN
 as $function$
 declare
-  amount numeric;
+  amount monetary;
 begin
 
   case the_stage

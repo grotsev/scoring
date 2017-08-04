@@ -15,7 +15,7 @@ create domain phone as text
 
 create table cashflow_kind
 ( cashflow_kind code not null
-, period     numeric not null
+, period     int4 not null
 
 , primary key (cashflow_kind)
 );
@@ -182,7 +182,7 @@ create table individual_cashflow
 , individual    uuid not null
 , cashflow_kind code not null
 
-, amount numeric not null
+, amount monetary not null
 
 , primary key (application, individual, cashflow_kind)
 , foreign key (application, individual) references individual

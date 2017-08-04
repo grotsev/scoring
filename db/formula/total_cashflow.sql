@@ -1,13 +1,13 @@
 create function total_cashflow(
   the_application uuid,
   the_individual uuid,
-  out total_income numeric,
-  out total_expences numeric
+  out total_income monetary,
+  out total_expences monetary
 )
   language sql
 as $function$
-  select sum(amount/period) filter (where period > 0) as total_income
-       , sum(-amount/period) filter (where period < 0) as total_expenses
+  select (sum( amount/period) filter (where period > 0))::monetary as total_income
+       , (sum(-amount/period) filter (where period < 0))::monetary as total_expenses
   from individual_cashflow
     inner join cashflow_kind using (cashflow_kind)
   where application = $1

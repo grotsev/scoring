@@ -34,18 +34,18 @@ create table contract_template
 , term_range   int4range
 , amount_range int4range
 , term              int4 check (term between 0 and 1200 and term <@ term_range)
-, amount         numeric
+, amount        monetary
 
-, repayment_kind          code
-, income_evidence         code
-, deposit_value        numeric
-, property_value       numeric
-, pledge_value         numeric
-, pledge_currency         code
-, init_payment         numeric
+, repayment_kind           code
+, income_evidence          code
+, deposit_value        monetary
+, property_value       monetary
+, pledge_value         monetary
+, pledge_currency          code
+, init_payment         monetary
 , init_payment_percent numeric
-, pay_date                int4 check (pay_date between 1 and 31)
-, monthly_payment      numeric
+, pay_date                 int4 check (pay_date between 1 and 31)
+, monthly_payment      monetary
 
 , credit_kind    code
 , credit_purpose code

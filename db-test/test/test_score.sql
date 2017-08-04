@@ -12,18 +12,18 @@ begin
 
   empty_pkb = row(
     null::uuid,
-    null::integer,
+    null::int4,
     null::textfield,
     null::textfield,
     null::textfield,
-    null::numeric,
+    null::monetary,
     null::boolean,
     null::boolean,
-    null::numeric,
+    null::monetary,
     null::boolean,
     null::boolean,
-    null::integer,
-    null::numeric
+    null::int4,
+    null::monetary
   )::pkb;
 
   return next is(
@@ -34,18 +34,18 @@ begin
 
   poor_pkb = row(
     null::uuid,
-    2::integer,
+    2::int4,
     null::textfield,
     null::textfield,
     null::textfield,
-    null::numeric,
+    null::monetary,
     null::boolean,
     null::boolean,
-    null::numeric,
+    null::monetary,
     null::boolean,
     null::boolean,
-    null::integer,
-    500000::numeric
+    null::int4,
+    500000::monetary
   )::pkb;
 
   return next is(

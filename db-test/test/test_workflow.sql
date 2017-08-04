@@ -8,7 +8,7 @@ declare
   the_application uuid;
 
   the_stage code;
-  stage_round integer;
+  stage_round int4;
   stage_name text;
   stage_function text;
   back_stage code;
