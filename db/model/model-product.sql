@@ -26,9 +26,9 @@ create table product_scheme
 , amount_range int4range not null
 
 , interest  numeric not null
-, k1       monetary not null
-, k2       monetary not null
-, ltv      monetary not null
+, k1        numeric not null
+, k2        numeric not null
+, ltv       numeric not null
 , pledge   boolean not null
 , active   boolean not null default true
 

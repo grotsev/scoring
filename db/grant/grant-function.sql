@@ -22,6 +22,7 @@ grant execute on function
   -- pkb
   -- formula
 , score(pkb)
+, amount_by_repayment_kind(code,monetary,int4,numeric)
 to scoring_user;
 
 grant execute on function
