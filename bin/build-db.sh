@@ -21,6 +21,8 @@ do
   cat db-test/mock/mock-$f.sql >> $OUT_TEST 2> /dev/null
 done
 
+cat db/view.sql >> $OUT
+
 # unordered
 cat db/function/*.sql \
     db/formula/*.sql \

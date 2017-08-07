@@ -15,7 +15,8 @@ create domain phone as text
 
 create table cashflow_kind
 ( cashflow_kind code not null
-, period     int4 not null
+, period        int4 not null
+, k1         boolean not null
 
 , primary key (cashflow_kind)
 );
