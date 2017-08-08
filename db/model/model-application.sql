@@ -1,14 +1,10 @@
 create table application
 ( application uuid_pk not null
 
-, created_at timestamptz not null default now() -- TODO move to trigger for security
-, created_by        uuid not null default current_staff() -- TODO move to trigger for security
-
 , branch code not null
 , outlet code not null
 
 , primary key (application)
-, foreign key (created_by)     references staff
 , foreign key (branch, outlet) references outlet
 );
 
@@ -82,4 +78,10 @@ create trigger "5_assign_outlet"
   before insert or update on application
   for each row execute procedure assign_outlet()
 ;
+
+do $block$
+begin
+  execute (select audit_created_at_by('application'));
+end;
+$block$;
 

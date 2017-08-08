@@ -13,7 +13,9 @@ $macro$
 alter table %1$s
   add column sys_period  tstzrange not null
 , add column modified_by      uuid not null
-, add column deleted_by       uuid;
+, add column deleted_by       uuid
+, add foreign key (modified_by) references staff
+, add foreign key (deleted_by)  references staff;
 
 create trigger "1_modified_by"
   before insert or update on %1$s
