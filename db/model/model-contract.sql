@@ -26,7 +26,6 @@ create table repayment_kind
 
 create table contract_template
 ( application     uuid not null
-, sys_period tstzrange not null default tstzrange(now(), null)
 
 , product           code
 , currency          code
@@ -77,14 +76,9 @@ create table contract
 , foreign key (credit_purpose)  references credit_purpose
 ) inherits (contract_history);
 
-
-create trigger "010_contract"
-  before update on contract
-  for each row execute procedure modified()
-;
-
-create trigger "020_contract"
-  before insert or update or delete on contract
-  for each row execute procedure versioning('sys_period', 'contract_history', true)
-;
+do $block$
+begin
+  execute (select versionize('contract', 'contract_history'));
+end;
+$block$;
 

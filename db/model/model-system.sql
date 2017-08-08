@@ -48,16 +48,40 @@ create table title
 
 
 
-create function modified(
+create function modified_by(
 ) returns trigger
   language plpgsql
 as $function$
 begin
-  if new <> old then
-    return new;
-  else
+  new.modified_by = current_staff();
+  return new;
+end;
+$function$;
+
+create function deleted_by(
+) returns trigger
+  language plpgsql
+as $function$
+begin
+  new.deleted_by = current_staff();
+  return new;
+end;
+$function$;
+
+create function distinct_data(
+) returns trigger
+  language plpgsql
+as $function$
+declare
+  tmp uuid;
+begin
+  tmp = new.modified_by;
+  new.modified_by = old.modified_by;
+  if new = old then
     return null;
   end if;
+  new.modified_by = tmp;
+  return new;
 end;
 $function$;
 

@@ -1,7 +1,9 @@
+-- TODO remove
 create function actualize(
   the_template name
 ) returns text
   language plpgsql
+  stable
 as $function$
 begin
 
