@@ -2,16 +2,20 @@
 
 mkdir -p build/
 
+OUT_LIB=build/db-lib.sql
 OUT=build/db.sql
 OUT_TEST=build/db-test.sql
 
 source ./bin/modules.sh
 
+rm -f $OUT_LIB
 rm -f $OUT
 rm -f $OUT_TEST
 
-cat db/macro/*.sql \
-      >> $OUT
+cat db-lib/domain.sql \
+    db-lib/function/*.sql \
+    db-lib/macro/*.sql \
+      >> $OUT_LIB
 
 # modules are ordered by dependency
 for f in $MODULES
