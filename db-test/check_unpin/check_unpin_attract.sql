@@ -10,7 +10,6 @@ begin
     $$select * from contract_attract where application='$$||the_application||$$'$$,
     row(
       the_application,
-      tstzrange(now(), null),
 
       'NEEDFUL_CREDIT_MORTGAGE'::code,
       'KZT',
@@ -32,7 +31,7 @@ begin
       null,
       null,
       null
-      )::contract,
+      )::contract_attract,
     'pin() fill contract_attract'
   );
 
