@@ -78,7 +78,7 @@ begin
 end;
 $function$;
 
-create trigger "010_application"
+create trigger "5_assign_outlet"
   before insert or update on application
   for each row execute procedure assign_outlet()
 ;
