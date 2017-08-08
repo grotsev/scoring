@@ -1,12 +1,12 @@
 grant select on table
   -- system
   lang
-  -- staff
-, staff
+  -- actor
+, actor
 , branch
 , outlet
-, staff_outlet
-, staff_role
+, actor_outlet
+, actor_role
   -- product
 , currency
 , client_category
@@ -54,12 +54,12 @@ to scoring_user;
 grant select, insert, update, delete on table
   -- system
   lang
-  -- staff
-, staff
+  -- actor
+, actor
 , branch
 , outlet
-, staff_outlet
-, staff_role
+, actor_outlet
+, actor_role
   -- product
 , currency
 , client_category
@@ -103,9 +103,9 @@ grant select, insert, update, delete on table
   -- pkb
 to scoring_administrator;
 
-alter table staff_role enable row level security;
-create policy select_staff_role
-  on staff_role
+alter table actor_role enable row level security;
+create policy select_actor_role
+  on actor_role
   for select
-  using (staff = current_staff());
+  using (actor = current_actor());
 

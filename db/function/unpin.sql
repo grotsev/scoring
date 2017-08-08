@@ -16,7 +16,7 @@ begin
   select stage
   from pin
   where application = the_application
-    and staff = current_staff()
+    and actor = current_actor()
   into the_stage;
 
   if back_stage is null then -- decision tree stage transition
@@ -73,7 +73,7 @@ begin
 
   end if;
 
-  -- unpin application from staff
+  -- unpin application from actor
 
   delete from pin
   where application = the_application;
@@ -82,5 +82,5 @@ end;
 $function$;
 
 comment on function unpin(uuid,code,boolean) is
-  'Unpin application pinned by current_staff, move draft dependent objects into last state and perform stage business logic';
+  'Unpin application pinned by current_actor, move draft dependent objects into last state and perform stage business logic';
 

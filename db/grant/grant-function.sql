@@ -1,14 +1,14 @@
 grant execute on function
   authenticate(login, text)
 , authorize(name)
-, current_staff()
+, current_actor()
 , current_login()
 , current_rol()
 to authenticator, anonymous, scoring_user, scoring_admin;
 
 grant execute on function
   -- system
-  -- staff
+  -- actor
   -- product
   -- application
   pin(uuid,code)

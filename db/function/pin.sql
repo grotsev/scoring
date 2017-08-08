@@ -16,8 +16,8 @@ begin
     raise 'No stage %', the_stage;
   end if;
 
-  insert into pin (application, staff, stage, sys_period)
-    values (the_application, current_staff(), the_stage, tstzrange(now(), null) );
+  insert into pin (application, actor, stage, sys_period)
+    values (the_application, current_actor(), the_stage, tstzrange(now(), null) );
 
   if the_stage = 'DECLARE' then
 
@@ -32,5 +32,5 @@ end;
 $function$;
 
 comment on function pin(uuid, code) is
-  'Pin application to current_staff and create or copy draft from last state';
+  'Pin application to current_actor and create or copy draft from last state';
 

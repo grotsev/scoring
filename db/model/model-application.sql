@@ -22,25 +22,25 @@ create table application_stage
 );
 
 comment on table application_stage is
-  'Next possible application stages blocked or available to staffs';
+  'Next possible application stages blocked or available to actors';
 
 
 create table pin_history
 ( application     uuid not null
 , sys_period tstzrange not null
-, staff           uuid not null
+, actor           uuid not null
 , stage           code not null
 );
 
 create table pin
 ( primary key (application)
-, unique      (staff)
+, unique      (actor)
 , foreign key (application) references application
-, foreign key (staff)       references staff
+, foreign key (actor)       references actor
 , foreign key (stage)       references stage
 ) inherits (pin_history);
 
-comment on table pin is 'Staff which has pinned application for processing';
+comment on table pin is 'actor which has pinned application for processing';
 
 create trigger pin_versioning
   before insert or update or delete on pin
@@ -67,8 +67,8 @@ create function assign_outlet(
 as $function$
 begin
   select branch, outlet
-  from staff_outlet
-  where staff = current_staff()
+  from actor_outlet
+  where actor = current_actor()
   into new.branch, new.outlet;
   return new;
 end;

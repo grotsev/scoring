@@ -3,7 +3,7 @@ create function deleted_by(
   language plpgsql
 as $function$
 begin
-  new.deleted_by = current_staff();
+  new.deleted_by = current_actor();
   return new;
 end;
 $function$;

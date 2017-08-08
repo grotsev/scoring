@@ -1,4 +1,4 @@
-insert into staff values
+insert into actor values
   ('11110000-0000-0000-0000-000011110000'::uuid, 'all'        , crypt('all'        , gen_salt('bf')))
 , ('11110000-0000-0000-0000-000011110001'::uuid, 'admin'      , crypt('admin'      , gen_salt('bf')))
 , ('11110000-0000-0000-0000-000011110002'::uuid, 'attract'    , crypt('attract'    , gen_salt('bf')))
@@ -19,7 +19,7 @@ insert into staff values
 , ('11110000-0000-0000-0000-000011110017'::uuid, 'pkb'        , crypt('pkb'        , gen_salt('bf')))
 ;
 
-insert into staff_outlet values
+insert into actor_outlet values
   ('11110000-0000-0000-0000-000011110000', 'ALMATY', 'CITY_CENTER')
 , ('11110000-0000-0000-0000-000011110001', 'ALMATY', 'CITY_CENTER')
 , ('11110000-0000-0000-0000-000011110002', 'ALMATY', 'CITY_CENTER')
@@ -38,19 +38,19 @@ insert into staff_outlet values
 , ('11110000-0000-0000-0000-000011110015', 'ALMATY', 'CITY_CENTER')
 ;
 
-insert into staff_role
-  select a.staff
+insert into actor_role
+  select a.actor
        , 'scoring_' || o.login as role
-  from staff a
-    cross join staff o
+  from actor a
+    cross join actor o
   where a.login = 'all'
     and o.login != 'all'
 ;
 
-insert into staff_role
-  select staff
+insert into actor_role
+  select actor
        , 'scoring_' || login as role
-  from staff
+  from actor
   where login != 'all'
 ;
 

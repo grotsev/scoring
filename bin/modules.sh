@@ -2,7 +2,7 @@
 
 MODULES='
   system
-  staff
+  actor
   product application
   address
   pledge contract person pkb

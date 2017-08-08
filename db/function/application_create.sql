@@ -9,12 +9,12 @@ begin
 
   insert into application (branch, outlet)
     select branch, outlet
-    from staff_outlet
-    where staff = current_staff()
+    from actor_outlet
+    where actor = current_actor()
   returning application into the_application;
 
   if not found then
-    raise 'staff % (%) not found', current_login(), current_staff();
+    raise 'actor % (%) not found', current_login(), current_actor();
   end if;
 
   insert into application_stage(application, stage, blocked)

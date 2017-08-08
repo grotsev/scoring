@@ -7,7 +7,7 @@ begin
 
   set local role to anonymous;
   set local jwt.claims.login = 'all';
-  set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
+  set local jwt.claims.actor = '11110000-0000-0000-0000-000011110000';
   return next is(
     authorize('scoring_attract')::jwt_token,
     row(
@@ -20,7 +20,7 @@ begin
   );
 
   set local jwt.claims.login = 'attract';
-  set local jwt.claims.staff = '11110000-0000-0000-0000-000011110002';
+  set local jwt.claims.actor = '11110000-0000-0000-0000-000011110002';
   return next is(
     authorize('scoring_attract')::jwt_token,
     row(
@@ -33,7 +33,7 @@ begin
   );
 
   set local jwt.claims.login = 'attract';
-  set local jwt.claims.staff = '11110000-0000-0000-0000-000011110002';
+  set local jwt.claims.actor = '11110000-0000-0000-0000-000011110002';
   return next is(
     authorize('scoring_administrator')::jwt_token,
     row(

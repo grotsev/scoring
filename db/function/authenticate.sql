@@ -8,17 +8,17 @@ create function authenticate(
   security definer
 as $function$
 declare
-  staff staff;
+  actor actor;
 begin
 
-  select a.* into staff
-  from staff a
+  select a.* into actor
+  from actor a
   where a.login = the_login;
 
-  if staff.password_hash = crypt(the_password, staff.password_hash) then
+  if actor.password_hash = crypt(the_password, actor.password_hash) then
     return (
         the_login
-      , staff.staff
+      , actor.actor
       , 'anonymous'
       , extract(epoch from (now() + interval '1 week'))
     )::jwt_token;
@@ -30,5 +30,5 @@ end;
 $function$;
 
 comment on function authenticate(login, text) is
-  'Creates a JWT token that will securely identify a staff and give them ability to select authority';
+  'Creates a JWT token that will securely identify a actor and give them ability to select authority';
 

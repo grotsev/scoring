@@ -6,14 +6,14 @@ as $function$
 begin
 
   set local role anonymous;
-  set local jwt.claims.staff = '11110000-0000-0000-0000-000011110000';
+  set local jwt.claims.actor = '11110000-0000-0000-0000-000011110000';
   set local jwt.claims.login = 'all';
   set local jwt.claims.role = 'scoring_attract';
 
   return next is(
-    current_staff(),
+    current_actor(),
     '11110000-0000-0000-0000-000011110000'::uuid,
-    'current_staff() = jwt.claims.staff'
+    'current_actor() = jwt.claims.actor'
   );
 
   return next is(

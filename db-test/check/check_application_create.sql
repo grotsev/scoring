@@ -1,6 +1,6 @@
 create function check_application_create(
   the_application uuid,
-  the_staff uuid
+  the_actor uuid
 ) returns setof text
   language plpgsql
   set role scoring

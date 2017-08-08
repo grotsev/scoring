@@ -4,7 +4,7 @@ create function test_workflow(
   set role from current
 as $function$
 declare
-  the_staff uuid;
+  the_actor uuid;
   the_application uuid;
 
   the_stage code;
@@ -17,10 +17,10 @@ declare
   the_error text;
 begin
 
-  select become(auth('attract', 'scoring_attract')) into the_staff;
+  select become(auth('attract', 'scoring_attract')) into the_actor;
   the_application = application_create();
   return next diag('         check_application_create');
-  return query select check_application_create(the_application, the_staff);
+  return query select check_application_create(the_application, the_actor);
 
   foreach the_stage, stage_round, back_stage, reset in array array[
     ('ATTRACT'    ::code, null, null            , false),
@@ -50,11 +50,11 @@ begin
       stage_name = lower(the_stage);
       stage_function = stage_name||coalesce('_'||stage_round, '');
       return next diag('  ', stage_function);
-      select become(auth(stage_name, 'scoring_'||stage_name)) into the_staff;
+      select become(auth(stage_name, 'scoring_'||stage_name)) into the_actor;
       perform pin(the_application, the_stage);
 
       return next diag('         check_pin(', stage_function, ')');
-      return query select check_pin(the_application, the_staff, the_stage);
+      return query select check_pin(the_application, the_actor, the_stage);
 
       return next diag('         check_pin_', stage_function);
       return query execute 'select check_pin_'||stage_function||'($1)' using the_application;

@@ -4,8 +4,11 @@ create function created_at_by(
 as $function$
 begin
   new.created_at = now();
-  new.created_by = current_staff();
+  new.created_by = current_actor();
   return new;
 end;
 $function$;
+
+comment on function created_at_by() is
+  'Trigger to audit created_at and created_by. Requires current_actor()';
 

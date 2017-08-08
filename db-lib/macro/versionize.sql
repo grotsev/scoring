@@ -1,6 +1,6 @@
 create function versionize(
-  actual name,
-  history name
+  actual      name,
+  history     name
 ) returns text
   language plpgsql
   stable
@@ -14,8 +14,8 @@ alter table %1$s
   add column sys_period  tstzrange not null
 , add column modified_by      uuid not null
 , add column deleted_by       uuid
-, add foreign key (modified_by) references staff
-, add foreign key (deleted_by)  references staff;
+, add foreign key (modified_by) references %3$s
+, add foreign key (deleted_by)  references %3$s;
 
 create trigger "1_modified_by"
   before insert or update on %1$s
@@ -38,11 +38,12 @@ create trigger "8_versioning"
 $macro$
   , actual
   , history
+  , current_setting('lib.actor_table')
   );
 
 end;
 $function$;
 
 comment on function versionize(name,name) is
-  'Macro copy on write actual table to history table';
+  'Macro copy on write actual table to history table. Requires lib.actor_table GUC';
 

@@ -1,6 +1,6 @@
 create function check_pin(
   the_application uuid,
-  the_staff uuid,
+  the_actor uuid,
   the_stage code
 ) returns setof text
   language plpgsql
@@ -23,7 +23,7 @@ begin
       select
       from pin
       where application = the_application
-        and staff = the_staff
+        and actor = the_actor
         and stage = the_stage
     ),
     'Application is pinned to stage ' || the_stage

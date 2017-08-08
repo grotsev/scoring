@@ -8,14 +8,14 @@ create function authorize(
 as $function$
 begin
   select a.role
-  from staff_role a
-  where a.staff = current_staff()
+  from actor_role a
+  where a.actor = current_actor()
     and a.role = the_role
   into the_role;
 
   return (
       current_login()
-    , current_staff()
+    , current_actor()
     , coalesce(the_role, 'anonymous')
     , extract(epoch from (now() + interval '1 week'))
   )::jwt_token;
@@ -23,5 +23,5 @@ end;
 $function$;
 
 comment on function authorize(name) is
-  'Creates a JWT token that will securely authorize staff';
+  'Creates a JWT token that will securely authorize actor';
 

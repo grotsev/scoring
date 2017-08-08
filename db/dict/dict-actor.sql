@@ -5,7 +5,7 @@ create domain login as text
 
 create type jwt_token as (
   login login
-, staff  uuid
+, actor  uuid
 , role   name
 , exp    int4
 );
@@ -53,7 +53,7 @@ comment on function current_login() is 'Get current login by JWT';
 
 
 
-create function current_staff(
+create function current_actor(
 ) returns uuid
   language plpgsql
   stable
@@ -61,7 +61,7 @@ as $function$
 declare
   result uuid;
 begin
-  select current_setting('jwt.claims.staff') into result;
+  select current_setting('jwt.claims.actor') into result;
   return result;
 exception
   when undefined_object then
@@ -69,7 +69,7 @@ exception
 end;
 $function$;
 
-comment on function current_staff() is 'Get current staff by JWT';
+comment on function current_actor() is 'Get current actor by JWT';
 
 
 
@@ -93,31 +93,32 @@ comment on table outlet is 'Retail trade point division';
 
 
 
-create table staff
-( staff uuid_pk not null
+create table actor
+( actor uuid_pk not null
 
 , login        login not null
 , password_hash text not null
 
-, primary key (staff)
+, primary key (actor)
 , unique (login)
 );
 
-create table staff_outlet
-( staff uuid not null
+create table actor_outlet
+( actor uuid not null
 , branch code
 , outlet code
 
-, primary key (staff)
-, foreign key (staff)          references staff
+, primary key (actor)
+, foreign key (actor)          references actor
 , foreign key (branch, outlet) references outlet
 );
 
-create table staff_role
-( staff uuid not null
+create table actor_role
+( actor uuid not null
 , role  name not null
 
-, primary key (staff, role)
-, foreign key (staff) references staff
+, primary key (actor, role)
+, foreign key (actor) references actor
 );
 
+set lib.actor_table = 'actor';

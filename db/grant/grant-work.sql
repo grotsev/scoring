@@ -8,7 +8,7 @@ to scoring_attract;
 
 grant select, insert, update on table
   -- system
-  -- staff
+  -- actor
   -- product
   -- application
   individual_responsibility
