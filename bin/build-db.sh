@@ -16,8 +16,9 @@ cat db/macro/*.sql \
 # modules are ordered by dependency
 for f in $MODULES
 do
-  cat db/model/model-$f.sql    >> $OUT
-  cat db/data/data-$f.sql      >> $OUT      2> /dev/null
+  cat db/dict/dict-$f.sql \
+      db/data/data-$f.sql \
+      db/model/model-$f.sql    >> $OUT      2> /dev/null
   cat db-test/mock/mock-$f.sql >> $OUT_TEST 2> /dev/null
 done
 
