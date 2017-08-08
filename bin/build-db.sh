@@ -12,7 +12,7 @@ rm -f $OUT_LIB
 rm -f $OUT
 rm -f $OUT_TEST
 
-cat db-lib/domain.sql \
+cat db-lib/domain/*.sql \
     db-lib/function/*.sql \
     db-lib/macro/*.sql \
       >> $OUT_LIB
