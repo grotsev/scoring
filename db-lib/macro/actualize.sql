@@ -1,3 +1,7 @@
+--import db/lib.sql
+--import db/lib2.sql
+--import db/lib3.sql
+
 -- TODO remove
 create function actualize(
   the_template name
