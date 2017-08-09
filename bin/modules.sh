@@ -1,7 +1,6 @@
 #!/bin/bash
 
 MODULES='
-  system
   actor
   product application
   address

@@ -12,28 +12,41 @@ rm -f $OUT_LIB
 rm -f $OUT
 rm -f $OUT_TEST
 
-cat db-lib/domain/*.sql \
+cat \
+    db-lib/domain/*.sql \
     db-lib/function/*.sql \
     db-lib/macro/*.sql \
+    db-lib/model/*.sql \
       >> $OUT_LIB
+
+cat \
+    db/data/data-i18n.sql \
+      >> $OUT
 
 # modules are ordered by dependency
 for f in $MODULES
 do
-  cat db/dict/dict-$f.sql \
+  cat \
+      db/dict/dict-$f.sql \
       db/data/data-$f.sql \
-      db/model/model-$f.sql    >> $OUT      2> /dev/null
-  cat db-test/mock/mock-$f.sql >> $OUT_TEST 2> /dev/null
+      db/model/model-$f.sql \
+        >> $OUT      2> /dev/null
+  cat \
+      db-test/mock/mock-$f.sql \
+        >> $OUT_TEST 2> /dev/null
 done
 
-cat db/view.sql >> $OUT
+cat \
+    db/view.sql >> $OUT
 
 # unordered
-cat db/function/*.sql \
+cat \
+    db/function/*.sql \
     db/formula/*.sql \
     db/grant/*.sql \
       >> $OUT
-cat db-test/function/*.sql \
+cat \
+    db-test/function/*.sql \
     db-test/check/*.sql \
     db-test/check_pin/*.sql \
     db-test/check_unpin/*.sql \
