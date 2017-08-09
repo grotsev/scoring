@@ -1,3 +1,6 @@
+--import db/lib/function/modified_by.sql
+--import db/lib/function/deleted_by.sql
+
 create function versionize(
   actual      name,
   history     name

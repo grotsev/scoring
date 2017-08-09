@@ -1,3 +1,5 @@
+--import db/lib/function/created_at_by.sql
+
 create function audit_created_at_by(
   the_table name
 ) returns text

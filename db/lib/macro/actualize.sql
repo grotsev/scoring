@@ -1,7 +1,3 @@
---import db/dict/dict-actor.sql
---import db/dict/dict-address.sql
---import db/dict/dict-contract.sql
-
 -- TODO remove
 create function actualize(
   the_template name
