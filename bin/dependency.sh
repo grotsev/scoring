@@ -10,9 +10,7 @@ cat >> $DEPENDENCY << EOF
 with recursive target(file) as (values
 EOF
 
-cat | \
-  sed "2,1000000s/^/, ('/; 1s/^/  ('/; s/$/')/" \
-  >> $DEPENDENCY
+echo "  ('$1')" >> $DEPENDENCY
 
 cat >> $DEPENDENCY << EOF
 ), dependency(file, need) as (values
@@ -53,6 +51,5 @@ cat >> $DEPENDENCY << EOF
 )
 select file
 from forth;
-
 EOF
 

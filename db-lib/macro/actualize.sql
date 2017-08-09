@@ -1,6 +1,6 @@
---import db/lib.sql
---import db/lib2.sql
---import db/lib3.sql
+--import db/dict/dict-actor.sql
+--import db/dict/dict-address.sql
+--import db/dict/dict-contract.sql
 
 -- TODO remove
 create function actualize(
