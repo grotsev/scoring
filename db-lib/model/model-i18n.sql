@@ -7,6 +7,15 @@ create table lang
 comment on table lang is 'ISO 639-2 upper case';
 
 
+create table catalog_code
+( code code not null
+
+, primary key (code)
+);
+
+comment on table catalog_code is 'Catalog all table independent code';
+
+
 create table i18n_code
 ( lang     code not null
 , code     code not null
