@@ -3,8 +3,10 @@
 mkdir -p build/
 
 DEPENDENCY=build/dependency.sql
+OUT=build/db.sql
 
 rm -f $DEPENDENCY
+rm -f $OUT
 
 cat >> $DEPENDENCY << EOF
 with recursive target(file) as (values
@@ -53,3 +55,7 @@ select file
 from forth;
 EOF
 
+for f in `psql postgres://postgres:111@172.17.0.2:5432/postgres -q1t --file $DEPENDENCY`
+do
+  cat $f >> $OUT
+done
