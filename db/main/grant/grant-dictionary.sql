@@ -1,6 +1,6 @@
 grant select on table
   -- system
-  lang
+  i18n
   -- actor
 , actor
 , branch
@@ -53,7 +53,7 @@ to scoring_user;
 -- copy from scoring_user
 grant select, insert, update, delete on table
   -- system
-  lang
+  i18n
   -- actor
 , actor
 , branch
