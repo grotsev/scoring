@@ -47,4 +47,3 @@ alter role scoring with nosuperuser;
 alter default privileges for role scoring revoke execute on functions from public;
 
 grant usage on schema scoring to public;
-

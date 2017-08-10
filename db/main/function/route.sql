@@ -27,4 +27,3 @@ $function$;
 
 comment on function route(uuid, code) is
   'Calculate next possible application stages mostly based on product';
-

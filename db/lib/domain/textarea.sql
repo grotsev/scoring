@@ -3,4 +3,3 @@ create domain textarea as text
 
 comment on domain textarea is
   'Reasonably large user input but securely bounded';
-

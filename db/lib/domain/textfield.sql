@@ -3,4 +3,3 @@ create domain textfield as text
 
 comment on domain textfield is
   'Reasonably large user input but securely bounded';
-

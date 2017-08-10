@@ -1,5 +1,3 @@
---import db/lib/domain/code.sql
-
 create table lang
 ( lang code not null check (lang ~ '^[A-Z]{3}$')
 
@@ -7,5 +5,3 @@ create table lang
 );
 
 comment on table lang is 'ISO 639-2 upper case';
-
-

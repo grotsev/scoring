@@ -3,4 +3,3 @@ create domain uuid_pk as uuid
 
 comment on domain uuid_pk is
   'Primary key aware mostly sequential time based uuid';
-

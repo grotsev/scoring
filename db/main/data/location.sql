@@ -1,0 +1,5 @@
+insert into location values
+  ('KAZ', 'ALMATY', 'ALMATY', 'ALMATY')
+, ('KAZ', 'ALMATY_REGION', 'KAPCHAGAY', 'KAPCHAGAY')
+, ('KAZ', 'ALMATY_REGION', 'AKSU_DISTRICT', 'ZHANSUGIROV')
+;

@@ -24,4 +24,3 @@ $function$;
 
 comment on function authorize(name) is
   'Creates a JWT token that will securely authorize actor';
-

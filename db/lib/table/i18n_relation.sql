@@ -1,6 +1,3 @@
---import db/lib/domain/code.sql
---import db/lib/table/lang.sql
-
 create table i18n_relation
 ( lang     code not null
 , rel  regclass not null
@@ -12,5 +9,3 @@ create table i18n_relation
 );
 
 comment on table i18n_relation is 'Translation of relation';
-
-

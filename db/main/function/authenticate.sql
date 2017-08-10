@@ -31,4 +31,3 @@ $function$;
 
 comment on function authenticate(login, text) is
   'Creates a JWT token that will securely identify a actor and give them ability to select authority';
-

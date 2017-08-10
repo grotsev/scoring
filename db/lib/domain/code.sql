@@ -3,4 +3,3 @@ create domain code as text
 
 comment on domain code is
   'Domain specific constant like enum strictly formatted for wide use';
-

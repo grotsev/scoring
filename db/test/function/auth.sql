@@ -30,4 +30,3 @@ $function$;
 
 comment on function auth(text, name) is
   'Authenticate and authorize without password but check actor_role';
-

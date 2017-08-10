@@ -1,5 +1,3 @@
---import db/lib/function/created_at_by.sql
-
 create function audit_created_at_by(
   the_table name
 ) returns text
@@ -31,4 +29,3 @@ $function$;
 
 comment on function audit_created_at_by(name) is
   'Macro audit created_at and created_by. Requires lib.actor_table GUC';
-

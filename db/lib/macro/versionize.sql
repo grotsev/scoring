@@ -1,6 +1,3 @@
---import db/lib/function/modified_by.sql
---import db/lib/function/deleted_by.sql
-
 create function versionize(
   actual      name,
   history     name
@@ -49,4 +46,3 @@ $function$;
 
 comment on function versionize(name,name) is
   'Macro copy on write actual table to history table. Requires lib.actor_table GUC';
-

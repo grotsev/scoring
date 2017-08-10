@@ -108,4 +108,3 @@ create policy select_actor_role
   on actor_role
   for select
   using (actor = current_actor());
-

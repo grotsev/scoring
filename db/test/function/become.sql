@@ -15,4 +15,3 @@ $function$;
 
 comment on function become(jwt_token) is
   'Become a actor and role';
-

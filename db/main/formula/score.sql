@@ -32,4 +32,3 @@ $function$;
 
 comment on function score(pkb) is
   'Score by PKB credit history';
-

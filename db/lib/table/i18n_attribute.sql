@@ -1,6 +1,3 @@
---import db/lib/domain/code.sql
---import db/lib/table/lang.sql
-
 create table i18n_attribute
 ( lang     code not null
 , rel  regclass not null
@@ -13,4 +10,3 @@ create table i18n_attribute
 );
 
 comment on table i18n_attribute is 'Translation of attribute';
-

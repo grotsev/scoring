@@ -44,10 +44,8 @@ $macro$
   );
   -- TODO delete removed rows
 
-
 end;
 $function$;
 
 comment on function actualize(name) is
   'Macro move application data according to template from draft to actual table';
-

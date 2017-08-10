@@ -2,53 +2,47 @@
 
 mkdir -p build/
 
-OUT_LIB=build/db-lib.sql
-OUT=build/db.sql
-OUT_TEST=build/db-test.sql
+source ./bin/module.sh
 
-source ./bin/modules.sh
-
-rm -f $OUT_LIB
-rm -f $OUT
-rm -f $OUT_TEST
-
-cat \
-    db-lib/domain/*.sql \
-    db-lib/function/*.sql \
-    db-lib/macro/*.sql \
-    db-lib/model/*.sql \
-      >> $OUT_LIB
-
-cat \
-    db/data/data-i18n.sql \
-      >> $OUT
-
-# modules are ordered by dependency
-for f in $MODULES
+for mt in main test
 do
-  cat \
-      db/dict/dict-$f.sql \
-      db/data/data-$f.sql \
-      db/model/model-$f.sql \
-        >> $OUT      2> /dev/null
-  cat \
-      db-test/mock/mock-$f.sql \
-        >> $OUT_TEST 2> /dev/null
+  for md in model data
+  do
+    out=build/db-${mt}-${md}.sql
+    rm -f $out
+    for m in $module
+    do
+      ref=${mt}_${md}_${m}
+      for f in ${!ref}
+      do
+        cat db/$f.sql >> $out
+        echo $'\n' >> $out
+      done
+    done
+  done
 done
 
-cat \
-    db/view.sql >> $OUT
+out=build/db-main-model.sql
+for f in \
+    db/main/view.sql \
+    db/main/trigger.sql \
+    db/main/function/*.sql \
+    db/main/formula/*.sql \
+    db/main/grant/*.sql
+do
+  cat $f >> $out
+  echo $'\n' >> $out
+done
 
-# unordered
-cat \
-    db/function/*.sql \
-    db/formula/*.sql \
-    db/grant/*.sql \
-      >> $OUT
-cat \
-    db-test/function/*.sql \
-    db-test/check/*.sql \
-    db-test/check_pin/*.sql \
-    db-test/check_unpin/*.sql \
-    db-test/test/*.sql \
-      >> $OUT_TEST
+out=build/db-test-model.sql
+for f in \
+    db/test/function/*.sql \
+    db/test/check/*.sql \
+    db/test/check_pin/*.sql \
+    db/test/check_unpin/*.sql \
+    db/test/test/*.sql
+do
+  cat $f >> $out
+  echo $'\n' >> $out
+done
+

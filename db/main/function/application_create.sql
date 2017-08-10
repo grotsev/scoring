@@ -35,4 +35,3 @@ $function$;
 
 comment on function application_create() is
   'Create new application';
-

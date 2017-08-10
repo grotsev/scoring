@@ -28,4 +28,3 @@ drop role if exists scoring_creditadmin;
 drop role if exists scoring_blacklist;
 drop role if exists scoring_terrolist;
 drop role if exists scoring_pkb;
-

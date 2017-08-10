@@ -33,4 +33,3 @@ $function$;
 
 comment on function pin(uuid, code) is
   'Pin application to current_actor and create or copy draft from last state';
-

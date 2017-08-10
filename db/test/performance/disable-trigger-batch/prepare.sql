@@ -22,4 +22,3 @@ insert into perf_table_migration
        , md5(random()::text)
   from generate_series(1, 1000000)
 ;
-

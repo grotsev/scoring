@@ -63,4 +63,3 @@ $function$;
 
 comment on function route_default(uuid, code) is
   'Default route for vast mayority of products mostly based on current stage';
-

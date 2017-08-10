@@ -1,5 +1,3 @@
---import db/lib/domain/code.sql
-
 create table catalog_code
 ( code code not null
 
@@ -7,5 +5,3 @@ create table catalog_code
 );
 
 comment on table catalog_code is 'Catalog all table independent code';
-
-

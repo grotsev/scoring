@@ -83,4 +83,3 @@ $function$;
 
 comment on function unpin(uuid,code,boolean) is
   'Unpin application pinned by current_actor, move draft dependent objects into last state and perform stage business logic';
-
