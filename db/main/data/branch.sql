@@ -1,8 +1,8 @@
 insert into branch
-  (branch     )
+  (branch     , i18n_rus   )
 values
-  ('ALMATY'   )
-, ('ASTANA'   )
-, ('KARAGANDA')
-, ('ZHAMBYL'  )
+  ('ALMATY'   , 'Алматы'   )
+, ('ASTANA'   , 'Астана'   )
+, ('KARAGANDA', 'Караганда')
+, ('ZHAMBYL'  , 'Жамбыл'   )
 ;

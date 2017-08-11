@@ -1,8 +1,8 @@
 insert into auto_brand
-  (auto_brand)
+  (auto_brand, i18n_rus)
 values
-  ('BMW'     )
-, ('TOYOTA'  )
-, ('SUZUKI'  )
-, ('LADA'    )
+  ('BMW'     , 'БМВ'   )
+, ('TOYOTA'  , 'Тойота')
+, ('SUZUKI'  , 'Сузуки')
+, ('LADA'    , 'Лада'  )
 ;

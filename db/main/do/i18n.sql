@@ -3,7 +3,11 @@ begin
   execute (
     select string_agg(macro_i18n(table_name), E'\n'::text)
     from (values
-      ('client_category')
+      ('auto_brand')
+    , ('auto_model')
+    , ('branch')
+    , ('cashflow_kind')
+    , ('client_category')
     , ('gender')
     , ('country')
     , ('credit_kind')
