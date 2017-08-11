@@ -5,4 +5,4 @@ create table i18n
 );
 
 comment on table i18n is
-  'Supported internationalization languages, ISO 639-2';
+  'Supported internationalization language, ISO 639-2';
