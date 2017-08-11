@@ -117,6 +117,7 @@ main_model_product='
 
 main_data_lib='
   main/data/i18n
+  main/i18n
 '
 
 main_data_actor='
