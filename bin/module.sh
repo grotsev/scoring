@@ -8,6 +8,7 @@ module='
   pledge contract person pkb
 '
 
+
 main_model_lib='
   lib/domain/code
   lib/domain/monetary
@@ -27,6 +28,12 @@ main_model_lib='
   lib/table/i18n_rel
   lib/table/i18n_attr
 '
+main_data_lib='
+  main/data/rel
+  main/data/i18n
+  main/do/i18n
+'
+
 
 main_model_actor='
   main/domain/login
@@ -38,6 +45,16 @@ main_model_actor='
   main/table/actor_outlet
   main/table/actor_role
 '
+main_data_actor='
+  main/data/branch
+  main/data/outlet
+'
+test_data_actor='
+  test/data/actor
+  test/data/actor_outlet
+  test/data/actor_role
+'
+
 
 main_model_address='
   main/table/country
@@ -46,6 +63,13 @@ main_model_address='
   main/table/location
   main/table/address
 '
+main_data_address='
+  main/data/country
+  main/data/province
+  main/data/district
+  main/data/location
+'
+
 
 main_model_application='
   main/table/stage
@@ -56,6 +80,13 @@ main_model_application='
   main/table/rework
   main/trigger/assign_outlet
 '
+main_data_application='
+  main/data/stage
+'
+test_data_application='
+  test/data/application
+'
+
 
 main_model_contract='
   main/table/credit_kind
@@ -67,6 +98,16 @@ main_model_contract='
   main/table/contract_history
   main/table/contract
 '
+main_data_contract='
+  main/data/credit_kind
+  main/data/credit_purpose
+  main/data/income_evidence
+  main/data/repayment_kind
+'
+test_data_contract='
+  test/data/contract
+'
+
 
 main_model_person='
   main/domain/email
@@ -93,58 +134,6 @@ main_model_person='
   main/table/legal_entity
   main/table/legal_entity_responsibility
 '
-
-main_model_pkb='
-  main/table/pkb
-'
-
-main_model_pledge='
-  main/table/auto_brand
-  main/table/auto_model
-  main/table/pledge_kind
-  main/table/wall_material
-  main/table/pledge
-'
-
-main_model_product='
-  main/table/currency
-  main/table/client_category
-  main/table/product
-  main/table/product_scheme
-  main/table/fee_kind
-  main/table/fee
-  main/table/product_fee
-'
-
-main_data_lib='
-  main/data/rel
-  main/data/i18n
-  main/do/i18n
-'
-
-main_data_actor='
-  main/data/branch
-  main/data/outlet
-'
-
-main_data_address='
-  main/data/country
-  main/data/province
-  main/data/district
-  main/data/location
-'
-
-main_data_application='
-  main/data/stage
-'
-
-main_data_contract='
-  main/data/credit_kind
-  main/data/credit_purpose
-  main/data/income_evidence
-  main/data/repayment_kind
-'
-
 main_data_person='
   main/data/cashflow_kind
   main/data/education
@@ -161,6 +150,19 @@ main_data_person='
   main/data/tenure
   '
 
+
+main_model_pkb='
+  main/table/pkb
+'
+
+
+main_model_pledge='
+  main/table/auto_brand
+  main/table/auto_model
+  main/table/pledge_kind
+  main/table/wall_material
+  main/table/pledge
+'
 main_data_pledge='
   main/data/auto_brand
   main/data/auto_model
@@ -168,6 +170,16 @@ main_data_pledge='
   main/data/wall_material
 '
 
+
+main_model_product='
+  main/table/currency
+  main/table/client_category
+  main/table/product
+  main/table/product_scheme
+  main/table/fee_kind
+  main/table/fee
+  main/table/product_fee
+'
 main_data_product='
   main/data/currency
   main/data/client_category
@@ -176,18 +188,4 @@ main_data_product='
   main/data/fee_kind
   main/data/fee
   main/data/product_fee
-'
-
-test_data_actor='
-  test/data/actor
-  test/data/actor_outlet
-  test/data/actor_role
-'
-
-test_data_application='
-  test/data/application
-'
-
-test_data_contract='
-  test/data/contract
 '
