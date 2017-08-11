@@ -4,4 +4,5 @@ create table i18n
 , primary key (i18n)
 );
 
-comment on table i18n is 'ISO 639-2 lower case';
+comment on table i18n is
+  'ISO 639-2 lower case';

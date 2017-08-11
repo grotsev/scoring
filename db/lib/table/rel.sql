@@ -1,7 +1,8 @@
 create table rel
-( rel regclass not null
+( rel name not null
 
 , primary key (rel)
 );
 
-comment on table rel is 'Relation';
+comment on table rel is
+  'Relation';

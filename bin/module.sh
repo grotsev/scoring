@@ -24,12 +24,14 @@ main_model_lib='
   lib/macro/macro_i18n
   lib/macro/versionize
   lib/table/rel
+  lib/table/attr
   lib/table/i18n
   lib/table/i18n_rel
   lib/table/i18n_attr
 '
 main_data_lib='
   main/data/rel
+  main/data/attr
   main/data/i18n
   main/do/i18n
 '

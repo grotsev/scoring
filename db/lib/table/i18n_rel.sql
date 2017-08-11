@@ -1,6 +1,6 @@
 create table i18n_rel
-( i18n     code not null
-, rel  regclass not null
+( i18n code not null
+, rel  name not null
 
 , title    text not null
 
@@ -9,4 +9,5 @@ create table i18n_rel
 , foreign key (rel)  references rel
 );
 
-comment on table i18n_rel is 'Translation of relation';
+comment on table i18n_rel is
+  'Translation of relation';
