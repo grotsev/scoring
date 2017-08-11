@@ -36,7 +36,7 @@ begin
     children_15_21 = 0,
     dependant_ge_21 = 0,
 
-    tenure = 'PROPERTY',
+    tenure = 'SELF_PROPERTY',
 
     photo = uuid_generate_v1mc(),
 

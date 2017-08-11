@@ -1,6 +1,7 @@
 insert into tenure
-  (tenure    , i18n_rus       )
+  (tenure           , i18n_rus                           )
 values
-  ('PROPERTY', 'собственность')
-, ('TENANCY' , 'аренда'       )
+  ('SELF_PROPERTY'  , 'личная собственность'             )
+, ('FAMILY_PROPERTY', 'собственность другого члена семьи')
+, ('TENANCY'        , 'аренда'                           )
 ;

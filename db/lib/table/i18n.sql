@@ -1,5 +1,5 @@
 create table i18n
-( i18n text not null check (i18n ~ '^[a-z]{3}$')
+( i18n code not null check (i18n ~ '^[A-Z]{3}$')
 
 , primary key (i18n)
 );

@@ -1,6 +1,6 @@
 insert into repayment_kind
-  (repayment_kind  , i18n_rus            )
+  (repayment_kind  , i18n_rus                    )
 values
-  ('ANNUITY'       , 'Аннуитетный'       )
-, ('DIFFERENTIATED', 'Дифференцированный')
+  ('ANNUITY'       , 'аннуитетные платежи'       )
+, ('DIFFERENTIATED', 'дифференцированные платежи')
 ;
