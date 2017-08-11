@@ -1,5 +1,5 @@
 #!/bin/bash
-bin/build-db.sh
+bin/db-build.sh
 psql postgres://postgres:111@172.17.0.2:5432/postgres -q1 --file db/test/init/init-clean.sql && \
 psql postgres://postgres:111@172.17.0.2:5432/postgres -q1 --file db/test/init/init-model.sql && \
 psql postgres://scoring:changeme@172.17.0.2:5432/postgres -q1 --file build/db-main-model.sql && \
