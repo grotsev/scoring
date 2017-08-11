@@ -1,4 +1,4 @@
-create function i18n(
+create function macro_i18n(
   the_table name
 ) returns text
   language plpgsql
@@ -9,10 +9,8 @@ begin
 
   return format(
 $macro$
-
 alter table %1$s
 %2$s
-
 $macro$
   , the_table
   , ( select string_agg(line, E'\n'::text)
@@ -30,5 +28,5 @@ $macro$
 end;
 $function$;
 
-comment on function i18n(name) is
+comment on function macro_i18n(name) is
   'Macro add translation columns to dictionary. Requires i18n';

@@ -20,7 +20,7 @@ main_model_lib='
   lib/trigger/modified_by
   lib/macro/actualize
   lib/macro/audit_created_at_by
-  lib/macro/i18n
+  lib/macro/macro_i18n
   lib/macro/versionize
   lib/table/i18n
   lib/table/i18n_rel
@@ -117,7 +117,7 @@ main_model_product='
 
 main_data_lib='
   main/data/i18n
-  main/i18n
+  main/do/i18n
 '
 
 main_data_actor='
