@@ -5,4 +5,4 @@ create table i18n
 );
 
 comment on table i18n is
-  'ISO 639-2 lower case';
+  'Supported internationalization languages, ISO 639-2';
