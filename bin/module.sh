@@ -30,10 +30,10 @@ main_model_lib='
   lib/table/i18n_attr
 '
 main_data_lib='
-  main/data/rel
-  main/data/attr
   main/data/i18n
   main/do/i18n
+  main/data/rel
+  main/data/attr
 '
 
 
