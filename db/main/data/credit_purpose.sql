@@ -1,5 +1,7 @@
-insert into credit_purpose values
-  ('EDUCATION')
-, ('HOUSING_IMPROVEMENT')
-, ('REFINANCING')
+insert into credit_purpose
+  (credit_purpose       , i18n_rus                    )
+values
+  ('EDUCATION'          , 'образование'               )
+, ('HOUSING_IMPROVEMENT', 'улучшение жилищных условий')
+, ('REFINANCING'        , 'рефинансирование'          )
 ;

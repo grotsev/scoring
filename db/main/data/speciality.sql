@@ -1,5 +1,7 @@
-insert into speciality values
-  ('MATHEMATICIAN')
-, ('PHYSICIST')
-, ('BIOLOGIST')
+insert into speciality
+  (speciality   , i18n_rus)
+values
+  ('MATHEMATICA', 'математика')
+, ('PHYSICS'    , 'физика')
+, ('BIOLOGY'    , 'биология')
 ;

@@ -1,5 +1,33 @@
 do $block$
 begin
+  execute (select i18n('client_category'));
   execute (select i18n('gender'));
+  execute (select i18n('country'));
+  execute (select i18n('credit_kind'));
+  execute (select i18n('credit_purpose'));
+  execute (select i18n('currency'));
+  execute (select i18n('district'));
+  execute (select i18n('education'));
+  execute (select i18n('fee'));
+  execute (select i18n('fee_kind'));
+  execute (select i18n('idcard_authority'));
+  execute (select i18n('idcard_kind'));
+  execute (select i18n('income_evidence'));
+  execute (select i18n('kinship'));
+  execute (select i18n('location'));
+  execute (select i18n('marital_status'));
+  execute (select i18n('outlet'));
+  execute (select i18n('phone_kind'));
+  execute (select i18n('pledge_kind'));
+  execute (select i18n('position_category'));
+  execute (select i18n('product'));
+  execute (select i18n('province'));
+  execute (select i18n('repayment_kind'));
+  execute (select i18n('residency'));
+  execute (select i18n('responsibility'));
+  execute (select i18n('speciality'));
+  execute (select i18n('stage'));
+  execute (select i18n('tenure'));
+  execute (select i18n('wall_material'));
 end;
 $block$;

@@ -5,10 +5,10 @@ create table product_scheme
 , term_range   int4range not null
 , amount_range int4range not null
 
-, interest  numeric not null
-, k1        numeric not null
-, k2        numeric not null
-, ltv       numeric not null
+, interest numeric not null
+, k1       numeric not null
+, k2       numeric not null
+, ltv      numeric not null
 , pledge   boolean not null
 , active   boolean not null default true
 

@@ -1,6 +1,8 @@
-insert into branch values
-  ('ALMATY')
-, ('ASTANA')
+insert into branch
+  (branch     )
+values
+  ('ALMATY'   )
+, ('ASTANA'   )
 , ('KARAGANDA')
-, ('ZHAMBYL')
+, ('ZHAMBYL'  )
 ;

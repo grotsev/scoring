@@ -1,7 +1,9 @@
-insert into responsibility values
-  ('BORROWER')
-, ('COBORROWER')
-, ('PLEDGER')
-, ('GUARANTOR')
-, ('INSURER')
+insert into responsibility
+  (responsibility, i18n_rus      )
+values
+  ('BORROWER'    , 'заёмщик'     )
+, ('COBORROWER'  , 'созаёмщик'   )
+, ('PLEDGER'     , 'залогодатель')
+, ('GUARANTOR'   , 'гарант'      )
+, ('INSURER'     , 'страховщик'  )
 ;
