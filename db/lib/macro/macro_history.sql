@@ -17,21 +17,27 @@ alter table %1$s
 , add foreign key (modified_by) references %3$s
 , add foreign key (deleted_by)  references %3$s;
 
-create trigger "1_modified_by"
+create trigger "5_modified_data"
+  before update on contract
+  for each row
+  execute procedure modified_data();
+
+create trigger "6_modified_by"
   before insert or update on %1$s
   for each row execute procedure modified_by();
 
-create trigger "1_deleted_by"
+create trigger "6_deleted_by"
   before delete on %1$s
   for each row execute procedure deleted_by();
 
-create trigger "8_distinct_data"
+create trigger "8_versioning_update"
   before update on contract
   for each row
-  execute procedure distinct_data();
+  when (new.modified_by <> old.modified_by)
+  execute procedure versioning('sys_period', '%2$s', true);
 
-create trigger "8_versioning"
-  before insert or update or delete on contract
+create trigger "8_versioning_insert_delete"
+  before insert or delete on contract
   for each row
   execute procedure versioning('sys_period', '%2$s', true);
 
@@ -45,4 +51,4 @@ end;
 $function$;
 
 comment on function macro_history(name,name) is
-  'Macro copy on write actual table to history table. Requires lib.actor_table GUC';
+  'Macro copy on write actual table to history table. Totally skip unmodified data and skip versioning for same modified_by. Requires lib.actor_table GUC';

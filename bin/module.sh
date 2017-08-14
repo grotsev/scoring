@@ -19,7 +19,7 @@ main_model_lib='
   lib/domain/uuid_pk
   lib/trigger/created
   lib/trigger/deleted_by
-  lib/trigger/distinct_data
+  lib/trigger/modified_data
   lib/trigger/modified_by
   lib/macro/macro_created
   lib/macro/macro_i18n
