@@ -1,5 +1,5 @@
 create view rel_absent as
-  select table_name
+  select table_name as rel
   from information_schema.tables
   where table_catalog = 'postgres'
     and table_schema = 'scoring'

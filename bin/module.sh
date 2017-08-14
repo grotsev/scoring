@@ -36,6 +36,7 @@ main_data_lib='
 test_model_lib='
   test/view/rel_absent
   test/view/rel_i18n_absent
+  test/view/attr_absent
 '
 
 
