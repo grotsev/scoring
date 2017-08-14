@@ -33,6 +33,9 @@ main_data_lib='
   main/data/rel
   main/data/attr
 '
+test_model_lib='
+  test/view/rel_i18n_absent
+'
 
 
 main_model_actor='

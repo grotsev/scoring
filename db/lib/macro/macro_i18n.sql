@@ -15,7 +15,7 @@ $macro$
   , the_table
   , ( select string_agg(line, E'\n'::text)
       from (
-        select format('  add column i18n_%s text not null%s',
+        select format('  add column i18n_%s text%s',
             lower(i18n),
             case when row_number() over ()=count(*) over () then ';' else ',' end
           ) as line
