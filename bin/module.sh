@@ -34,6 +34,7 @@ main_data_lib='
   main/data/attr
 '
 test_model_lib='
+  test/view/rel_absent
   test/view/rel_i18n_absent
 '
 
