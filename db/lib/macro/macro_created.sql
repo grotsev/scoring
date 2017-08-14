@@ -15,9 +15,9 @@ alter table %1$s
 , add column created_by        uuid not null
 , add foreign key (created_by) references %2$s;
 
-create trigger "1_created_at_by"
+create trigger "1_created"
   before insert on %1$s
-  for each row execute procedure created_at_by();
+  for each row execute procedure created();
 
 $macro$
   , the_table
