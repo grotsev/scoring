@@ -1,4 +1,4 @@
--- add manually because macro_i18n can not be recursive
+-- add manually because i18n table still empty in macro_i18n
 alter table i18n
   add column i18n_rus text not null
 ;

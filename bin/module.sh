@@ -23,19 +23,15 @@ main_model_lib='
   lib/macro/audit_created_at_by
   lib/macro/macro_i18n
   lib/macro/versionize
+  lib/table/i18n
   lib/table/rel
   lib/table/attr
-  lib/table/i18n
-  lib/table/i18n_rel
-  lib/table/i18n_attr
 '
 main_data_lib='
   main/data/i18n
   main/do/i18n
   main/data/rel
   main/data/attr
-  main/data/i18n_rel
-  main/data/i18n_attr
 '
 
 
