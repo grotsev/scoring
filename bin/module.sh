@@ -6,6 +6,7 @@ module='
   product application
   address
   pledge contract person pkb
+  view
 '
 
 
@@ -188,4 +189,11 @@ main_data_product='
   main/data/fee_kind
   main/data/fee
   main/data/product_fee
+'
+
+main_model_view='
+  main/view/individual_cashflow_total
+  main/view/borrower_cashflow
+  main/view/effective_term
+  main/view/contract_ext
 '
