@@ -33,12 +33,6 @@ main_data_lib='
   main/data/rel
   main/data/attr
 '
-test_model_lib='
-  test/view/rel_absent
-  test/view/rel_i18n_absent
-  test/view/attr_absent
-  test/view/attr_i18n_absent
-'
 
 
 main_model_actor='
