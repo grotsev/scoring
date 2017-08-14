@@ -6,7 +6,7 @@ create table pledge
 
 -- FLAT, HOUSE, LAND, COMMERCIAL, AUTO, MACHINE
 , production_year int4
-, pledgor    textfield
+, pledgor    textfield -- TODO change to foreign key
 , condition  textfield
 , note        textarea
 
@@ -35,7 +35,7 @@ create table pledge
 , auto_brand               code
 , auto_model               code
 , registration_number textfield
-, colour              textfield
+, color               textfield
 , auto_volume           numeric
 
 , primary key (application, pledge)

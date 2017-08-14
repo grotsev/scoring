@@ -7,7 +7,7 @@ create view attr_absent as
 except
   select rel, attr
   from attr
-order by 1, 2;
+order by attr, rel;
 
 
 comment on view attr_absent is

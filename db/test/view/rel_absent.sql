@@ -5,7 +5,8 @@ create view rel_absent as
     and table_schema = 'scoring'
 except
   select rel
-  from rel;
+  from rel
+order by rel;
 
 comment on view rel_absent is
   'Not described relation';

@@ -18,7 +18,7 @@ create table individual
 , marital_status  code
 , children_lt_15  int4
 , children_15_21  int4
-, children_total  int4
+--, children_total  int4 -- TODO move to view
 , dependant_ge_21 int4
 
 , address_reg  uuid
