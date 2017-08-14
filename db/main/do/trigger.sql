@@ -10,7 +10,7 @@ create trigger "5_assign_outlet"
 
 do $block$
 begin
-  execute (select audit_created_at_by('application'));
+  execute (select macro_created('application'));
   execute (select macro_history('contract', 'contract_history'));
 end;
 $block$;

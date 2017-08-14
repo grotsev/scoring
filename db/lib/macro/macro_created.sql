@@ -1,4 +1,4 @@
-create function audit_created_at_by(
+create function macro_created(
   the_table name
 ) returns text
   language plpgsql
@@ -27,5 +27,5 @@ $macro$
 end;
 $function$;
 
-comment on function audit_created_at_by(name) is
+comment on function macro_created(name) is
   'Macro audit created_at and created_by. Requires lib.actor_table GUC';

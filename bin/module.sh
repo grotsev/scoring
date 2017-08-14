@@ -21,7 +21,7 @@ main_model_lib='
   lib/trigger/deleted_by
   lib/trigger/distinct_data
   lib/trigger/modified_by
-  lib/macro/audit_created_at_by
+  lib/macro/macro_created
   lib/macro/macro_i18n
   lib/macro/macro_history
   lib/table/i18n
