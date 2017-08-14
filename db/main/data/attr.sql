@@ -1,11 +1,42 @@
+-- automatic i18n from rel of the same name
+insert into attr (rel, attr, i18n_rus)
+  select table_name as rel
+      , column_name as attr
+      , a.i18n_rus  as i18n_rus
+  from information_schema.columns s
+    inner join rel r on (r.rel = s.table_name)
+    inner join (
+      select *
+      from rel
+      union
+      values
+        ('sys_period', 'период действия')
+    ) a on (a.rel = s.column_name)
+  where table_catalog = 'postgres'
+    and table_schema = 'scoring'
+;
+
+/*
+-- override automatic i18n on conflict
 insert into attr
   (rel                          , attr                          , i18n_rus)
 values
-  ('rel'                        , 'rel'                         , '')
-, ('attr'                       , 'rel'                         , '')
-, ('attr'                       , 'attr'                        , '')
-, ('pin_history'                , 'application'                 , '')
-, ('pin_history'                , 'sys_period'                  , '')
+  ('rel'                        , 'rel'                         , 'термин')
+on conflict on constraint attr_pkey do update set
+  i18n_rus = excluded.i18n_rus
+;
+*/
+
+/*
+-- manual i18n do conflict on update
+insert into attr
+  (rel                          , attr                          , i18n_rus)
+values
+  ('rel'                        , 'rel'                         , 'термин')
+, ('attr'                       , 'rel'                         , 'термин')
+, ('attr'                       , 'attr'                        , 'атрибут')
+, ('pin_history'                , 'application'                 , 'заявка')
+, ('pin_history'                , 'sys_period'                  , 'период действия')
 , ('pin_history'                , 'actor'                       , '')
 , ('pin_history'                , 'stage'                       , '')
 , ('contract_template'          , 'application'                 , '')
@@ -329,6 +360,5 @@ values
 , ('rework'                     , 'application'                 , '')
 , ('rework'                     , 'back'                        , '')
 , ('rework'                     , 'forth'                       , '')
-on conflict on constraint attr_pkey do update set
-  i18n_rus = excluded.i18n_rus
 ;
+*/
