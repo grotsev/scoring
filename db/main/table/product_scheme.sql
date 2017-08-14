@@ -10,7 +10,7 @@ create table product_scheme
 , k2       numeric not null
 , ltv      numeric not null
 , pledge   boolean not null
-, active   boolean not null default true
+, actual   boolean not null default true
 
 , primary key (product, currency, client_category, term_range, amount_range)
 , foreign key (product)         references product

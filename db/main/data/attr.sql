@@ -11,6 +11,10 @@ insert into attr (rel, attr, i18n_rus)
       union
       values
         ('sys_period', 'период действия')
+      , ('created_at', 'время создания')
+      , ('created_by', 'кем создано')
+      , ('deleted_by', 'кем удалено')
+      , ('i18n_rus'  , 'наименование')
     ) a on (a.rel = s.column_name)
   where table_catalog = 'postgres'
     and table_schema = 'scoring'
