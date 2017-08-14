@@ -24,7 +24,6 @@ done
 
 out=build/db-main-model.sql
 for f in \
-    db/main/trigger.sql \
     db/main/function/*.sql \
     db/main/formula/*.sql \
     db/main/grant/*.sql

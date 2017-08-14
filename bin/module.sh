@@ -7,6 +7,7 @@ module='
   address
   pledge contract person pkb
   view
+  post
 '
 
 
@@ -20,10 +21,9 @@ main_model_lib='
   lib/trigger/deleted_by
   lib/trigger/distinct_data
   lib/trigger/modified_by
-  lib/macro/actualize
   lib/macro/audit_created_at_by
   lib/macro/macro_i18n
-  lib/macro/versionize
+  lib/macro/macro_history
   lib/table/i18n
   lib/table/rel
   lib/table/attr
@@ -196,4 +196,9 @@ main_model_view='
   main/view/borrower_cashflow
   main/view/effective_term
   main/view/contract_ext
+'
+
+
+main_model_post='
+  main/do/trigger
 '

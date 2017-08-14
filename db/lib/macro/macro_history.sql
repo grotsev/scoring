@@ -1,4 +1,4 @@
-create function versionize(
+create function macro_history(
   actual      name,
   history     name
 ) returns text
@@ -44,5 +44,5 @@ $macro$
 end;
 $function$;
 
-comment on function versionize(name,name) is
+comment on function macro_history(name,name) is
   'Macro copy on write actual table to history table. Requires lib.actor_table GUC';
