@@ -55,7 +55,7 @@ class Auth extends React.Component {
 
   whoAmI() {
     return fetchQuery(this.state.token)(
-      {text: 'query { jwtLogin jwtRole allStaffRoles{nodes{role}} }'},
+      {text: 'query { currentLogin currentRol allActorRoles{nodes{role}} }'},
     ).then(res => {
       if (res.errors) {
         console.log(res.errors);

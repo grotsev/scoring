@@ -27,7 +27,7 @@ ReactDOM.render(
         <div>
           <Navigation logout={logout}/>
           <main>
-            
+
             <Route exact path='/application' render={() => <ApplicationList />} />
             <Route path='/application/:application' component={Application} />
 
@@ -35,7 +35,7 @@ ReactDOM.render(
               <QueryRenderer environment={environmentFactory(token)}
                 query={graphql`
                   query appQuery {
-                    jwtLogin
+                    currentLogin
                     ...CountryDict_query
                   }
                 `}
