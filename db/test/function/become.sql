@@ -1,13 +1,13 @@
 create function become(
   token jwt_token,
-  local boolean = true
+  global boolean = false
 ) returns uuid
   language plpgsql
 as $function$
 declare
   cmd text;
 begin
-  cmd = case when local then 'set local' else 'set' end;
+  cmd = case when global then 'set' else 'set local' end;
 
   execute cmd||$$ jwt.claims.login = '$$ || token.login || $$'$$;
   execute cmd||$$ jwt.claims.role  = '$$ || token.role  || $$'$$;
