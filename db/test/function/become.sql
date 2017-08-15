@@ -4,9 +4,9 @@ create function become(
   language plpgsql
 as $function$
 begin
-  execute $$set local jwt.claims.login to '$$ || token.login || $$'$$;
-  execute $$set local jwt.claims.role  to '$$ || token.role  || $$'$$;
-  execute $$set local jwt.claims.actor to '$$ || token.actor || $$'$$;
+  execute $$set local jwt.claims.login = '$$ || token.login || $$'$$;
+  execute $$set local jwt.claims.role  = '$$ || token.role  || $$'$$;
+  execute $$set local jwt.claims.actor = '$$ || token.actor || $$'$$;
   execute $$set local role $$ || token.role;
 
   return token.actor;

@@ -5,7 +5,7 @@ create function test_authorize(
 as $function$
 begin
 
-  set local role to anonymous;
+  set local role anonymous;
   set local jwt.claims.login = 'all';
   set local jwt.claims.actor = '11110000-0000-0000-0000-000011110000';
   return next is(
