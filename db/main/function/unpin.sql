@@ -14,7 +14,7 @@ begin
   -- update application_stage
 
   select stage
-  from pin
+  from pinning
   where application = the_application
     and actor = current_actor()
   into the_stage;
@@ -75,7 +75,7 @@ begin
 
   -- unpin application from actor
 
-  delete from pin
+  delete from pinning
   where application = the_application;
 
 end;

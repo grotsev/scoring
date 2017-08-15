@@ -16,7 +16,7 @@ begin
     raise 'No stage %', the_stage;
   end if;
 
-  insert into pin (application, actor, stage, sys_period)
+  insert into pinning (application, actor, stage, sys_period)
     values (the_application, current_actor(), the_stage, tstzrange(now(), null) );
 
   if the_stage = 'DECLARE' then

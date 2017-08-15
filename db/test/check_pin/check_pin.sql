@@ -21,7 +21,7 @@ begin
   return next ok(
     exists (
       select
-      from pin
+      from pinning
       where application = the_application
         and actor = the_actor
         and stage = the_stage
@@ -31,7 +31,7 @@ begin
 
   return next throws_ok(
     $$select pin('$$||the_application||$$', '$$||the_stage||$$')$$,
-    'duplicate key value violates unique constraint "pin_pkey"',
+    'duplicate key value violates unique constraint "pinning_pkey"',
     'Application is pinned just once'
   );
 
