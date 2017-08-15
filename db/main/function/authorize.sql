@@ -1,5 +1,5 @@
 create function authorize(
-  the_role name
+  role name
 ) returns jwt_token
   language plpgsql
   stable
@@ -10,13 +10,13 @@ begin
   select a.role
   from actor_role a
   where a.actor = current_actor()
-    and a.role = the_role
-  into the_role;
+    and a.role = authorize.role
+  into authorize.role;
 
   return (
       current_login()
     , current_actor()
-    , coalesce(the_role, 'anonymous')
+    , coalesce(authorize.role, 'anonymous')
     , extract(epoch from (now() + interval '1 week'))
   )::jwt_token;
 end;
