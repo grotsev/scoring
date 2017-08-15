@@ -2,6 +2,7 @@ create function current_login(
 ) returns text
   language plpgsql
   stable
+  security definer
 as $function$
 declare
   result text;

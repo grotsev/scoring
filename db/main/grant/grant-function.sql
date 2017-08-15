@@ -4,6 +4,7 @@ grant execute on function
 , current_actor()
 , current_login()
 , current_rol()
+, available_role()
 to authenticator, anonymous, scoring_user, scoring_admin;
 
 grant execute on function

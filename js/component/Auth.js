@@ -55,7 +55,7 @@ class Auth extends React.Component {
 
   whoAmI() {
     return fetchQuery(this.state.token)(
-      {text: 'query { currentLogin currentRol allActorRoles{nodes{role}} }'},
+      {text: 'query { currentLogin currentRol availableRole{nodes} }'},
     ).then(res => {
       if (res.errors) {
         console.log(res.errors);
@@ -64,9 +64,9 @@ class Auth extends React.Component {
       }
       if (res.data) {
         this.setState({
-          login: res.data.jwtLogin,
-          role: res.data.allStaffRoles.nodes.length == 1 ? res.data.allStaffRoles.nodes[0] : res.data.jwtRole,
-          roles: res.data.allStaffRoles.nodes,
+          login: res.data.currentLogin,
+          role: res.data.availableRole.nodes.length == 1 ? res.data.availableRole.nodes[0] : res.data.currentRol,
+          roles: res.data.availableRole.nodes,
         });
       } else {
         this.setState({status: 'No data'});

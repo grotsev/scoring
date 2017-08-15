@@ -2,6 +2,7 @@ create function current_actor(
 ) returns uuid
   language plpgsql
   stable
+  security definer
 as $function$
 declare
   result uuid;

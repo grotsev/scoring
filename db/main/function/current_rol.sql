@@ -3,6 +3,7 @@ create function current_rol(
 ) returns name
   language plpgsql
   stable
+  security definer
 as $function$
 declare
   result name;
