@@ -23,7 +23,10 @@ begin
     null::boolean,
     null::boolean,
     null::int4,
-    null::monetary
+    null::monetary,
+    null::tstzrange,
+    null::uuid,
+    null::uuid
   )::pkb;
 
   return next is(
@@ -45,7 +48,10 @@ begin
     null::boolean,
     null::boolean,
     null::int4,
-    500000::monetary
+    500000::monetary,
+    null::tstzrange,
+    null::uuid,
+    null::uuid
   )::pkb;
 
   return next is(
