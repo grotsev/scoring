@@ -1,9 +1,9 @@
-create table pin
+create table pinning
 ( primary key (application)
 , unique      (actor)
 , foreign key (application) references application
 , foreign key (actor)       references actor
 , foreign key (stage)       references stage
-) inherits (pin_history);
+) inherits (pinning_history);
 
-comment on table pin is 'actor which has pinned application for processing';
+comment on table pinning is 'actor which has pinned application for processing';

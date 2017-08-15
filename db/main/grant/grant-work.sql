@@ -12,7 +12,7 @@ grant select, insert, update on table
   -- product
   -- application
   individual_responsibility
-, pin -- TODO rls
+, pinning -- TODO rls
 , application_stage
   -- address
 , address
@@ -34,7 +34,7 @@ to scoring_user;
 
 grant delete on table
   individual_responsibility
-, pin
+, pinning
 , application_stage
 , contract
 , contract_attract

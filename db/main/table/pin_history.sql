@@ -1,4 +1,4 @@
-create table pin_history
+create table pinning_history
 ( application     uuid not null
 , sys_period tstzrange not null
 , actor           uuid not null

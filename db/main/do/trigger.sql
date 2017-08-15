@@ -1,6 +1,6 @@
-create trigger pin_versioning
-  before insert or update or delete on pin
-  for each row execute procedure versioning('sys_period', 'pin_history', true)
+create trigger pinning_versioning
+  before insert or update or delete on pinning
+  for each row execute procedure versioning('sys_period', 'pinning_history', true)
 ;
 
 create trigger "5_assign_outlet"
