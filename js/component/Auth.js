@@ -169,9 +169,9 @@ class Auth extends React.Component {
         return <div>
           <BS.Button onClick={this.logout}><span className='fa fa-sign-out' /> Log out</BS.Button>
           <BS.ListGroup>
-            {this.state.roles.map((node) =>
-              <BS.ListGroupItem key={node.role} onClick={(event) => {this._handleChangeRole(node.role)}}>
-                {node.role}
+            {this.state.roles.map((role) =>
+              <BS.ListGroupItem key={role} onClick={(event) => {this._handleChangeRole(role)}}>
+                {role}
               </BS.ListGroupItem>
             )}
           </BS.ListGroup>
