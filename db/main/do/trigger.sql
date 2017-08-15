@@ -12,5 +12,6 @@ do $block$
 begin
   execute (select macro_created('application'));
   execute (select macro_history('contract', 'contract_history'));
+  execute (select macro_history('pkb', 'pkb_history'));
 end;
 $block$;

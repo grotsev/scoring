@@ -153,6 +153,7 @@ main_data_person='
 
 
 main_model_pkb='
+  main/table/pkb_history
   main/table/pkb
 '
 

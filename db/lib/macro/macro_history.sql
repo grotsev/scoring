@@ -18,7 +18,7 @@ alter table %1$s
 , add foreign key (deleted_by)  references %3$s;
 
 create trigger "5_modified_data"
-  before update on contract
+  before update on %1$s
   for each row
   execute procedure modified_data();
 
@@ -31,13 +31,13 @@ create trigger "6_deleted_by"
   for each row execute procedure deleted_by();
 
 create trigger "8_versioning_update"
-  before update on contract
+  before update on %1$s
   for each row
   when (new.modified_by <> old.modified_by)
   execute procedure versioning('sys_period', '%2$s', true);
 
 create trigger "8_versioning_insert_delete"
-  before insert or delete on contract
+  before insert or delete on %1$s
   for each row
   execute procedure versioning('sys_period', '%2$s', true);
 
