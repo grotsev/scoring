@@ -1,5 +1,6 @@
 module Main exposing (..)
 
+import Auth
 import Bootstrap.Button as Button
 import Bootstrap.Card as Card
 import Bootstrap.Grid as Grid
@@ -28,6 +29,7 @@ type alias Model =
     { route : Route
     , navState : Navbar.State
     , modalState : Modal.State
+    , authState : Auth.State
     }
 
 
@@ -38,7 +40,12 @@ init location =
             Navbar.initialState NavMsg
 
         ( model, urlCmd ) =
-            urlUpdate location { navState = navState, route = Home, modalState = Modal.hiddenState }
+            urlUpdate location
+                { navState = navState
+                , route = Home
+                , modalState = Modal.hiddenState
+                , authState = Auth.init
+                }
     in
     ( model, Cmd.batch [ urlCmd, navCmd ] )
 
@@ -47,6 +54,7 @@ type Msg
     = UrlChange Location
     | NavMsg Navbar.State
     | ModalMsg Modal.State
+    | AuthMsg Auth.Msg
 
 
 subscriptions : Model -> Sub Msg
@@ -67,6 +75,11 @@ update msg model =
 
         ModalMsg state ->
             ( { model | modalState = state }
+            , Cmd.none
+            )
+
+        AuthMsg msg ->
+            ( { model | authState = Auth.update msg model.authState }
             , Cmd.none
             )
 
@@ -106,6 +119,10 @@ menu model =
                 }
             , Navbar.itemLink [ href <| Route.encode ProductIndicator ] [ text "Product indicator" ]
             , Navbar.itemLink [ href <| Route.encode Dictionary ] [ text "Dictionaries" ]
+            ]
+        |> Navbar.customItems
+            [ Navbar.formItem []
+                (Auth.view AuthMsg model.authState)
             ]
         |> Navbar.view model.navState
 
