@@ -11,7 +11,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
 import Navigation exposing (Location)
-import Routing exposing (..)
+import Route exposing (Report(..), Route(..))
 
 
 main : Program Never Model Msg
@@ -73,7 +73,7 @@ update msg model =
 
 urlUpdate : Navigation.Location -> Model -> ( Model, Cmd Msg )
 urlUpdate location model =
-    ( { model | route = parseLocation location }, Cmd.none )
+    ( { model | route = Route.decode location }, Cmd.none )
 
 
 view : Model -> Html Msg
@@ -90,10 +90,22 @@ menu model =
     Navbar.config NavMsg
         |> Navbar.withAnimation
         |> Navbar.container
-        |> Navbar.brand [ href "#" ] [ text "Elm Bootstrap" ]
+        |> Navbar.brand [ href "#" ] [ text "greetgo! Scoring" ]
         |> Navbar.items
-            [ Navbar.itemLink [ href "#getting-started" ] [ text "Getting started" ]
-            , Navbar.itemLink [ href "#modules" ] [ text "Modules" ]
+            [ Navbar.itemLink [ href <| Route.encode ApplicationList ] [ text "Applications" ]
+            , Navbar.dropdown
+                { id = "report"
+                , toggle = Navbar.dropdownToggle [] [ text "Reports" ]
+                , items =
+                    [ Navbar.dropdownItem [ href <| Route.encode <| Report Detail ] [ text "Detail" ]
+                    , Navbar.dropdownItem [ href <| Route.encode <| Report Rejection ] [ text "Rejection" ]
+                    , Navbar.dropdownItem [ href <| Route.encode <| Report ServiceCall ] [ text "Service calls" ]
+                    , Navbar.dropdownItem [ href <| Route.encode <| Report ApplicationMovement ] [ text "Application movements" ]
+                    , Navbar.dropdownItem [ href <| Route.encode <| Report ApplicationActivity ] [ text "Application activities" ]
+                    ]
+                }
+            , Navbar.itemLink [ href <| Route.encode ProductIndicator ] [ text "Product indicator" ]
+            , Navbar.itemLink [ href <| Route.encode Dictionary ] [ text "Dictionaries" ]
             ]
         |> Navbar.view model.navState
 
