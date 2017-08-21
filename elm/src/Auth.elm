@@ -40,6 +40,7 @@ type alias State =
 
 type Msg
     = LogIn String String
+    | LoginInput String
     | LogOut
 
 
@@ -69,9 +70,12 @@ view : (Msg -> msg) -> Model -> List (Html msg)
 view msg model =
     case model of
         Anonymous { login, password } ->
-            [ Input.text [ Input.placeholder "login" ]
+            [ Input.text
+                [ Input.placeholder "login"
+                , Input.onInput (msg << LoginInput)
+                ]
             , Input.password []
-            , Button.button [ Button.onClick <| msg <| LogIn login password ] [ text "Login" ]
+            , Button.button [ Button.onClick <| msg <| LogIn login password ] [ text "Log in" ]
             ]
 
         Authenticated { login, role, availableRoles } ->

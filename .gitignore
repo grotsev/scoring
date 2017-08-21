@@ -4,3 +4,4 @@
 __generated__/
 *.log
 /node_modules/
+elm-stuff
